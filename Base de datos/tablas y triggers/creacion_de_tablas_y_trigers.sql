@@ -143,7 +143,7 @@ EXCEPTION
 END;
 
 
-/*creacion de trigger bloqueo de equipos cuando la competicion esta iniciada*/
+/*-----creacion de trigger bloqueo de equipos cuando la competicion esta iniciada-----*/
 
 CREATE OR REPLACE TRIGGER bloqueo_competicion_cerrada
 BEFORE INSERT OR DELETE OR UPDATE ON EQUIPO
@@ -158,7 +158,7 @@ BEGIN
     END IF;
 END;
 
-
+/*-------*/
 
 /*inserts*/
 
