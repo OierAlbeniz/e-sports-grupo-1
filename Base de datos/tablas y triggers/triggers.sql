@@ -45,18 +45,23 @@ END;
 
 /*-------*/
 
-CREATE OR REPLACE TRIGGER bloqueo_competicion_cerrada
-BEFORE INSERT OR DELETE OR UPDATE ON EQUIPO
-FOR EACH ROW
-DECLARE
-    v_estado_competicion VARCHAR2(20);
-BEGIN
-    SELECT ESTADO INTO v_estado_competicion FROM COMPETICION WHERE ID_COMPETICION = :NEW.ID_COMPETICION;
-    
-    IF v_estado_competicion = 'cerrado' THEN
-        RAISE_APPLICATION_ERROR(-20001, 'No se pueden realizar operaciones en EQUIPO cuando la competición está cerrada.');
-    END IF;
+CREATE OR REPLACE TRIGGER lock_jugador_table 
+BEFORE INSERT OR UPDATE OR DELETE ON JUGADOR 
+FOR EACH ROW 
+DECLARE 
+  v_estado VARCHAR2(20); 
+BEGIN 
+  SELECT E.estado 
+  INTO v_estado 
+  FROM COMPETICION E 
+  WHERE E.ID_COMPETICION = :NEW.ID_EQUIPO; 
+ 
+  IF v_estado = 'cerrado' THEN 
+    RAISE_APPLICATION_ERROR(-20001, 'No se pueden realizar cambios en la tabla JUGADOR cuando la competición está cerrada'); 
+  END IF; 
 END;
+
+
 INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO) VALUES ('Jugador1', 'Apellido1', 'Apellido2', 1000,
  'Nacionalidad1', TO_DATE('1990-11-01', 'YYYY-MM-DD'), 'Nick1', 'Rol1', 3);
 
