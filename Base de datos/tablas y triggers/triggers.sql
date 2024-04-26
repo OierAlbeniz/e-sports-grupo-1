@@ -28,7 +28,7 @@ END;
 
 /*-----creacion de trigger bloqueo de equipos cuando la competicion esta iniciada-----*/
 
-CREATE OR REPLACE TRIGGER bloqueo_competicion_cerrada
+CREATE OR REPLACE TRIGGER bloqueo_equipo_cerrada
 BEFORE INSERT OR DELETE OR UPDATE ON EQUIPO
 FOR EACH ROW
 DECLARE
@@ -43,7 +43,7 @@ END;
 
 /*----trigger que impide meter mas ususarios cuando la competicion se ha iniciado----*/
 
-CREATE OR REPLACE TRIGGER lock_jugador_table
+CREATE OR REPLACE TRIGGER bloqueo_jugador_cerrada
 BEFORE INSERT OR UPDATE OR DELETE ON JUGADOR
 FOR EACH ROW
 DECLARE
