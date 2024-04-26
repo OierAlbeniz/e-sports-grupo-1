@@ -1,5 +1,7 @@
 /*-----------------------------CREACION DE TRIGGERS-----------------------------------*/
 
+
+/*------CREACION DE TRIGGER QUE COMPRUBA SI HAY MAS DE 6 JUGADORES--------*/
 create or replace TRIGGER TR_NUM_JUGADORES_MAYOR6
 BEFORE INSERT OR UPDATE ON JUGADOR
 FOR EACH ROW
@@ -43,7 +45,7 @@ BEGIN
     END IF;
 END;
 
-/*-------*/
+/*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MIDIFICAR LOS USUARIOS CUANDO LA COMPETICION SE HA INICIADO----*/
 
 CREATE OR REPLACE TRIGGER lock_jugador_table 
 BEFORE INSERT OR UPDATE OR DELETE ON JUGADOR 
@@ -61,9 +63,6 @@ BEGIN
   END IF; 
 END;
 
-
-INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO) VALUES ('Jugador1', 'Apellido1', 'Apellido2', 1000,
- 'Nacionalidad1', TO_DATE('1990-11-01', 'YYYY-MM-DD'), 'Nick1', 'Rol1', 3);
 
 
  /*Trigger para que la suma de sueldos de todos los jugadores de un mismo equipo no pueda ser superior a 200.000€*/
@@ -94,7 +93,7 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20004,'ERROR INESPERADO'); 
 END;
 
-/*Trigger sueldo Minimo Interprofesional*/
+/*---------Trigger sueldo Minimo Interprofesional---------------------*/
 
 CREATE OR REPLACE TRIGGER TR_VALIDAR_SUELDO_MINIMO
 BEFORE INSERT OR UPDATE ON JUGADOR
