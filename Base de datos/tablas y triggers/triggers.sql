@@ -27,11 +27,11 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20003,'EL NUMERO DE JUGADORES ES INCORRECTO');
     WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20004,'ERROR INESPERADO');
-END;
+END TR_NUM_JUGADORES_MAYOR6;
 
 
 /*-----creacion de trigger bloqueo de equipos cuando la competicion esta iniciada-----*/
-CREATE OR REPLACE TRIGGER trg_prevent_insert_clasificacion
+CREATE OR REPLACE TRIGGER lock_equipo_table
 BEFORE INSERT ON clasificacion
 FOR EACH ROW
 DECLARE
@@ -45,11 +45,11 @@ BEGIN
   IF v_estado = 'cerrado' THEN
     RAISE_APPLICATION_ERROR(-20001, 'No se puede agregar un equipo a una competición cerrada');
   END IF;
-END trg_prevent_insert_clasificacion;
+END lock_equipo_table;
 /
 
 /*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MIDIFICAR LOS USUARIOS CUANDO LA COMPETICION SE HA INICIADO----*/
-CREATE OR REPLACE TRIGGER trg_prevent_insert_update_jugador
+CREATE OR REPLACE TRIGGER lock_jugador_table
 BEFORE INSERT OR UPDATE ON jugador
 FOR EACH ROW
 DECLARE
@@ -64,7 +64,7 @@ BEGIN
   IF v_estado = 'cerrado' THEN
     RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competición cerrada');
   END IF;
-END trg_prevent_insert_update_jugador;
+END lock_jugador_table;
 
 
 
