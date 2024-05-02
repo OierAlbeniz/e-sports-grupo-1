@@ -31,37 +31,40 @@ END;
 
 
 /*-----creacion de trigger bloqueo de equipos cuando la competicion esta iniciada-----*/
-
-CREATE OR REPLACE TRIGGER bloqueo_competicion_cerrada
-BEFORE INSERT OR DELETE OR UPDATE ON EQUIPO
+CREATE OR REPLACE TRIGGER trg_prevent_insert_clasificacion
+BEFORE INSERT ON clasificacion
 FOR EACH ROW
 DECLARE
-    v_estado_competicion VARCHAR2(20);
+  v_estado VARCHAR2(20);
 BEGIN
-    SELECT ESTADO INTO v_estado_competicion FROM COMPETICION WHERE ID_COMPETICION = :NEW.ID_COMPETICION;
-    
-    IF v_estado_competicion = 'cerrado' THEN
-        RAISE_APPLICATION_ERROR(-20001, 'No se pueden realizar operaciones en EQUIPO cuando la competición está cerrada.');
-    END IF;
-END;
+  SELECT estado
+  INTO v_estado
+  FROM competicion
+  WHERE id_competicion = :NEW.id_competicion;
+
+  IF v_estado = 'cerrado' THEN
+    RAISE_APPLICATION_ERROR(-20001, 'No se puede agregar un equipo a una competición cerrada');
+  END IF;
+END trg_prevent_insert_clasificacion;
+/
 
 /*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MIDIFICAR LOS USUARIOS CUANDO LA COMPETICION SE HA INICIADO----*/
+CREATE OR REPLACE TRIGGER trg_prevent_insert_update_jugador
+BEFORE INSERT OR UPDATE ON jugador
+FOR EACH ROW
+DECLARE
+  v_estado VARCHAR2(20);
+BEGIN
+  SELECT c.estado
+  INTO v_estado
+  FROM competicion c
+  JOIN clasificacion cl ON c.id_competicion = cl.id_competicion
+  WHERE cl.id_equipo = :NEW.id_equipo;
 
-CREATE OR REPLACE TRIGGER lock_jugador_table 
-BEFORE INSERT OR UPDATE OR DELETE ON JUGADOR 
-FOR EACH ROW 
-DECLARE 
-  v_estado VARCHAR2(20); 
-BEGIN 
-  SELECT E.estado 
-  INTO v_estado 
-  FROM COMPETICION E 
-  WHERE E.ID_COMPETICION = :NEW.ID_EQUIPO; 
- 
-  IF v_estado = 'cerrado' THEN 
-    RAISE_APPLICATION_ERROR(-20001, 'No se pueden realizar cambios en la tabla JUGADOR cuando la competición está cerrada'); 
-  END IF; 
-END;
+  IF v_estado = 'cerrado' THEN
+    RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competición cerrada');
+  END IF;
+END trg_prevent_insert_update_jugador;
 
 
 
@@ -70,7 +73,7 @@ END;
  CREATE OR REPLACE TRIGGER TR_MAX_SAL
 BEFORE INSERT OR UPDATE ON JUGADOR
 FOR EACH ROW
-DECLARE
+DECLARE 
     V_SUELDO_TOTAL_EQUIPO JUGADOR.SUELDO%TYPE;
     E_SUELDOMAXINCORRECTO EXCEPTION;
 BEGIN 
