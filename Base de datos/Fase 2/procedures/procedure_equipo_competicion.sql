@@ -4,7 +4,7 @@
 --se van a pasar los parametros de el id de la competicion y el nombre de el equipo
 -- y se insertara en la tabla clasificacion automaticamente
 
-3
+
 CREATE OR REPLACE PROCEDURE almacenar_equipo_en_competiciones(
     equipo_nombre IN VARCHAR2,
     competicion_id IN NUMBER
