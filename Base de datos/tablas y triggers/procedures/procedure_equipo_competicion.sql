@@ -1,7 +1,8 @@
 /*-------procedure equipos competicion-------*/
 
---en este procedure se va a insertar un equipo a las competiciones que se necesite
+--en este procedure se va a insertar un equipo a la competicion que se necesite
 --se van a pasar los parametros de el id de la competicion y el nombre de el equipo
+-- y se insertara en la tabla clasificacion automaticamente
 
 3
 CREATE OR REPLACE PROCEDURE almacenar_equipo_en_competiciones(

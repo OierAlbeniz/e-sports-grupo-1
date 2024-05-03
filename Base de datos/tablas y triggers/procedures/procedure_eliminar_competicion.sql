@@ -5,7 +5,6 @@
 --ademas de borrar la clasificacion de esa competicion
 
 
-
 CREATE OR REPLACE PROCEDURE eliminar_competicion (p_id_competicion IN NUMBER) IS
   -- Declaración de variables
   v_num_equipos NUMBER(3);
@@ -30,6 +29,9 @@ BEGIN
   DELETE FROM EQUIPO
   WHERE ID_EQUIPO IN (SELECT ID_EQUIPO FROM CLASIFICACION WHERE ID_COMPETICION = p_id_competicion)
   AND ID_EQUIPO NOT IN (SELECT ID_EQUIPO FROM CLASIFICACION WHERE ID_COMPETICION <> p_id_competicion);
+
+  -- Eliminar la competición
+  DELETE FROM COMPETICION WHERE ID_COMPETICION = p_id_competicion;
 EXCEPTION
   WHEN OTHERS THEN
     RAISE_APPLICATION_ERROR(-20002, 'Error al eliminar la competición especificada');
