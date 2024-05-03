@@ -1,6 +1,9 @@
 /*----------COMPROBACIONES DE LOS TRIGGERS-------*/
 
---bloqueo_competicion_cerrada
+
+
+
+/*---------------------bloqueo_competicion_cerrada----------------------*/
 --este trigger va a bloquear la insercion de equipos cuando una compticion se ha INICIADO
 
 -- creamos una competicion que este cerrada
@@ -21,6 +24,10 @@ select id_competicion from competicion where estado = 'cerrado'
 
 
 INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (9, 1, 0);
+
+
+
+
 
 
 /*-----comprobacion de trigger añadir jugador competicion cerrada----------*/
@@ -57,3 +64,70 @@ select * from competicion where id_competicion=1
 -- por lo que no dejaria meter jugadores
 INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO) VALUES ('Jugador1', 'Apellido1', 'Apellido2', 1000, 'Nacionalidad1', TO_DATE('1990-11-01', 'YYYY-MM-DD'), 'Nick1', 'Rol1', 4);
 
+
+
+
+
+
+/*-----comprobacion de trigger minimo un entrenador por equipo----------*/
+
+--borramos el entrenador de un equipo en el cual solo hay un entrenador
+
+DELETE FROM ENTRENADOR 
+WHERE ID_EQUIPO = 3;
+
+--cambiamos de equipo a un entrenador cuando en ese equipo solo esta ese entrenador
+
+UPDATE ENTRENADOR
+SET ID_EQUIPO = 2
+WHERE ID_INTEGRANTE = 1;
+
+
+
+
+/*-----comprobacion de trigger sueldo_maximo ----------*/
+
+--actualizamos el sueldo de un jugador haciendo que la suma de los sueldo del equipo de dicho jugador sume una cntidad mayor que 200.000€
+
+UPDATE JUGADOR
+SET SUELDO = 199000
+WHERE ID_INTEGRANTE = 1;
+
+--insertamos un jugador cuyo sueldo sumado al sueldo del  resto de los jugadores de su equipo sume una cntidad mayor que 200.000€
+
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
+
+
+
+
+
+
+
+
+/*-----comprobacion de trigger sueldo_minimo ----------*/
+
+--actualizamos el sueldo de un jugador haciendo que su sueldo sea menor al sueldo minimo interprofesional(1.134€)
+
+UPDATE JUGADOR
+SET SUELDO = 112
+WHERE ID_INTEGRANTE = 1;
+
+--insertamos un jugador cuyo sueldo sea menor al sueldo minimo interprofesional(1.134€)
+
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Alex', 'Gonzalez', 'Martinez', 112, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
+
+
+/*-----comprobacion de trigger que el numero maximo de jugadores en un equipo sea 6 ----------*/
+
+--cambiamos de equipo a un jugador a otro equipo en el que ya hay 6 jugadores
+
+UPDATE JUGADOR
+SET ID_EQUIPO = 1
+WHERE ID_INTEGRANTE = 7;
+
+--insertamos un jugador en un equipo en el que ya hay 6 jugadores
+
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('PEPE', 'Gonzalez', 'Martinez', 1135, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
