@@ -1,3 +1,9 @@
+/*-------procedure equipos competicion-------*/
+
+--en este procedure se va a insertar un equipo a las competiciones que se necesite
+--se van a pasar los parametros de el id de la competicion y el nombre de el equipo
+
+3
 CREATE OR REPLACE PROCEDURE almacenar_equipo_en_competiciones(
     equipo_nombre IN VARCHAR2,
     competicion_id IN NUMBER
@@ -17,6 +23,7 @@ BEGIN
     INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO)
     VALUES (competicion_id, equipo_id);
 END almacenar_equipo_en_competiciones;
+
 
 INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Los Teeentos', TO_DATE('2000-12-01', 'YYYY-MM-DD'), 3);
 
