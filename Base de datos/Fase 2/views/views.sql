@@ -1,8 +1,7 @@
 /*-----------creacion de views-------*/
 
 
---view en la que se visualiza el nombre de el equipo
--- el id y el resultado de un enfrentamiento
+/*--view en la que se visualiza el nombre de el equipo el id y el resultado de un enfrentamiento--*/
 
 CREATE OR REPLACE VIEW vista_resultado AS
 SELECT
@@ -26,3 +25,21 @@ JOIN
   
   
 select * from vista_resultado
+
+
+
+/*--------View en la que se visualiuza el ranking de los equipos de una competicion---------*/
+
+CREATE OR REPLACE VIEW VIEW_3_EUIPOS_MAS_PUNTOS AS
+SELECT c.ID_COMPETICION,
+       cl.ID_EQUIPO,
+       e.NOMBRE AS NOMBRE_EQUIPO,
+       cl.PUNTOS,
+       ROW_NUMBER() OVER (PARTITION BY c.ID_COMPETICION ORDER BY cl.PUNTOS DESC) AS ranking
+FROM CLASIFICACION cl
+JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
+JOIN EQUIPO e ON cl.ID_EQUIPO = e.ID_EQUIPO;
+
+SELECT *
+FROM VIEW_3_EUIPOS_MAS_PUNTOS
+WHERE ID_COMPETICION = 1;
