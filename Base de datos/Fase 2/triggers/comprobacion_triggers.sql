@@ -66,9 +66,6 @@ INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_N
 
 
 
-
-
-
 /*-----comprobacion de trigger minimo un entrenador por equipo----------*/
 
 --borramos el entrenador de un equipo en el cual solo hay un entrenador
@@ -97,11 +94,6 @@ WHERE ID_INTEGRANTE = 1;
 
 INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
 VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
-
-
-
-
-
 
 
 
