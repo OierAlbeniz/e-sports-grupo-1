@@ -5,7 +5,7 @@
 -- y se insertara en la tabla clasificacion automaticamente
 
 
-CREATE OR REPLACE PROCEDURE almacenar_equipo_en_competiciones(
+CREATE OR REPLACE PROCEDURE equipo_en_competiciones(
     equipo_nombre IN VARCHAR2,
     competicion_id IN NUMBER
 ) AS
@@ -23,7 +23,7 @@ BEGIN
     -- Almacenar el equipo en la competición especificada
     INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO)
     VALUES (competicion_id, equipo_id);
-END almacenar_equipo_en_competiciones;
+END equipo_en_competiciones;
 
 
 INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Los Teeentos', TO_DATE('2000-12-01', 'YYYY-MM-DD'), 3);
