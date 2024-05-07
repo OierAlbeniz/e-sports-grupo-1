@@ -1,3 +1,5 @@
+/*-----creacion y borrado de sinonimos------*/
+
 drop PUBLIC synonym JUEGOS01;
 drop PUBLIC synonym COMPETICIONES01;
 drop PUBLIC synonym JORNADAS01;
