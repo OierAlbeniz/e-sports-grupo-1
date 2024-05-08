@@ -1,6 +1,4 @@
---Trigger para que no se pueda actualizar ni insertar un equipo en la tabla CLASIFICACION cuando el equipo este en una COMPETICION cerrada.
-
-CREATE OR REPLACE TRIGGER MODI_EQ_CLASI_COMP_CERRADA
+CREATE OR REPLACE TRIGGER MODI_UP__EQ_CLASI_COMP_CERRADA
 FOR INSERT OR UPDATE ON CLASIFICACION
 COMPOUND TRIGGER
     v_estado_competencia COMPETICION.ESTADO%TYPE;
@@ -12,25 +10,30 @@ BEGIN
 END BEFORE EACH ROW;
 AFTER STATEMENT IS
 BEGIN
-    -- Solo si se ha realizado una actualizaciï¿½n (INSERT o UPDATE)
+    -- Solo si se ha realizado una actualización (INSERT o UPDATE)
     IF INSERTING OR UPDATING THEN
-        -- Consultamos el estado de la competiciï¿½n asociada al equipo
+        -- Consultamos el estado de la competición asociada al equipo
         SELECT c.ESTADO INTO v_estado_competencia
         FROM COMPETICION c
         INNER JOIN CLASIFICACION cl ON c.ID_COMPETICION = cl.ID_COMPETICION
         WHERE cl.ID_EQUIPO = v_id_equipo
         AND c.ESTADO = 'cerrado';
 
-        -- Si encontramos una competiciï¿½n cerrada asociada al equipo, lanzamos un error
+        -- Si encontramos una competición cerrada asociada al equipo, lanzamos un error
         IF v_estado_competencia = 'cerrado' THEN
-            RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operaciï¿½n porque el equipo estï¿½ asociado a una competiciï¿½n cerrada.');
+            RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operación porque el equipo está asociado a una competición cerrada.');
         END IF;
     END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         NULL;
 END AFTER STATEMENT;
-END MODI_EQ_CLASI_COMP_CERRADA;
+END MODI_UP__EQ_CLASI_COMP_CERRADA;
 
+UPDATE CLASIFICACION 
+SET ID_EQUIPO = 7
+WHERE ID_CLASIFICACION = 12;
+
+INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 1, 10);
 
 

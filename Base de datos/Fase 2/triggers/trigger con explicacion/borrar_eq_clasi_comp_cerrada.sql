@@ -1,3 +1,7 @@
+--El trigger se activa al borrar un equipo de la tabla Clasificacion, cuando dicho equipo esta en una 
+--competicion con el estado "carrado"
+
+
 CREATE OR REPLACE TRIGGER BORRAR_EQ_CLASI_COMP_CERRADA
 FOR DELETE ON CLASIFICACION
 COMPOUND TRIGGER
@@ -16,13 +20,10 @@ BEGIN
     AND c.ESTADO = 'cerrado';
 
     IF v_estado_competencia = 'cerrado' THEN
-        RAISE_APPLICATION_ERROR(-20001, 'No se puede borrar el equipo porque está asociado a una competición cerrada.');
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede borrar el equipo porque estï¿½ asociado a una competiciï¿½n cerrada.');
     END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
         NULL;
 END AFTER STATEMENT;
 END BORRAR_EQ_CLASI_COMP_CERRADA;
-
-DELETE FROM CLASIFICACION 
-WHERE ID_COMPETICION = 12;
