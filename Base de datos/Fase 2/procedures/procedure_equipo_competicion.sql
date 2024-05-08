@@ -5,7 +5,7 @@
 -- y se insertara en la tabla clasificacion automaticamente
 
 
-CREATE OR REPLACE PROCEDURE almacenar_equipo_en_competiciones(
+CREATE OR REPLACE PROCEDURE equipo_en_competiciones(
     equipo_nombre IN VARCHAR2,
     competicion_id IN NUMBER
 ) AS
