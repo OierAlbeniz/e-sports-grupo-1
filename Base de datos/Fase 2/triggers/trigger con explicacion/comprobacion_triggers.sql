@@ -156,7 +156,7 @@ WHERE ID_EQUIPO=1;
 DELETE FROM EQUIPO
 WHERE ID_EQUIPO = 8;
 
-/*------------ insertar una los puntos de una clasificacion cerrada  ----------------*/
+/*------------ al insertar un equipo en competicion, salta el error  ----------------*/
 INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
 
 /*------------ modificar una los puntos de una clasificacion cerrada  ----------------*/

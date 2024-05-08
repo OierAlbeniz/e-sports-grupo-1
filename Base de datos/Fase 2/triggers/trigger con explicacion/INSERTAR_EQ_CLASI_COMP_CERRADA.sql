@@ -1,3 +1,7 @@
+/*--- INSERTAR EQUIPO EN UNA CASLIFICACION CUANDO LA COMPETICION ESTE CERRADA*/
+/*Hemos creado una trigger que al momento de querer insertar un equipo en la clasificacion, 
+no deja porque la competicion esta cerrada*/
+
 CREATE OR REPLACE TRIGGER INSERTAR_EQ_CLASI_COMP_CERRADA
 FOR INSERT ON CLASIFICACION
 COMPOUND TRIGGER
@@ -16,7 +20,7 @@ BEGIN
     AND c.ESTADO = 'cerrado';
 
     IF v_estado_competencia = 'cerrado' THEN
-        RAISE_APPLICATION_ERROR(-20001, 'No se puede insertar el equipo porque está asociado a una competición cerrada.');
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede insertar el equipo porque estï¿½ asociado a una competiciï¿½n cerrada.');
     END IF;
 EXCEPTION
     WHEN NO_DATA_FOUND THEN
