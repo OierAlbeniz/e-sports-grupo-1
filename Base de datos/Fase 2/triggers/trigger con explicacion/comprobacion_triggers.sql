@@ -163,3 +163,23 @@ INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
 UPDATE EQUIPO
 SET NOMBRE='BELLAKOS'
 WHERE ID_EQUIPO=8;
+
+/*------------Comprbacion trigger BORRAR_EQ_CLASI_COMP_CERRADA ----------------*/
+
+--Borramos un equipo de la tabala CLASIFICACION el cual esta en una competicion cerrada. 
+
+DELETE FROM CLASIFICACION 
+WHERE ID_COMPETICION = 12;
+
+/*------------Comprobacion trigger INS_UP_COM_CERRADA ----------------*/
+
+--Cambiamos un equipo por otro en la tabla CLASIFICACION cuando el quipo que quieres cabiar esta en una competicion cerrada
+
+UPDATE CLASIFICACION 
+SET ID_EQUIPO = 7
+WHERE ID_CLASIFICACION = 12;
+
+--Insertamos un equipo en una competicion cerrada
+
+INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 1, 10);
+
