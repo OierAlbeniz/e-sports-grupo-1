@@ -1,0 +1,14 @@
+CREATE VIEW vista_jugadores_por_equipo AS
+SELECT E.ID_EQUIPO,
+       E.NOMBRE,
+       J.ID_INTEGRANTE,
+       J.NOMBRE AS NOMBRE_JUGADOR,
+       J.APELLIDO1 AS APELLIDO_JUGADOR
+FROM EQUIPO E
+JOIN JUGADOR J ON E.ID_EQUIPO = J.ID_EQUIPO
+WHERE E.ID_EQUIPO = 1;
+
+
+ SELECT * FROM vista_jugadores_por_equipo;
+ 
+ DROP VIEW vista_jugadores_por_equipo;

@@ -99,19 +99,24 @@ VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a', TO_DATE('1990-05-15
 
 /*-----comprobacion de trigger sueldo_minimo ----------*/
 
---actualizamos el sueldo de un jugador haciendo que su sueldo sea menor al sueldo minimo interprofesional(1.134€)
+--actualizamos el sueldo de un jugador haciendo que su sueldo sea menor al
+sueldo minimo interprofesional(1.134€)
 
 UPDATE JUGADOR
 SET SUELDO = 112
 WHERE ID_INTEGRANTE = 1;
 
---insertamos un jugador cuyo sueldo sea menor al sueldo minimo interprofesional(1.134€)
+--insertamos un jugador cuyo sueldo sea menor al sueldo minimo 
+--interprofesional(1.134€)
 
-INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
-VALUES ('Alex', 'Gonzalez', 'Martinez', 112, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD,
+FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Alex', 'Gonzalez', 'Martinez', 112, 'EspaÃ±a', TO_DATE
+('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
 
 
-/*-----comprobacion de trigger que el numero maximo de jugadores en un equipo sea 6 ----------*/
+/*-----comprobacion de trigger que el numero maximo 
+de jugadores en un equipo sea 6 ----------*/
 
 --cambiamos de equipo a un jugador a otro equipo en el que ya hay 6 jugadores
 
@@ -123,3 +128,38 @@ WHERE ID_INTEGRANTE = 7;
 
 INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
 VALUES ('PEPE', 'Gonzalez', 'Martinez', 1135, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
+
+
+/*-----comprobacion de trigger que en una competición cerrada, no puedes 
+añadir o modificar los EQUIPOS ----------*/
+
+/*------------ insertar un equipo en una competicion cerrada  ----------------*/
+INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS)
+VALUES (3, 12, 0);
+/*------------ modificar una los puntos de una clasificacion cerrada ---------*/
+UPDATE CLASIFICACION
+SET PUNTOS=6
+WHERE ID_EQUIPO=8;
+
+ROLLBACK;
+/*------------ borrar un equipo de una clasificacion cerrada (no da) ---------*/
+DELETE FROM CLASIFICACION
+WHERE ID_EQUIPO = 8;
+
+SELECT * FROM CLASIFICACION
+WHERE ID_EQUIPO=8;
+
+SELECT * FROM EQUIPO
+WHERE ID_EQUIPO=1;
+
+/*------------ borrar un equipo de la tabla equipo  ----------------*/
+DELETE FROM EQUIPO
+WHERE ID_EQUIPO = 8;
+
+/*------------ insertar una los puntos de una clasificacion cerrada  ----------------*/
+INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
+
+/*------------ modificar una los puntos de una clasificacion cerrada  ----------------*/
+UPDATE EQUIPO
+SET NOMBRE='BELLAKOS'
+WHERE ID_EQUIPO=8;
