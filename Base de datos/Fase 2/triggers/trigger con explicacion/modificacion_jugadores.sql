@@ -27,7 +27,6 @@ BEGIN
   WHERE cl.id_equipo = :NEW.id_equipo;
 
   IF v_estado = 'cerrado' THEN
-<<<<<<< HEAD
     RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competici�n cerrada');
   END IF;
 
@@ -53,9 +52,12 @@ UPDATE JUGADOR
 SET NOMBRE = 'PABLITO',
     APELLIDO1 = 'PEREZ'
 WHERE ID_INTEGRANTE = 22;
+<<<<<<< HEAD:Base de datos/Fase 2/triggers/modificacion_jugadores.sql
 =======
     RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competición cerrada');
   END IF;
 END lock_jugador_table;
 
 >>>>>>> a503a61b74788a5d1bc1f0aebb88c6ec40054d7e
+=======
+>>>>>>> e3a417174a9f547c32969ad83cbfda80080da7cc:Base de datos/Fase 2/triggers/trigger con explicacion/modificacion_jugadores.sql

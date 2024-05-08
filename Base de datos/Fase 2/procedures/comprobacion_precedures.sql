@@ -31,17 +31,22 @@ select * from equipo where nombre = 'Los Teeentos';
 
  /*----------calcular clasificacion------------*/
 
- 
-EXEC generar_enfrentamientos(2);
-select * from enfrentamiento
-DELETE FROM ENFRENTAMIENTOS;
+ --ejecuta el procedura que va a generar los enfrentamientos y las jornadas
+EXEC generar_calendario;
 
-EXEC generar_jornadas(2);
-EXEC generar_jornadas(1);
-EXEC generar_jornadas(3);
-EXEC generar_jornadas(4);
+--comprobamos si se han generado enfrentamientos y las jornadas
 
-select * from jornada
+select enfrentamiento.* from enfrentamiento
+join jornada on enfrentamiento.id_jor_comp = jornada.id_jor_comp
+where jornada.id_competicion=1;
+
+select * from jornada;
+
+/*-----problema----*/
+
+/*se intentado generar los enfrentamientos de todos los equipos pero da algunos errores por eso estan en NULL
+, se ha decidido hacerlo en java, este precedure pone automaticamente los id y las horas a las que se van a jugar los partidos*/
+
 
 
 
