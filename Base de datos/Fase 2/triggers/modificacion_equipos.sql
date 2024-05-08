@@ -1,8 +1,6 @@
-
-
 /*-----creacion de trigger bloqueo de equipos cuando la competicion esta iniciada-----*/
 CREATE OR REPLACE TRIGGER lock_equipo_table
-BEFORE INSERT ON clasificacion
+BEFORE INSERT or delete or update ON clasificacion
 FOR EACH ROW
 DECLARE
   v_estado VARCHAR2(20);
@@ -16,4 +14,4 @@ BEGIN
     RAISE_APPLICATION_ERROR(-20001, 'No se puede agregar un equipo a una competición cerrada');
   END IF;
 END lock_equipo_table;
-/
+
