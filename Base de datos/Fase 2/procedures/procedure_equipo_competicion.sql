@@ -26,10 +26,3 @@ BEGIN
 END equipo_en_competiciones;
 
 
-INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Los Teeentos', TO_DATE('2000-12-01', 'YYYY-MM-DD'), 3);
-
-execute almacenar_equipo_en_competiciones('Los Teeentos', 2 );
-execute almacenar_equipo_en_competiciones('Los Teeentos', 3 );
-select * from equipo where nombre = 'Los Teeentos';
-
- select * from clasificacion 
