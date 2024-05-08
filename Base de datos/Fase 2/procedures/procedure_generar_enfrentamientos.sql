@@ -1,3 +1,10 @@
+/*-------generar todo------*/
+
+--en este procedure se crearan jornadas automaticamente 
+--se insertan el id_competicion y calcual los equipos que hay
+--y genera el numero de jornadas para que cada equipo se enferente
+--una vez con otro en un competicion, asignados fechas
+
 CREATE OR REPLACE PROCEDURE gestionar_enfrentamientos(
     p_id_competicion IN COMPETICION.ID_COMPETICION%TYPE
 ) AS
@@ -78,15 +85,4 @@ BEGIN
     COMMIT;
 END;
 
-
-EXEC generar_enfrentamientos(2);
-select * from enfrentamiento
-DELETE FROM ENFRENTAMIENTOS;
-
-EXEC generar_jornadas(2);
-EXEC generar_jornadas(1);
-EXEC generar_jornadas(3);
-EXEC generar_jornadas(4);
-
-select * from jornada
 

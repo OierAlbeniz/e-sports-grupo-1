@@ -79,17 +79,5 @@ end ejecutar_puntos;
 
 
 
-execute calcular_puntos(33,1,3,5,1);
-
-select enfrentamiento.* from enfrentamiento
-join jornada on enfrentamiento.id_jor_comp = jornada.id_jor_comp
-where jornada.id_competicion=1;
-
-select * from enfrentamiento;
-select * from clasificacion order by puntos desc;
-
-
-
-
 
 

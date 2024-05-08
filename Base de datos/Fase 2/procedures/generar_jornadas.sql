@@ -1,9 +1,4 @@
-/*-------generar jornadas------*/
 
---en este procedure se crearan jornadas automaticamente 
---se insertan el id_competicion y calcual los equipos que hay
---y genera el numero de jornadas para que cada equipo se enferente
---una vez con otro en un competicion, asignados fechas
 
 CREATE OR REPLACE PROCEDURE generar_jornadas(
     p_id_competicion IN COMPETICION.ID_COMPETICION%TYPE
