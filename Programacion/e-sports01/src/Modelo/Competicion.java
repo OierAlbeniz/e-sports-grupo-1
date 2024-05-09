@@ -8,41 +8,41 @@ public class Competicion {
         this.idCompeticion = idCompeticion;
     }
 
-    public String getFechaInicio() {
+    private String getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(String fechaInicio) {
+    private void setFechaInicio(String fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    public String getFechaFin() {
+    private String getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(String fechaFin) {
+    private void setFechaFin(String fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    public boolean isEstado() {
+    private boolean isEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    private void setEstado(boolean estado) {
         this.estado = estado;
     }
 
-    public Integer getIdCompeticion() {
+    private Integer getIdCompeticion() {
         return idCompeticion;
     }
 
-    public void setIdCompeticion(Integer idCompeticion) {
+    private void setIdCompeticion(Integer idCompeticion) {
         this.idCompeticion = idCompeticion;
     }
 
-    public String fechaInicio;
-    public  String fechaFin;
-    public boolean estado;
-    public Integer idCompeticion;
+    private String fechaInicio;
+    private  String fechaFin;
+    private boolean estado;
+    private Integer idCompeticion;
 
 }

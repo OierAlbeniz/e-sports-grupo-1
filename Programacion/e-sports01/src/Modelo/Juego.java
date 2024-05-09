@@ -1,47 +1,47 @@
 package Modelo;
 
 public class Juego {
-    public  String nombre;
-    public  String empresa;
-    public String lanzazmiento;
-    public Integer idJuego;
+    private  String nombre;
+    private  String empresa;
+    private String lanzazmiento;
+    private Integer idJuego;
 
-    public Juego(String nombre, String empresa, String lanzazmiento, Integer idJuego) {
+    private Juego(String nombre, String empresa, String lanzazmiento, Integer idJuego) {
         this.nombre = nombre;
         this.empresa = empresa;
         this.lanzazmiento = lanzazmiento;
         this.idJuego = idJuego;
     }
 
-    public String getNombre() {
+    private String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    private void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public String getEmpresa() {
+    private String getEmpresa() {
         return empresa;
     }
 
-    public void setEmpresa(String empresa) {
+    private void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
 
-    public String getLanzazmiento() {
+    private String getLanzazmiento() {
         return lanzazmiento;
     }
 
-    public void setLanzazmiento(String lanzazmiento) {
+    private void setLanzazmiento(String lanzazmiento) {
         this.lanzazmiento = lanzazmiento;
     }
 
-    public Integer getIdJuego() {
+    private Integer getIdJuego() {
         return idJuego;
     }
 
-    public void setIdJuego(Integer idJuego) {
+    private void setIdJuego(Integer idJuego) {
         this.idJuego = idJuego;
     }
 }
