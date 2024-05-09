@@ -2,37 +2,37 @@ package Modelo;
 
 public class Enfrentamiento {
 
-    private String equipoUno;
-    private String equipoDos;
+    private Equipo equipoUno;
+    private Equipo equipoDos;
     private Integer idEnfrentamiento;
     private Integer hora;
     private Integer puntosLocal;
     private Integer puntosVisitante;
-    private Integer idJorComp;
+    private Jornada jornada;
 
-    private Enfrentamiento(String equipoUno, String equipoDos, Integer idEnfrentamiento, Integer hora, Integer puntosLocal, Integer puntosVisitante, Integer idJorComp) {
+    public Enfrentamiento(Equipo equipoUno, Equipo equipoDos, Integer idEnfrentamiento, Integer hora, Integer puntosLocal, Integer puntosVisitante, Jornada jornada) {
         this.equipoUno = equipoUno;
         this.equipoDos = equipoDos;
         this.idEnfrentamiento = idEnfrentamiento;
         this.hora = hora;
         this.puntosLocal = puntosLocal;
         this.puntosVisitante = puntosVisitante;
-        this.idJorComp = idJorComp;
+        this.jornada = jornada;
     }
 
-    private String getEquipoUno() {
+    public Equipo getEquipoUno() {
         return equipoUno;
     }
 
-    private void setEquipoUno(String equipoUno) {
+    public void setEquipoUno(Equipo equipoUno) {
         this.equipoUno = equipoUno;
     }
 
-    private String getEquipoDos() {
+    public Equipo getEquipoDos() {
         return equipoDos;
     }
 
-    private void setEquipoDos(String equipoDos) {
+    public void setEquipoDos(Equipo equipoDos) {
         this.equipoDos = equipoDos;
     }
 
@@ -68,11 +68,11 @@ public class Enfrentamiento {
         this.puntosVisitante = puntosVisitante;
     }
 
-    private Integer getIdJorComp() {
-        return idJorComp;
+    public Jornada getJornada() {
+        return jornada;
     }
 
-    private void setIdJorComp(Integer idJorComp) {
-        this.idJorComp = idJorComp;
+    public void setJornada(Jornada jornada) {
+        this.jornada = jornada;
     }
 }

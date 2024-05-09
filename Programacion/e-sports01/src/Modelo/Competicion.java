@@ -1,11 +1,21 @@
 package Modelo;
 
+import java.util.List;
+
 public class Competicion {
-    public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion) {
+    private String fechaInicio;
+    private  String fechaFin;
+    private boolean estado;
+    private Integer idCompeticion;
+    private List<Jornada> listaJornada;
+    private Juego juego;
+
+    public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion, Juego juego) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
         this.idCompeticion = idCompeticion;
+        this.juego = juego;
     }
 
     private String getFechaInicio() {
@@ -40,9 +50,19 @@ public class Competicion {
         this.idCompeticion = idCompeticion;
     }
 
-    private String fechaInicio;
-    private  String fechaFin;
-    private boolean estado;
-    private Integer idCompeticion;
+    public List<Jornada> getListaJornada() {
+        return listaJornada;
+    }
 
+    public void setListaJornada(List<Jornada> listaJornada) {
+        this.listaJornada = listaJornada;
+    }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego juego) {
+        this.juego = juego;
+    }
 }
