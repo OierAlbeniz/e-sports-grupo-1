@@ -1,32 +1,31 @@
 package Vista.InicioSesion;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
+import java.io.InputStream;
 
-public class InicioSesion extends JFrame {
+public class InicioSesion extends JDialog {
     private JPanel contentPane;
-    private JButton btSalir;
-    private JButton btIniciar;
-    private JTextField txtUsuario;
-    private JTextField txtContrasena;
-    private JButton btduda;
-
-
+    private JButton buttonOK;
+    private JButton buttonCancel;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton button1;
+    private JLabel tfIniciarSesion;
 
     public InicioSesion() {
-        setLocationRelativeTo(null);
         setContentPane(contentPane);
-        setVisible(true);
+        setModal(true);
+        getRootPane().setDefaultButton(buttonOK);
 
-        setSize(400,700);
-
-        btSalir.addActionListener(new ActionListener() {
+        buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        btIniciar.addActionListener(new ActionListener() {
+        buttonCancel.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -46,6 +45,16 @@ public class InicioSesion extends JFrame {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+
+        // Aplicar la tipografía personalizada al JLabel tfIniciarSesion
+        try {
+            InputStream fontStream = InicioSesion.class.getResourceAsStream("/fonts/blaster.otf");
+            Font customFont = Font.createFont(Font.TRUETYPE_FONT, fontStream);
+            Font customFontSized = customFont.deriveFont(24f);
+            tfIniciarSesion.setFont(customFontSized);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void onOK() {
@@ -63,31 +72,5 @@ public class InicioSesion extends JFrame {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
-    }
-
-    public JTextField getTxtUsuario() {
-        return txtUsuario;
-    }
-
-    public void setTxtUsuario(JTextField txtUsuario) {
-        this.txtUsuario = txtUsuario;
-    }
-
-    public JTextField getTxtContrasena() {
-        return txtContrasena;
-    }
-
-    public void setTxtContrasena(JTextField txtContrasena) {
-        this.txtContrasena = txtContrasena;
-    }
-
-    public void btsalir (ActionListener al){
-        btSalir.addActionListener(al);
-    }
-    public void btIniciarSesion (ActionListener al){
-        btIniciar.addActionListener(al);
-    }
-    public void btduda (ActionListener al){
-        btduda.addActionListener(al);
     }
 }

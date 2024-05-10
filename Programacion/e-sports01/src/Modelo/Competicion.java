@@ -1,9 +1,6 @@
 package Modelo;
 
-
 import java.util.List;
-
-
 
 import java.util.ArrayList;
 
@@ -14,10 +11,8 @@ public class Competicion {
     private  String fechaFin;
     private boolean estado;
     private Integer idCompeticion;
-
     private List<Jornada> listaJornada;
     private Juego juego;
-
 
 
     public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion) {
@@ -61,7 +56,6 @@ public class Competicion {
         this.idCompeticion = idCompeticion;
     }
 
-
     public List<Jornada> getListaJornada() {
         return listaJornada;
     }
@@ -77,6 +71,4 @@ public class Competicion {
     public void setJuego(Juego juego) {
         this.juego = juego;
     }
-
-
 }
