@@ -2,19 +2,22 @@ package Vista;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class VentanaPrincipal extends JFrame{
     private JPanel panel1;
-    private JButton CLASIFICACIONButton;
-    private JButton ULTIMAJORNADAButton;
-    private JButton CERRARINSCRIPCIONESButton;
-    private JButton editarButton;
+    private JButton bClasificacion;
+    private JButton bUltJornada;
+    private JButton bCerrar;
+    private JButton bEditar;
     private JButton CERRARSESIONButton;
     private JButton SALIRButton;
     private JPanel p1;
     private JPanel p2;
     private JPanel p3;
     private JPanel p4;
+    private JButton bConsulta;
+    private JButton bPerfil;
 
     public VentanaPrincipal() {
         setContentPane(panel1);
@@ -66,5 +69,113 @@ public class VentanaPrincipal extends JFrame{
         gbc.weighty = 0.15;
         panel1.add(p4, gbc);
 
+    }
+
+    public JPanel getPanel1() {
+        return panel1;
+    }
+
+    public void setPanel1(JPanel panel1) {
+        this.panel1 = panel1;
+    }
+
+    public JButton getbClasificacion() {
+        return bClasificacion;
+    }
+
+    public void setbClasificacion(JButton bClasificacion) {
+        this.bClasificacion = bClasificacion;
+    }
+
+    public JButton getbUltJornada() {
+        return bUltJornada;
+    }
+
+    public void setbUltJornada(JButton bUltJornada) {
+        this.bUltJornada = bUltJornada;
+    }
+
+    public JButton getbCerrar() {
+        return bCerrar;
+    }
+
+    public void setbCerrar(JButton bCerrar) {
+        this.bCerrar = bCerrar;
+    }
+
+    public JButton getbEditar() {
+        return bEditar;
+    }
+
+    public void setbEditar(JButton bEditar) {
+        this.bEditar = bEditar;
+    }
+
+    public JButton getCERRARSESIONButton() {
+        return CERRARSESIONButton;
+    }
+
+    public void setCERRARSESIONButton(JButton CERRARSESIONButton) {
+        this.CERRARSESIONButton = CERRARSESIONButton;
+    }
+
+    public JButton getSALIRButton() {
+        return SALIRButton;
+    }
+
+    public void setSALIRButton(JButton SALIRButton) {
+        this.SALIRButton = SALIRButton;
+    }
+
+    public JPanel getP1() {
+        return p1;
+    }
+
+    public void setP1(JPanel p1) {
+        this.p1 = p1;
+    }
+
+    public JPanel getP2() {
+        return p2;
+    }
+
+    public void setP2(JPanel p2) {
+        this.p2 = p2;
+    }
+
+    public JPanel getP3() {
+        return p3;
+    }
+
+    public void setP3(JPanel p3) {
+        this.p3 = p3;
+    }
+
+    public JPanel getP4() {
+        return p4;
+    }
+
+    public void setP4(JPanel p4) {
+        this.p4 = p4;
+    }
+
+    public JButton getbConsulta() {
+        return bConsulta;
+    }
+
+    public void setbConsulta(JButton bConsulta) {
+        this.bConsulta = bConsulta;
+    }
+
+    public JButton getbPerfil() {
+        return bPerfil;
+    }
+
+    public void setbPerfil(JButton bPerfil) {
+        this.bPerfil = bPerfil;
+    }
+
+    public void addeditar(ActionListener al) {
+        bEditar.addActionListener(al);
     }
 }
