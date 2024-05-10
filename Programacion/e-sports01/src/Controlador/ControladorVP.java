@@ -1,4 +1,20 @@
-package Controlador.ControladorVista;
+package Controlador;
+import Vista.InicioSesion.InicioSesion;
+import Vista.VentanaPrincipal;
 
-public class ControladorVP {
-}
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+    public class ControladorVP {
+        private InicioSesion vis;
+
+        public ControladorVP() {
+            vis = new InicioSesion();
+            vis.setVisible(true);
+            vis.btduda();
+        }
+
+
+    }
+

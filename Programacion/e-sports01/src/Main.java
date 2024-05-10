@@ -1,6 +1,6 @@
-import Controlador.ControladorPrincipal;
+import Controlador.ControladorVP;
 public class Main {
     public static void main(String[] args) {
-       ControladorPrincipal c = new ControladorPrincipal();
+       ControladorVP c = new ControladorVP();
     }
 }

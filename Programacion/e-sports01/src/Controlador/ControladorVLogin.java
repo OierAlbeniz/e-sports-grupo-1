@@ -1,7 +1,6 @@
 package Controlador;
 
 import Vista.InicioSesion.InicioSesion;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,7 +9,7 @@ public class ControladorVLogin {
 
     private InicioSesion vis;
 
-    public  ControladorVLogin(){
+    public ControladorVLogin(){
         vis.btduda(new btDuda());
         vis.btsalir(new btSalir());
         vis.btIniciarSesion(new btIniarSesion());
