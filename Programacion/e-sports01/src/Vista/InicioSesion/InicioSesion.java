@@ -7,7 +7,9 @@ public class InicioSesion extends JDialog {
     private JPanel contentPane;
     private JButton buttonOK;
     private JButton buttonCancel;
-    private JPanel pTitulo;
+    private JTextField textField1;
+    private JTextField textField2;
+    private JButton button1;
 
     public InicioSesion() {
         setContentPane(contentPane);
