@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE COMPETICIONES SYSTEM "xml_clasificacion.dtd">
+<COMPETICIONES>
+      <COMPETICION ID="1">
+          <NOMBRE_COMPETICION>Liga de Campeones</NOMBRE_COMPETICION>
+          <JUEGO>The Witcher</JUEGO>
+          <FECHA_INICIO>2023-05-15</FECHA_INICIO>
+          <FECHA_FIN>2023-06-30</FECHA_FIN>
+          <LISTA_EQUIPOS>
+                <EQUIPO ID="11">
+                      <NOMBRE_EQUIPO>Los Cocodrilos</NOMBRE_EQUIPO>
+                      <PUNTOS>10</PUNTOS>
+                </EQUIPO>
+                <EQUIPO ID="3">
+                      <NOMBRE_EQUIPO>Los Tigres</NOMBRE_EQUIPO>
+                      <PUNTOS>8</PUNTOS>
+                </EQUIPO>
+                <EQUIPO ID="1">
+                      <NOMBRE_EQUIPO>Los Dragones</NOMBRE_EQUIPO>
+                      <PUNTOS>6</PUNTOS>
+                </EQUIPO>
+                <EQUIPO ID="7">
+                      <NOMBRE_EQUIPO>Los Osos</NOMBRE_EQUIPO>
+                      <PUNTOS>2</PUNTOS>
+                </EQUIPO>
+          </LISTA_EQUIPOS>
+      </COMPETICION>
+      <COMPETICION ID="2">
+          <NOMBRE_COMPETICION>Torneo del Rey</NOMBRE_COMPETICION>
+          <JUEGO>GTAV</JUEGO>
+          <FECHA_INICIO>2023-07-01</FECHA_INICIO>
+          <FECHA_FIN>2023-07-31</FECHA_FIN>
+          <LISTA_EQUIPOS>
+              <EQUIPO ID="12">
+                    <NOMBRE_EQUIPO>Los Piratas</NOMBRE_EQUIPO>
+                    <PUNTOS>8</PUNTOS>
+              </EQUIPO>
+              <EQUIPO ID="8">
+                    <NOMBRE_EQUIPO>LosLinces</NOMBRE_EQUIPO>
+                    <PUNTOS>6</PUNTOS>
+              </EQUIPO>
+              <EQUIPO ID="4">
+                    <NOMBRE_EQUIPO>Los Lobos</NOMBRE_EQUIPO>
+                    <PUNTOS>5</PUNTOS>
+              </EQUIPO>
+              <EQUIPO ID="11">
+                    <NOMBRE_EQUIPO>Los Cocodrilos</NOMBRE_EQUIPO>
+                    <PUNTOS>4</PUNTOS>
+              </EQUIPO>
+              <EQUIPO ID="2">
+                    <NOMBRE_EQUIPO>Los Leones</NOMBRE_EQUIPO>
+                    <PUNTOS>2</PUNTOS>
+              </EQUIPO>
+              <EQUIPO ID="6">
+                    <NOMBRE_EQUIPO>Los Pantxos</NOMBRE_EQUIPO>
+                    <PUNTOS>1</PUNTOS>
+              </EQUIPO>
+              </LISTA_EQUIPOS>
+      </COMPETICION>
+      <COMPETICION ID="3">
+              <NOMBRE_COMPETICION>Desafio del Desierto</NOMBRE_COMPETICION>
+              <JUEGO>Zelda</JUEGO>
+              <FECHA_INICIO>2023-08-01</FECHA_INICIO>
+              <FECHA_FIN>2023-08-15</FECHA_FIN>
+              <LISTA_EQUIPOS>
+                  <EQUIPO ID="5">
+                        <NOMBRE_EQUIPO>Los Aguilas</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="10">
+                        <NOMBRE_EQUIPO>Los Tiburones</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="9">
+                        <NOMBRE_EQUIPO>Los Delfines</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="7">
+                        <NOMBRE_EQUIPO>LosOsos</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+              </LISTA_EQUIPOS>
+      </COMPETICION>
+      <COMPETICION ID="4">
+              <NOMBRE_COMPETICION>Copa de las Estrellas</NOMBRE_COMPETICION>
+              <JUEGO>Minecraft</JUEGO>
+              <FECHA_INICIO>2023-09-01</FECHA_INICIO>
+              <FECHA_FIN>2023-09-30</FECHA_FIN>
+              <LISTA_EQUIPOS>
+                  <EQUIPO ID="3">
+                        <NOMBRE_EQUIPO>Los Tigres</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="12">
+                        <NOMBRE_EQUIPO>Los Piratas</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="9">
+                        <NOMBRE_EQUIPO>Los Delfines</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+                  <EQUIPO ID="4">
+                        <NOMBRE_EQUIPO>Los Lobos</NOMBRE_EQUIPO>
+                        <PUNTOS>0</PUNTOS>
+                  </EQUIPO>
+          </LISTA_EQUIPOS>
+      </COMPETICION>
+</COMPETICIONES>

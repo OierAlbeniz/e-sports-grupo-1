@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+<!-- Declaracion del tipo complejo COMPETICIONES -->
+
+  <xs:element name="COMPETICIONES" type="tipoCompeticiones"/>
+
+  <xs:complexType name="tipoCompeticiones">
+    <xs:sequence> 
+		<xs:element name="COMPETICION" type = "tipoCompeticion" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+<!-- Declaracion del tipo complejo COMPETICION -->
+
+  <xs:complexType name="tipoCompeticion">
+	<xs:sequence>
+        <xs:element name="NOMBRE_COMPETICION" type = "xs:string"/>
+        <xs:element name="ULTIMA_JORNADA" type = "tipoUltimaJornada"/>
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+
+<!-- Declaracion del tipo complejo ULTIMA_JORNADA -->
+
+  <xs:complexType name="tipoUltimaJornada">
+    <xs:sequence>
+      <xs:element name="JORNADA" type = "tipoJornada"/>
+      </xs:sequence>
+    </xs:complexType>
+
+<!-- Declaracion del tipo complejo JORNADA -->
+
+    <xs:complexType name="tipoJornada">
+        <xs:sequence>
+          <xs:element name="ENFRENTAMIENTOS" type = "tipoEnfrentamientos"/>
+        </xs:sequence>
+          <xs:attribute name="ID" type="xs:positiveInteger" use="required"/>
+          <xs:attribute name="FECHA_ENFRENTAMIENTO" type="xs:date" use="required"/>
+    </xs:complexType>
+
+<!-- Declaracion del tipo complejo ENFRENTAMIENTOS -->
+
+
+    <xs:complexType name="tipoEnfrentamientos">
+        <xs:sequence>
+            <xs:element name="ENFRENTAMIENTO" type = "tipoEnfrentamiento" maxOccurs="unbounded"/>
+        </xs:sequence>
+    </xs:complexType>
+        
+<!-- Declaracion del tipo complejo ENFRENTAMIENTO -->
+    
+    <xs:complexType name="tipoEnfrentamiento">
+        <xs:sequence>
+        <xs:element name="EQUIPO_LOCAL" type = "xs:string"/>
+        <xs:element name="EQUIPO_VISITANTE" type = "xs:string"/>
+        <xs:element name="RESULTADO_LOCAL" type = "tipoResultado"/>
+        <xs:element name="RESULTADO_VISITANTE" type = "tipoResultado"/>
+        </xs:sequence>
+        <xs:attribute name="ID" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="HORA" type="xs:string" use="required"/>
+    </xs:complexType>
+
+    <xs:simpleType name="tipoResultado">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="0"/>
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+     
+</xs:schema>
