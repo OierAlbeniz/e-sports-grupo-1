@@ -18,7 +18,6 @@ public class VentanaPrincipal extends JFrame{
 
     public VentanaPrincipal() {
         setContentPane(panel1);
-        setSize(1000, 700);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
