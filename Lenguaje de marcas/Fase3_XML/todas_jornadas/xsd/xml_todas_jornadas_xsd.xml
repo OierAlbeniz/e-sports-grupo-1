@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<COMPETICIONES 
+xmlns:xs="http://www.w3.org/2001/XMLSchema-instance"
+xs:noNamespaceSchemaLocation="xml_todas_jornadas_xsd.xsd">
+      <COMPETICION ID="1">
+            <NOMBRE_COMPETICION>Liga de Campeones</NOMBRE_COMPETICION>
+            <JORNADAS>
+                  <JORNADA ID="1" FECHA_ENFRENTAMIENTO="2022-01-01">
+                        <ENFRENTAMIENTOS>
+                              <ENFRENTAMIENTO ID="1" HORA="12:00">
+                                    <EQUIPO_LOCAL>Los Dragones</EQUIPO_LOCAL>
+                                    <EQUIPO_VISITANTE>Los Leones</EQUIPO_VISITANTE>
+                                    <RESULTADO_LOCAL>3</RESULTADO_LOCAL>
+                                    <RESULTADO_VISITANTE>1</RESULTADO_VISITANTE>
+                              </ENFRENTAMIENTO>
+                              <ENFRENTAMIENTO ID="2" HORA="13:00">
+                                    <EQUIPO_LOCAL>eq1</EQUIPO_LOCAL>
+                                    <EQUIPO_VISITANTE>eq2</EQUIPO_VISITANTE>
+                                    <RESULTADO_LOCAL>0</RESULTADO_LOCAL>
+                                    <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                              </ENFRENTAMIENTO>
+                        </ENFRENTAMIENTOS>
+                  </JORNADA>
+                  <JORNADA ID="2" FECHA_ENFRENTAMIENTO="2022-03-01">
+                        <ENFRENTAMIENTOS>
+                              <ENFRENTAMIENTO ID="1" HORA="10:00">
+                                    <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                    <EQUIPO_VISITANTE>eq4</EQUIPO_VISITANTE>
+                                    <RESULTADO_LOCAL>1</RESULTADO_LOCAL>
+                                    <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                              </ENFRENTAMIENTO>
+                              <ENFRENTAMIENTO ID="2" HORA="10:30">
+                                    <EQUIPO_LOCAL>eq5</EQUIPO_LOCAL>
+                                    <EQUIPO_VISITANTE>eq2</EQUIPO_VISITANTE>
+                                    <RESULTADO_LOCAL>0</RESULTADO_LOCAL>
+                                    <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                              </ENFRENTAMIENTO>
+                              <ENFRENTAMIENTO ID="3" HORA="11:00">
+                                    <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                    <EQUIPO_VISITANTE>eq6</EQUIPO_VISITANTE>
+                                    <RESULTADO_LOCAL>3</RESULTADO_LOCAL>
+                                    <RESULTADO_VISITANTE>1</RESULTADO_VISITANTE>
+                              </ENFRENTAMIENTO>
+                        </ENFRENTAMIENTOS>
+                  </JORNADA>
+            </JORNADAS>
+      </COMPETICION>
+      <COMPETICION ID="2">
+            <NOMBRE_COMPETICION>Torneo del Rey</NOMBRE_COMPETICION>
+            <JORNADAS>
+                <JORNADA ID="1" FECHA_ENFRENTAMIENTO="2022-01-01">
+                            <ENFRENTAMIENTOS>
+                                  <ENFRENTAMIENTO ID="1" HORA="12:00">
+                                        <EQUIPO_LOCAL>Los Dragones</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>Los Leones</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>3</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>1</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                                  <ENFRENTAMIENTO ID="2" HORA="13:00">
+                                        <EQUIPO_LOCAL>eq1</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq2</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>0</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                            </ENFRENTAMIENTOS>
+                      </JORNADA>            
+            </JORNADAS>
+      </COMPETICION>
+      <COMPETICION ID="3">
+            <NOMBRE_COMPETICION>Desafio del Desierto</NOMBRE_COMPETICION>
+            <JORNADAS>
+                 <JORNADA ID="1" FECHA_ENFRENTAMIENTO="2022-04-01">
+                            <ENFRENTAMIENTOS>
+                                  <ENFRENTAMIENTO ID="1" HORA="10:00">
+                                        <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq4</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>1</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                                  <ENFRENTAMIENTO ID="2" HORA="10:30">
+                                        <EQUIPO_LOCAL>eq5</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq2</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>0</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                                  <ENFRENTAMIENTO ID="3" HORA="11:00">
+                                        <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq6</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>3</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>1</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                            </ENFRENTAMIENTOS>
+                      </JORNADA>
+            </JORNADAS>
+      </COMPETICION>
+      <COMPETICION ID="4">
+          <NOMBRE_COMPETICION>Copa de las Estrellas</NOMBRE_COMPETICION>
+          <JORNADAS>
+               <JORNADA ID="2" FECHA_ENFRENTAMIENTO="2022-03-01">
+                            <ENFRENTAMIENTOS>
+                                  <ENFRENTAMIENTO ID="1" HORA="10:00">
+                                        <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq4</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>1</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                                  <ENFRENTAMIENTO ID="2" HORA="10:30">
+                                        <EQUIPO_LOCAL>eq5</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq2</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>0</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>3</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                                  <ENFRENTAMIENTO ID="3" HORA="11:00">
+                                        <EQUIPO_LOCAL>eq3</EQUIPO_LOCAL>
+                                        <EQUIPO_VISITANTE>eq6</EQUIPO_VISITANTE>
+                                        <RESULTADO_LOCAL>3</RESULTADO_LOCAL>
+                                        <RESULTADO_VISITANTE>1</RESULTADO_VISITANTE>
+                                  </ENFRENTAMIENTO>
+                            </ENFRENTAMIENTOS>
+                      </JORNADA>
+          </JORNADAS>
+	</COMPETICION>
+</COMPETICIONES>

@@ -1,15 +1,19 @@
 package Modelo;
 
+import java.time.LocalDate;
+import java.util.List;
+
 public class Juego {
     private  String nombre;
     private  String empresa;
-    private String lanzazmiento;
+    private LocalDate fechalanzamiento;
     private Integer idJuego;
+    private List<Competicion> listaCompeticion;
 
-    private Juego(String nombre, String empresa, String lanzazmiento, Integer idJuego) {
+    public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego) {
         this.nombre = nombre;
         this.empresa = empresa;
-        this.lanzazmiento = lanzazmiento;
+        this.fechalanzamiento = fechalanzamiento;
         this.idJuego = idJuego;
     }
 
@@ -29,14 +33,6 @@ public class Juego {
         this.empresa = empresa;
     }
 
-    private String getLanzazmiento() {
-        return lanzazmiento;
-    }
-
-    private void setLanzazmiento(String lanzazmiento) {
-        this.lanzazmiento = lanzazmiento;
-    }
-
     private Integer getIdJuego() {
         return idJuego;
     }
@@ -44,4 +40,6 @@ public class Juego {
     private void setIdJuego(Integer idJuego) {
         this.idJuego = idJuego;
     }
+
+
 }

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  
+<!-- Declaracion del tipo complejo COMPETICIONES -->
+
+  <xs:element name="COMPETICIONES" type="tipoCompeticiones"/>
+
+  <xs:complexType name="tipoCompeticiones">
+    <xs:sequence> 
+		<xs:element name="COMPETICION" type = "tipoCompeticion" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+<!-- Declaracion del tipo complejo COMPETICION -->
+
+  <xs:complexType name="tipoCompeticion">
+	<xs:sequence>
+        <xs:element name="NOMBRE_COMPETICION" type = "xs:string"/>
+        <xs:element name="JUEGO" type = "xs:string"/>
+        <xs:element name="FECHA_INICIO" type = "xs:date"/>
+        <xs:element name="FECHA_FIN" type = "xs:date"/>
+        <xs:element name="LISTA_EQUIPOS" type = "tipoListaEquipos"/>
+    </xs:sequence>
+    <xs:attribute name="ID" type="xs:positiveInteger" use="required"/>
+  </xs:complexType>
+
+
+<!-- Declaracion del tipo complejo LISTA DE EQUIPOS -->
+
+  <xs:complexType name="tipoListaEquipos">
+    <xs:sequence>
+      <xs:element name="EQUIPO" type = "tipoEquipo" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+
+<!-- Declaracion del tipo complejo EQUIPO -->
+
+    <xs:complexType name="tipoEquipo">
+        <xs:sequence>
+          <xs:element name="NOMBRE_EQUIPO" type = "xs:string"/>
+          <xs:element name="PUNTOS" type = "xs:integer"/>
+          </xs:sequence>
+          <xs:attribute name="ID" type="xs:positiveInteger" use="required"/>
+        </xs:complexType>
+    
+</xs:schema>
