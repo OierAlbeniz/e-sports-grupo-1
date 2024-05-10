@@ -6,11 +6,11 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ControladorLogin {
+public class ControladorVLogin {
 
     private InicioSesion vis;
 
-    public  ControladorLogin(){
+    public  ControladorVLogin(){
         vis.btduda(new btDuda());
         vis.btsalir(new btSalir());
         vis.btIniciarSesion(new btIniarSesion());
