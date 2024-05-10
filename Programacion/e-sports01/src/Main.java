@@ -1,6 +1,11 @@
-import Controlador.ControladorVP;
+import Controlador.ControladorPrincipal;
+
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
 public class Main {
     public static void main(String[] args) {
-       ControladorVP c = new ControladorVP();
+        ControladorPrincipal cp = new ControladorPrincipal();
     }
 }
