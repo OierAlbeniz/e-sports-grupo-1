@@ -32,7 +32,7 @@
           </component>
         </children>
       </grid>
-      <component id="e7595" class="javax.swing.JButton" default-binding="true">
+      <component id="e7595" class="javax.swing.JButton" binding="bPerfil">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
@@ -49,7 +49,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="d917a" class="javax.swing.JButton" binding="CLASIFICACIONButton" default-binding="true">
+          <component id="d917a" class="javax.swing.JButton" binding="bClasificacion">
             <constraints/>
             <properties>
               <background color="-16750043"/>
@@ -57,7 +57,7 @@
               <text value="CLASIFICACION"/>
             </properties>
           </component>
-          <component id="95370" class="javax.swing.JButton" binding="ULTIMAJORNADAButton" default-binding="true">
+          <component id="95370" class="javax.swing.JButton" binding="bUltJornada">
             <constraints/>
             <properties>
               <background color="-16750043"/>
@@ -76,7 +76,7 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="d97b8" class="javax.swing.JButton" binding="CERRARINSCRIPCIONESButton" default-binding="true">
+          <component id="d97b8" class="javax.swing.JButton" binding="bCerrar">
             <constraints/>
             <properties>
               <background color="-16750043"/>
@@ -84,7 +84,7 @@
               <text value="CERRAR INSCRIPCIONES"/>
             </properties>
           </component>
-          <component id="2ef0e" class="javax.swing.JButton" binding="editarButton" default-binding="true">
+          <component id="2ef0e" class="javax.swing.JButton" binding="bEditar">
             <constraints/>
             <properties>
               <background color="-16750043"/>
@@ -92,7 +92,7 @@
               <text value="Editar"/>
             </properties>
           </component>
-          <component id="99cf9" class="javax.swing.JButton" default-binding="true">
+          <component id="99cf9" class="javax.swing.JButton" binding="bConsulta">
             <constraints/>
             <properties>
               <background color="-16750043"/>

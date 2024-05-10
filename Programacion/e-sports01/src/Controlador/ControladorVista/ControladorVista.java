@@ -20,4 +20,7 @@ public class ControladorVista {
     public void crearMostrarVP() {
         cvp.crearMostrar();
     }
+    public void crearMostrarEditar() {
+        cvp.crearMostrar();
+    }
 }
