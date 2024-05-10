@@ -1,28 +1,27 @@
 package Modelo;
 
-<<<<<<< Updated upstream
+
 import java.util.List;
 
-public class Competicion {
-=======
+
+
 import java.util.ArrayList;
 
 public class Competicion {
 
->>>>>>> Stashed changes
+
     private String fechaInicio;
     private  String fechaFin;
     private boolean estado;
     private Integer idCompeticion;
-<<<<<<< Updated upstream
+
     private List<Jornada> listaJornada;
     private Juego juego;
 
-    public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion, Juego juego) {
-=======
+
 
     public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion) {
->>>>>>> Stashed changes
+
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
@@ -62,7 +61,7 @@ public class Competicion {
         this.idCompeticion = idCompeticion;
     }
 
-<<<<<<< Updated upstream
+
     public List<Jornada> getListaJornada() {
         return listaJornada;
     }
@@ -78,7 +77,6 @@ public class Competicion {
     public void setJuego(Juego juego) {
         this.juego = juego;
     }
-=======
-        
->>>>>>> Stashed changes
+
+
 }

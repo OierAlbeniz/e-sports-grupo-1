@@ -3,26 +3,30 @@ package Vista.InicioSesion;
 import javax.swing.*;
 import java.awt.event.*;
 
-public class InicioSesion extends JDialog {
+public class InicioSesion extends JFrame {
     private JPanel contentPane;
-    private JButton buttonOK;
-    private JButton buttonCancel;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton button1;
+    private JButton btSalir;
+    private JButton btIniciar;
+    private JTextField txtUsuario;
+    private JTextField txtContrasena;
+    private JButton btduda;
+
+
 
     public InicioSesion() {
+        setLocationRelativeTo(null);
         setContentPane(contentPane);
-        setModal(true);
-        getRootPane().setDefaultButton(buttonOK);
+        setVisible(true);
 
-        buttonOK.addActionListener(new ActionListener() {
+        setSize(400,700);
+
+        btSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onOK();
             }
         });
 
-        buttonCancel.addActionListener(new ActionListener() {
+        btIniciar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 onCancel();
             }
@@ -59,5 +63,31 @@ public class InicioSesion extends JDialog {
         dialog.pack();
         dialog.setVisible(true);
         System.exit(0);
+    }
+
+    public JTextField getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(JTextField txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
+
+    public JTextField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public void setTxtContrasena(JTextField txtContrasena) {
+        this.txtContrasena = txtContrasena;
+    }
+
+    public void btsalir (ActionListener al){
+        btSalir.addActionListener(al);
+    }
+    public void btIniciarSesion (ActionListener al){
+        btIniciar.addActionListener(al);
+    }
+    public void btduda (ActionListener al){
+        btduda.addActionListener(al);
     }
 }
