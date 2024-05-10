@@ -11,7 +11,7 @@ import java.awt.event.ActionListener;
 
         public ControladorVP() {
             vis = new InicioSesion();
-            vis.setVisible(false);
+            vis.setVisible(true);
 
         }
 

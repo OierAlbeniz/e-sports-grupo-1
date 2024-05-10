@@ -102,7 +102,7 @@ DECLARE
   E_NO_INGR_JUG EXCEPTION;
 BEGIN
   SELECT c.estado INTO v_estado
-  
+
 /*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MoDIFICAR LOS JUGADORES CUANDO LA COMPETICION SE HA INICIADO----*/
 CREATE OR REPLACE TRIGGER lock_jugador_table
 BEFORE INSERT OR UPDATE or delete  ON jugador
@@ -308,4 +308,24 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         NULL; -- No hacer nada si no hay competicionesócerradas
 END AFTER STATEMENT;
+END;
+
+
+
+CREATE OR REPLACE TRIGGER menor_a_2
+AFTER UPDATE OF ESTADO ON COMPETICION
+FOR EACH ROW
+DECLARE
+menos_de_2 NUMBER := 0;
+BEGIN
+  IF :NEW.ESTADO = 'cerrado' THEN
+    FOR equipo IN (SELECT ID_EQUIPO FROM CLASIFICACION WHERE ID_COMPETICION = :NEW.ID_COMPETICION GROUP BY ID_EQUIPO HAVING COUNT(*) < 2)
+    LOOP
+      menos_de_2 := menos_de_2 + 1;
+    END LOOP;
+
+    IF  menos_de_2  > 0 THEN
+      RAISE_APPLICATION_ERROR(-20001, 'Hay ' ||   menos_de_2  || ' equipo(s) con menos de 2 jugadores.');
+    END IF;
+  END IF;
 END;
