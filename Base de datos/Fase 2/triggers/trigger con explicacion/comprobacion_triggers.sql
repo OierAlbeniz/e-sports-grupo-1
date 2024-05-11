@@ -130,17 +130,3 @@ INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
 
 
 
-
-/*--------trigger que comprueba si hay menos de 2 personas en nu equipo-----*/
-
---miramos cuantos jugadores tienen el equipo 1 
-select * from jugador where id_equipo = 1
-
---borramos todos los jugadores menos 1
-delete from jugador where sueldo>1888 and id_equipo=1
-
---cambiamos el estado de la competicion a cerrado y nos salta el trigger
-
-UPDATE COMPETICION
-SET ESTADO = 'cerrado'
-WHERE ID_COMPETICION = 1
