@@ -15,7 +15,7 @@ DROP TRIGGER TR_INSERTAR_EQUIPOS;
 
 
 CREATE OR REPLACE TRIGGER TR_ENTRENADOR
-FOR DELETE OR UPDATE OF ID_EQUIPO ON ENTRENADOR
+FOR DELETE OR UPDATE ON ENTRENADOR
 COMPOUND TRIGGER
     V_CONTADOR_ENTRENADORES NUMBER;
     OLD_ID_EQUIPO ENTRENADOR.ID_EQUIPO%TYPE;
@@ -37,14 +37,14 @@ EXCEPTION
     WHEN E_NUMENTRENADORES THEN 
         RAISE_APPLICATION_ERROR(-20003, 'ERROR: DEBE HABER AL MENOS 1 ENTRENADOR');
     WHEN TOO_MANY_ROWS THEN 
-        RAISE_APPLICATION_ERROR(-20001, 'HAY MÁS DE UN VALOR');
+        RAISE_APPLICATION_ERROR(-20001, 'HAY M�S DE UN VALOR');
     WHEN NO_DATA_FOUND THEN 
         RAISE_APPLICATION_ERROR(-20002, 'VALOR NO ENCONTRADO');
     WHEN OTHERS THEN 
         RAISE_APPLICATION_ERROR(-20004, 'ERROR INESPERADO');
 END AFTER STATEMENT;
 END TR_ENTRENADOR;
-
+--------------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER TR_NUM_JUGADORES_MAYOR6
 FOR INSERT OR UPDATE ON JUGADOR
 COMPOUND TRIGGER
@@ -77,23 +77,8 @@ EXCEPTION
 END AFTER STATEMENT;
 END TR_NUM_JUGADORES_MAYOR6;
 
-CREATE OR REPLACE TRIGGER lock_equipo_table
-BEFORE INSERT or delete or update ON clasificacion
-FOR EACH ROW
-DECLARE
-  v_estado VARCHAR2(20);
-BEGIN
-  SELECT estado
-  INTO v_estado
-  FROM competicion
-  WHERE id_competicion = :NEW.id_competicion;
 
-  IF v_estado = 'cerrado' THEN
-    RAISE_APPLICATION_ERROR(-20001, 'No se puede agregar un equipo a una competición cerrada');
-  END IF;
-END lock_equipo_table;
-
-
+<<<<<<< Updated upstream
 CREATE OR REPLACE TRIGGER TR_NO_INGR_JUGADORES
 BEFORE INSERT OR UPDATE OR DELETE ON JUGADOR
 FOR EACH ROW
@@ -106,57 +91,43 @@ BEGIN
 /*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MoDIFICAR LOS JUGADORES CUANDO LA COMPETICION SE HA INICIADO----*/
 CREATE OR REPLACE TRIGGER lock_jugador_table
 BEFORE INSERT OR UPDATE or delete  ON jugador
+=======
+------------------------------------------------------------------------------------
+CREATE OR REPLACE TRIGGER TR_INSERTAR_JUGADORES
+BEFORE INSERT OR UPDATE ON JUGADOR
+>>>>>>> Stashed changes
 FOR EACH ROW
 DECLARE
-  v_estado VARCHAR2(20);
+    v_estado_competicion COMPETICION.ESTADO%TYPE;
 BEGIN
-  SELECT c.estado
-  INTO v_estado
+    -- Verificar si alguna competici�n en la que el equipo de este jugador participa est� cerrada
+    SELECT MAX(c.estado) INTO v_estado_competicion
+    FROM CLASIFICACION cl
+    JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
+    WHERE cl.ID_EQUIPO = :NEW.ID_EQUIPO;
 
-  FROM competicion c
-  JOIN clasificacion cl ON c.id_competicion = cl.id_competicion
-  WHERE cl.id_equipo = :NEW.id_equipo;
-
-  IF v_estado = 'cerrado' THEN
-    RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competici�n cerrada');
-  END IF;
-
-EXCEPTION
-  WHEN NO_DATA_FOUND THEN 
-    RAISE_APPLICATION_ERROR(-20022, 'VALOR NO ENCONTRADO');
-  WHEN E_NO_INGR_JUG THEN
-    RAISE_APPLICATION_ERROR(-20023, 'NO PUEDES METER JUGADORES');
-  WHEN OTHERS THEN
-    RAISE_APPLICATION_ERROR(-20024, 'ERROR INESPERADO: ' || SQLCODE || ' - ' || SQLERRM);
-END TR_NO_INGR_JUGADORES;
-
-/*---CREACION DE TRIGGER QUE MIRA SI SE PUEDEN MoDIFICAR LOS JUGADORES CUANDO LA COMPETICION SE HA INICIADO----*/
-CREATE OR REPLACE TRIGGER lock_jugador_table
-BEFORE INSERT OR UPDATE or delete  ON jugador
+    IF v_estado_competicion = 'cerrado' THEN
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operaci�n. El equipo de este jugador est� en una competici�n cerrada.');
+    END IF;
+END;
+------------------------------------------------------------------------------------
+CREATE OR REPLACE TRIGGER TR_BORRAR_JUGADORES
+BEFORE DELETE ON JUGADOR
 FOR EACH ROW
 DECLARE
-  v_estado VARCHAR2(20);
+    v_estado_competicion COMPETICION.ESTADO%TYPE;
 BEGIN
-  SELECT c.estado
-  INTO v_estado
+    -- Verificar si alguna competici�n en la que el equipo de este jugador participa est� cerrada
+    SELECT MAX(c.estado) INTO v_estado_competicion
+    FROM CLASIFICACION cl
+    JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
+    WHERE cl.ID_EQUIPO = :OLD.ID_EQUIPO;
 
-  FROM competicion c
-  JOIN clasificacion cl ON c.id_competicion = cl.id_competicion
-  WHERE cl.id_equipo = :NEW.id_equipo;
-
-  IF v_estado = 'cerrado' THEN
-    RAISE_APPLICATION_ERROR(-20002, 'No se puede agregar o actualizar un jugador a un equipo que participa en una competición cerrada');
-  END IF;
-
-EXCEPTION
-  WHEN NO_DATA_FOUND THEN 
-    RAISE_APPLICATION_ERROR(-20022, 'VALOR NO ENCONTRADO');
-  WHEN E_NO_INGR_JUG THEN
-    RAISE_APPLICATION_ERROR(-20023, 'NO PUEDES METER JUGADORES');
-  WHEN OTHERS THEN
-    RAISE_APPLICATION_ERROR(-20024, 'ERROR INESPERADO: ' || SQLCODE || ' - ' || SQLERRM);
-END TR_NO_INGR_JUGADORES;
-
+    IF v_estado_competicion = 'cerrado' THEN
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operaci�n. El equipo de este jugador est� en una competici�n cerrada.');
+    END IF;
+END;
+--------------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER TR_INSERTAR_EQUIPOS
 BEFORE INSERT OR UPDATE ON EQUIPO
 FOR EACH ROW
@@ -173,11 +144,11 @@ BEGIN
         RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operación. El equipo estó en una competición cerrada.');
     END IF;
 EXCEPTION
-    -- Capturar excepción cuando no hay ninguna competición cerrada para este equipo
+    -- Capturar excepci�n cuando no hay ninguna competici�n cerrada para este equipo
     WHEN NO_DATA_FOUND THEN
-        NULL; -- No hacer nada si no hay competicionesócerradas
+        NULL; -- No hacer nada si no hay competiciones cerradas
 END;
-
+---------------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER TR_VALIDAR_SUELDO_MINIMO
 BEFORE INSERT OR UPDATE ON JUGADOR
 FOR EACH ROW
@@ -196,7 +167,7 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20024, 'ERROR INESPERADO');
 END;
 
-
+----------------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER TR_MAX_SAL
 FOR INSERT OR UPDATE ON JUGADOR
@@ -233,7 +204,7 @@ EXCEPTION
         RAISE_APPLICATION_ERROR(-20004,'ERROR INESPERADO'); 
 END AFTER STATEMENT;
 END;
-
+---------------------------------------------------------------
 CREATE OR REPLACE TRIGGER BORRAR_EQ_CLASI_COMP_CERRADA
 FOR DELETE ON CLASIFICACION
 COMPOUND TRIGGER
@@ -260,7 +231,7 @@ EXCEPTION
 END AFTER STATEMENT;
 END BORRAR_EQ_CLASI_COMP_CERRADA;
 
-
+---------------------------------------------------------------------
 CREATE OR REPLACE TRIGGER TR_DELETE_EQUIPOS
 BEFORE DELETE ON EQUIPO
 FOR EACH ROW
@@ -268,7 +239,7 @@ DECLARE
     v_estado_competicion COMPETICION.ESTADO%TYPE;
 BEGIN
     -- Verificar si alguna competición en la que el equipo estó participando estó cerrada
-    SELECT c.ESTADO INTO v_estado_competicion
+    SELECT MAX(c.ESTADO) INTO v_estado_competicion
     FROM CLASIFICACION cl
     JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
     WHERE cl.ID_EQUIPO IN :OLD.ID_EQUIPO AND c.ESTADO = 'cerrado';
@@ -281,7 +252,7 @@ EXCEPTION
     WHEN NO_DATA_FOUND THEN
         NULL; -- No hacer nada si no hay competicionesócerradas
 END;
-
+-----------------------------------------------------------------------
 
 CREATE OR REPLACE TRIGGER TR_INSERT_CLASIFICACION
 FOR INSERT OR UPDATE ON CLASIFICACION
@@ -312,6 +283,7 @@ END;
 
 
 
+<<<<<<< Updated upstream
 CREATE OR REPLACE TRIGGER menor_a_2
 AFTER UPDATE OF ESTADO ON COMPETICION
 FOR EACH ROW
@@ -329,3 +301,5 @@ BEGIN
     END IF;
   END IF;
 END;
+=======
+>>>>>>> Stashed changes
