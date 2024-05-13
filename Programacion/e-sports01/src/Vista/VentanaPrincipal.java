@@ -16,8 +16,12 @@ public class VentanaPrincipal extends JFrame{
     private JPanel p2;
     private JPanel p3;
     private JPanel p4;
+<<<<<<< Updated upstream
     private JButton bConsulta;
     private JButton bPerfil;
+=======
+    private JButton btPerfil;
+>>>>>>> Stashed changes
 
     public VentanaPrincipal() {
         setContentPane(panel1);
@@ -71,6 +75,7 @@ public class VentanaPrincipal extends JFrame{
 
     }
 
+<<<<<<< Updated upstream
     public JPanel getPanel1() {
         return panel1;
     }
@@ -178,4 +183,10 @@ public class VentanaPrincipal extends JFrame{
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
+=======
+    public void botonPerfil(ActionListener al){
+        btPerfil.addActionListener(al);
+    }
+
+>>>>>>> Stashed changes
 }

@@ -10,5 +10,10 @@ public class ControladorPrincipal {
     public ControladorPrincipal() {
         cv = new ControladorVista(this);
         cb = new ControladorBD(this);
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
     }
 }
