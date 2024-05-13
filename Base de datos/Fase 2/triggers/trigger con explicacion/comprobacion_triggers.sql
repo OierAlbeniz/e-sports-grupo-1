@@ -1,201 +1,132 @@
 /*----------COMPROBACIONES DE LOS TRIGGERS-------*/
 
-
-
-
-/*---------------------bloqueo_competicion_cerrada----------------------*/
---este trigger va a bloquear la insercion de equipos cuando una compticion se ha INICIADO
-
--- creamos una competicion que este cerrada
-
-
-INSERT INTO COMPETICION (NOMBRE, FECHA_INICIO, FECHA_FIN, ESTADO, ID_JUEGO) VALUES ('Competicion3', TO_DATE('2022-03-01', 'YYYY-MM-DD'), TO_DATE('2022-03-10', 'YYYY-MM-DD'), 'cerrado', 6);
-
--- añadimos jornadas a esta competicion 
-
-
-INSERT INTO JORNADA (ID_JORNADA,ID_COMPETICION, FECHA_ENFENTAMIENTO) VALUES (4,9, TO_DATE('2022-03-01', 'YYYY-MM-DD'));
-
---seleccionamos el id de la competicion en la que el estado esta cerrado para poder meter un equipo en la clasificacion
-
-select id_competicion from competicion where estado = 'cerrado'
-
--- si ejecutamos esta sentencia no tiene que funcionar porque la competicion esta cerrada y no va a dejar que se inserte ningun equipo
-
-
-INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (9, 1, 0);
-
-
-
-
-
-
-/*-----comprobacion de trigger añadir jugador competicion cerrada----------*/
-
--- buscamos una competicion que este abierta para poder añadir datos
-select * from competicion where lower(estado)='abierto'
-
---insertamos una jornada en la competicion abierta
-INSERT INTO JORNADA (ID_JORNADA,ID_COMPETICION, FECHA_ENFENTAMIENTO) VALUES (5,1, TO_DATE('2022-03-01', 'YYYY-MM-DD'));
-
---comprobamos que se ha añadido la jornada
-select * from jornada where id_jornada = 5
-
---insertamos los equipos 
-INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Equipo14', TO_DATE('2000-01-01', 'YYYY-MM-DD'), 2);
-INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Equipo24', TO_DATE('2000-02-01', 'YYYY-MM-DD'), 3);
-
---comprobamos que estan los equipos
-select * from equipo where id_equipo=1;
-    select * from equipo where id_equipo=4;
-
---insertamos en enfrentamiento con los dos equipos que se han creado
-INSERT INTO ENFRENTAMIENTO (ID_JOR_COMP, ID_ENFRENTAMIENTO, HORA, RESULTADO_LOCAL, RESULTADO_VISITANTE, ID_LOCAL, ID_VISITANTE) VALUES (5, 1, '12:00', 0, 0, 1, 4);
-
---cerramos la competicion 1 
-UPDATE competicion
-SET estado = 'cerrado'
-WHERE id_competicion = 1;
-
--- miramos que esta cerrada
-select * from competicion where id_competicion=1
-
--- vamos a intentar meter un jugador en el equipo que esta en una competicion cerrada
--- por lo que no dejaria meter jugadores
-INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO) VALUES ('Jugador1', 'Apellido1', 'Apellido2', 1000, 'Nacionalidad1', TO_DATE('1990-11-01', 'YYYY-MM-DD'), 'Nick1', 'Rol1', 4);
-
-
-
-/*-----comprobacion de trigger minimo un entrenador por equipo----------*/
-
---borramos el entrenador de un equipo en el cual solo hay un entrenador
-
+/*1.TRIGGER LLAMADO: TR_ENTRENADOR
+EN ESTE TRIGGER NOS SALTA EL ERROR DE QUE UN EQUIPO TIENE QUE TENER 
+COMO MINIMO UN ENTRENADOR*/
+---SELECCIONAMOS LA TABLA PARA VER LOS ENTRENADORES EN QUE EQUIPOS ESTAN---
+SELECT * FROM ENTRENADOR;
+/*AL BORRAR EL ENTRENADOR DEL EQUIPO 3, ME SALTA EL ERROR PORQUE SOLO HAY 
+ 1 ENTRENADOR*/
 DELETE FROM ENTRENADOR 
 WHERE ID_EQUIPO = 3;
-
---cambiamos de equipo a un entrenador cuando en ese equipo solo esta ese entrenador
-
+/*AL CAMBIAR DE EQUIPO UN ENTRENADOR, ME SALTA EL ERROR DE QUE NO PUEDO PORQUE 
+CADA EQUIPO TIENE QUE TENER COMO MINIMO 1 ENTRENADOR*/
 UPDATE ENTRENADOR
 SET ID_EQUIPO = 2
 WHERE ID_INTEGRANTE = 1;
 
+ROLLBACK;
 
+/*2.TRIGGER LLAMADO:TR_NUM_JUGADORES_MAYOR6*/
+/*EN ESTE TRIGGER NOS SALTA ERROR AL METER EL 7TO JUGADOR EN UN MISMO EQUIPO*/
 
+/*VER CUANTOS JUGADORES HAY EN EL EQUIPO 12*/
+SELECT * FROM JUGADOR
+WHERE ID_EQUIPO=12;
 
-/*-----comprobacion de trigger sueldo_maximo ----------*/
-
---actualizamos el sueldo de un jugador haciendo que la suma de los sueldo del equipo de dicho jugador sume una cntidad mayor que 200.000€
-
-UPDATE JUGADOR
-SET SUELDO = 199000
-WHERE ID_INTEGRANTE = 1;
-
---insertamos un jugador cuyo sueldo sumado al sueldo del  resto de los jugadores de su equipo sume una cntidad mayor que 200.000€
-
-INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
-VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
-
-
-
-/*-----comprobacion de trigger sueldo_minimo ----------*/
-
---actualizamos el sueldo de un jugador haciendo que su sueldo sea menor al
-sueldo minimo interprofesional(1.134€)
-
-UPDATE JUGADOR
-SET SUELDO = 112
-WHERE ID_INTEGRANTE = 1;
-
---insertamos un jugador cuyo sueldo sea menor al sueldo minimo 
---interprofesional(1.134€)
-
+/*INSERTAR 7TO JUGADOR*/
 INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD,
-FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
-VALUES ('Alex', 'Gonzalez', 'Martinez', 112, 'EspaÃ±a', TO_DATE
-('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
-
-
-/*-----comprobacion de trigger que el numero maximo 
-de jugadores en un equipo sea 6 ----------*/
-
---cambiamos de equipo a un jugador a otro equipo en el que ya hay 6 jugadores
-
-UPDATE JUGADOR
-SET ID_EQUIPO = 1
-WHERE ID_INTEGRANTE = 7;
-
---insertamos un jugador en un equipo en el que ya hay 6 jugadores
-
-INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
-VALUES ('PEPE', 'Gonzalez', 'Martinez', 1135, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
-
-
-/*-----comprobacion de trigger que en una competición cerrada, no puedes 
-añadir o modificar los EQUIPOS ----------*/
-
-/*------------ insertar un equipo en una competicion cerrada  ----------------*/
-INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS)
-VALUES (3, 12, 0);
-/*------------ modificar una los puntos de una clasificacion cerrada ---------*/
-UPDATE CLASIFICACION
-SET PUNTOS=6
-WHERE ID_EQUIPO=8;
+FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO) VALUES ('Jugador2', 'Apellido2',
+'Apellido2', 1400, 'Nacionalidad1', TO_DATE('1990-11-01', 'YYYY-MM-DD'),
+'Nick1', 'Rol1',12);
 
 ROLLBACK;
-/*------------ borrar un equipo de una clasificacion cerrada (no da) ---------*/
-DELETE FROM CLASIFICACION
-WHERE ID_EQUIPO = 8;
+
+/*3.TRIGGER LLAMADO:TR_INSERTAR_JUGADORES*/
+/*EN ESTE TRIGGER NOS SALTA ERROR AL METER EL JUGADOR
+EN UNA COMPETICION CERRADA*/
+
+/*VER QUE COMPETICION ESTA CERRADA PARA LUEGO VER EL EQUIPO QUE ESTA EN ELLA*/
+SELECT * FROM COMPETICION
+WHERE ID_COMPETICION=3;
 
 SELECT * FROM CLASIFICACION
-WHERE ID_EQUIPO=8;
+WHERE ID_EQUIPO=9;
 
-SELECT * FROM EQUIPO
-WHERE ID_EQUIPO=1;
+/*INSERTAR JUGADOR EN EL EQUIPO 9*/
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD,
+FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a',
+TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 9);
 
-/*------------ borrar un equipo de la tabla equipo  ----------------*/
-DELETE FROM EQUIPO
-WHERE ID_EQUIPO = 8;
+ROLLBACK;
 
-/*------------ al insertar un equipo en competicion, salta el error  ----------------*/
+/*4.TRIGGER LLAMADO:TR_BORRAR_JUGADORES*/
+/*EN ESTE TRIGGER NOS SALTA ERROR AL BORRAR EL JUGADOR
+EN UNA COMPETICION CERRADA*/
+/*VER LOS JUGADORES QUE ESTAN EN UNA COMPETICION CERRADA*/
+SELECT * FROM JUGADOR;
+SELECT * FROM COMPETICION;
+SELECT * FROM CLASIFICACION;
+/*AL QUERER BORRAR EL JUGADOR 44 DEL EQUIPO 9, ME SALTA EL ERROR*/
+DELETE FROM JUGADOR
+WHERE ID_INTEGRANTE=44;
+
+ROLLBACK;
+
+/*5.TRIGGER LLAMADO:TR_INSERTAR_EQUIPOS*/
+/*EN ESTE TRIGGER NOS SALTA ERROR AL INSERTAR UN EQUIPO
+EN UNA COMPETICION CERRADA*/
+/*VER LOS EQUIPOS Y UNA COMPETICION CERRADA*/
+SELECT * FROM COMPETICION;
+SELECT * FROM CLASIFICACION;
+/*AL QUERER INSERTAR EN LA COMPETICION 3, ME SALTA EL ERROR*/
 INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
 
-/*------------ modificar una los puntos de una clasificacion cerrada  ----------------*/
 UPDATE EQUIPO
 SET NOMBRE='BELLAKOS'
 WHERE ID_EQUIPO=8;
 
-/*------------Comprbacion trigger BORRAR_EQ_CLASI_COMP_CERRADA ----------------*/
+ROLLBACK;
 
---Borramos un equipo de la tabala CLASIFICACION el cual esta en una competicion cerrada. 
+/*6.TRIGGER LLAMADO:TR_VALIDAR_SUELDO_MINIMO*/
+/*EN ESTE TRIGGER NOS SALTA ERROR AL INSERTAR UN SUELDO MENOR AL SUELDO MINIMO*/
+/*VER LAS EQUIPO CON MENOS DE 6 JUGADORES*/
+SELECT * FROM JUGADOR
+WHERE ID_EQUIPO=12;
+/*AL INSERTAR UN JUGADOR CON EL SUELDO MENOR AL SUELDO MINIMO, SALTA EL ERROR*/
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD,
+FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Logan', 'Sanchez', 'Lopez', 1000, 'Argentina',
+TO_DATE('1993-02-10', 'YYYY-MM-DD'), 'Logan', 'Defensa', 11);
+
+/*7.TRIGGER LLAMADO:TR_MAX_SAL*/
+/*EN ESTE TRIGGER NOS SALTA ERROR QUE AL INSERTAR UN SUELDO Y EL TOTAL supera el sueldo 
+del equipo que es 200.000*/
+--actualizamos el sueldo de un jugador haciendo que la suma de los sueldo 
+--del equipo de dicho jugador sume una cntidad mayor que 200.000€
+UPDATE JUGADOR
+SET SUELDO = 199000
+WHERE ID_INTEGRANTE = 1;
+
+--insertamos un jugador cuyo sueldo sumado al sueldo del
+-- resto de los jugadores de su equipo sume una cntidad mayor que 200.000€
+
+INSERT INTO JUGADOR (NOMBRE, APELLIDO1, APELLIDO2, SUELDO, NACIONALIDAD, FECHA_NACIMIENTO, NICKNAME, ROL, ID_EQUIPO)
+VALUES ('Alex', 'Gonzalez', 'Martinez', 199000, 'EspaÃ±a', TO_DATE('1990-05-15', 'YYYY-MM-DD'), 'Alex', 'Delantero', 1);
+
+/*8.TRIGGER LLAMADO:BORRAR_EQ_CLASI_COMP_CERRADA*/
+/*No se puede borrar el equipo porque está asociado a una competición cerrada.*/
+SELECT * FROM CLASIFICACION;
 
 DELETE FROM CLASIFICACION 
 WHERE ID_COMPETICION = 12;
 
-/*------------Comprobacion trigger INS_UP_COM_CERRADA ----------------*/
+/*9.TRIGGER LLAMADO:TR_DELETE_EQUIPOS*/
+/*VER LOS EQUIPO QUE ESTAN EN UNA COMPETICION CERRADA*/
+SELECT * FROM EQUIPO;
+SELECT * FROM COMPETICION;
+SELECT * FROM CLASIFICACION;
+/*ELIMINAR EQUIPO Y SALTA ERROR*/
+DELETE FROM EQUIPO
+WHERE ID_EQUIPO = 8;
 
---Cambiamos un equipo por otro en la tabla CLASIFICACION cuando el quipo que quieres cabiar esta en una competicion cerrada
-
-UPDATE CLASIFICACION 
-SET ID_EQUIPO = 7
-WHERE ID_CLASIFICACION = 12;
-
---Insertamos un equipo en una competicion cerrada
-
-INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 1, 10);
+/*10.TRIGGER LLAMADO:TR_INSERT_CLASIFICACION*/
+/*AL INSERTAR UN EQUIPO DESDE CLASIFICACIONS, SALTA EL ERROR PORQUE LA COMPETICION 
+ESTA CERRADA*/
+INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO, PUNTOS) VALUES (3, 12, 0);
 
 
 
 
-/*--------trigger que comprueba si hay menos de 2 personas en nu equipo-----*/
 
---miramos cuantos jugadores tienen el equipo 1 
-select * from jugador where id_equipo = 1
-
---borramos todos los jugadores menos 1
-delete from jugador where sueldo>1888 and id_equipo=1
-
---cambiamos el estado de la competicion a cerrado y nos salta el trigger
-
-UPDATE COMPETICION
-SET ESTADO = 'cerrado'
-WHERE ID_COMPETICION = 1
