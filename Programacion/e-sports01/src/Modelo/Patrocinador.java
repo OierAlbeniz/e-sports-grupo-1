@@ -7,9 +7,11 @@ public class Patrocinador {
     private String nombre;
     private List<Equipo> listaEquipo;
 
-    public Patrocinador(String idPatrocinador, String nombre) {
+
+    public Patrocinador(String idPatrocinador, String nombre, List<Equipo> listaEquipo) {
         this.idPatrocinador = idPatrocinador;
         this.nombre = nombre;
+        this.listaEquipo = listaEquipo;
     }
 
     public String getIdPatrocinador() {
