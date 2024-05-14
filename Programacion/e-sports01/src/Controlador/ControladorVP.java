@@ -10,11 +10,6 @@ import java.awt.event.ActionListener;
         private VentanaInicioSesion vis;
 
         public ControladorVP() {
-            vis = new VentanaInicioSesion();
-            vis.setVisible(true);
-
-
-
 
         }
 

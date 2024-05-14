@@ -15,6 +15,7 @@ public class ControladorVista {
         this.cp = cp;
         cvlogin = new ControladorVLogin(this);
         cvlogin.crearMostrar();
+        cveditar=new ControladorVEditar(this);
         cvp=new ControladorVP(this);
         cveq=new ControladorVEquipo(this);
     }
@@ -23,9 +24,7 @@ public class ControladorVista {
         cvp.crearMostrar();
     }
     public void crearMostrarEditar() {
-        cveditar=new ControladorVEditar(this);
         cveditar.crearMostrar();
-
     }
     public void crearVentanaEquipo() {
 

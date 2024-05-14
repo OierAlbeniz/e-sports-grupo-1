@@ -15,8 +15,7 @@ public class ControladorPrincipal {
         cv = new ControladorVista(this);
         cb = new ControladorBD(this);
         vp = new VentanaPrincipal();
-
-
+        cte = new ControladorTablaEquipo(this);
 
     }
 
