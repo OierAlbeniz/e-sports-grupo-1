@@ -6,6 +6,7 @@ import Vista.VentanaPrincipal;
 public class ControladorVista {
 
     private ControladorPrincipal cp;
+    private ControladorVEquipo cveq;
     private ControladorVLogin cvlogin;
     private ControladorVEditar cveditar;
     private ControladorVP cvp;
@@ -15,6 +16,7 @@ public class ControladorVista {
         cvlogin = new ControladorVLogin(this);
         cvlogin.crearMostrar();
         cvp=new ControladorVP(this);
+        cveq=new ControladorVEquipo(this);
     }
 
     public void crearMostrarVP() {
@@ -23,5 +25,13 @@ public class ControladorVista {
     public void crearMostrarEditar() {
         cveditar=new ControladorVEditar(this);
         cveditar.crearMostrar();
+
     }
+    public void crearVentanaEquipo() {
+
+        cveq.crearMostrarVentanaEquipo();
+
+    }
+
+
 }

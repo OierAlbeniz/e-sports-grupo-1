@@ -8,13 +8,20 @@ import java.awt.event.ActionListener;
 
 public class ControladorVEquipo {
         private VentanaEditar ved;
+        private ControladorVista cv;
 
-        public ControladorVEquipo(){
-            ved = new VentanaEditar();
-            ved.addJugadores(new ventanaEquipo());
-        }
+    public ControladorVEquipo(ControladorVista cv) {
+        this.cv = cv;
+    }
 
-        public class ventanaEquipo implements ActionListener{
+
+    public void crearMostrarVentanaEquipo() {
+        ved = new VentanaEditar();
+        ved.addJugadores(new ventanaEquipo());
+
+    }
+
+    public class ventanaEquipo implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
                 ved.setVisible(true);
