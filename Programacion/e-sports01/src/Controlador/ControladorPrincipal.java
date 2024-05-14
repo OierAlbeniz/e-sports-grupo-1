@@ -10,9 +10,5 @@ public class ControladorPrincipal {
     public ControladorPrincipal() {
         cv = new ControladorVista(this);
         cb = new ControladorBD(this);
-
-
-
-
     }
 }

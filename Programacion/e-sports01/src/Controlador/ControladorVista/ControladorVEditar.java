@@ -1,37 +1,32 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorBD.ControladorTablaEquipo;
+import Vista.VentanaEditar;
 import Vista.VentanaPrincipal;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
 
-public class ControladorVP {
+public class ControladorVEditar {
     private ControladorVista cv;
     private ControladorTablaEquipo ctequipo;
     private Connection con;
-    private VentanaPrincipal vp;
+    private VentanaEditar vEditar;
 
-    public ControladorVP(ControladorVista cv) {
+    public ControladorVEditar(ControladorVista cv) {
         this.cv = cv;
     }
 
     public void crearMostrar() {
-        //try {
-            //ctequipo=new ControladorTablaEquipo(con);
-            vp = new VentanaPrincipal();
-            vp.setVisible(true);
-            vp.addeditar(new BEditarAL());
-            /*String nombre = ctequipo.rellenarNombre();
-            vp.getTfRelleno().setText(nombre);
-        }catch(Exception e){
-            vp.mostrarMensaje(e.getMessage());
-        }
-         */
+        vEditar = new VentanaEditar();
+        vEditar.setVisible(true);
+
     }
     public class BEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
+            // Le dice al controlador de vista que la operación elegida es alta
             cv.crearMostrarEditar();
         }
     }
