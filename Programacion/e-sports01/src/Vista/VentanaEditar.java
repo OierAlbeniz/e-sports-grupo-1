@@ -11,6 +11,7 @@ public class VentanaEditar extends JFrame {
     private JButton bEditPatrocinadores;
     private JButton bEditStaff;
     private JButton bEditJuegos;
+    private JButton bVolver;
 
     public VentanaEditar() {
         setContentPane(panelEditar);
@@ -18,8 +19,6 @@ public class VentanaEditar extends JFrame {
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
-
-
 
     public JPanel getPanelEditar() {
         return panelEditar;
@@ -95,5 +94,8 @@ public class VentanaEditar extends JFrame {
         bEditJuegos.addActionListener(al);
     }
 
+    public void addVolver(ActionListener al) {
+        bVolver.addActionListener(al);
+    }
 
 }

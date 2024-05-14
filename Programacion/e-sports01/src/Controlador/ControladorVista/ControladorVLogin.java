@@ -1,6 +1,5 @@
 package Controlador.ControladorVista;
 
-import Controlador.ControladorPrincipal;
 import Vista.VentanaInicioSesion;
 
 import java.awt.event.ActionEvent;
