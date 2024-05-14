@@ -39,13 +39,15 @@ public class ControladorBD {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            String url = "jdbc:oracle:thin:@172.20.225.114:1521:orcl";
+            String url = "jdbc:oracle:thin:@172.20.225.114:1521:orcl/equipo16";
             String user = "equipo16";
             String passwd = "equipo16";
             con = DriverManager.getConnection(url, user, passwd);
+            System.out.println("conexion abierta");
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+            System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
     }

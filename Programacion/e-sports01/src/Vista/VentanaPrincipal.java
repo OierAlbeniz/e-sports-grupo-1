@@ -226,8 +226,8 @@ public class VentanaPrincipal extends JFrame{
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
-    public void addPerfil(ActionListener al){
-
+    public void addPerfil(ActionListener al) {
+    }
     public void botonPerfil(ActionListener al){
         btPerfil.addActionListener(al);
     }

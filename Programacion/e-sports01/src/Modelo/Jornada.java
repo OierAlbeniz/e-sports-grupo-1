@@ -5,14 +5,14 @@ import java.util.List;
 
 public class Jornada {
 
-    private String fechaEnfrentamiento;
+    private LocalDate fechaEnfrentamiento;
     private Integer idJornada;
     private List<Enfrentamiento> listaEnfrentamiento;
     private Competicion competicion;
 
-    public Jornada(String idJornada, LocalDate fechaEnfrentamiento, Competicion competicion) {
+    public Jornada(Integer idJornada, LocalDate fechaEnfrentamiento, Competicion competicion) {
         this.idJornada = idJornada;
-        this.fechaEnfrentamiento = fechaEnfrentamiento;
+        this.fechaEnfrentamiento = LocalDate.parse(String.valueOf(fechaEnfrentamiento));
         this.idJornada = Integer.valueOf(idJornada);
         this.competicion = competicion;
     }
