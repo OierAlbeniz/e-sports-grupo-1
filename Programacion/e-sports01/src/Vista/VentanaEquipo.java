@@ -14,4 +14,18 @@ public class VentanaEquipo {
     private JButton cancelarButton;
     private JButton inscribirButton;
     private JComboBox comboBox2;
+    private JTextArea textArea1;
+    private JTextField textField3;
+    private JButton cancelarButton1;
+    private JButton borrarEquipoButton;
+    private JPanel panelBaja;
+    private JTextField textField4;
+    private JTextField textField5;
+    private JComboBox comboBox3;
+    private JComboBox comboBox4;
+    private JButton modificarButton;
+    private JButton cancelarButton2;
+    private JTextField textField6;
+    private JTextArea textArea2;
+    private JPanel panelConsulta;
 }
