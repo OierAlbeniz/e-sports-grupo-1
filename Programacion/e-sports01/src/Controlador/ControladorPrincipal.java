@@ -2,6 +2,7 @@ package Controlador;
 
 import Controlador.ControladorBD.ControladorBD;
 import Controlador.ControladorBD.ControladorTablaEquipo;
+import Controlador.ControladorBD.ControladorTablaJugador;
 import Controlador.ControladorVista.ControladorVista;
 import Vista.VentanaPrincipal;
 

@@ -1,5 +1,6 @@
 package Controlador.ControladorVista;
 
+import Controlador.ControladorBD.ControladorTablaJugador;
 import Controlador.ControladorPrincipal;
 import Vista.VentanaPrincipal;
 
@@ -9,6 +10,7 @@ public class ControladorVista {
     private ControladorVEquipo cveq;
     private ControladorVLogin cvlogin;
     private ControladorVEditar cveditar;
+    private ControladorVJugador cvjugador;
     private ControladorVP cvp;
 
     public ControladorVista(ControladorPrincipal cp) {
@@ -18,6 +20,8 @@ public class ControladorVista {
         cveditar=new ControladorVEditar(this);
         cvp=new ControladorVP(this);
         cveq=new ControladorVEquipo(this);
+        cvjugador = new ControladorVJugador(this);
+
     }
 
     public void crearMostrarVP() {
@@ -31,6 +35,11 @@ public class ControladorVista {
         cveq.crearMostrarVentanaEquipo();
 
     }
+    public void crearVentanaJugador() {
+        cvjugador.crearVJugador();
+    }
+
+
 
 
 }
