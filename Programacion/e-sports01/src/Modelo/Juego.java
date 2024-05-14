@@ -10,11 +10,13 @@ public class Juego {
     private Integer idJuego;
     private List<Competicion> listaCompeticion;
 
-    public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego) {
+
+    public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego, List<Competicion> listaCompeticion) {
         this.nombre = nombre;
         this.empresa = empresa;
         this.fechalanzamiento = fechalanzamiento;
         this.idJuego = idJuego;
+        this.listaCompeticion = listaCompeticion;
     }
 
     private String getNombre() {

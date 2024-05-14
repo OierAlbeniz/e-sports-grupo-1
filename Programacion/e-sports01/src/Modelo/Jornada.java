@@ -1,34 +1,36 @@
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class Jornada {
 
-    private String fechaEnfrentamiento;
-    private String idJornada;
+    private LocalDate fechaEnfrentamiento;
+    private Integer idJornada;
     private List<Enfrentamiento> listaEnfrentamiento;
     private Competicion competicion;
 
-    public Jornada(String fechaEnfrentamiento, String idJornada, Competicion competicion) {
-        this.fechaEnfrentamiento = fechaEnfrentamiento;
+    public Jornada(Integer idJornada, LocalDate fechaEnfrentamiento, Competicion competicion) {
         this.idJornada = idJornada;
+        this.fechaEnfrentamiento = LocalDate.parse(String.valueOf(fechaEnfrentamiento));
+        this.idJornada = Integer.valueOf(idJornada);
         this.competicion = competicion;
     }
 
-    public String getFechaEnfrentamiento() {
+    public LocalDate getFechaEnfrentamiento() {
         return fechaEnfrentamiento;
     }
 
-    public void setFechaEnfrentamiento(String fechaEnfrentamiento) {
+    public void setFechaEnfrentamiento(LocalDate fechaEnfrentamiento) {
         this.fechaEnfrentamiento = fechaEnfrentamiento;
     }
 
-    public String getIdJornada() {
+    public Integer getIdJornada() {
         return idJornada;
     }
 
     public void setIdJornada(String idJornada) {
-        this.idJornada = idJornada;
+        this.idJornada = Integer.valueOf(idJornada);
     }
 
     public List<Enfrentamiento> getListaEnfrentamiento() {

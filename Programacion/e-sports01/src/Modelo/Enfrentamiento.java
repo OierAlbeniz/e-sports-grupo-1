@@ -1,22 +1,24 @@
 package Modelo;
 
+import java.time.LocalTime;
+
 public class Enfrentamiento {
 
     private Equipo equipoUno;
     private Equipo equipoDos;
     private Integer idEnfrentamiento;
-    private Integer hora;
-    private Integer puntosLocal;
-    private Integer puntosVisitante;
+    private LocalTime hora;
+    private Integer resultadoLocal;
+    private Integer resultadoVisitante;
     private Jornada jornada;
 
-    public Enfrentamiento(Equipo equipoUno, Equipo equipoDos, Integer idEnfrentamiento, Integer hora, Integer puntosLocal, Integer puntosVisitante, Jornada jornada) {
+    public Enfrentamiento(Equipo equipoUno, Equipo equipoDos, Integer idEnfrentamiento, LocalTime hora, Integer resultadoLocal, Integer resultadoVisitante, Jornada jornada) {
         this.equipoUno = equipoUno;
         this.equipoDos = equipoDos;
         this.idEnfrentamiento = idEnfrentamiento;
         this.hora = hora;
-        this.puntosLocal = puntosLocal;
-        this.puntosVisitante = puntosVisitante;
+        this.resultadoLocal = resultadoLocal;
+        this.resultadoVisitante = resultadoVisitante;
         this.jornada = jornada;
     }
 
@@ -44,28 +46,28 @@ public class Enfrentamiento {
         this.idEnfrentamiento = idEnfrentamiento;
     }
 
-    private Integer getHora() {
+    private LocalTime getHora() {
         return hora;
     }
 
-    private void setHora(Integer hora) {
+    private void setHora(LocalTime hora) {
         this.hora = hora;
     }
 
-    private Integer getPuntosLocal() {
-        return puntosLocal;
+    private Integer getResultadoLocal() {
+        return resultadoLocal;
     }
 
-    private void setPuntosLocal(Integer puntosLocal) {
-        this.puntosLocal = puntosLocal;
+    private void setResultadoLocal(Integer resultadoLocal) {
+        this.resultadoLocal = resultadoLocal;
     }
 
-    private Integer getPuntosVisitante() {
-        return puntosVisitante;
+    private Integer getResultadoVisitante() {
+        return resultadoVisitante;
     }
 
-    private void setPuntosVisitante(Integer puntosVisitante) {
-        this.puntosVisitante = puntosVisitante;
+    private void setResultadoVisitante(Integer resultadoVisitante) {
+        this.resultadoVisitante = resultadoVisitante;
     }
 
     public Jornada getJornada() {

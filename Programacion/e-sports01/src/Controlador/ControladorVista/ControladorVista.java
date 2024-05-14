@@ -7,11 +7,11 @@ public class ControladorVista {
 
     private ControladorPrincipal cp;
     private ControladorVLogin cvlogin;
+    private ControladorVEditar cveditar;
     private ControladorVP cvp;
 
     public ControladorVista(ControladorPrincipal cp) {
         this.cp = cp;
-
         cvlogin = new ControladorVLogin(this);
         cvlogin.crearMostrar();
         cvp=new ControladorVP(this);
@@ -21,6 +21,7 @@ public class ControladorVista {
         cvp.crearMostrar();
     }
     public void crearMostrarEditar() {
-        cvp.crearMostrar();
+        cveditar=new ControladorVEditar(this);
+        cveditar.crearMostrar();
     }
 }

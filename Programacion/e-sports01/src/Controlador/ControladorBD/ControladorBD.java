@@ -4,6 +4,7 @@ import Controlador.ControladorPrincipal;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 public class ControladorBD {
     private ControladorTablaAsistente ctasistente;
@@ -36,16 +37,18 @@ public class ControladorBD {
     }
     public void abrirConexion() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
+            Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            String url = "jdbc:mysql://localhost:3306/aerolinea";
-            String user = "root";
-            String passwd = "usbw";
-            con = DriverManager.getConnection(url,user,passwd);
-            System.out.println("Conexion abierta");
+            String url = "jdbc:oracle:thin:@172.20.225.114:1521:orcl";
+            String user = "equipo16";
+            String passwd = "equipo16";
+            con = DriverManager.getConnection(url, user, passwd);
+            System.out.println("conexion abierta");
 
-        }catch(Exception e){
-            System.out.println("Problemas con la base de datos");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("conexion erronea");
+        } catch (SQLException e) {
         }
     }
 }

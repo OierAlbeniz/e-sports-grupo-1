@@ -1,5 +1,6 @@
 package Modelo;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import java.util.ArrayList;
@@ -7,36 +8,38 @@ import java.util.ArrayList;
 public class Competicion {
 
 
-    private String fechaInicio;
-    private  String fechaFin;
+    private LocalDate fechaInicio;
+    private  LocalDate fechaFin;
     private boolean estado;
     private Integer idCompeticion;
+    private String nombre;
     private List<Jornada> listaJornada;
     private Juego juego;
 
 
-    public Competicion(String fechaInicio, String fechaFin, boolean estado, Integer idCompeticion) {
+    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
 
+        this.idCompeticion = idCompeticion;
+        this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
-        this.idCompeticion = idCompeticion;
         this.juego = juego;
     }
 
-    private String getFechaInicio() {
+    private LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    private void setFechaInicio(String fechaInicio) {
+    private void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    private String getFechaFin() {
+    private LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    private void setFechaFin(String fechaFin) {
+    private void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
@@ -54,6 +57,14 @@ public class Competicion {
 
     private void setIdCompeticion(Integer idCompeticion) {
         this.idCompeticion = idCompeticion;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
     public List<Jornada> getListaJornada() {

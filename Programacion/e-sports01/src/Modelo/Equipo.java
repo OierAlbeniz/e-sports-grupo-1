@@ -9,6 +9,7 @@ public class Equipo {
     private LocalDate fechaFundacion;
     private List<Jugador> listaJugador;
     private Patrocinador patrocinador;
+    private Asistente asistente;
     private List<Entrenador> listaEntrenador;
     private List<Clasificacion> listaClasificacion;
 
@@ -17,6 +18,25 @@ public class Equipo {
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
         this.patrocinador = patrocinador;
+    }
+
+    public Equipo(String idEquipo, String nombre, LocalDate fechaFundacion, List<Jugador> listaJugador, Patrocinador patrocinador, Asistente asistente, List<Entrenador> listaEntrenador, List<Clasificacion> listaClasificacion) {
+        this.idEquipo = idEquipo;
+        this.nombre = nombre;
+        this.fechaFundacion = fechaFundacion;
+        this.listaJugador = listaJugador;
+        this.patrocinador = patrocinador;
+        this.asistente = asistente;
+        this.listaEntrenador = listaEntrenador;
+        this.listaClasificacion = listaClasificacion;
+    }
+
+    public Asistente getAsistente() {
+        return asistente;
+    }
+
+    public void setAsistente(Asistente asistente) {
+        this.asistente = asistente;
     }
 
     public String getIdEquipo() {
