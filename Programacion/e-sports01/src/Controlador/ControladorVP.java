@@ -9,17 +9,14 @@ import java.awt.event.ActionListener;
     public class ControladorVP {
         private VentanaInicioSesion vis;
 
-
         public ControladorVP() {
             vis = new VentanaInicioSesion();
             vis.setVisible(true);
 
 
+
+
         }
-
-
-
-
 
     }
 

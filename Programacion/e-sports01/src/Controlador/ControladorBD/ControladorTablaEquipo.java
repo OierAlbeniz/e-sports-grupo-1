@@ -20,12 +20,6 @@ public class ControladorTablaEquipo {
         ResultSet rs = statement.executeQuery();
 
 
-        if (rs.next()) {
-
-            nombre = rs.getString("nombre");
-            System.out.println(nombre);
-        }
-
         statement.close();
         return nombre;
     }
