@@ -77,6 +77,7 @@ EXCEPTION
 END AFTER STATEMENT;
 END TR_NUM_JUGADORES_MAYOR6;
 
+<<<<<<< Updated upstream
 
 <<<<<<< Updated upstream
 CREATE OR REPLACE TRIGGER TR_NO_INGR_JUGADORES
@@ -96,18 +97,32 @@ BEFORE INSERT OR UPDATE or delete  ON jugador
 CREATE OR REPLACE TRIGGER TR_INSERTAR_JUGADORES
 BEFORE INSERT OR UPDATE ON JUGADOR
 >>>>>>> Stashed changes
+=======
+
+
+CREATE OR REPLACE TRIGGER TR_INSERTAR_JUGADORES
+BEFORE INSERT OR UPDATE ON JUGADOR
+>>>>>>> Stashed changes
 FOR EACH ROW
 DECLARE
     v_estado_competicion COMPETICION.ESTADO%TYPE;
 BEGIN
+<<<<<<< Updated upstream
     -- Verificar si alguna competici�n en la que el equipo de este jugador participa est� cerrada
+=======
+    -- Verificar si alguna competiciï¿½n en la que el equipo de este jugador participa estï¿½ cerrada
+>>>>>>> Stashed changes
     SELECT MAX(c.estado) INTO v_estado_competicion
     FROM CLASIFICACION cl
     JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
     WHERE cl.ID_EQUIPO = :NEW.ID_EQUIPO;
 
     IF v_estado_competicion = 'cerrado' THEN
+<<<<<<< Updated upstream
         RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operaci�n. El equipo de este jugador est� en una competici�n cerrada.');
+=======
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operacin. El equipo de este jugador esta en una competicion cerrada.');
+>>>>>>> Stashed changes
     END IF;
 END;
 ------------------------------------------------------------------------------------
@@ -117,11 +132,25 @@ FOR EACH ROW
 DECLARE
     v_estado_competicion COMPETICION.ESTADO%TYPE;
 BEGIN
+<<<<<<< Updated upstream
     -- Verificar si alguna competici�n en la que el equipo de este jugador participa est� cerrada
+=======
+    -- Verificar si alguna competiciï¿½n en la que el equipo de este jugador participa estï¿½ cerrada
+>>>>>>> Stashed changes
     SELECT MAX(c.estado) INTO v_estado_competicion
     FROM CLASIFICACION cl
     JOIN COMPETICION c ON cl.ID_COMPETICION = c.ID_COMPETICION
     WHERE cl.ID_EQUIPO = :OLD.ID_EQUIPO;
+<<<<<<< Updated upstream
+=======
+
+    IF v_estado_competicion = 'cerrado' THEN
+        RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operacionn. El equipo de este jugador esta en una competicion cerrada.');
+    END IF;
+END;
+
+
+>>>>>>> Stashed changes
 
     IF v_estado_competicion = 'cerrado' THEN
         RAISE_APPLICATION_ERROR(-20001, 'No se puede realizar la operaci�n. El equipo de este jugador est� en una competici�n cerrada.');

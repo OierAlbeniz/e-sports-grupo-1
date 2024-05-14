@@ -36,16 +36,17 @@ public class ControladorBD {
     }
     public void abrirConexion() {
         try {
+            // 1. Cargar el controlador de acceso a datos
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/aerolinea";
-            String user = "root";
-            String passwd = "usbw";
-            con = DriverManager.getConnection(url,user,passwd);
-            System.out.println("Conexion abierta");
+            // 2. Conectarse a la base de datos
+            String url = "jdbc:oracle:thin:@SrvOracle:1521:orcl";
+            String user = "equipo16";
+            String passwd = "equipo16";
+            con = DriverManager.getConnection(url, user, passwd);
 
-        }catch(Exception e){
-            System.out.println("Problemas con la base de datos");
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace();
         }
     }
 }
