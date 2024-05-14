@@ -5,13 +5,13 @@ import java.util.List;
 public class Jornada {
 
     private String fechaEnfrentamiento;
-    private String idJornada;
+    private Integer idJornada;
     private List<Enfrentamiento> listaEnfrentamiento;
     private Competicion competicion;
 
     public Jornada(String fechaEnfrentamiento, String idJornada, Competicion competicion) {
         this.fechaEnfrentamiento = fechaEnfrentamiento;
-        this.idJornada = idJornada;
+        this.idJornada = Integer.valueOf(idJornada);
         this.competicion = competicion;
     }
 
@@ -23,12 +23,12 @@ public class Jornada {
         this.fechaEnfrentamiento = fechaEnfrentamiento;
     }
 
-    public String getIdJornada() {
+    public Integer getIdJornada() {
         return idJornada;
     }
 
     public void setIdJornada(String idJornada) {
-        this.idJornada = idJornada;
+        this.idJornada = Integer.valueOf(idJornada);
     }
 
     public List<Enfrentamiento> getListaEnfrentamiento() {

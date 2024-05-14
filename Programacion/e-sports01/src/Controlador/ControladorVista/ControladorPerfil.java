@@ -1,13 +1,13 @@
 package Controlador.ControladorVista;
-import Vista.VistaPerfil.Perfil;
+import Vista.VistaPerfil;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorPerfil {
 private Perfil p;
-    public ControladorPerfil{
-        p = new ControladorPerfil();
-        p
+    public ControladorPerfil() {
+        p = new Perfil();
+        
     }
 
 
