@@ -1,6 +1,7 @@
 package Vista;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class VentanaEquipo extends JFrame{
     private JRadioButton altaRadioButton;
@@ -36,6 +37,8 @@ public class VentanaEquipo extends JFrame{
         setSize(400,300);
         setLocationRelativeTo(null);
     }
+
+
 
     public JRadioButton getAltaRadioButton() {
         return altaRadioButton;
@@ -149,33 +152,8 @@ public class VentanaEquipo extends JFrame{
         this.textArea2 = textArea2;
     }
 
-    public VentanaEquipo(JRadioButton altaRadioButton, JRadioButton modificacionRadioButton, JRadioButton bajaRadioButton, JRadioButton consultaRadioButton, JPanel panelAlta, JTextField textField1, JTextField textField2, JComboBox comboBox1, JButton cancelarButton, JButton inscribirButton, JComboBox comboBox2, JTextArea textArea1, JTextField textField3, JButton cancelarButton1, JButton borrarEquipoButton, JPanel panelBaja, JTextField textField4, JTextField textField5, JComboBox comboBox3, JComboBox comboBox4, JButton modificarButton, JButton cancelarButton2, JTextField textField6, JTextArea textArea2, JPanel panelConsulta) {
-        this.altaRadioButton = altaRadioButton;
-        this.modificacionRadioButton = modificacionRadioButton;
-        this.bajaRadioButton = bajaRadioButton;
-        this.consultaRadioButton = consultaRadioButton;
-        this.panelAlta = panelAlta;
-        this.textField1 = textField1;
-        this.txtAFecha = textField2;
-        this.cbbAPatrocinador = comboBox1;
-        this.btACncelar = cancelarButton;
-        this.btAInscribir = inscribirButton;
-        this.cbbACompeticion = comboBox2;
-        this.txaBSlect = textArea1;
-        this.txtBNombre = textField3;
-        this.cancelarButton1 = cancelarButton1;
-        this.txtBBorrar = borrarEquipoButton;
-        this.panelBaja = panelBaja;
-        this.textField4 = textField4;
-        this.textField5 = textField5;
-        this.comboBox3 = comboBox3;
-        this.comboBox4 = comboBox4;
-        this.modificarButton = modificarButton;
-        this.cancelarButton2 = cancelarButton2;
-        this.textField6 = textField6;
-        this.textArea2 = textArea2;
-        this.panelConsulta = panelConsulta;
-    }
+
+
 
 
 

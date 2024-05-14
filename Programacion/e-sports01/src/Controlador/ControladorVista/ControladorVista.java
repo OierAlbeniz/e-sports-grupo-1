@@ -26,11 +26,7 @@ public class ControladorVista {
     public void crearMostrarEditar() {
         cveditar.crearMostrar();
     }
-    public void crearVentanaEquipo() {
 
-        cveq.crearMostrarVentanaEquipo();
-
-    }
 
 
 }

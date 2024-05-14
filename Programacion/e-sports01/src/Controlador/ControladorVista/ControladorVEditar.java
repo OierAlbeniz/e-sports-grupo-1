@@ -10,7 +10,7 @@ import java.sql.Connection;
 
 public class ControladorVEditar {
     private ControladorVista cv;
-    private ControladorTablaEquipo ctequipo;
+   private ControladorVEquipo ceq;
     private Connection con;
     private VentanaEditar vEditar;
 
@@ -23,6 +23,12 @@ public class ControladorVEditar {
         vEditar.setVisible(true);
 
     }
+
+    public void crearVentanaEquipo() {
+        ceq.crearMostrarEquipo();
+
+    }
+
     public class BEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

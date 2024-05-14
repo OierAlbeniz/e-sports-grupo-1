@@ -625,7 +625,7 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="4da3a" class="javax.swing.JRadioButton" binding="altaRadioButton" default-binding="true">
+          <component id="4da3a" class="javax.swing.JRadioButton" binding="rdAlta">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -633,7 +633,7 @@
               <text value="Alta"/>
             </properties>
           </component>
-          <component id="b7fcd" class="javax.swing.JRadioButton" binding="bajaRadioButton" default-binding="true">
+          <component id="b7fcd" class="javax.swing.JRadioButton" binding="rdBja">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -641,7 +641,7 @@
               <text value="Baja"/>
             </properties>
           </component>
-          <component id="f9e4" class="javax.swing.JRadioButton" binding="modificacionRadioButton" default-binding="true">
+          <component id="f9e4" class="javax.swing.JRadioButton" binding="rdModificacion">
             <constraints>
               <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
@@ -649,7 +649,7 @@
               <text value="Modificacion"/>
             </properties>
           </component>
-          <component id="fc8c9" class="javax.swing.JRadioButton" binding="consultaRadioButton" default-binding="true">
+          <component id="fc8c9" class="javax.swing.JRadioButton" binding="rdConsulta">
             <constraints>
               <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>

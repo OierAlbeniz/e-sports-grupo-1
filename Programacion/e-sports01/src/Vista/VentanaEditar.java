@@ -19,6 +19,8 @@ public class VentanaEditar extends JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
     }
 
+
+
     public JPanel getPanelEditar() {
         return panelEditar;
     }
@@ -92,4 +94,6 @@ public class VentanaEditar extends JFrame {
     public void addJuegos(ActionListener al) {
         bEditJuegos.addActionListener(al);
     }
+
+
 }
