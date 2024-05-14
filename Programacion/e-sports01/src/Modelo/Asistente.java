@@ -1,7 +1,7 @@
 package Modelo;
 
 public class Asistente {
-    private String idIntegrante;
+    private String idAsistente;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -9,7 +9,7 @@ public class Asistente {
     private Equipo equipo;
 
     public Asistente(String idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, Equipo equipo) {
-        this.idIntegrante = idIntegrante;
+        this.idAsistente = idIntegrante;
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
@@ -18,11 +18,11 @@ public class Asistente {
     }
 
     public String getIdIntegrante() {
-        return idIntegrante;
+        return idAsistente;
     }
 
     public void setIdIntegrante(String idIntegrante) {
-        this.idIntegrante = idIntegrante;
+        this.idAsistente = idIntegrante;
     }
 
     public String getNombre() {

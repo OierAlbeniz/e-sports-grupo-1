@@ -10,18 +10,19 @@ public class VentanaPrincipal extends JFrame{
     private JButton bUltJornada;
     private JButton bCerrar;
     private JButton bEditar;
-    private JButton CERRARSESIONButton;
-    private JButton SALIRButton;
+    private JButton bCerrarSesion;
+    private JButton bCerrarInsc;
+    private JButton bSalir;
     private JPanel p1;
     private JPanel p2;
     private JPanel p3;
     private JPanel p4;
-<<<<<<< Updated upstream
     private JButton bConsulta;
     private JButton bPerfil;
-=======
+    private JTextField tfRelleno;
+
     private JButton btPerfil;
->>>>>>> Stashed changes
+
 
     public VentanaPrincipal() {
         setContentPane(panel1);
@@ -75,7 +76,6 @@ public class VentanaPrincipal extends JFrame{
 
     }
 
-<<<<<<< Updated upstream
     public JPanel getPanel1() {
         return panel1;
     }
@@ -117,19 +117,19 @@ public class VentanaPrincipal extends JFrame{
     }
 
     public JButton getCERRARSESIONButton() {
-        return CERRARSESIONButton;
+        return bCerrarSesion;
     }
 
     public void setCERRARSESIONButton(JButton CERRARSESIONButton) {
-        this.CERRARSESIONButton = CERRARSESIONButton;
+        this.bCerrarSesion = CERRARSESIONButton;
     }
 
     public JButton getSALIRButton() {
-        return SALIRButton;
+        return bSalir;
     }
 
     public void setSALIRButton(JButton SALIRButton) {
-        this.SALIRButton = SALIRButton;
+        this.bSalir = SALIRButton;
     }
 
     public JPanel getP1() {
@@ -180,13 +180,53 @@ public class VentanaPrincipal extends JFrame{
         this.bPerfil = bPerfil;
     }
 
+    public JButton getbCerrarSesion() {
+        return bCerrarSesion;
+    }
+
+    public void setbCerrarSesion(JButton bCerrarSesion) {
+        this.bCerrarSesion = bCerrarSesion;
+    }
+
+    public JButton getbCerrarInsc() {
+        return bCerrarInsc;
+    }
+
+    public void setbCerrarInsc(JButton bCerrarInsc) {
+        this.bCerrarInsc = bCerrarInsc;
+    }
+
+    public JButton getbSalir() {
+        return bSalir;
+    }
+
+    public void setbSalir(JButton bSalir) {
+        this.bSalir = bSalir;
+    }
+
+    public JTextField getTfRelleno() {
+        return tfRelleno;
+    }
+
+    public void setTfRelleno(JTextField tfRelleno) {
+        this.tfRelleno = tfRelleno;
+    }
+
+    public JButton getBtPerfil() {
+        return btPerfil;
+    }
+
+    public void setBtPerfil(JButton btPerfil) {
+        this.btPerfil = btPerfil;
+    }
+
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
-=======
-    public void botonPerfil(ActionListener al){
+    public void addPerfil(ActionListener al){
         btPerfil.addActionListener(al);
     }
-
->>>>>>> Stashed changes
+    public void mostrarMensaje(String m){
+        JOptionPane.showMessageDialog(null, m);
+    }
 }
