@@ -18,13 +18,13 @@ public class ControladorVEquipo {
     public void crearMostrarVentanaEquipo() {
         ved = new VentanaEditar();
         ved.addJugadores(new ventanaEquipo());
-
+        ved.setVisible(true);
     }
 
     public class ventanaEquipo implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
-                ved.setVisible(true);
+                crearMostrarVentanaEquipo();
             }
         }
 

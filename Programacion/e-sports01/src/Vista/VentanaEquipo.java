@@ -9,15 +9,15 @@ public class VentanaEquipo extends JFrame{
     private JRadioButton consultaRadioButton;
     private JPanel panelAlta;
     private JTextField textField1;
-    private JTextField textField2;
-    private JComboBox comboBox1;
-    private JButton cancelarButton;
-    private JButton inscribirButton;
-    private JComboBox comboBox2;
-    private JTextArea textArea1;
-    private JTextField textField3;
+    private JTextField txtAFecha;
+    private JComboBox cbbAPatrocinador;
+    private JButton btACncelar;
+    private JButton btAInscribir;
+    private JComboBox cbbACompeticion;
+    private JTextArea txaBSlect;
+    private JTextField txtBNombre;
     private JButton cancelarButton1;
-    private JButton borrarEquipoButton;
+    private JButton txtBBorrar;
     private JPanel panelBaja;
     private JTextField textField4;
     private JTextField textField5;
@@ -78,43 +78,43 @@ public class VentanaEquipo extends JFrame{
     }
 
     public JTextField getTextField2() {
-        return textField2;
+        return txtAFecha;
     }
 
     public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+        this.txtAFecha = textField2;
     }
 
     public JComboBox getComboBox1() {
-        return comboBox1;
+        return cbbAPatrocinador;
     }
 
     public void setComboBox1(JComboBox comboBox1) {
-        this.comboBox1 = comboBox1;
+        this.cbbAPatrocinador = comboBox1;
     }
 
     public JComboBox getComboBox2() {
-        return comboBox2;
+        return cbbACompeticion;
     }
 
     public void setComboBox2(JComboBox comboBox2) {
-        this.comboBox2 = comboBox2;
+        this.cbbACompeticion = comboBox2;
     }
 
     public JTextArea getTextArea1() {
-        return textArea1;
+        return txaBSlect;
     }
 
     public void setTextArea1(JTextArea textArea1) {
-        this.textArea1 = textArea1;
+        this.txaBSlect = textArea1;
     }
 
     public JTextField getTextField3() {
-        return textField3;
+        return txtBNombre;
     }
 
     public void setTextField3(JTextField textField3) {
-        this.textField3 = textField3;
+        this.txtBNombre = textField3;
     }
 
     public JTextField getTextField4() {
@@ -156,15 +156,15 @@ public class VentanaEquipo extends JFrame{
         this.consultaRadioButton = consultaRadioButton;
         this.panelAlta = panelAlta;
         this.textField1 = textField1;
-        this.textField2 = textField2;
-        this.comboBox1 = comboBox1;
-        this.cancelarButton = cancelarButton;
-        this.inscribirButton = inscribirButton;
-        this.comboBox2 = comboBox2;
-        this.textArea1 = textArea1;
-        this.textField3 = textField3;
+        this.txtAFecha = textField2;
+        this.cbbAPatrocinador = comboBox1;
+        this.btACncelar = cancelarButton;
+        this.btAInscribir = inscribirButton;
+        this.cbbACompeticion = comboBox2;
+        this.txaBSlect = textArea1;
+        this.txtBNombre = textField3;
         this.cancelarButton1 = cancelarButton1;
-        this.borrarEquipoButton = borrarEquipoButton;
+        this.txtBBorrar = borrarEquipoButton;
         this.panelBaja = panelBaja;
         this.textField4 = textField4;
         this.textField5 = textField5;
