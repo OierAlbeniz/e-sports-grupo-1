@@ -2,7 +2,7 @@ package Vista;
 
 import javax.swing.*;
 
-public class UltimaJornada {
+public class VentanaUltJornada {
     private JPanel pPrincipal;
     private JComboBox comboBox1;
     private JLabel equipo1;
