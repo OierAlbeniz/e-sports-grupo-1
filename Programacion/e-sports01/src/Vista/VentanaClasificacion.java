@@ -2,7 +2,7 @@ package Vista;
 
 import javax.swing.*;
 
-public class Clasificacion {
+public class VentanaClasificacion {
     private JComboBox cbbClasificacion;
     private JTextArea txaClasificacion;
     private JPanel pPrincipal;

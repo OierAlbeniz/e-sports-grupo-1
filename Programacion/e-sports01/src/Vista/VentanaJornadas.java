@@ -2,7 +2,7 @@ package Vista;
 
 import javax.swing.*;
 
-public class TodasJornadas {
+public class VentanaJornadas {
     private JTextArea textArea1;
     private JComboBox comboBox1;
     private JComboBox comboBox2;
