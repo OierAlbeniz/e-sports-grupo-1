@@ -2,6 +2,7 @@ package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorVista.ControladorVJuego;
+import Modelo.Usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -51,5 +52,9 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
+    }
+
+    public Usuario buscarUsuario(String user ) throws Exception {
+        return ctUsuario.buscarUsuario(user);
     }
 }

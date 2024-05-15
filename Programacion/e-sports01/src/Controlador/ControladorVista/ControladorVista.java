@@ -1,6 +1,7 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
+import Modelo.Usuario;
 
 public class ControladorVista {
 
@@ -52,5 +53,9 @@ public class ControladorVista {
     public void crearMostrarCompeticiones() {
         cvcompeticion=new ControladorVCompeticion(this);
         cvcompeticion.crearMostrar();
+    }
+
+    public Usuario buscarUsuario(String user ) throws Exception {
+        return cp.buscarUsuario(user);
     }
 }

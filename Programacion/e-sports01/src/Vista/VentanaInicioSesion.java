@@ -1,17 +1,15 @@
 package Vista;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.*;
-import java.io.InputStream;
 
 public class VentanaInicioSesion extends JDialog {
     private JPanel contentPane;
     private JButton bSalir;
     private JButton bSesion;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton button1;
+    private JTextField txtUser;
+    private JTextField txtPassword;
+    private JButton bAyuda;
     private JLabel tfIniciarSesion;
     private JPanel pPrincipal;
 
@@ -38,27 +36,27 @@ public class VentanaInicioSesion extends JDialog {
     }
 
     public JTextField getTextField1() {
-        return textField1;
+        return txtUser;
     }
 
     public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+        this.txtUser = textField1;
     }
 
     public JTextField getTextField2() {
-        return textField2;
+        return txtPassword;
     }
 
     public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+        this.txtPassword = textField2;
     }
 
     public JButton getButton1() {
-        return button1;
+        return bAyuda;
     }
 
     public void setButton1(JButton button1) {
-        this.button1 = button1;
+        this.bAyuda = button1;
     }
 
     public JLabel getTfIniciarSesion() {
@@ -71,5 +69,11 @@ public class VentanaInicioSesion extends JDialog {
 
     public void addSesion(ActionListener al) {
         bSesion.addActionListener(al);
+    }
+    public void addAyuda(ActionListener al){
+        bAyuda.addActionListener(al);
+    }
+    public void addCerrar(ActionListener al){
+        bSalir.addActionListener(al);
     }
 }
