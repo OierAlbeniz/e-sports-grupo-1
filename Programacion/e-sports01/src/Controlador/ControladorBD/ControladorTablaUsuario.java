@@ -6,6 +6,7 @@ import Vista.VentanaInicioSesion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class ControladorTablaUsuario {
     private Connection con;
@@ -18,7 +19,7 @@ public class ControladorTablaUsuario {
     public Usuario buscarUsuario(String nombre  ) throws Exception {
         Usuario user =null;
 
-        String plantilla = "SELECT nombre, contrasena, tipo FROM usuario WHERE lower(nombre)=?";
+        String plantilla = "SELECT nombre, contrasena, tipo FROM usuario WHERE nombre=?";
 
         PreparedStatement buscarUsuario  = con.prepareStatement(plantilla);
         buscarUsuario.setString(1, nombre);
@@ -28,13 +29,11 @@ public class ControladorTablaUsuario {
             user.setNombre(rs.getString("nombre"));
             user.setContrasena(rs.getString("contrasena"));
             user.setTipo(rs.getString("tipo"));
-            System.out.println(user.getNombre());
+            System.out.println(rs.getString("tipo"));
         }
 
         buscarUsuario.close();
 
         return user;
     }
-
-
 }

@@ -15,7 +15,7 @@ public class VentanaInicioSesion extends JDialog {
 
     public VentanaInicioSesion() {
         setContentPane(pPrincipal);
-        setSize(500,700);
+        setSize(450,700);
         setLocationRelativeTo(null);
     }
 

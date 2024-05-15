@@ -13,6 +13,10 @@ public class Usuario {
         this.tipo = tipo;
     }
 
+    public Usuario() {
+
+    }
+
     public Integer getIdUsuario() {
         return idUsuario;
     }

@@ -1,11 +1,11 @@
 package Controlador.ControladorVista;
 
-import Controlador.ControladorBD.ControladorTablaEquipo;
 import Vista.VentanaPrincipal;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 
 public class ControladorVP {
     private ControladorVista cv;

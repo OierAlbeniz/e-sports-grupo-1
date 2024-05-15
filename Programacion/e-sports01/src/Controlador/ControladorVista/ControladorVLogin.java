@@ -31,10 +31,10 @@ public class ControladorVLogin {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Le dice al controlador de vista que la operación elegida es alta
-            //vsesion.dispose();
-            //cv.crearMostrarVP();
+            vsesion.dispose();
+            cv.crearMostrarVP();
 
-            try{
+            /*try{
                 String nombre = vsesion.getTextField1().getText();
                 String password = vsesion.getTextField2().getText();
 
@@ -65,6 +65,8 @@ public class ControladorVLogin {
             }catch (Exception ex){
 
             }
+
+             */
 
 
         }
