@@ -11,5 +11,4 @@ public class ControladorPrincipal {
         cv = new ControladorVista(this);
         cb = new ControladorBD(this);
     }
-
 }

@@ -9,8 +9,6 @@ import java.sql.Connection;
 
 public class ControladorVP {
     private ControladorVista cv;
-    private ControladorTablaEquipo ctequipo;
-    private Connection con;
     private VentanaPrincipal vp;
 
     public ControladorVP(ControladorVista cv) {
@@ -18,17 +16,9 @@ public class ControladorVP {
     }
 
     public void crearMostrar() {
-        //try {
-            //ctequipo=new ControladorTablaEquipo(con);
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-            /*String nombre = ctequipo.rellenarNombre();
-            vp.getTfRelleno().setText(nombre);
-        }catch(Exception e){
-            vp.mostrarMensaje(e.getMessage());
-        }
-         */
     }
     public class BEditarAL implements ActionListener {
         @Override
