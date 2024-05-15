@@ -1,6 +1,7 @@
 package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
+import Controlador.ControladorVista.ControladorVJuego;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -21,8 +22,8 @@ public class ControladorBD {
     private ControladorPrincipal cp;
     private Connection con;
     public ControladorBD(ControladorPrincipal cp) {
-        this.cp = cp;
         abrirConexion();
+        this.cp = cp;
         ctUsuario = new ControladorTablaUsuario(con);
         ctpatrocinador = new ControladorTablaPatrocinador(con);
         ctjugador = new ControladorTablaJugador(con);

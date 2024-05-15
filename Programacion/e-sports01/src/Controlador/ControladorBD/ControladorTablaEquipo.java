@@ -11,16 +11,22 @@ public class ControladorTablaEquipo {
     }
 
 
-    public String rellenarNombre() throws Exception {
+    public String llenarNombre() throws Exception {
         String nombre = null;
 
-        String plantilla9 = "SELECT nombre FROM equipo WHERE id_equipo=1";
+        String plantilla = "SELECT nombre FROM equipo WHERE id_equipo=1";
 
-        PreparedStatement statement = con.prepareStatement(plantilla9);
+        PreparedStatement statement = con.prepareStatement(plantilla);
         ResultSet rs = statement.executeQuery();
 
+        if (rs.next()) {
+
+            nombre = rs.getString("nombre");
+        }
 
         statement.close();
+
         return nombre;
     }
+
 }
