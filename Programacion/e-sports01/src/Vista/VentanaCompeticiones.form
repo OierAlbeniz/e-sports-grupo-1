@@ -6,32 +6,32 @@
       <xy x="20" y="20" width="658" height="702"/>
     </constraints>
     <properties>
-      <background color="-16711846"/>
+      <background color="-16711751"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="cba3a" layout-manager="GridLayoutManager" row-count="8" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="20" left="0" bottom="0" right="0"/>
+      <grid id="cba3a" binding="panel2" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="650" height="450"/>
-            <preferred-size width="650" height="450"/>
-            <maximum-size width="650" height="450"/>
+            <minimum-size width="650" height="500"/>
+            <preferred-size width="650" height="500"/>
+            <maximum-size width="650" height="500"/>
           </grid>
         </constraints>
         <properties>
-          <background color="-16750043"/>
+          <background color="-16711751"/>
         </properties>
         <border type="none"/>
         <children>
           <toolbar id="c2bac">
             <constraints>
-              <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
               <alignmentX value="0.0"/>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
+              <background color="-16711751"/>
               <borderPainted value="false"/>
               <enabled value="false"/>
               <floatable value="true"/>
@@ -47,12 +47,12 @@
               <component id="e218f" class="javax.swing.JRadioButton" binding="rbNuevo">
                 <constraints/>
                 <properties>
-                  <background color="-16750043"/>
+                  <background color="-16711751"/>
                   <contentAreaFilled value="false"/>
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -68,7 +68,7 @@
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
@@ -80,12 +80,12 @@
               <component id="cadb0" class="javax.swing.JRadioButton" binding="rbEditar">
                 <constraints/>
                 <properties>
-                  <background color="-16750043"/>
+                  <background color="-16711751"/>
                   <contentAreaFilled value="false"/>
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="4"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
@@ -96,31 +96,17 @@
               </component>
             </children>
           </toolbar>
-          <component id="1f14a" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font name="Xirod" size="36" style="0"/>
-              <foreground color="-16711846"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="COMPETICIONES"/>
-              <verticalAlignment value="1"/>
-              <verticalTextPosition value="1"/>
-            </properties>
-          </component>
           <grid id="81337" binding="pNuevo" layout-manager="GridLayoutManager" row-count="4" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="600" height="-1"/>
                 <preferred-size width="600" height="-1"/>
                 <maximum-size width="600" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-16750043"/>
+              <background color="-16711751"/>
             </properties>
             <border type="none"/>
             <children>
@@ -130,7 +116,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Nombre"/>
                 </properties>
               </component>
@@ -140,7 +126,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Fecha Inicio"/>
                 </properties>
               </component>
@@ -153,9 +139,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -172,9 +158,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -188,7 +174,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="yyyy/mm/dd"/>
                 </properties>
               </component>
@@ -198,7 +184,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Fecha Fin"/>
                 </properties>
               </component>
@@ -211,9 +197,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -227,7 +213,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="yyyy/mm/dd"/>
                 </properties>
               </component>
@@ -237,7 +223,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Juego"/>
                 </properties>
               </component>
@@ -250,9 +236,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <lightWeightPopupEnabled value="false"/>
                   <model/>
                   <visible value="true"/>
@@ -260,31 +246,17 @@
               </component>
             </children>
           </grid>
-          <component id="11a0c" class="javax.swing.JLabel">
-            <constraints>
-              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
-            </constraints>
-            <properties>
-              <font name="Xirod" size="24" style="0"/>
-              <foreground color="-16711846"/>
-              <horizontalAlignment value="0"/>
-              <horizontalTextPosition value="0"/>
-              <text value="GESTIONAR"/>
-              <verticalAlignment value="3"/>
-              <verticalTextPosition value="3"/>
-            </properties>
-          </component>
           <grid id="28950" binding="pEliminar" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="600" height="-1"/>
                 <preferred-size width="600" height="-1"/>
                 <maximum-size width="600" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-16750043"/>
+              <background color="-16711751"/>
             </properties>
             <border type="none"/>
             <children>
@@ -294,7 +266,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Competición"/>
                 </properties>
               </component>
@@ -307,9 +279,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <lightWeightPopupEnabled value="false"/>
                   <model/>
                   <visible value="true"/>
@@ -324,19 +296,19 @@
           </grid>
           <vspacer id="aa6a0">
             <constraints>
-              <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
             </constraints>
           </vspacer>
           <component id="701b0" class="javax.swing.JButton">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-16711846"/>
+              <background color="-13750481"/>
               <borderPainted value="false"/>
               <focusPainted value="false"/>
-              <font name="Xirod" size="14" style="0"/>
-              <foreground color="-16750043"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-16711751"/>
               <requestFocusEnabled value="false"/>
               <text value="Aceptar"/>
             </properties>
@@ -344,14 +316,14 @@
           <grid id="bd65e" binding="pEditar" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
-              <grid row="5" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="600" height="-1"/>
                 <preferred-size width="600" height="-1"/>
                 <maximum-size width="600" height="-1"/>
               </grid>
             </constraints>
             <properties>
-              <background color="-16750043"/>
+              <background color="-16711751"/>
             </properties>
             <border type="none"/>
             <children>
@@ -361,7 +333,7 @@
                 </constraints>
                 <properties>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <text value="Competición"/>
                 </properties>
               </component>
@@ -374,9 +346,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <lightWeightPopupEnabled value="false"/>
                   <model/>
                   <visible value="true"/>
@@ -402,7 +374,7 @@
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -419,9 +391,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -444,7 +416,7 @@
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -462,12 +434,12 @@
                   <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <background color="-16750043"/>
+                  <background color="-16711751"/>
                   <contentAreaFilled value="false"/>
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -484,9 +456,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <lightWeightPopupEnabled value="false"/>
                   <model/>
                   <visible value="true"/>
@@ -507,7 +479,7 @@
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -524,9 +496,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <lightWeightPopupEnabled value="false"/>
                   <model/>
                   <visible value="true"/>
@@ -541,9 +513,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -566,7 +538,7 @@
                   <focusPainted value="false"/>
                   <focusable value="false"/>
                   <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-16711846"/>
+                  <foreground color="-13750481"/>
                   <horizontalTextPosition value="11"/>
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
@@ -583,9 +555,9 @@
                   </grid>
                 </constraints>
                 <properties>
-                  <background color="-16711846"/>
+                  <background color="-16711751"/>
                   <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-16750043"/>
+                  <foreground color="-13750481"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
                   <margin top="2" left="6" bottom="2" right="6"/>
@@ -595,46 +567,97 @@
               </component>
             </children>
           </grid>
+          <grid id="d0fc7" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="b9876" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Michroma" size="24" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="COMPETICIONES"/>
+                  <verticalAlignment value="1"/>
+                  <verticalTextPosition value="1"/>
+                </properties>
+              </component>
+              <component id="740a0" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Michroma" size="24" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="GESTIONAR"/>
+                  <verticalAlignment value="3"/>
+                  <verticalTextPosition value="3"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
         </children>
       </grid>
-      <grid id="fd265" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-        <margin top="10" left="0" bottom="0" right="0"/>
+      <grid id="fd265" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-16711846"/>
+          <background color="-16711751"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="86873" class="javax.swing.JButton" binding="bInicio">
+          <component id="a2101" class="javax.swing.JButton" binding="bVolver">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-16750043"/>
+              <background color="-16711751"/>
               <borderPainted value="false"/>
               <focusPainted value="false"/>
-              <font name="Xirod" size="14" style="0"/>
-              <foreground color="-16711846"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-13750481"/>
               <requestFocusEnabled value="false"/>
-              <text value="Inicio"/>
+              <text value="VOLVER"/>
             </properties>
           </component>
-          <component id="262f4" class="javax.swing.JButton" binding="bVolver">
+          <component id="d78ce" class="javax.swing.JButton" binding="bInicio">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-16711846"/>
+              <background color="-13750481"/>
               <borderPainted value="false"/>
               <focusPainted value="false"/>
-              <font name="Xirod" size="14" style="0"/>
-              <foreground color="-16750043"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-1"/>
+              <horizontalTextPosition value="0"/>
+              <margin top="5" left="13" bottom="5" right="13"/>
               <requestFocusEnabled value="false"/>
-              <text value="Volver"/>
+              <text value="INICIO"/>
             </properties>
           </component>
+          <vspacer id="f79c9">
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="10" height="10"/>
+                <preferred-size width="10" height="10"/>
+                <maximum-size width="10" height="10"/>
+              </grid>
+            </constraints>
+          </vspacer>
         </children>
       </grid>
     </children>
