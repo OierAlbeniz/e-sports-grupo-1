@@ -1,7 +1,10 @@
 package Vista;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class VentanaEquipos extends JFrame{
     private JRadioButton rbNuevo;
@@ -28,14 +31,47 @@ public class VentanaEquipos extends JFrame{
     private JButton bEntrenador;
     private JComboBox cbEquipo;
     private JComboBox cbDesvincular;
+    private JPanel panel2;
 
     public VentanaEquipos() {
         setContentPane(pEquipos);
         setLocationRelativeTo(null);
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        redondearPanel(panel2, 30);
+    }
+    // Método para establecer las esquinas redondeadas de un JButton
+    private void redondearPanel(JPanel panel, int cornerRadius) {
+        panel.setOpaque(false);
+        panel.setBorder(new redondear(cornerRadius));
     }
 
+    // Clase para crear un borde redondeado
+    class redondear implements Border {
+        private int radius;
+
+        public redondear(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(radius, radius, radius, radius);
+        }
+
+        @Override
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setColor(Color.black);
+            g2d.draw(new RoundRectangle2D.Double(x, y, width -1, height -1, radius, radius));
+            g2d.dispose();
+        }
+    }
     public JRadioButton getRbNuevo() {
         return rbNuevo;
     }

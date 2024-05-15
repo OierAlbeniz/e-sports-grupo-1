@@ -4,7 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 
 public class VentanaInicioSesion extends JDialog {
-    private JPanel contentPane;
     private JButton bSalir;
     private JButton bSesion;
     private JTextField txtUser;

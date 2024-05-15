@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.VentanaEditar">
-  <grid id="27dc6" binding="panelEditar" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelEditar" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
       <xy x="-152" y="-102" width="1305" height="826"/>
     </constraints>
     <properties>
-      <background color="-16711846"/>
+      <background color="-16711751"/>
     </properties>
     <border type="none"/>
     <children>
-      <grid id="d9e12" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+      <grid id="d9e12" layout-manager="GridLayoutManager" row-count="6" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
-            <minimum-size width="650" height="420"/>
-            <preferred-size width="650" height="420"/>
-            <maximum-size width="650" height="420"/>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
+            <minimum-size width="650" height="500"/>
+            <preferred-size width="650" height="500"/>
+            <maximum-size width="650" height="500"/>
           </grid>
         </constraints>
         <properties>
-          <background color="-16711846"/>
+          <background color="-16711751"/>
         </properties>
         <border type="none"/>
         <children>
           <component id="633fc" class="javax.swing.JButton" binding="bEditStaff">
             <constraints>
-              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -34,14 +34,17 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Staff"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <text value="Staff"/>
             </properties>
           </component>
           <component id="83b6e" class="javax.swing.JButton" binding="bEditPatrocinadores">
             <constraints>
-              <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -49,14 +52,17 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Patrocinadores"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <text value="Patrocinadores"/>
             </properties>
           </component>
           <component id="26e0c" class="javax.swing.JButton" binding="bEditJuegos">
             <constraints>
-              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -64,14 +70,17 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Juegos"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <text value="Juegos"/>
             </properties>
           </component>
           <component id="4e686" class="javax.swing.JButton" binding="bEditEquipos">
             <constraints>
-              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -79,14 +88,32 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Equipos"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value="Equipos"/>
+            </properties>
+          </component>
+          <component id="d0d88" class="javax.swing.JLabel">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                <preferred-size width="213" height="50"/>
+              </grid>
+            </constraints>
+            <properties>
+              <font name="Michroma" size="20" style="0"/>
+              <foreground color="-13750481"/>
+              <horizontalAlignment value="0"/>
+              <horizontalTextPosition value="0"/>
+              <text value="EDITAR"/>
             </properties>
           </component>
           <component id="55378" class="javax.swing.JButton" binding="bEditJugadores">
             <constraints>
-              <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -94,14 +121,36 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Jugadores"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value="Jugadores"/>
             </properties>
           </component>
+          <vspacer id="61e78">
+            <constraints>
+              <grid row="5" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="20"/>
+                <preferred-size width="-1" height="20"/>
+                <maximum-size width="-1" height="20"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <vspacer id="f955e">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="20"/>
+                <preferred-size width="-1" height="20"/>
+                <maximum-size width="-1" height="20"/>
+              </grid>
+            </constraints>
+          </vspacer>
           <component id="86fa6" class="javax.swing.JButton" binding="bEditCompeticiones">
             <constraints>
-              <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
                 <minimum-size width="200" height="200"/>
                 <preferred-size width="200" height="200"/>
                 <maximum-size width="200" height="200"/>
@@ -109,35 +158,48 @@
             </constraints>
             <properties>
               <alignmentY value="0.0"/>
-              <background color="-16750043"/>
-              <foreground color="-16711846"/>
-              <text value="Gestionar Competiciones"/>
+              <background color="-16711751"/>
+              <borderPainted value="true"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="16" style="0"/>
+              <foreground color="-13750481"/>
+              <margin top="0" left="0" bottom="0" right="0"/>
+              <text value="Competiciones"/>
             </properties>
           </component>
+          <vspacer id="2001a">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="-1" height="15"/>
+                <preferred-size width="-1" height="15"/>
+                <maximum-size width="-1" height="15"/>
+              </grid>
+            </constraints>
+          </vspacer>
         </children>
       </grid>
       <grid id="e476" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
         <margin top="10" left="0" bottom="0" right="0"/>
         <constraints>
-          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-16711846"/>
+          <background color="-16711751"/>
         </properties>
         <border type="none"/>
         <children>
-          <component id="f5b74" class="javax.swing.JButton" binding="bVolver">
+          <component id="ac0c0" class="javax.swing.JButton" binding="bVolver">
             <constraints>
               <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <background color="-16711846"/>
+              <background color="-16711751"/>
               <borderPainted value="false"/>
               <focusPainted value="false"/>
-              <font name="Xirod" size="14" style="0"/>
-              <foreground color="-16750043"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-13750481"/>
               <requestFocusEnabled value="false"/>
-              <text value="Volver"/>
+              <text value="SALIR"/>
             </properties>
           </component>
         </children>

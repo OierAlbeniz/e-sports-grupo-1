@@ -113,7 +113,7 @@ public class VentanaPrincipal extends JFrame{
         @Override
         public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
             Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setColor(Color.white);
+            g2d.setColor(Color.black);
             g2d.draw(new RoundRectangle2D.Double(x+29, y, 761, height - 1, radius, radius));
             g2d.dispose();
         }
