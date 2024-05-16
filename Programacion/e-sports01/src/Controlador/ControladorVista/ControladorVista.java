@@ -3,6 +3,8 @@ package Controlador.ControladorVista;
 import Controlador.ControladorPrincipal;
 import Modelo.Usuario;
 
+import java.time.LocalDate;
+
 public class ControladorVista {
 
     private ControladorPrincipal cp;
@@ -16,7 +18,7 @@ public class ControladorVista {
     private ControladorVStaff cvstaff;
     private ControladorVCompeticion cvcompeticion;
 
-    public ControladorVista(ControladorPrincipal cp) {
+    public ControladorVista(ControladorPrincipal cp) throws Exception {
         this.cp = cp;
         cvlogin = new ControladorVLogin(this);
         cvlogin.crearMostrar();
@@ -58,4 +60,8 @@ public class ControladorVista {
     public Usuario buscarUsuario(String user ) throws Exception {
         return cp.buscarUsuario(user);
     }
+    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
+        return cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+    }
+
 }

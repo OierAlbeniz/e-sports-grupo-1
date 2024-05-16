@@ -1,10 +1,14 @@
 package Controlador.ControladorVista;
 
+import Modelo.Usuario;
 import Vista.VentanaJugadores;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class ControladorVJugador {
 
@@ -54,9 +58,39 @@ public class ControladorVJugador {
                 vJugadores.getpNuevo().setVisible(true);
                 vJugadores.getpEditar().setVisible(false);
                 vJugadores.getpEliminar().setVisible(false);
+                vJugadores.addAceptar(new addBotonAceptar());
             }
+
+
+
         }
     }
+public class  addBotonAceptar implements ActionListener{
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        String nombre= vJugadores.getTfNombre().getText();
+        String primerApellido = vJugadores.getTfApellido1().getText();
+        String segundoApellido = vJugadores.getTfApellido2().getText();
+        Integer sueldo = Integer.valueOf(vJugadores.getTfSueldo().getText());
+        String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
+        String nickname = vJugadores.getTfNickname().getText();
+        String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
+        String equipo = (String) vJugadores.getCbEquipo().getSelectedItem();
+
+        try {
+            Usuario anadirJugador = cv.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+
+
+    }
+}
+
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
