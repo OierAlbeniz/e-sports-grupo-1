@@ -1,5 +1,6 @@
 package Controlador.ControladorVista;
 
+import Modelo.Equipo;
 import Modelo.Usuario;
 import Vista.VentanaJugadores;
 
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class ControladorVJugador {
 
@@ -34,6 +36,7 @@ public class ControladorVJugador {
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
         vJugadores.getpEliminar().setVisible(false);
+        llenarComboEquipo();
     }
     public class BVolverAL implements ActionListener {
         @Override
@@ -79,7 +82,7 @@ public class  addBotonAceptar implements ActionListener{
         LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
         String nickname = vJugadores.getTfNickname().getText();
         String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
-        String equipo = (String) vJugadores.getCbEquipo().getSelectedItem();
+        String equipo = String.valueOf(vJugadores.getCbEquipo().getSelectedIndex()+1);
 
         try {
             Usuario anadirJugador = cv.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
@@ -111,6 +114,20 @@ public class  addBotonAceptar implements ActionListener{
                 vJugadores.getpEditar().setVisible(false);
                 vJugadores.getpEliminar().setVisible(true);
             }
+        }
+    }
+    public void llenarComboEquipo(){
+
+
+
+        String nombre = null;
+        try {
+            ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
+            listaEquipos.forEach(o-> vJugadores.getCbEquipo().addItem(o.getNombre()));
+
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
         }
     }
 }

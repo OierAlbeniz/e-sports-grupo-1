@@ -13,11 +13,15 @@ public class Equipo {
     private List<Entrenador> listaEntrenador;
     private List<Clasificacion> listaClasificacion;
 
-    public Equipo(String idEquipo, String nombre, LocalDate fechaFundacion, Patrocinador patrocinador) {
+    public Equipo(String idEquipo) {
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
         this.patrocinador = patrocinador;
+    }
+
+    public Equipo() {
+
     }
 
     public Equipo(String idEquipo, String nombre, LocalDate fechaFundacion, List<Jugador> listaJugador, Patrocinador patrocinador, Asistente asistente, List<Entrenador> listaEntrenador, List<Clasificacion> listaClasificacion) {

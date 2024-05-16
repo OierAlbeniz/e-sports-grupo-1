@@ -1,14 +1,19 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorBD.ControladorTablaEquipo;
+import Modelo.Equipo;
 import Vista.VentanaEditar;
+import Vista.VentanaEquipos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorVEditar {
     private ControladorVista cv;
+    private VentanaEquipos veq;
     private ControladorTablaEquipo ctequipo;
     private Connection con;
     private VentanaEditar vEditar;
@@ -63,6 +68,7 @@ public class ControladorVEditar {
         public void actionPerformed(ActionEvent e) {
             cv.crearMostrarJuegos();
             vEditar.dispose();
+
         }
     }
     public class BStaffAL implements ActionListener {

@@ -1,9 +1,12 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
+import Modelo.Equipo;
 import Modelo.Usuario;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorVista {
 
@@ -62,6 +65,9 @@ public class ControladorVista {
     }
     public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
         return cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+    }
+    public ArrayList selectEquipo(String nombre ) throws Exception {
+        return cp.selectEquipo(nombre);
     }
 
 }

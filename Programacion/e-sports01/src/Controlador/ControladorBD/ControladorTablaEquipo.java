@@ -1,8 +1,12 @@
 package Controlador.ControladorBD;
 
+import Modelo.Equipo;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorTablaEquipo {
     private Connection con;
@@ -29,4 +33,27 @@ public class ControladorTablaEquipo {
         return nombre;
     }
 
-}
+
+
+        public ArrayList selectEquipo(String nombre) throws Exception {
+            ArrayList<Equipo> equipos = new ArrayList<>();
+
+            String plantilla = "SELECT nombre FROM equipo";
+            PreparedStatement selectEquipos = con.prepareStatement(plantilla);
+            ResultSet rs = selectEquipos.executeQuery();
+
+            while (rs.next()) {
+                Equipo equipo = new Equipo(); // Crear un nuevo objeto Equipo en cada iteración
+                equipo.setNombre(rs.getString("nombre"));
+                equipos.add(equipo);
+
+            }
+            rs.close();
+            selectEquipos.close();
+
+            return equipos;
+
+        }
+    }
+
+
