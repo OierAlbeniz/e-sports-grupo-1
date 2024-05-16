@@ -30,6 +30,8 @@ public class ControladorVCompeticion {
         vCompeticiones.getpNuevo().setVisible(false);
         vCompeticiones.getpEditar().setVisible(false);
         vCompeticiones.getpEliminar().setVisible(false);
+
+
     }
     public class BVolverAL implements ActionListener {
         @Override

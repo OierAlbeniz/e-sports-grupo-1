@@ -3,21 +3,19 @@ package Modelo;
 import java.time.LocalDate;
 import java.util.List;
 
-import java.util.ArrayList;
-
 public class Competicion {
 
 
     private LocalDate fechaInicio;
     private  LocalDate fechaFin;
-    private boolean estado;
+    private String estado;
     private Integer idCompeticion;
     private String nombre;
     private List<Jornada> listaJornada;
     private Juego juego;
 
 
-    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
+    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
 
         this.idCompeticion = idCompeticion;
         this.nombre = nombre;
@@ -27,7 +25,7 @@ public class Competicion {
         this.juego = juego;
     }
 
-    private LocalDate getFechaInicio() {
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
@@ -35,20 +33,12 @@ public class Competicion {
         this.fechaInicio = fechaInicio;
     }
 
-    private LocalDate getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
     private void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
-    }
-
-    private boolean isEstado() {
-        return estado;
-    }
-
-    private void setEstado(boolean estado) {
-        this.estado = estado;
     }
 
     private Integer getIdCompeticion() {
@@ -81,5 +71,13 @@ public class Competicion {
 
     public void setJuego(Juego juego) {
         this.juego = juego;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 }

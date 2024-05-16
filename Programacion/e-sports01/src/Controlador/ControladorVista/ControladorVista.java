@@ -1,7 +1,11 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
+import Modelo.Juego;
 import Modelo.Usuario;
+
+import java.sql.SQLException;
+import java.util.List;
 
 public class ControladorVista {
 
@@ -58,4 +62,7 @@ public class ControladorVista {
     public Usuario buscarUsuario(String user ) throws Exception {
         return cp.buscarUsuario(user);
     }
-}
+
+    public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
+
+    }

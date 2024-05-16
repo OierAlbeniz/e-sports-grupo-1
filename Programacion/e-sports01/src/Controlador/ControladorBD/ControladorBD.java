@@ -2,11 +2,13 @@ package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorVista.ControladorVJuego;
+import Modelo.Juego;
 import Modelo.Usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ControladorBD {
     private ControladorTablaAsistente ctasistente;
@@ -57,4 +59,7 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user ) throws Exception {
         return ctUsuario.buscarUsuario(user);
     }
-}
+
+    public List<Juego> buscarJuegos() throws SQLException {return  ctjuego.buscarJuegos();}
+
+    }
