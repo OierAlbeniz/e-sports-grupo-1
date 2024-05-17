@@ -11,6 +11,7 @@ public class VentanaEditar extends JFrame {
     private JButton bEditPatrocinadores;
     private JButton bEditStaff;
     private JButton bEditJuegos;
+    private JButton bVolver;
 
     public VentanaEditar() {
         setContentPane(panelEditar);
@@ -92,4 +93,9 @@ public class VentanaEditar extends JFrame {
     public void addJuegos(ActionListener al) {
         bEditJuegos.addActionListener(al);
     }
+
+    public void addVolver(ActionListener al) {
+        bVolver.addActionListener(al);
+    }
+
 }

@@ -1,8 +1,10 @@
 package Vista;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.geom.RoundRectangle2D;
 
 public class VentanaPrincipal extends JFrame{
     private JPanel panel1;
@@ -20,6 +22,8 @@ public class VentanaPrincipal extends JFrame{
 
     private JButton bConsulta;
     private JButton bPerfil;
+    private JPanel panel2;
+    private JLabel jlTipo;
     private JTextField tfRelleno;
 
 
@@ -30,7 +34,9 @@ public class VentanaPrincipal extends JFrame{
         setContentPane(panel1);
         setLocationRelativeTo(null);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        redondearPanel(panel2, 30);
     }
+    /*
     public void initComponets()
     {
         GridBagConstraints gbc = new GridBagConstraints();
@@ -76,6 +82,40 @@ public class VentanaPrincipal extends JFrame{
         gbc.weighty = 0.15;
         panel1.add(p4, gbc);
 
+    }
+     */
+
+    // Método para establecer las esquinas redondeadas de un JButton
+    private void redondearPanel(JPanel panel, int cornerRadius) {
+        panel.setOpaque(false);
+        panel.setBorder(new redondear(cornerRadius));
+    }
+
+    // Clase para crear un borde redondeado
+    class redondear implements Border {
+        private int radius;
+
+        public redondear(int radius) {
+            this.radius = radius;
+        }
+
+        @Override
+        public Insets getBorderInsets(Component c) {
+            return new Insets(radius, radius, radius, radius);
+        }
+
+        @Override
+        public boolean isBorderOpaque() {
+            return true;
+        }
+
+        @Override
+        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
+            Graphics2D g2d = (Graphics2D) g.create();
+            g2d.setColor(Color.black);
+            g2d.draw(new RoundRectangle2D.Double(x+29, y, 761, height - 1, radius, radius));
+            g2d.dispose();
+        }
     }
 
 
@@ -223,9 +263,29 @@ public class VentanaPrincipal extends JFrame{
         this.btPerfil = btPerfil;
     }
 
+    public JPanel getPanel2() {
+        return panel2;
+    }
+
+    public void setPanel2(JPanel panel2) {
+        this.panel2 = panel2;
+    }
+
+    public JLabel getJlTipo() {
+        return jlTipo;
+    }
+
+    public void setJlTipo(JLabel jlTipo) {
+        this.jlTipo = jlTipo;
+    }
+
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
+    public void addcerrarInsc(ActionListener al) {
+        bCerrarInsc.addActionListener(al);
+    }
+
     public void addPerfil(ActionListener al) {
     }
     public void botonPerfil(ActionListener al){

@@ -27,6 +27,10 @@ public class Competicion {
         this.juego = juego;
     }
 
+    public Competicion() {
+
+    }
+
     private LocalDate getFechaInicio() {
         return fechaInicio;
     }

@@ -1,0 +1,1332 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="Vista.VentanaClasificacion">
+  <grid id="27dc6" binding="pPrincipal" layout-manager="GridLayoutManager" row-count="2" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="1920" height="1080"/>
+    </constraints>
+    <properties>
+      <background color="-16711751"/>
+      <maximumSize width="1920" height="1080"/>
+      <minimumSize width="1920" height="1080"/>
+      <preferredSize width="1920" height="1080"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <grid id="29ab2" binding="panel2" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="20" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="650" height="700"/>
+            <preferred-size width="650" height="700"/>
+            <maximum-size width="650" height="700"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-16711751"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <toolbar id="5cc4">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <alignmentX value="0.0"/>
+              <alignmentY value="0.0"/>
+              <background color="-16711751"/>
+              <borderPainted value="false"/>
+              <enabled value="false"/>
+              <floatable value="true"/>
+              <focusable value="true"/>
+              <foreground color="-394241"/>
+              <margin top="20" left="0" bottom="20" right="0"/>
+              <orientation value="0"/>
+              <requestFocusEnabled value="false"/>
+              <visible value="true"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="8e730" class="javax.swing.JLabel">
+                <constraints/>
+                <properties>
+                  <font name="Michroma" size="18" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalAlignment value="2"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="COMETICION"/>
+                  <verticalAlignment value="3"/>
+                  <verticalTextPosition value="3"/>
+                </properties>
+              </component>
+              <component id="8d61" class="javax.swing.JComboBox">
+                <constraints/>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <lightWeightPopupEnabled value="false"/>
+                  <model/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+            </children>
+          </toolbar>
+          <grid id="d2b81" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="1" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="eb46e" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Michroma" size="28" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalAlignment value="0"/>
+                  <horizontalTextPosition value="0"/>
+                  <text value="CLASIFICACIÓN"/>
+                  <verticalAlignment value="3"/>
+                  <verticalTextPosition value="3"/>
+                </properties>
+              </component>
+            </children>
+          </grid>
+          <grid id="f96ed" layout-manager="GridLayoutManager" row-count="10" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="640" height="400"/>
+                <preferred-size width="640" height="400"/>
+                <maximum-size width="640" height="400"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="27b52" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="d02b7" class="javax.swing.JLabel" binding="equipo1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="172f4" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e041a" class="javax.swing.JLabel" binding="equipo2">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="2e252" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="99712" class="javax.swing.JLabel" binding="equipo3">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="2dedc" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="8af2b" class="javax.swing.JLabel" binding="equipo4">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5c8d7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="10c04" class="javax.swing.JLabel" binding="equipo5">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5e1af" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="523c1" class="javax.swing.JLabel" binding="equipo6">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="fd330" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f0f0f" class="javax.swing.JLabel" binding="equipo7">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="a12f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="63d03" class="javax.swing.JLabel" binding="equipo8">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="7b46e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="8" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="50957" class="javax.swing.JLabel" binding="equipo9">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="63311" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="9" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="887e6" class="javax.swing.JLabel" binding="equipo10">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="b8842" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="a9407" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="1"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="dd730" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9c588" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="ca62a" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f9a3" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="3"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="252f2" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="63821" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="4"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="69408" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="137d9" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="5"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="cf553" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="94799" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="6"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5067e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="3d247" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="7"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="30b75" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="af685" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="8"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="df787" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="8" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="7d929" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="9"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="a5227" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="9" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e30aa" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="10"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="29094" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="f037a" class="javax.swing.JLabel" binding="jornada1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="c52c9" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="6838b" class="javax.swing.JLabel" binding="jornada2">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="f817" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="e4e61" class="javax.swing.JLabel" binding="jornada3">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="63641" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="42d3f" class="javax.swing.JLabel" binding="jornada4">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="7655b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9b404" class="javax.swing.JLabel" binding="jornada5">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="64b0d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="2f394" class="javax.swing.JLabel" binding="jornada6">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="d02e6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="29993" class="javax.swing.JLabel" binding="jornada7">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="87188" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="7212" class="javax.swing.JLabel" binding="jornada8">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="1b128" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="8" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="78545" class="javax.swing.JLabel" binding="jornada9">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="9136" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="9" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9a531" class="javax.swing.JLabel" binding="jornada10">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="1fc36" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="312f" class="javax.swing.JLabel" binding="puntos1">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="41"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="5829e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="1" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="a637d" class="javax.swing.JLabel" binding="puntos2">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="39"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="64b4e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="62b83" class="javax.swing.JLabel" binding="puntos3">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="32"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="8667f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="b2a40" class="javax.swing.JLabel" binding="puntos4">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="28"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="55a44" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9e164" class="javax.swing.JLabel" binding="puntos5">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="27"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="d5c7f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="9ccc5" class="javax.swing.JLabel" binding="puntos6">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="21"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="7f0f6" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="67570" class="javax.swing.JLabel" binding="puntos7">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="17"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="aaf6b" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="5969" class="javax.swing.JLabel" binding="puntos8">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="13"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="a30eb" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="5c70e" class="javax.swing.JLabel" binding="puntos9">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="9"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="4313f" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="9" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="8cb7c" class="javax.swing.JLabel" binding="puntos10">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="2"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+          <grid id="2aa2" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="2" fill="1" indent="0" use-parent-layout="false">
+                <minimum-size width="640" height="-1"/>
+                <preferred-size width="640" height="-1"/>
+                <maximum-size width="640" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <grid id="5a81d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="53531" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="POSICIÓN"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="3dc42" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="d81cb" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="EQUIPO"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="3e0d" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="3" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="a7ef4" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="PUNTOS"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+              <grid id="8b253" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+                <margin top="0" left="0" bottom="0" right="0"/>
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="120" height="-1"/>
+                    <preferred-size width="120" height="-1"/>
+                    <maximum-size width="120" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                </properties>
+                <border type="none"/>
+                <children>
+                  <component id="db08" class="javax.swing.JLabel">
+                    <constraints>
+                      <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <font name="Michroma" size="16" style="0"/>
+                      <foreground color="-13750481"/>
+                      <text value="JORNADA"/>
+                    </properties>
+                  </component>
+                </children>
+              </grid>
+            </children>
+          </grid>
+        </children>
+      </grid>
+      <grid id="c1e2d" layout-manager="GridLayoutManager" row-count="2" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+        <margin top="10" left="0" bottom="0" right="0"/>
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <background color="-16711751"/>
+        </properties>
+        <border type="none"/>
+        <children>
+          <vspacer id="b2d75">
+            <constraints>
+              <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                <minimum-size width="10" height="10"/>
+                <preferred-size width="10" height="10"/>
+                <maximum-size width="10" height="10"/>
+              </grid>
+            </constraints>
+          </vspacer>
+          <component id="82d1a" class="javax.swing.JButton" binding="bVolver">
+            <constraints>
+              <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-13750481"/>
+              <requestFocusEnabled value="false"/>
+              <text value="VOLVER"/>
+            </properties>
+          </component>
+          <component id="29be4" class="javax.swing.JButton" binding="bInicio">
+            <constraints>
+              <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <background color="-13750481"/>
+              <borderPainted value="false"/>
+              <focusPainted value="false"/>
+              <font name="Michroma" size="14" style="0"/>
+              <foreground color="-1"/>
+              <horizontalTextPosition value="0"/>
+              <margin top="5" left="13" bottom="5" right="13"/>
+              <requestFocusEnabled value="false"/>
+              <text value="INICIO"/>
+            </properties>
+          </component>
+        </children>
+      </grid>
+    </children>
+  </grid>
+</form>

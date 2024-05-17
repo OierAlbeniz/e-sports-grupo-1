@@ -3,22 +3,26 @@ package Modelo;
 import java.util.List;
 
 public class Patrocinador {
-    private String idPatrocinador;
+    private Integer idPatrocinador;
     private String nombre;
     private List<Equipo> listaEquipo;
 
 
-    public Patrocinador(String idPatrocinador, String nombre, List<Equipo> listaEquipo) {
+    public Patrocinador(Integer idPatrocinador, String nombre, List<Equipo> listaEquipo) {
         this.idPatrocinador = idPatrocinador;
         this.nombre = nombre;
         this.listaEquipo = listaEquipo;
     }
 
-    public String getIdPatrocinador() {
+    public Patrocinador() {
+
+    }
+
+    public Integer getIdPatrocinador() {
         return idPatrocinador;
     }
 
-    public void setIdPatrocinador(String idPatrocinador) {
+    public void setIdPatrocinador(Integer idPatrocinador) {
         this.idPatrocinador = idPatrocinador;
     }
 
