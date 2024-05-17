@@ -73,23 +73,38 @@ public class  addBotonAceptar implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        String nombre= vJugadores.getTfNombre().getText();
-        String primerApellido = vJugadores.getTfApellido1().getText();
-        String segundoApellido = vJugadores.getTfApellido2().getText();
-        Integer sueldo = Integer.valueOf(vJugadores.getTfSueldo().getText());
-        String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-        LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
-        String nickname = vJugadores.getTfNickname().getText();
-        String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
-        String equipo = String.valueOf(vJugadores.getCbEquipo().getSelectedIndex()+1);
 
-        try {
-            Usuario anadirJugador = cv.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
-        } catch (Exception ex) {
-            throw new RuntimeException(ex);
+        if (vJugadores.getRbNuevo().isSelected()) {
+
+
+            String nombre = vJugadores.getTfNombre().getText();
+            String primerApellido = vJugadores.getTfApellido1().getText();
+            String segundoApellido = vJugadores.getTfApellido2().getText();
+            Integer sueldo = Integer.valueOf(vJugadores.getTfSueldo().getText());
+            String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
+            String nickname = vJugadores.getTfNickname().getText();
+            String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
+            String equipo = String.valueOf(vJugadores.getCbEquipo().getSelectedIndex() + 1);
+
+            try {
+                Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        }else if (vJugadores.getRbEliminar().isSelected()){
+
+            try {
+               Usuario eliminarJugador = cv.eliminarJugador
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
+
+        }else if (vJugadores.getRbEditar().isSelected()){
+            JOptionPane.showMessageDialog(null,"editar" );
         }
-
 
     }
 }
