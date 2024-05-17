@@ -2,15 +2,13 @@ package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
 
-import Modelo.Competicion;
-import Modelo.Equipo;
-import Modelo.Jugador;
-import Modelo.Usuario;
+import Modelo.*;
 
 
 import Modelo.Equipo;
 import Modelo.Usuario;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -68,7 +66,7 @@ public class ControladorVista {
         cvcompeticion.crearMostrar();
     }
 
-    public Usuario buscarUsuario(String user ) throws Exception {
+    public Usuario buscarUsuario(String user) throws Exception {
         return cp.buscarUsuario(user);
     }
 
@@ -97,6 +95,10 @@ public class ControladorVista {
     public ArrayList selectEquipo(String nombre ) throws Exception {
         return cp.selectEquipo(nombre);
     }
-
+    public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
+    public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
+    public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
+    public List<String> buscarCompeticiones() throws SQLException {return cp.buscarCompeticiones();}
+    public void  eliminarJugador(String nombre , String equipo)
 
 }
