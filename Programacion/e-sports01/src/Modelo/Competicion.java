@@ -10,14 +10,14 @@ public class Competicion {
 
     private LocalDate fechaInicio;
     private  LocalDate fechaFin;
-    private boolean estado;
+    private String estado;
     private Integer idCompeticion;
     private String nombre;
     private List<Jornada> listaJornada;
     private Juego juego;
 
 
-    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, boolean estado) {
+    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
 
         this.idCompeticion = idCompeticion;
         this.nombre = nombre;
@@ -31,35 +31,44 @@ public class Competicion {
 
     }
 
-    private LocalDate getFechaInicio() {
+    public Competicion(String nombre, LocalDate fechaIni, LocalDate fechaFinal, String abierto, Juego j) {
+        this.idCompeticion = idCompeticion;
+        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+        this.juego = juego;
+    }
+
+    public LocalDate getFechaInicio() {
         return fechaInicio;
     }
 
-    private void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(LocalDate fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
 
-    private LocalDate getFechaFin() {
+    public LocalDate getFechaFin() {
         return fechaFin;
     }
 
-    private void setFechaFin(LocalDate fechaFin) {
+    public void setFechaFin(LocalDate fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    private boolean isEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    private void setEstado(boolean estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    private Integer getIdCompeticion() {
+    public Integer getIdCompeticion() {
         return idCompeticion;
     }
 
-    private void setIdCompeticion(Integer idCompeticion) {
+    public void setIdCompeticion(Integer idCompeticion) {
         this.idCompeticion = idCompeticion;
     }
 
