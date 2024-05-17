@@ -1,7 +1,12 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
+import Modelo.Competicion;
+import Modelo.Equipo;
+import Modelo.Jugador;
 import Modelo.Usuario;
+
+import java.util.List;
 
 public class ControladorVista {
 
@@ -57,5 +62,23 @@ public class ControladorVista {
 
     public Usuario buscarUsuario(String user ) throws Exception {
         return cp.buscarUsuario(user);
+    }
+    public Integer cantidadEquipos() throws Exception {
+        return cp.cantidadEquipos();
+    }
+    public List<Equipo> llenarEquipos() throws Exception {
+        return cp.llenarEquipos();
+    }
+    public List<Jugador> llenarJugadores(Integer x) throws Exception {
+        return cp.llenarJugadores(x);
+    }
+    public List<Competicion> llenarCompeticiones() throws Exception {
+        return cp.llenarCompeticiones();
+    }
+    public List<Equipo> llenarEquiposCompeticion(Integer x) throws Exception {
+        return cp.llenarEquiposCompeticion(x);
+    }
+    public void generarCalendario() throws Exception {
+        cp.generarCalendario();
     }
 }

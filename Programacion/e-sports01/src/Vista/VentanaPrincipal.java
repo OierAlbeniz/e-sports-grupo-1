@@ -83,7 +83,6 @@ public class VentanaPrincipal extends JFrame{
         panel1.add(p4, gbc);
 
     }
-
      */
 
     // Método para establecer las esquinas redondeadas de un JButton
@@ -275,6 +274,10 @@ public class VentanaPrincipal extends JFrame{
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
+    public void addcerrarInsc(ActionListener al) {
+        bCerrarInsc.addActionListener(al);
+    }
+
     public void addPerfil(ActionListener al) {
     }
     public void botonPerfil(ActionListener al){

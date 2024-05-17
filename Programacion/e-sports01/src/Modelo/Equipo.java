@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 public class Equipo {
-    private String idEquipo;
+    private Integer idEquipo;
     private String nombre;
     private LocalDate fechaFundacion;
     private List<Jugador> listaJugador;
@@ -13,14 +13,14 @@ public class Equipo {
     private List<Entrenador> listaEntrenador;
     private List<Clasificacion> listaClasificacion;
 
-    public Equipo(String idEquipo, String nombre, LocalDate fechaFundacion, Patrocinador patrocinador) {
+    public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion, Patrocinador patrocinador) {
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
         this.patrocinador = patrocinador;
     }
 
-    public Equipo(String idEquipo, String nombre, LocalDate fechaFundacion, List<Jugador> listaJugador, Patrocinador patrocinador, Asistente asistente, List<Entrenador> listaEntrenador, List<Clasificacion> listaClasificacion) {
+    public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion, List<Jugador> listaJugador, Patrocinador patrocinador, Asistente asistente, List<Entrenador> listaEntrenador, List<Clasificacion> listaClasificacion) {
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
@@ -31,6 +31,10 @@ public class Equipo {
         this.listaClasificacion = listaClasificacion;
     }
 
+    public Equipo() {
+
+    }
+
     public Asistente getAsistente() {
         return asistente;
     }
@@ -39,11 +43,11 @@ public class Equipo {
         this.asistente = asistente;
     }
 
-    public String getIdEquipo() {
+    public Integer getIdEquipo() {
         return idEquipo;
     }
 
-    public void setIdEquipo(String idEquipo) {
+    public void setIdEquipo(Integer idEquipo) {
         this.idEquipo = idEquipo;
     }
 

@@ -3,7 +3,7 @@ package Modelo;
 import java.time.LocalDate;
 
 public class Jugador {
-    private String idIntegrante;
+    private Integer idIntegrante;
     private String nombre;
     private String apellido1;
     private String apellido2;
@@ -14,7 +14,7 @@ public class Jugador {
     private String rol;
     private Equipo equipo;
 
-    public Jugador(String idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, Equipo equipo) {
+    public Jugador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, Equipo equipo) {
         this.idIntegrante = idIntegrante;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -27,11 +27,15 @@ public class Jugador {
         this.equipo = equipo;
     }
 
-    public String getIdIntegrante() {
+    public Jugador() {
+
+    }
+
+    public Integer getIdIntegrante() {
         return idIntegrante;
     }
 
-    public void setIdIntegrante(String idIntegrante) {
+    public void setIdIntegrante(Integer idIntegrante) {
         this.idIntegrante = idIntegrante;
     }
 
