@@ -44,6 +44,7 @@ public class VentanaJugadores extends JFrame {
     private JComboBox cbNuevoRol;
     private JRadioButton rbEditEquipo;
     private JComboBox cbNuevoEquipo;
+    private JButton btAceptar;
 
     public VentanaJugadores() {
         setContentPane(pJugadores);
@@ -387,7 +388,9 @@ public class VentanaJugadores extends JFrame {
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-
+    public void addAceptar(ActionListener al) {
+        btAceptar.addActionListener(al);
+    }
 
     public void limpiar() {
         tfNombre.setText("");

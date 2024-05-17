@@ -1,9 +1,16 @@
 package Controlador.ControladorVista;
 
+
 import Modelo.Competicion;
 import Modelo.Equipo;
 import Modelo.Jugador;
+
+import Modelo.Usuario;
+import Vista.VentanaEditar;
+import Vista.VentanaInicioSesion;
+
 import Vista.VentanaPrincipal;
+import Vista.VistaPerfil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,8 +22,11 @@ import java.util.List;
 public class ControladorVP {
     private ControladorVista cv;
     private VentanaPrincipal vp;
+    private ControladorVLogin cvl;
+    private VistaPerfil vper;
+    private VentanaInicioSesion vsesion;
 
-    public ControladorVP(ControladorVista cv) {
+    public ControladorVP(ControladorVista cv) throws Exception {
         this.cv = cv;
     }
 
@@ -24,8 +34,13 @@ public class ControladorVP {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
+
             vp.addcerrarInsc(new BCerrarInscAL());
+
+
+
     }
+
     public class BEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -33,6 +48,7 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
     public class BCerrarInscAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -61,4 +77,9 @@ public class ControladorVP {
             }
         }
     }
+
+
+
+
+
 }

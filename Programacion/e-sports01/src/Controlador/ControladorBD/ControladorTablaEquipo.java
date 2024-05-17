@@ -1,7 +1,10 @@
 package Controlador.ControladorBD;
 
 import Modelo.Equipo;
+
 import Modelo.Patrocinador;
+
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -114,4 +117,27 @@ public class ControladorTablaEquipo {
         return equipo;
     }
 
-}
+
+
+        public ArrayList selectEquipo(String nombre) throws Exception {
+            ArrayList<Equipo> equipos = new ArrayList<>();
+
+            String plantilla = "SELECT nombre FROM equipo";
+            PreparedStatement selectEquipos = con.prepareStatement(plantilla);
+            ResultSet rs = selectEquipos.executeQuery();
+
+            while (rs.next()) {
+                Equipo equipo = new Equipo(); // Crear un nuevo objeto Equipo en cada iteración
+                equipo.setNombre(rs.getString("nombre"));
+                equipos.add(equipo);
+
+            }
+            rs.close();
+            selectEquipos.close();
+
+            return equipos;
+
+        }
+    }
+
+

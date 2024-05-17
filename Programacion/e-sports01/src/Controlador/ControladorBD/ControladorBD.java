@@ -1,12 +1,21 @@
 package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
+
 import Controlador.ControladorVista.ControladorVJuego;
 import Modelo.*;
+
+import Modelo.Equipo;
+import Modelo.Usuario;
+
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+
+import java.time.LocalDate;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,6 +73,7 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user ) throws Exception {
         return ctUsuario.buscarUsuario(user);
     }
+
     public Integer cantidadEquipos() throws Exception {
         return ctequipo.cantidadEquipos();
     }
@@ -100,4 +110,14 @@ public class ControladorBD {
             System.out.println("Error al generar el calendario: " + ex.getMessage());
         }
     }
+
+    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
+        return ctjugador.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+    }
+
+    public ArrayList selectEquipo(String nombre ) throws Exception {
+        return ctequipo.selectEquipo(nombre);
+    }
+
+
 }

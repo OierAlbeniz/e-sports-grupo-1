@@ -1,15 +1,19 @@
 package Controlador.ControladorVista;
 
 import Modelo.Usuario;
+import javax.swing.*;
+import java.awt.*;
 import Vista.VentanaInicioSesion;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ControladorVLogin {
+
     private ControladorVista cv;
     private VentanaInicioSesion vsesion;
     private ControladorVP cvp;
@@ -31,10 +35,9 @@ public class ControladorVLogin {
         @Override
         public void actionPerformed(ActionEvent e) {
             // Le dice al controlador de vista que la operación elegida es alta
-            vsesion.dispose();
-            cv.crearMostrarVP();
 
-            /*try{
+
+            try{
                 String nombre = vsesion.getTextField1().getText();
                 String password = vsesion.getTextField2().getText();
 
@@ -59,14 +62,22 @@ public class ControladorVLogin {
                             "\n un numero " +
                             "\n y un caracter especial");
                 Usuario user = cv.buscarUsuario(nombre);
-                  //  if (user.getTipo()=="administrador")
+                   if (user.getContrasena().equals(password)){
+                       vsesion.dispose();
+                       cv.crearMostrarVP();
+                       String tipo=user.getTipo();
+                       System.out.println(tipo);
+                   }else {
+                       UIManagerConfig.setOptionPaneBackground(Color.red);
+                       JOptionPane.showMessageDialog(null,"el usuario o la contraseña son incorrectas");
+                   }
 
 
             }catch (Exception ex){
 
             }
 
-             */
+
 
 
         }

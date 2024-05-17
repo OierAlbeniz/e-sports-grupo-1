@@ -33,9 +33,9 @@ INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES ('Los Pirat
 
 
 -- Inserts para la tabla USUARIO
-INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('ander', 'contrasena1', 'administrador');
-INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('oier', 'contrasena2', 'usuario');
-INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('inigo', 'contrasena3', 'usuario');
+INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('ander', 'Jm1234@', 'administrador');
+INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('oier', 'Jm1234@', 'usuario');
+INSERT INTO USUARIO (NOMBRE, CONTRASENA, TIPO) VALUES ('inigo', 'Jm1234@', 'usuario');
 
 -- Inserts para la tabla JUGADOR
 -- Equipo 1
