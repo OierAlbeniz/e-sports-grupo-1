@@ -1,6 +1,7 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorPrincipal;
+import Modelo.Competicion;
 import Modelo.Juego;
 import Modelo.Usuario;
 
@@ -54,7 +55,7 @@ public class ControladorVista {
         cvstaff=new ControladorVStaff(this);
         cvstaff.crearMostrar();
     }
-    public void crearMostrarCompeticiones() {
+    public void crearMostrarCompeticiones() throws SQLException {
         cvcompeticion=new ControladorVCompeticion(this);
         cvcompeticion.crearMostrar();
     }
@@ -64,5 +65,8 @@ public class ControladorVista {
     }
 
     public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
+    public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
+    public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
+    public List<String> buscarCompeticiones() throws SQLException {return cp.buscarCompeticiones();}
 
     }

@@ -19,27 +19,27 @@ public class Juego {
         this.listaCompeticion = listaCompeticion;
     }
 
-    private String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    private void setNombre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    private String getEmpresa() {
+    public String getEmpresa() {
         return empresa;
     }
 
-    private void setEmpresa(String empresa) {
+    public void setEmpresa(String empresa) {
         this.empresa = empresa;
     }
 
-    private Integer getIdJuego() {
+    public Integer getIdJuego() {
         return idJuego;
     }
 
-    private void setIdJuego(Integer idJuego) {
+    public void setIdJuego(Integer idJuego) {
         this.idJuego = idJuego;
     }
 

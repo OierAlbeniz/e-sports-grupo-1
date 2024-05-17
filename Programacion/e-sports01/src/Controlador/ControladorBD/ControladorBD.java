@@ -2,6 +2,7 @@ package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
 import Controlador.ControladorVista.ControladorVJuego;
+import Modelo.Competicion;
 import Modelo.Juego;
 import Modelo.Usuario;
 
@@ -61,5 +62,10 @@ public class ControladorBD {
     }
 
     public List<Juego> buscarJuegos() throws SQLException {return  ctjuego.buscarJuegos();}
+    public Juego buscarJuego(String nombre) throws Exception{return ctjuego.buscarJuego(nombre);}
+    public void insertarCompeticion(Competicion c) throws Exception{ctcompeticion.insertarCompeticion(c);}
+    public List<String> buscarCompeticiones() throws SQLException {
+
+        return ctcompeticion.buscarCompeticiones(); }
 
     }

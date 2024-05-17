@@ -15,13 +15,21 @@ public class Competicion {
     private Juego juego;
 
 
-    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
+    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, Juego juego) {
 
         this.idCompeticion = idCompeticion;
         this.nombre = nombre;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.estado = estado;
+        this.juego = juego;
+    }
+
+    public Competicion(LocalDate fechaInicio, LocalDate fechaFin, String estado, String nombre, Juego juego) {
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+        this.nombre = nombre;
         this.juego = juego;
     }
 

@@ -32,7 +32,6 @@ public class ControladorTablaJuego {
         if(resultado.next()){
             LocalDate fecha = LocalDate.parse(resultado.getString("fecha_lanzamiento"));
             j = new Juego(nombre,resultado.getString("empresa"),fecha,resultado.getInt("id_juego"));
-            System.out.println("Vuelo encontrado.");
             System.out.println(j.toString());
         }
         else {
@@ -51,10 +50,11 @@ public class ControladorTablaJuego {
         ResultSet resultado = sentencia.executeQuery();
 
         while (resultado.next()){
-            LocalDate fecha = LocalDate.parse(resultado.getString("fecha_lanzamiento"));
-            j = new Juego(resultado.getString("nombre"),resultado.getString("empresa"),fecha,resultado.getInt("id_juego"));
+            LocalDate fecha = resultado.getDate("fecha_lanzamiento").toLocalDate();
+            Juego j = new Juego(resultado.getString("nombre"),resultado.getString("empresa"),fecha,resultado.getInt("id_juego"));
             listaJuegos.add(j);
         }
+        System.out.println(listaJuegos.toString());
         sentencia.close();
         return listaJuegos;
     }

@@ -6,6 +6,7 @@ import Vista.VentanaEditar;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
+import java.sql.SQLException;
 
 public class ControladorVEditar {
     private ControladorVista cv;
@@ -75,7 +76,11 @@ public class ControladorVEditar {
     public class BCompeticionesAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarCompeticiones();
+            try {
+                cv.crearMostrarCompeticiones();
+            } catch (SQLException ex) {
+                throw new RuntimeException(ex);
+            }
             vEditar.dispose();
         }
     }
