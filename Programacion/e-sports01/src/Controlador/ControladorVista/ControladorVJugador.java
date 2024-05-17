@@ -96,7 +96,7 @@ public class  addBotonAceptar implements ActionListener{
         }else if (vJugadores.getRbEliminar().isSelected()){
 
             try {
-               Usuario eliminarJugador = cv.eliminarJugador
+               //Usuario eliminarJugador = cv.eliminarJugador;
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }

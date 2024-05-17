@@ -31,7 +31,7 @@ public class VentanaCompeticiones extends JFrame{
     private JTextField tfNuevaFechaIni;
     private JTextField tfNuevaFechaFin;
     private JPanel panel2;
-    private JButton bAceptar;
+    private JButton bAceptarNuevo;
 
     public VentanaCompeticiones() {
         setContentPane(pCompeticiones);
@@ -256,7 +256,6 @@ public class VentanaCompeticiones extends JFrame{
     public void setTfNuevaFechaFin(JTextField tfNuevaFechaFin) {
         this.tfNuevaFechaFin = tfNuevaFechaFin;
     }
-
     public void addVolver(ActionListener al) {
         bVolver.addActionListener(al);
     }
@@ -274,7 +273,7 @@ public class VentanaCompeticiones extends JFrame{
         rbEliminar.addActionListener(al);
     }
     public void addbAceptarAl(ActionListener al) {
-        bAceptar.addActionListener(al);
+        bAceptarNuevo.addActionListener(al);
     }
     public void mostrar(String m){
         JOptionPane.showMessageDialog(null,m);

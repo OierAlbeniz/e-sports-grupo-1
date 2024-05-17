@@ -3,14 +3,14 @@ package Modelo;
 import java.awt.*;
 
 public class Entrenador {
-    private String idIntegrante;
+    private Integer idIntegrante;
     private String nombre;
     private String apellido1;
     private String apellido2;
     private Double sueldo;
     private Equipo equipo;
 
-    public Entrenador(String idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, Equipo equipo) {
+    public Entrenador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, Equipo equipo) {
         this.idIntegrante = idIntegrante;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -19,11 +19,11 @@ public class Entrenador {
         this.equipo = equipo;
     }
 
-    public String getIdIntegrante() {
+    public Integer getIdIntegrante() {
         return idIntegrante;
     }
 
-    public void setIdIntegrante(String idIntegrante) {
+    public void setIdIntegrante(Integer idIntegrante) {
         this.idIntegrante = idIntegrante;
     }
 

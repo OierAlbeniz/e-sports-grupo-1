@@ -97,7 +97,7 @@
               </component>
             </children>
           </toolbar>
-          <grid id="ef691" binding="pNuevo" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="ef691" binding="pNuevo" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -289,219 +289,32 @@
                   <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <component id="b9104" class="javax.swing.JButton">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13750481"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="Michroma" size="14" style="0"/>
+                  <foreground color="-16711751"/>
+                  <requestFocusEnabled value="false"/>
+                  <text value="Aceptar"/>
+                </properties>
+              </component>
+              <vspacer id="8f28d">
+                <constraints>
+                  <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="10" height="10"/>
+                    <preferred-size width="10" height="10"/>
+                    <maximum-size width="10" height="10"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
-          <grid id="20b21" binding="pEditar" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-            <margin top="0" left="0" bottom="0" right="0"/>
-            <constraints>
-              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <minimum-size width="600" height="-1"/>
-                <preferred-size width="600" height="-1"/>
-                <maximum-size width="600" height="-1"/>
-              </grid>
-            </constraints>
-            <properties>
-              <background color="-16711751"/>
-            </properties>
-            <border type="none"/>
-            <children>
-              <component id="4f0fa" class="javax.swing.JLabel">
-                <constraints>
-                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-13750481"/>
-                  <text value="Equipo"/>
-                </properties>
-              </component>
-              <component id="ec5f5" class="javax.swing.JComboBox" binding="cbEquipos">
-                <constraints>
-                  <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="200" height="-1"/>
-                    <preferred-size width="200" height="-1"/>
-                    <maximum-size width="200" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-16711751"/>
-                  <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-13750481"/>
-                  <lightWeightPopupEnabled value="false"/>
-                  <model/>
-                  <visible value="true"/>
-                </properties>
-              </component>
-              <hspacer id="62e56">
-                <constraints>
-                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <hspacer id="6afa8">
-                <constraints>
-                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="889a2" class="javax.swing.JRadioButton" binding="rbEditarNombre">
-                <constraints>
-                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16750043"/>
-                  <contentAreaFilled value="false"/>
-                  <focusPainted value="false"/>
-                  <focusable value="false"/>
-                  <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-13750481"/>
-                  <horizontalTextPosition value="11"/>
-                  <margin top="2" left="7" bottom="2" right="20"/>
-                  <requestFocusEnabled value="false"/>
-                  <rolloverEnabled value="true"/>
-                  <text value="Editar Nombre"/>
-                </properties>
-              </component>
-              <component id="ed0be" class="javax.swing.JTextField" binding="tfNuevoNombre">
-                <constraints>
-                  <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="200" height="-1"/>
-                    <preferred-size width="200" height="-1"/>
-                    <maximum-size width="200" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-16711751"/>
-                  <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-13750481"/>
-                  <horizontalAlignment value="10"/>
-                  <inheritsPopupMenu value="false"/>
-                  <margin top="2" left="6" bottom="2" right="6"/>
-                  <selectionColor color="-1"/>
-                  <text value=""/>
-                </properties>
-              </component>
-              <hspacer id="d3b27">
-                <constraints>
-                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="7d537" class="javax.swing.JRadioButton" binding="rbVincular">
-                <constraints>
-                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16750043"/>
-                  <contentAreaFilled value="false"/>
-                  <focusPainted value="false"/>
-                  <focusable value="false"/>
-                  <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-13750481"/>
-                  <horizontalTextPosition value="11"/>
-                  <margin top="2" left="7" bottom="2" right="20"/>
-                  <requestFocusEnabled value="false"/>
-                  <rolloverEnabled value="true"/>
-                  <text value="Editar Fecha Fundación"/>
-                </properties>
-              </component>
-              <hspacer id="a1100">
-                <constraints>
-                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="8bb25" class="javax.swing.JRadioButton" binding="rbDesvincular">
-                <constraints>
-                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16750043"/>
-                  <contentAreaFilled value="false"/>
-                  <focusPainted value="false"/>
-                  <focusable value="false"/>
-                  <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-13750481"/>
-                  <horizontalTextPosition value="11"/>
-                  <margin top="2" left="7" bottom="2" right="20"/>
-                  <requestFocusEnabled value="false"/>
-                  <rolloverEnabled value="true"/>
-                  <text value="Vincular a Competicion"/>
-                </properties>
-              </component>
-              <component id="92722" class="javax.swing.JComboBox" binding="cbEditFecha">
-                <constraints>
-                  <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="200" height="-1"/>
-                    <preferred-size width="200" height="-1"/>
-                    <maximum-size width="200" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-16711751"/>
-                  <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-13750481"/>
-                  <lightWeightPopupEnabled value="false"/>
-                  <model/>
-                  <visible value="true"/>
-                </properties>
-              </component>
-              <component id="1b115" class="javax.swing.JComboBox" binding="cbVincular">
-                <constraints>
-                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="200" height="-1"/>
-                    <preferred-size width="200" height="-1"/>
-                    <maximum-size width="200" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-16711751"/>
-                  <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-13750481"/>
-                  <lightWeightPopupEnabled value="false"/>
-                  <model/>
-                  <visible value="true"/>
-                </properties>
-              </component>
-              <hspacer id="8ec45">
-                <constraints>
-                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-                </constraints>
-              </hspacer>
-              <component id="a5084" class="javax.swing.JRadioButton">
-                <constraints>
-                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-16750043"/>
-                  <contentAreaFilled value="false"/>
-                  <focusPainted value="false"/>
-                  <focusable value="false"/>
-                  <font name="Michroma" size="16" style="0"/>
-                  <foreground color="-13750481"/>
-                  <horizontalTextPosition value="11"/>
-                  <margin top="2" left="7" bottom="2" right="20"/>
-                  <requestFocusEnabled value="false"/>
-                  <rolloverEnabled value="true"/>
-                  <text value="Desvincular a Competicion"/>
-                </properties>
-              </component>
-              <component id="80755" class="javax.swing.JComboBox" binding="cbDesvincular">
-                <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
-                    <minimum-size width="200" height="-1"/>
-                    <preferred-size width="200" height="-1"/>
-                    <maximum-size width="200" height="-1"/>
-                  </grid>
-                </constraints>
-                <properties>
-                  <background color="-16711751"/>
-                  <font name="Michroma" size="12" style="0"/>
-                  <foreground color="-13750481"/>
-                  <lightWeightPopupEnabled value="false"/>
-                  <model/>
-                  <visible value="true"/>
-                </properties>
-              </component>
-            </children>
-          </grid>
-          <grid id="1670" binding="pEliminar" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+          <grid id="1670" binding="pEliminar" layout-manager="GridLayoutManager" row-count="3" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
             <margin top="0" left="0" bottom="0" right="0"/>
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
@@ -547,6 +360,29 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
               </hspacer>
+              <vspacer id="8bbc8">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="10" height="10"/>
+                    <preferred-size width="10" height="10"/>
+                    <maximum-size width="10" height="10"/>
+                  </grid>
+                </constraints>
+              </vspacer>
+              <component id="65953" class="javax.swing.JButton">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13750481"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="Michroma" size="14" style="0"/>
+                  <foreground color="-16711751"/>
+                  <requestFocusEnabled value="false"/>
+                  <text value="Aceptar"/>
+                </properties>
+              </component>
             </children>
           </grid>
           <vspacer id="2b20a">
@@ -569,7 +405,7 @@
                   <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Michroma" size="24" style="0"/>
+                  <font name="Michroma" size="28" style="0"/>
                   <foreground color="-13750481"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
@@ -583,7 +419,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <font name="Michroma" size="24" style="0"/>
+                  <font name="Michroma" size="18" style="0"/>
                   <foreground color="-13750481"/>
                   <horizontalAlignment value="0"/>
                   <horizontalTextPosition value="0"/>
@@ -592,6 +428,239 @@
                   <verticalTextPosition value="3"/>
                 </properties>
               </component>
+            </children>
+          </grid>
+          <grid id="4b269" binding="pEditar" layout-manager="GridLayoutManager" row-count="7" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints>
+              <grid row="4" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                <minimum-size width="600" height="-1"/>
+                <preferred-size width="600" height="-1"/>
+                <maximum-size width="600" height="-1"/>
+              </grid>
+            </constraints>
+            <properties>
+              <background color="-16711751"/>
+            </properties>
+            <border type="none"/>
+            <children>
+              <component id="bd5ea" class="javax.swing.JLabel">
+                <constraints>
+                  <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <font name="Michroma" size="16" style="0"/>
+                  <foreground color="-13750481"/>
+                  <text value="Equipo"/>
+                </properties>
+              </component>
+              <component id="bdfeb" class="javax.swing.JComboBox" binding="cbEquipos">
+                <constraints>
+                  <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="-1"/>
+                    <preferred-size width="200" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <lightWeightPopupEnabled value="false"/>
+                  <model/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+              <hspacer id="5b02b">
+                <constraints>
+                  <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <hspacer id="e2c52">
+                <constraints>
+                  <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="56096" class="javax.swing.JRadioButton" binding="rbEditarNombre">
+                <constraints>
+                  <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16750043"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <focusable value="false"/>
+                  <font name="Michroma" size="16" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalTextPosition value="11"/>
+                  <margin top="2" left="7" bottom="2" right="20"/>
+                  <requestFocusEnabled value="false"/>
+                  <rolloverEnabled value="true"/>
+                  <text value="Editar Nombre"/>
+                </properties>
+              </component>
+              <component id="cc6e" class="javax.swing.JTextField" binding="tfNuevoNombre">
+                <constraints>
+                  <grid row="1" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="6" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="-1"/>
+                    <preferred-size width="200" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalAlignment value="10"/>
+                  <inheritsPopupMenu value="false"/>
+                  <margin top="2" left="6" bottom="2" right="6"/>
+                  <selectionColor color="-1"/>
+                  <text value=""/>
+                </properties>
+              </component>
+              <hspacer id="b92da">
+                <constraints>
+                  <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="35b6f" class="javax.swing.JRadioButton" binding="rbVincular">
+                <constraints>
+                  <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16750043"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <focusable value="false"/>
+                  <font name="Michroma" size="16" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalTextPosition value="11"/>
+                  <margin top="2" left="7" bottom="2" right="20"/>
+                  <requestFocusEnabled value="false"/>
+                  <rolloverEnabled value="true"/>
+                  <text value="Editar Fecha Fundación"/>
+                </properties>
+              </component>
+              <hspacer id="b5bb4">
+                <constraints>
+                  <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="96c9b" class="javax.swing.JRadioButton" binding="rbDesvincular">
+                <constraints>
+                  <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16750043"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <focusable value="false"/>
+                  <font name="Michroma" size="16" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalTextPosition value="11"/>
+                  <margin top="2" left="7" bottom="2" right="20"/>
+                  <requestFocusEnabled value="false"/>
+                  <rolloverEnabled value="true"/>
+                  <text value="Vincular a Competicion"/>
+                </properties>
+              </component>
+              <component id="57bec" class="javax.swing.JComboBox" binding="cbEditFecha">
+                <constraints>
+                  <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="-1"/>
+                    <preferred-size width="200" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <lightWeightPopupEnabled value="false"/>
+                  <model/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+              <component id="fbcbc" class="javax.swing.JComboBox" binding="cbVincular">
+                <constraints>
+                  <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="-1"/>
+                    <preferred-size width="200" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <lightWeightPopupEnabled value="false"/>
+                  <model/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+              <hspacer id="2a32b">
+                <constraints>
+                  <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                </constraints>
+              </hspacer>
+              <component id="a8c5" class="javax.swing.JRadioButton">
+                <constraints>
+                  <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-16750043"/>
+                  <contentAreaFilled value="false"/>
+                  <focusPainted value="false"/>
+                  <focusable value="false"/>
+                  <font name="Michroma" size="16" style="0"/>
+                  <foreground color="-13750481"/>
+                  <horizontalTextPosition value="11"/>
+                  <margin top="2" left="7" bottom="2" right="20"/>
+                  <requestFocusEnabled value="false"/>
+                  <rolloverEnabled value="true"/>
+                  <text value="Desvincular a Competicion"/>
+                </properties>
+              </component>
+              <component id="b288d" class="javax.swing.JComboBox" binding="cbDesvincular">
+                <constraints>
+                  <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
+                    <minimum-size width="200" height="-1"/>
+                    <preferred-size width="200" height="-1"/>
+                    <maximum-size width="200" height="-1"/>
+                  </grid>
+                </constraints>
+                <properties>
+                  <background color="-16711751"/>
+                  <font name="Michroma" size="12" style="0"/>
+                  <foreground color="-13750481"/>
+                  <lightWeightPopupEnabled value="false"/>
+                  <model/>
+                  <visible value="true"/>
+                </properties>
+              </component>
+              <component id="8b1f8" class="javax.swing.JButton">
+                <constraints>
+                  <grid row="6" column="0" row-span="1" col-span="4" vsize-policy="3" hsize-policy="3" anchor="2" fill="0" indent="0" use-parent-layout="false"/>
+                </constraints>
+                <properties>
+                  <background color="-13750481"/>
+                  <borderPainted value="false"/>
+                  <focusPainted value="false"/>
+                  <font name="Michroma" size="14" style="0"/>
+                  <foreground color="-16711751"/>
+                  <requestFocusEnabled value="false"/>
+                  <text value="Aceptar"/>
+                </properties>
+              </component>
+              <vspacer id="84c0c">
+                <constraints>
+                  <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+                    <minimum-size width="10" height="10"/>
+                    <preferred-size width="10" height="10"/>
+                    <maximum-size width="10" height="10"/>
+                  </grid>
+                </constraints>
+              </vspacer>
             </children>
           </grid>
         </children>

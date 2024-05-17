@@ -40,8 +40,13 @@ public class ControladorVCompeticion {
         vCompeticiones.getpEditar().setVisible(false);
         vCompeticiones.getpEliminar().setVisible(false);
         vCompeticiones.addbAceptarAl(new bAceptarAl());
+        llenarCombos();
 
-        listaJuegos = cv.buscarJuegos();
+    }
+    public void llenarCombos()   {
+        try {
+            listaJuegos = cv.buscarJuegos();
+
         listaJuegos.forEach(o->vCompeticiones.getCbJuego().addItem(o.getNombre()));
 
         listaNombreCometiciones = cv.buscarCompeticiones();
@@ -53,7 +58,9 @@ public class ControladorVCompeticion {
         }
         vCompeticiones.getCbNuevoEstado().addItem("Abierto");
         vCompeticiones.getCbNuevoEstado().addItem("Cerrado");
-
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
     public class BVolverAL implements ActionListener {
         @Override
@@ -128,7 +135,7 @@ public class ControladorVCompeticion {
 
                     String nombreJuego= vCompeticiones.getCbJuego().getSelectedItem().toString();
                     Juego j = cv.buscarJuego(nombreJuego);
-                    Competicion c = new Competicion(fechaIni,fechaFinal,nombre, "Abierto",j);
+                    Competicion c = new Competicion(nombre,fechaIni,fechaFinal, "Abierto",j);
 
                     cv.insertarCompeticion(c);
                 }

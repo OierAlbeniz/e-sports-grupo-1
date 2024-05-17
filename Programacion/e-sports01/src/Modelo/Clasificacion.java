@@ -4,23 +4,23 @@ import javax.swing.*;
 import java.util.List;
 
 public class Clasificacion {
-    private String idClasificacion;
+    private Integer idClasificacion;
     private List<String> listaPuntos;
     private Competicion competicion;
     private List<Equipo> listaEquipo;
 
-    public Clasificacion(String idClasificacion, List<String> listaPuntos, Competicion competicion, List<Equipo> listaEquipo) {
+    public Clasificacion(Integer idClasificacion, List<String> listaPuntos, Competicion competicion, List<Equipo> listaEquipo) {
         this.idClasificacion = idClasificacion;
         this.listaPuntos = listaPuntos;
         this.competicion = competicion;
         this.listaEquipo = listaEquipo;
     }
 
-    public String getIdClasificacion() {
+    public Integer getIdClasificacion() {
         return idClasificacion;
     }
 
-    public void setIdClasificacion(String idClasificacion) {
+    public void setIdClasificacion(Integer idClasificacion) {
         this.idClasificacion = idClasificacion;
     }
 
