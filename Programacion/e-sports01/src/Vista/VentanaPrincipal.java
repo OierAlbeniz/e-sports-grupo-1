@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.geom.Rectangle2D;
 import java.awt.geom.RoundRectangle2D;
 
 public class VentanaPrincipal extends JFrame{
@@ -24,6 +23,7 @@ public class VentanaPrincipal extends JFrame{
     private JButton bConsulta;
     private JButton bPerfil;
     private JPanel panel2;
+    private JLabel jlTipo;
     private JTextField tfRelleno;
 
 
@@ -270,6 +270,14 @@ public class VentanaPrincipal extends JFrame{
 
     public void setPanel2(JPanel panel2) {
         this.panel2 = panel2;
+    }
+
+    public JLabel getJlTipo() {
+        return jlTipo;
+    }
+
+    public void setJlTipo(JLabel jlTipo) {
+        this.jlTipo = jlTipo;
     }
 
     public void addeditar(ActionListener al) {

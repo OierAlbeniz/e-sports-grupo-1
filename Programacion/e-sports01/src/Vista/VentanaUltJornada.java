@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class VentanaUltJornada {
     private JPanel pPrincipal;
-    private JComboBox cbCompeticiones;
+    private JComboBox comboBox1;
     private JLabel equipo1;
     private JLabel equipo2;
     private JLabel resul1;
@@ -20,11 +20,11 @@ public class VentanaUltJornada {
     }
 
     public JComboBox getComboBox1() {
-        return cbCompeticiones;
+        return comboBox1;
     }
 
     public void setComboBox1(JComboBox comboBox1) {
-        this.cbCompeticiones = comboBox1;
+        this.comboBox1 = comboBox1;
     }
 
     public JLabel getEquipo1() {

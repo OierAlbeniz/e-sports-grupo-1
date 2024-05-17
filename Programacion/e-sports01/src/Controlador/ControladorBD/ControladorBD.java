@@ -4,11 +4,14 @@ import Controlador.ControladorPrincipal;
 import Controlador.ControladorVista.ControladorVJuego;
 import Modelo.Competicion;
 import Modelo.Juego;
+import Modelo.Equipo;
 import Modelo.Usuario;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorBD {
@@ -60,6 +63,9 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user ) throws Exception {
         return ctUsuario.buscarUsuario(user);
     }
+    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
+        return ctjugador.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+    }
 
     public List<Juego> buscarJuegos() throws SQLException {return  ctjuego.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return ctjuego.buscarJuego(nombre);}
@@ -68,4 +74,8 @@ public class ControladorBD {
 
         return ctcompeticion.buscarCompeticiones(); }
 
+    public ArrayList selectEquipo(String nombre ) throws Exception {
+        return ctequipo.selectEquipo(nombre);
     }
+
+}

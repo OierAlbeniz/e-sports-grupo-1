@@ -11,7 +11,7 @@ public class Juego {
     private List<Competicion> listaCompeticion;
 
 
-    public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego) {
+    public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego, List<Competicion> listaCompeticion) {
         this.nombre = nombre;
         this.empresa = empresa;
         this.fechalanzamiento = fechalanzamiento;
