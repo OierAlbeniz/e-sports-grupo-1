@@ -897,6 +897,7 @@
                   <margin top="2" left="7" bottom="2" right="20"/>
                   <requestFocusEnabled value="false"/>
                   <rolloverEnabled value="true"/>
+                  <selected value="false"/>
                   <text value="Nuevo"/>
                 </properties>
               </component>

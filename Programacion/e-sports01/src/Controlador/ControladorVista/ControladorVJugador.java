@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -95,18 +96,31 @@ public class ControladorVJugador {
                     String equipo = String.valueOf(vJugadores.getCbEquipoNuevo().getSelectedIndex() + 1);
 
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
-                    JOptionPane.showMessageDialog(vJugadores, "Jugador creado correctamente.");
 
-                } else if (vJugadores.getRbEliminar().isSelected()) {
+                }
+                if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
                     cv.eliminarJugador(nombre, equipo);
 
 
-                } else if (vJugadores.getRbEditar().isSelected()) {
+                }
+                if (vJugadores.getRbEditar().isSelected())
+                {
 
-
+                    String nombre = vJugadores.getTfNuevoNombre().getText();
+                    String primerApellido = vJugadores.getTfNuevoApellido1().getText();
+                    String segundoApellido = vJugadores.getTfNuevoApellido2().getText();
+                    Integer sueldo = Integer.valueOf(vJugadores.getTfNuevoSueldo().getText());
+                    String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+                    LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfNuevaFechaNac().getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                    String nickname = vJugadores.getTfNuevoNick().getText();
+                    String rol = String.valueOf(vJugadores.getCbNuevoRol().getSelectedItem());
+                    String nuevoEquipo = String.valueOf(vJugadores.getCbNuevoEquipo().getSelectedItem());
+                    String nombreAntiguo = (String) vJugadores.getCbEditJugadores().getSelectedItem();
+                    String equipoAntiguo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+                    cv.editarJugadorConfir( nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(vJugadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -150,6 +164,7 @@ public class ControladorVJugador {
         public void focusLost(FocusEvent e) {
 
             try {
+                vJugadores.getCbEditJugadores().removeAllItems();
                 String equiposelecionado = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
                 if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
                     List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
@@ -257,7 +272,9 @@ public class ControladorVJugador {
 
         @Override
         public void focusLost(FocusEvent e) {
+
             try {
+
                 // Obtener el jugador seleccionado en la JComboBox
                 String nombreJugador = (String) vJugadores.getCbEditJugadores().getSelectedItem();
 
@@ -270,16 +287,20 @@ public class ControladorVJugador {
                    Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
 
 
-                    System.out.println(buscarDatos.getNombre());
+
                     vJugadores.getTfNuevoNombre().setText(buscarDatos.getNombre());
                    vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
                     vJugadores.getTfNuevoApellido2().setText(buscarDatos.getApellido2());
-                    vJugadores.getTfNuevoSueldo().setText(String.valueOf(buscarDatos.getSueldo()));
-                    vJugadores.getCbNacionalidad().setSelectedItem(buscarDatos.getNacionalidad());
-                    vJugadores.getTfNuevaFechaNac().setText(String.valueOf(buscarDatos.getFechaNacimiento()));
-                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
-                    vJugadores.getCbNuevoRol().setSelectedItem(buscarDatos.getRol());
-                    vJugadores.getCbNuevoEquipo().setSelectedItem(buscarDatos.getEquipo());
+                    DecimalFormat formatter2 = new DecimalFormat("#");
+                    formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)
+                    String sueldoFormateado = formatter2.format(buscarDatos.getSueldo());
+                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/dd/MM");
+                    String fechaFormateada = buscarDatos.getFechaNacimiento().format(formatter);
+                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
+                    vJugadores.getCbNuevoRol().addItem(buscarDatos.getRol());
+
+                    vJugadores.getCbNuevoEquipo().setSelectedItem(vJugadores.getCbEquipoEditar().getSelectedItem());
 
 
                 } else {

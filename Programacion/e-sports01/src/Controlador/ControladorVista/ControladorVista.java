@@ -8,6 +8,7 @@ import Modelo.*;
 import Modelo.Equipo;
 import Modelo.Usuario;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -123,6 +124,12 @@ public class ControladorVista {
         Jugador buscarDatos = cp.actualizarJugador(nombre, equipo);
 
         return buscarDatos;
+    }
+
+    public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        cp.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
     }
 
 }
