@@ -385,6 +385,14 @@ public class VentanaJugadores extends JFrame {
         return cbEquipoElim;
     }
 
+    public JComboBox getCbJugadorEliminar() {
+        return cbJugadorEliminar;
+    }
+
+    public void setCbJugadorEliminar(JComboBox cbJugadorEliminar) {
+        this.cbJugadorEliminar = cbJugadorEliminar;
+    }
+
     public void setCbEquipoElim(JComboBox cbEquipoElim) {
         this.cbEquipoElim = cbEquipoElim;
     }

@@ -36,7 +36,8 @@ public class ControladorVJugador {
         vJugadores.addrbEditarAL(new RbEditarAL());
         vJugadores.addrbEliminarAL(new RbEliminarAL());
         vJugadores.getCbEquipoElim().addFocusListener(new ComboEquipoElimFocusListener());
-        vJugadores.getCbEquipoNuevo().addFocusListener(new ComboNombreJugadoresEditar());
+        vJugadores.getCbEquipoEditar().addFocusListener(new ComboNombreJugadoresEditar());
+        vJugadores.getCbEditJugadores().addFocusListener(new ComboEditJugadoresFocusListener());
         vJugadores.limpiar();
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
@@ -44,6 +45,7 @@ public class ControladorVJugador {
         llenarComboEquipo();
         llenarComboEquipoEliminar();
         llenarComboEquipoNuevo();
+        llenarComboEquipoEditar();
     }
     public class BVolverAL implements ActionListener {
         @Override
@@ -103,8 +105,8 @@ public class ControladorVJugador {
 
 
                 } else if (vJugadores.getRbEditar().isSelected()) {
-                    // Lógica para editar un jugador
-                    JOptionPane.showMessageDialog(null, "Funcionalidad de edición aún no implementada.");
+
+
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(vJugadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -138,29 +140,29 @@ public class ControladorVJugador {
         }
     }
 //esto es el focus lost de editar
-public class ComboNombreJugadoresEditar implements FocusListener {
-    @Override
-    public void focusGained(FocusEvent e) {
-        // No action on focus gain
-    }
+    public class ComboNombreJugadoresEditar implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            // No action on focus gain
+        }
 
-    @Override
-    public void focusLost(FocusEvent e) {
+        @Override
+        public void focusLost(FocusEvent e) {
 
-        try {
-            String equiposelecionado = (String) vJugadores.getCbEditJugadores().getSelectedItem();
-            if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
-                List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
-                jugadores.forEach(jugador -> vJugadores.getCbEditJugadores().addItem(jugador.getNombre()));
+            try {
+                String equiposelecionado = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+                if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
+                    List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
+                    jugadores.forEach(jugador -> vJugadores.getCbEditJugadores().addItem(jugador.getNombre()));
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-}
 
 
 // In your crearMostrar method or constructor where you setup listeners:
@@ -229,8 +231,65 @@ public class ComboNombreJugadoresEditar implements FocusListener {
             throw new RuntimeException(ex);
         }
     }
+    public void llenarComboEquipoEditar(){
 
 
+
+        String nombre = null;
+        try {
+            ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
+
+            listaEquipos.forEach(o-> vJugadores.getCbNuevoEquipo().addItem(o.getNombre()));
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
+
+    //aqui se buscan todos los datos de ese jugador
+    public class ComboEditJugadoresFocusListener implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            // No action on focus gain
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+            try {
+                // Obtener el jugador seleccionado en la JComboBox
+                String nombreJugador = (String) vJugadores.getCbEditJugadores().getSelectedItem();
+
+                // Verificar si se seleccionó un jugador válido
+                if (!nombreJugador.isEmpty()) {
+                    // Obtener los datos de los campos de la ventana
+                    String equipo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+
+                    // Enviar los datos al controlador de base de datos
+                   Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
+
+
+                    System.out.println(buscarDatos.getNombre());
+                    vJugadores.getTfNuevoNombre().setText(buscarDatos.getNombre());
+                   vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
+                    vJugadores.getTfNuevoApellido2().setText(buscarDatos.getApellido2());
+                    vJugadores.getTfNuevoSueldo().setText(String.valueOf(buscarDatos.getSueldo()));
+                    vJugadores.getCbNacionalidad().setSelectedItem(buscarDatos.getNacionalidad());
+                    vJugadores.getTfNuevaFechaNac().setText(String.valueOf(buscarDatos.getFechaNacimiento()));
+                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
+                    vJugadores.getCbNuevoRol().setSelectedItem(buscarDatos.getRol());
+                    vJugadores.getCbNuevoEquipo().setSelectedItem(buscarDatos.getEquipo());
+
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un jugador válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(vJugadores, "Error al actualizar el jugador: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
 
 }

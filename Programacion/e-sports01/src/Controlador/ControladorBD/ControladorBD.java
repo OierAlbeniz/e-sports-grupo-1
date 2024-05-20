@@ -66,6 +66,22 @@ public class ControladorBD {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
+            String url = "jdbc:oracle:thin:@localhost:1521:XE";
+            String user = "userproyecto";
+            String passwd = "userproyecto";
+            con = DriverManager.getConnection(url, user, passwd);
+            System.out.println("conexion abierta");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("conexion erronea");
+        } catch (SQLException e) {
+        }
+    }
+   /* public void abrirConexion() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+
             String url = "jdbc:oracle:thin:@172.20.225.114:1521:orcl";
             String user = "equipo16";
             String passwd = "equipo16";
@@ -77,7 +93,7 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }
+    }*/
 
 
     /**
@@ -205,8 +221,8 @@ public class ControladorBD {
      * @return El usuario encontrado.
      * @throws Exception Si ocurre un error en la base de datos.
      */
-    public Usuario buscarUsuario(String user) throws Exception {
-        return ctUsuario.buscarUsuario(user);
+    public Usuario buscarUsuario(String user,String password) throws Exception {
+        return ctUsuario.buscarUsuario(user,password);
     }
     /**
      * Busca todos los juegos.
@@ -253,5 +269,14 @@ public class ControladorBD {
     public void eliminarJugador(String nombre,String equipo) throws Exception {
          ctjugador.eliminarJugador(nombre,equipo);
     }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
+        return null;
+    }
+    public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
+        ctjugador.actualizarJugador( nombre, equipo);
+        Jugador buscarDatos = ctjugador.actualizarJugador(nombre, equipo);
 
+        return buscarDatos;
+    }
 }

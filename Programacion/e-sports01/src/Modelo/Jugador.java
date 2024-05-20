@@ -2,6 +2,7 @@ package Modelo;
 
 import java.time.LocalDate;
 
+
 public class Jugador {
     private Integer idIntegrante;
     private String nombre;
@@ -12,9 +13,9 @@ public class Jugador {
     private LocalDate fechaNacimiento;
     private String nickname;
     private String rol;
-    private Equipo equipo;
+    private String equipo;
 
-    public Jugador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, Equipo equipo) {
+    public Jugador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) {
         this.idIntegrante = idIntegrante;
         this.nombre = nombre;
         this.apellido1 = apellido1;
@@ -31,6 +32,7 @@ public class Jugador {
 
     }
 
+
     public Integer getIdIntegrante() {
         return idIntegrante;
     }
@@ -43,7 +45,7 @@ public class Jugador {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
+    public  void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
@@ -51,7 +53,7 @@ public class Jugador {
         return apellido1;
     }
 
-    public void setApellido1(String apellido1) {
+    public  void setApellido1(String apellido1) {
         this.apellido1 = apellido1;
     }
 
@@ -59,7 +61,7 @@ public class Jugador {
         return apellido2;
     }
 
-    public void setApellido2(String apellido2) {
+    public  void setApellido2(String apellido2) {
         this.apellido2 = apellido2;
     }
 
@@ -67,7 +69,7 @@ public class Jugador {
         return sueldo;
     }
 
-    public void setSueldo(Double sueldo) {
+    public  void setSueldo(Double sueldo) {
         this.sueldo = sueldo;
     }
 
@@ -75,7 +77,7 @@ public class Jugador {
         return nacionalidad;
     }
 
-    public void setNacionalidad(String nacionalidad) {
+    public  void setNacionalidad(String nacionalidad) {
         this.nacionalidad = nacionalidad;
     }
 
@@ -83,7 +85,7 @@ public class Jugador {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
+    public  void setFechaNacimiento(LocalDate fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 
@@ -91,7 +93,7 @@ public class Jugador {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    public  void setNickname(String nickname) {
         this.nickname = nickname;
     }
 
@@ -99,15 +101,16 @@ public class Jugador {
         return rol;
     }
 
-    public void setRol(String rol) {
+    public  void setRol(String rol) {
         this.rol = rol;
     }
 
-    public Equipo getEquipo() {
+    public String getEquipo() {
         return equipo;
     }
 
-    public void setEquipo(Equipo equipo) {
+    public  void setEquipo(String equipo) {
         this.equipo = equipo;
     }
 }
+

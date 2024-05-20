@@ -1,7 +1,6 @@
 package Controlador.ControladorBD;
 
 import Modelo.Jugador;
-import Modelo.Usuario;
 
 import javax.swing.*;
 import java.sql.*;
@@ -133,8 +132,39 @@ private boolean jugadorExiste(String nombre, String primerApellido, String segun
         }
         else {
             JOptionPane.showMessageDialog(null,"el usuario se ha borrado exitosamente");
-        }
-           }
+            }
+    }
 
+    public Jugador actualizarJugador(String nombre , String equipo) throws Exception {
+        Jugador jugador ;
+        String selectQuery = "SELECT J.NOMBRE, J.APELLIDO1, J.APELLIDO2, J.SUELDO, J.NACIONALIDAD, J.FECHA_NACIMIENTO, J.NICKNAME, J.ROL, E.nombre" +
+                " FROM JUGADOR J\n" +
+                " JOIN EQUIPO E ON J.ID_EQUIPO = E.ID_EQUIPO\n" +
+                " WHERE J.NOMBRE = ? AND E.NOMBRE=?\n ";
+        PreparedStatement selectStatement = con.prepareStatement(selectQuery);
+        selectStatement.setString(1, nombre);
+        selectStatement.setString(2, equipo);
+        ResultSet rs = selectStatement.executeQuery();
+
+
+
+
+        if (rs.next()) {
+            jugador = new Jugador();
+            jugador.setNombre(rs.getString("nombre"));
+            jugador.setApellido1(rs.getString("apellido1"));
+            jugador.setApellido2(rs.getString("apellido2"));
+            jugador.setSueldo((double) rs.getInt("sueldo"));
+            jugador.setNacionalidad(rs.getString("nacionalidad"));
+            jugador.setFechaNacimiento(rs.getDate("fecha_nacimiento").toLocalDate());
+            jugador.setNickname(rs.getString("nickname"));
+            jugador.setRol(rs.getString("rol"));
+            //jugador2.setEquipo(rs.getString("equipo"));
+        } else {
+            throw new Exception("No se encontró al jugador en la base de datos.");
+        }
+
+        return jugador;
+    }
 
 }

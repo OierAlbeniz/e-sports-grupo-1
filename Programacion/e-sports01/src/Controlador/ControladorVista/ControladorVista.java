@@ -71,8 +71,8 @@ public class ControladorVista {
         cvcompeticion.crearMostrar();
     }
 
-    public Usuario buscarUsuario(String user) throws Exception {
-        return cp.buscarUsuario(user);
+    public Usuario buscarUsuario(String user, String password) throws Exception {
+        return cp.buscarUsuario(user, password);
     }
 
     public Integer cantidadEquipos() throws Exception {
@@ -112,6 +112,17 @@ public class ControladorVista {
     }
     public void eliminarJugador(String nombre,String equipo) throws Exception {
         cp.eliminarJugador(nombre,equipo);
+    }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        cp.crearUsuario(nombre,contrasena, tipoUsuario);
+        return null;
+    }
+
+    public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
+        cp.actualizarJugador( nombre, equipo);
+        Jugador buscarDatos = cp.actualizarJugador(nombre, equipo);
+
+        return buscarDatos;
     }
 
 }
