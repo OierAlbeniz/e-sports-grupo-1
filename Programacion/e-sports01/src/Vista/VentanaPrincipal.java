@@ -294,6 +294,8 @@ public class VentanaPrincipal extends JFrame{
     public void mostrarMensaje(String m){
         JOptionPane.showMessageDialog(null, m);
     }
-
+    public void addBSalirAl(ActionListener al){
+    bSalir.addActionListener(al);
+    }
 
 }

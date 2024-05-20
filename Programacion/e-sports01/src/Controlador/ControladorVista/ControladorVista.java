@@ -100,5 +100,8 @@ public class ControladorVista {
     public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
     public List<String> buscarCompeticiones() throws SQLException {return cp.buscarCompeticiones();}
 
+    public void eliminarJugador(String nombre, String equipo) {
+
+    }
 
 }

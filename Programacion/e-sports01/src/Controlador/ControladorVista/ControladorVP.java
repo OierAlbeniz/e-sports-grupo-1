@@ -19,6 +19,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Grupo4
+ */
 public class ControladorVP {
     private ControladorVista cv;
     private VentanaPrincipal vp;
@@ -34,7 +37,7 @@ public class ControladorVP {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-
+            vp.addBSalirAl(new BSalirAl());
             vp.addcerrarInsc(new BCerrarInscAL());
 
 
@@ -49,6 +52,9 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * @
+     */
     public class BCerrarInscAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,7 +83,13 @@ public class ControladorVP {
             }
         }
     }
-
+    public class BSalirAl implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // Eliminar la ventana y seguir en la principal.
+            vp.dispose();
+        }
+    }
 
 
 
