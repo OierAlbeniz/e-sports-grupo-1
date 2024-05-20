@@ -297,5 +297,9 @@ public class VentanaPrincipal extends JFrame{
     public void addBSalirAl(ActionListener al){
     bSalir.addActionListener(al);
     }
+    public void addCerrarSesionListener(ActionListener listenForCerrarSesion) {
+        bCerrarSesion.addActionListener(listenForCerrarSesion);
+    }
+
 
 }
