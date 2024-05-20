@@ -2,7 +2,6 @@ package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
 
-import Controlador.ControladorVista.ControladorVJuego;
 import Modelo.*;
 
 import Modelo.Equipo;
@@ -117,8 +116,8 @@ public class ControladorBD {
         }
     }
 
-    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
-        return ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
+    public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
+        ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
     }
 
     public ArrayList selectEquipo(String nombre) throws Exception {
@@ -145,4 +144,12 @@ public class ControladorBD {
 
         return ctcompeticion.buscarCompeticiones();
     }
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
+    {
+        return  ctjugador.llenarJugadoresNombre(equiposelecionado);
+    }
+    public void eliminarJugador(String nombre,String equipo) throws Exception {
+         ctjugador.eliminarJugador(nombre,equipo);
+    }
+
 }

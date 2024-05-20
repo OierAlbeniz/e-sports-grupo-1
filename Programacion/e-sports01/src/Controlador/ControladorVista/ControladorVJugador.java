@@ -1,16 +1,20 @@
 package Controlador.ControladorVista;
 
 import Modelo.Equipo;
+import Modelo.Jugador;
 import Modelo.Usuario;
 import Vista.VentanaJugadores;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorVJugador {
 
@@ -28,15 +32,18 @@ public class ControladorVJugador {
         vJugadores.setVisible(true);
         vJugadores.addVolver(new BVolverAL());
         vJugadores.addInicio(new BInicioAL());
-
         vJugadores.addrbNuevoAL(new RbNuevoAL());
         vJugadores.addrbEditarAL(new RbEditarAL());
         vJugadores.addrbEliminarAL(new RbEliminarAL());
+        vJugadores.getCbEquipoElim().addFocusListener(new ComboEquipoElimFocusListener());
+        vJugadores.getCbEquipoNuevo().addFocusListener(new ComboNombreJugadoresEditar());
         vJugadores.limpiar();
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
         vJugadores.getpEliminar().setVisible(false);
         llenarComboEquipo();
+        llenarComboEquipoEliminar();
+        llenarComboEquipoNuevo();
     }
     public class BVolverAL implements ActionListener {
         @Override
@@ -68,48 +75,95 @@ public class ControladorVJugador {
 
         }
     }
-public class  addBotonAceptar implements ActionListener{
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
-
-        if (vJugadores.getRbNuevo().isSelected()) {
-
-
-            String nombre = vJugadores.getTfNombre().getText();
-            String primerApellido = vJugadores.getTfApellido1().getText();
-            String segundoApellido = vJugadores.getTfApellido2().getText();
-            Integer sueldo = Integer.valueOf(vJugadores.getTfSueldo().getText());
-            String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
-            String nickname = vJugadores.getTfNickname().getText();
-            String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
-            String equipo = String.valueOf(vJugadores.getCbEquipo().getSelectedIndex() + 1);
-
+    public class addBotonAceptar implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
             try {
-                Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
+                if (vJugadores.getRbNuevo().isSelected()) {
+                    // Lógica para crear un nuevo jugador
+                    String nombre = vJugadores.getTfNombre().getText();
+                    String primerApellido = vJugadores.getTfApellido1().getText();
+                    String segundoApellido = vJugadores.getTfApellido2().getText();
+                    Integer sueldo = Integer.valueOf(vJugadores.getTfSueldo().getText());
+                    String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                    LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfFechaNac().getText(), formatter);
+                    String nickname = vJugadores.getTfNickname().getText();
+                    String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
+                    String equipo = String.valueOf(vJugadores.getCbEquipoNuevo().getSelectedIndex() + 1);
+
+                    Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
+                    JOptionPane.showMessageDialog(vJugadores, "Jugador creado correctamente.");
+
+                } else if (vJugadores.getRbEliminar().isSelected()) {
+                    // Lógica para eliminar un jugador
+                    String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
+                    String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
+                    cv.eliminarJugador(nombre, equipo);
+
+
+                } else if (vJugadores.getRbEditar().isSelected()) {
+                    // Lógica para editar un jugador
+                    JOptionPane.showMessageDialog(null, "Funcionalidad de edición aún no implementada.");
+                }
             } catch (Exception ex) {
-                throw new RuntimeException(ex);
+                JOptionPane.showMessageDialog(vJugadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        }else if (vJugadores.getRbEliminar().isSelected()){
-
-            try {
-                String nombre = vJugadores.getcb
-
-               Usuario eliminarJugador = cv.eliminarJugador(nombre, equipo);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
+        }
+    }
 
 
-        }else if (vJugadores.getRbEditar().isSelected()){
-            JOptionPane.showMessageDialog(null,"editar" );
+
+    public class ComboEquipoElimFocusListener implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            // No action on focus gain
         }
 
+        @Override
+        public void focusLost(FocusEvent e) {
+            vJugadores.getCbJugador().removeAllItems(); // Clear existing items
+            try {
+                String equiposelecionado = (String) vJugadores.getCbEquipoElim().getSelectedItem();
+                if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
+                    List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
+                    jugadores.forEach(jugador -> vJugadores.getCbJugador().addItem(jugador.getNombre()));
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+//esto es el focus lost de editar
+public class ComboNombreJugadoresEditar implements FocusListener {
+    @Override
+    public void focusGained(FocusEvent e) {
+        // No action on focus gain
+    }
+
+    @Override
+    public void focusLost(FocusEvent e) {
+
+        try {
+            String equiposelecionado = (String) vJugadores.getCbEditJugadores().getSelectedItem();
+            if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
+                List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
+                jugadores.forEach(jugador -> vJugadores.getCbEditJugadores().addItem(jugador.getNombre()));
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+            }
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }
+
+
+// In your crearMostrar method or constructor where you setup listeners:
 
     public class RbEditarAL implements ActionListener {
         @Override
@@ -147,4 +201,36 @@ public class  addBotonAceptar implements ActionListener{
             throw new RuntimeException(ex);
         }
     }
+    public void llenarComboEquipoEliminar(){
+
+
+
+        String nombre = null;
+        try {
+            ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
+            listaEquipos.forEach(o-> vJugadores.getCbEquipoElim().addItem(o.getNombre()));
+
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+    public void llenarComboEquipoNuevo(){
+
+
+
+        String nombre = null;
+        try {
+            ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
+
+            listaEquipos.forEach(o-> vJugadores.getCbEquipoNuevo().addItem(o.getNombre()));
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
+
+
 }

@@ -34,12 +34,22 @@ public class ControladorVP {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-
+           vp.addUsuarios(new BusuarioAL());
             vp.addcerrarInsc(new BCerrarInscAL());
 
 
 
     }
+    public class BusuarioAL implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cv.crearMostrarUsuario();
+            vp.dispose();
+        }
+    }
+
+
 
     public class BEditarAL implements ActionListener {
         @Override

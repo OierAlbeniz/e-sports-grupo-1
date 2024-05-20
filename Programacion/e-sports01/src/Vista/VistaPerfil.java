@@ -1,10 +1,11 @@
 package Vista;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class VistaPerfil extends JFrame {
-    private JButton guardarButton;
-    private JButton cancelarButton;
+    private JButton bCrear;
+    private JButton bCancelar;
     private JTextField textField1;
     private JTextField textField2;
     private JPanel Pprincipal;
@@ -37,5 +38,12 @@ public class VistaPerfil extends JFrame {
 
     public void setPprincipal(JPanel pprincipal) {
         Pprincipal = pprincipal;
+    }
+
+    public void addBCancelar (ActionListener al){
+        bCancelar.addActionListener(al);
+    }
+    public void addCrearUsuario (ActionListener al){
+        bCrear.addActionListener(al);
     }
 }

@@ -17,6 +17,7 @@ import java.util.List;
 public class ControladorVista {
 
     private ControladorPrincipal cp;
+    private ControladorVUsuario cvu;
     private ControladorVLogin cvlogin;
     private ControladorVEditar cveditar;
     private ControladorVP cvp;
@@ -48,6 +49,10 @@ public class ControladorVista {
     public void crearMostrarEquipos() {
         cvequipo=new ControladorVEquipo(this);
         cvequipo.crearMostrar();
+    }
+    public void crearMostrarUsuario() {
+        cvu=new ControladorVUsuario(this);
+        cvu.crearMostrarUsuario();
     }
     public void crearMostrarJugadores() {
         cvjugador=new ControladorVJugador(this);
@@ -90,7 +95,8 @@ public class ControladorVista {
     }
 
     public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
-        return cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+         cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+        return null;
     }
     public ArrayList selectEquipo(String nombre ) throws Exception {
         return cp.selectEquipo(nombre);
@@ -99,6 +105,13 @@ public class ControladorVista {
     public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
     public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
     public List<String> buscarCompeticiones() throws SQLException {return cp.buscarCompeticiones();}
-    public void  eliminarJugador(String nombre , String equipo)
+
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
+    {
+        return  cp.llenarJugadoresNombre(equiposelecionado);
+    }
+    public void eliminarJugador(String nombre,String equipo) throws Exception {
+        cp.eliminarJugador(nombre,equipo);
+    }
 
 }

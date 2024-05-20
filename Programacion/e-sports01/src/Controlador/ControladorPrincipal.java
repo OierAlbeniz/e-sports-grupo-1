@@ -31,8 +31,8 @@ public class ControladorPrincipal {
     public List<Equipo> llenarEquipos() throws Exception {
         return cb.llenarEquipos();
     }
-    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
-        return cb.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+    public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
+         cb.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
     }
 
     public ArrayList selectEquipo(String nombre ) throws Exception {
@@ -61,6 +61,13 @@ public class ControladorPrincipal {
     public void insertarCompeticion(Competicion c) throws Exception{cb.insertarCompeticion(c);}
     public List<String> buscarCompeticiones() throws SQLException {return cb.buscarCompeticiones();
     }
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
+    {
+        return  cb.llenarJugadoresNombre(equiposelecionado);
+    }
 
+    public void eliminarJugador(String nombre,String equipo) throws Exception {
+       cb.eliminarJugador(nombre,equipo);
+    }
 
 }
