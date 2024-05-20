@@ -35,7 +35,7 @@ public class ControladorVUsuario {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            
+
         }
     }
 

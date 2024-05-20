@@ -170,7 +170,9 @@ public class ControladorBD {
 
     public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
         ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
-    /**
+
+    }
+        /**
      * Crea un nuevo jugador.
      *
      * @param nombre          Nombre del jugador.
@@ -185,9 +187,7 @@ public class ControladorBD {
      * @return El jugador creado.
      * @throws Exception Si ocurre un error en la base de datos.
      */
-    public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
-        return ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
-    }
+
     /**
      * Selecciona un equipo por su nombre.
      *
