@@ -2,7 +2,6 @@ package Controlador.ControladorBD;
 
 import Controlador.ControladorPrincipal;
 
-import Controlador.ControladorVista.ControladorVJuego;
 import Modelo.*;
 
 import Modelo.Equipo;
@@ -168,6 +167,9 @@ public class ControladorBD {
             System.out.println("Error al generar el calendario: " + ex.getMessage());
         }
     }
+
+    public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
+        ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
     /**
      * Crea un nuevo jugador.
      *
@@ -244,4 +246,12 @@ public class ControladorBD {
 
         return ctcompeticion.buscarCompeticiones();
     }
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
+    {
+        return  ctjugador.llenarJugadoresNombre(equiposelecionado);
+    }
+    public void eliminarJugador(String nombre,String equipo) throws Exception {
+         ctjugador.eliminarJugador(nombre,equipo);
+    }
+
 }

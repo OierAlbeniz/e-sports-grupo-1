@@ -21,7 +21,7 @@ public class VentanaPrincipal extends JFrame{
     private JPanel p4;
 
     private JButton bConsulta;
-    private JButton bPerfil;
+    private JButton bUsuarios;
     private JPanel panel2;
     private JLabel jlTipo;
     private JTextField tfRelleno;
@@ -216,11 +216,11 @@ public class VentanaPrincipal extends JFrame{
     }
 
     public JButton getbPerfil() {
-        return bPerfil;
+        return bUsuarios;
     }
 
     public void setbPerfil(JButton bPerfil) {
-        this.bPerfil = bPerfil;
+        this.bUsuarios = bPerfil;
     }
 
     public JButton getbCerrarSesion() {
@@ -286,16 +286,20 @@ public class VentanaPrincipal extends JFrame{
         bCerrarInsc.addActionListener(al);
     }
 
-    public void addPerfil(ActionListener al) {
+    public void addUsuarios(ActionListener al) {
+        bUsuarios.addActionListener(al);
     }
-    public void botonPerfil(ActionListener al){
-        btPerfil.addActionListener(al);
-    }
+
+
     public void mostrarMensaje(String m){
         JOptionPane.showMessageDialog(null, m);
     }
     public void addBSalirAl(ActionListener al){
     bSalir.addActionListener(al);
     }
+    public void addCerrarSesionListener(ActionListener listenForCerrarSesion) {
+        bCerrarSesion.addActionListener(listenForCerrarSesion);
+    }
+
 
 }

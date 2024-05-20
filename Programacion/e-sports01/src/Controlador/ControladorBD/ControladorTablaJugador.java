@@ -1,14 +1,10 @@
 package Controlador.ControladorBD;
 
-import Controlador.ControladorBD.ControladorBD;
 import Modelo.Jugador;
 import Modelo.Usuario;
 
 import javax.swing.*;
-import java.sql.Connection;
-import java.sql.Date;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,13 +53,13 @@ public class ControladorTablaJugador {
     }
 
 
-public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
+public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
     System.out.println(nombre + primerApellido + segundoApellido + sueldo + nacionalidad + fechaNacimiento + nickname + rol + equipo );
 
     // Verificar si el jugador ya existe en la base de datos antes de insertarlo
     if (jugadorExiste(nombre, primerApellido, segundoApellido, fechaNacimiento)) {
         JOptionPane.showMessageDialog(null, "El jugador ya existe en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-        return null;
+
     }
 
     // Si el jugador no existe, proceder con la inserción
@@ -88,7 +84,7 @@ public Usuario crearJugador(String nombre, String primerApellido, String segundo
     }
 
     crearJugador.close();
-    return null;
+
 }
 
 // Método para verificar si un jugador ya existe en la base de datos
@@ -108,6 +104,37 @@ private boolean jugadorExiste(String nombre, String primerApellido, String segun
 
     return count > 0;
 }
+
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException {
+        List<Jugador> jugadores = new ArrayList<>();
+        String consulta = "SELECT j.nombre FROM JUGADOR j JOIN EQUIPO e ON j.ID_EQUIPO = e.ID_EQUIPO WHERE e.NOMBRE = ?";
+        PreparedStatement stmt = con.prepareStatement(consulta);
+        stmt.setString(1, equiposelecionado);
+        ResultSet rs = stmt.executeQuery();
+        while (rs.next()) {
+            Jugador jugador = new Jugador();
+            jugador.setNombre(rs.getString("nombre"));
+            jugadores.add(jugador);
+        }
+        rs.close();
+        stmt.close();
+        return jugadores;
+    }
+    public  void eliminarJugador(String nombre, String equipo) throws SQLException {
+        String consulta = "DELETE FROM JUGADOR WHERE NOMBRE = ? AND ID_EQUIPO = (SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE = ?)";
+        PreparedStatement stmt = con.prepareStatement(consulta);
+        stmt.setString(1, nombre);
+        stmt.setString(2, equipo);
+        int rowsAffected = stmt.executeUpdate();
+
+        stmt.close();
+        if (rowsAffected == 0) {
+            throw new SQLException("No se encontró el jugador o el equipo especificado.");
+        }
+        else {
+            JOptionPane.showMessageDialog(null,"el usuario se ha borrado exitosamente");
+        }
+           }
 
 
 }

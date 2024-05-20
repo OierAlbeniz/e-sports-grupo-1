@@ -273,7 +273,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="78f05" class="javax.swing.JButton" binding="bPerfil">
+              <component id="78f05" class="javax.swing.JButton" binding="bUsuarios">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
@@ -286,7 +286,7 @@
                   <horizontalAlignment value="4"/>
                   <preferredSize width="250" height="50"/>
                   <requestFocusEnabled value="true"/>
-                  <text value="PERFIL"/>
+                  <text value="USUARIOS"/>
                 </properties>
               </component>
               <hspacer id="30843">

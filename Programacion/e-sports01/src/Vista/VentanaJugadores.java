@@ -22,7 +22,7 @@ public class VentanaJugadores extends JFrame {
     private JTextField tfFechaNac;
     private JTextField tfNickname;
     private JComboBox cbRol;
-    private JComboBox cbEquipo;
+    private JComboBox cbEquipoEditar;
     private JComboBox cbJugadorEliminar;
     private JPanel pEditar;
     private JLabel labelJugadorM;
@@ -46,6 +46,7 @@ public class VentanaJugadores extends JFrame {
     private JComboBox cbNuevoEquipo;
     private JButton btAceptar;
     private JComboBox cbEquipoElim;
+    private JComboBox cbEquipoNuevo;
 
     public VentanaJugadores() {
         setContentPane(pJugadores);
@@ -205,11 +206,11 @@ public class VentanaJugadores extends JFrame {
     }
 
     public JComboBox getCbEquipo() {
-        return cbEquipo;
+        return cbEquipoEditar;
     }
 
     public void setCbEquipo(JComboBox cbEquipo) {
-        this.cbEquipo = cbEquipo;
+        this.cbEquipoEditar = cbEquipo;
     }
 
     public JComboBox getCbJugador() {
@@ -388,6 +389,22 @@ public class VentanaJugadores extends JFrame {
         this.cbEquipoElim = cbEquipoElim;
     }
 
+    public JComboBox getCbEquipoEditar() {
+        return cbEquipoEditar;
+    }
+
+    public void setCbEquipoEditar(JComboBox cbEquipoEditar) {
+        this.cbEquipoEditar = cbEquipoEditar;
+    }
+
+    public JComboBox getCbEquipoNuevo() {
+        return cbEquipoNuevo;
+    }
+
+    public void setCbEquipoNuevo(JComboBox cbEquipoNuevo) {
+        this.cbEquipoNuevo = cbEquipoNuevo;
+    }
+
     public void addrbNuevoAL(ActionListener al) {
         rbNuevo.addActionListener(al);
     }
@@ -410,7 +427,7 @@ public class VentanaJugadores extends JFrame {
         tfFechaNac.setText("");
         tfNickname.setText("");
         cbRol.setSelectedIndex(-1);
-        cbEquipo.setSelectedIndex(-1);
+        cbEquipoEditar.setSelectedIndex(-1);
         cbJugadorEliminar.setSelectedIndex(-1);
         cbEditJugadores.setSelectedIndex(-1);
         tfNuevoNombre.setText("");
