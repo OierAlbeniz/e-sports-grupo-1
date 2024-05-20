@@ -6,8 +6,8 @@ import java.awt.event.ActionListener;
 public class VistaPerfil extends JFrame {
     private JButton bCrear;
     private JButton bCancelar;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JTextField txtNombre;
+    private JTextField txtContrasena;
     private JPanel Pprincipal;
 
     public VistaPerfil(){
@@ -17,19 +17,19 @@ public class VistaPerfil extends JFrame {
     }
 
     public JTextField getTextField1() {
-        return textField1;
+        return txtNombre;
     }
 
     public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+        this.txtNombre = textField1;
     }
 
     public JTextField getTextField2() {
-        return textField2;
+        return txtContrasena;
     }
 
     public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+        this.txtContrasena = textField2;
     }
 
     public JPanel getPprincipal() {
