@@ -16,26 +16,34 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Grupo4
+ */
 public class ControladorVP {
     private ControladorVista cv;
     private VentanaPrincipal vp;
     private ControladorVLogin cvl;
     private VistaPerfil vper;
     private VentanaInicioSesion vsesion;
+    private Connection con;
 
-    public ControladorVP(ControladorVista cv) throws Exception {
+    public ControladorVP(ControladorVista cv, Connection con) throws Exception {
         this.cv = cv;
+        this.con = con;
+        crearMostrar();
     }
 
     public void crearMostrar() {
-            vp = new VentanaPrincipal();
-            vp.setVisible(true);
-            vp.addeditar(new BEditarAL());
-           vp.addUsuarios(new BusuarioAL());
-            vp.addcerrarInsc(new BCerrarInscAL());
+        vp = new VentanaPrincipal();
+        vp.setVisible(true);
+        vp.addeditar(new BEditarAL());
+        vp.addBSalirAl(new BSalirAl());
+        vp.addcerrarInsc(new BCerrarInscAL());
+        vp.addCerrarSesionListener(new CerrarSesionListener());
 
 
 
@@ -59,6 +67,9 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * @
+     */
     public class BCerrarInscAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -87,9 +98,18 @@ public class ControladorVP {
             }
         }
     }
-
-
-
-
-
+    public class BSalirAl implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vp.dispose();
+        }
+    }
+    public class CerrarSesionListener implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vp.dispose();
+            vsesion = new VentanaInicioSesion();
+            vsesion.setVisible(true);
+        }
+    }
 }

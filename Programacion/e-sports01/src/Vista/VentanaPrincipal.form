@@ -238,7 +238,7 @@
             </properties>
             <border type="none"/>
             <children>
-              <component id="9f3b4" class="javax.swing.JButton">
+              <component id="9f3b4" class="javax.swing.JButton" binding="bSalir">
                 <constraints>
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>
