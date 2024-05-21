@@ -28,14 +28,17 @@ public class ControladorVP {
 
     public ControladorVP(ControladorVista cv) throws Exception {
         this.cv = cv;
+        this.vsesion = new VentanaInicioSesion();
     }
 
     public void crearMostrar() {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-           vp.addUsuarios(new BusuarioAL());
+            vp.addUsuarios(new BusuarioAL());
             vp.addcerrarInsc(new BCerrarInscAL());
+            vp.addBSalirAL(new BSalirAl());
+            vp.addCerrarSesionAL(new CerrarSesionAl());
 
 
 
@@ -88,7 +91,22 @@ public class ControladorVP {
         }
     }
 
+    public class BSalirAl implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+        }
 
+    }
+
+    public class CerrarSesionAl implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vp.dispose();
+            vsesion.setVisible(true);
+        }
+    }
 
 
 

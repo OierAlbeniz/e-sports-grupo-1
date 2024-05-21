@@ -62,7 +62,7 @@ public class ControladorBD {
     /**
      * Abre la conexión a la base de datos.
      */
-    public void abrirConexion() {
+    /*public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -77,8 +77,8 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }
-   /* public void abrirConexion() {
+    }*/
+   public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -93,7 +93,7 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }*/
+    }
 
 
     /**
@@ -183,7 +183,10 @@ public class ControladorBD {
             System.out.println("Error al generar el calendario: " + ex.getMessage());
         }
     }
+    public void crearPatrocinador(Integer idPatrocinador, String nombre) throws Exception {
+        ctpatrocinador.crearPatrocinador(idPatrocinador, nombre);
 
+    }
     public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
         ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
 
@@ -262,6 +265,19 @@ public class ControladorBD {
 
         return ctcompeticion.buscarCompeticiones();
     }
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposeleccionado) throws SQLException
+    {
+        return ctpatrocinador.llenarPatrocinadorNombre(equiposeleccionado);
+    }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        ctpatrocinador.eliminarPatrocinador(nombre,equipo);
+    }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        ctpatrocinador.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatos = ctpatrocinador.actualizarPatrocinador(nombre, equipo);
+
+        return buscarDatos;
+    }
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {
         return  ctjugador.llenarJugadoresNombre(equiposelecionado);
@@ -269,19 +285,25 @@ public class ControladorBD {
     public void eliminarJugador(String nombre,String equipo) throws Exception {
          ctjugador.eliminarJugador(nombre,equipo);
     }
-    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
-        ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
-        return null;
-    }
     public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
         ctjugador.actualizarJugador( nombre, equipo);
         Jugador buscarDatos = ctjugador.actualizarJugador(nombre, equipo);
 
         return buscarDatos;
     }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
+        return null;
+    }
+
     public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
 
 
         ctjugador.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        ctpatrocinador.editarPatrocinadorConfir(nombre,nuevoEquipo,nombreAntiguo,equipoAntiguo);
     }
+
 }

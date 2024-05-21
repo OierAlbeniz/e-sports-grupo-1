@@ -267,7 +267,7 @@
                   <foreground color="-16750043"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-                  <margin top="4" left="11" bottom="4" right="11"/>
+                  <margin top="2" left="6" bottom="2" right="6"/>
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -319,7 +319,7 @@
                   <foreground color="-16750043"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-                  <margin top="4" left="11" bottom="4" right="11"/>
+                  <margin top="2" left="6" bottom="2" right="6"/>
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -1006,6 +1006,7 @@
               <focusPainted value="false"/>
               <font name="Xirod" size="14" style="0"/>
               <foreground color="-16750043"/>
+              <hideActionText value="false"/>
               <requestFocusEnabled value="false"/>
               <text value="Aceptar"/>
             </properties>
