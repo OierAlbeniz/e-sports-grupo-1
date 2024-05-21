@@ -9,11 +9,45 @@ public class VistaPerfil extends JFrame {
     private JTextField txtNombre;
     private JTextField txtContrasena;
     private JPanel Pprincipal;
+    private JRadioButton RdbUsuario;
+    private JRadioButton RdbAdmin;
 
     public VistaPerfil(){
         setContentPane(Pprincipal);
         setSize(400,300);
         setLocationRelativeTo(null);
+    }
+
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public void setTxtContrasena(JTextField txtContrasena) {
+        this.txtContrasena = txtContrasena;
+    }
+
+    public JRadioButton getRdbUsuario() {
+        return RdbUsuario;
+    }
+
+    public void setRdbUsuario(JRadioButton rdbUsuario) {
+        RdbUsuario = rdbUsuario;
+    }
+
+    public JRadioButton getRdbAdmin() {
+        return RdbAdmin;
+    }
+
+    public void setRdbAdmin(JRadioButton rdbAdmin) {
+        RdbAdmin = rdbAdmin;
     }
 
     public JTextField getTextField1() {

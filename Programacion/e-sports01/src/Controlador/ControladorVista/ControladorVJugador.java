@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.Connection;
+import java.text.DecimalFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -36,7 +37,8 @@ public class ControladorVJugador {
         vJugadores.addrbEditarAL(new RbEditarAL());
         vJugadores.addrbEliminarAL(new RbEliminarAL());
         vJugadores.getCbEquipoElim().addFocusListener(new ComboEquipoElimFocusListener());
-        vJugadores.getCbEquipoNuevo().addFocusListener(new ComboNombreJugadoresEditar());
+        vJugadores.getCbEquipoEditar().addFocusListener(new ComboNombreJugadoresEditar());
+        vJugadores.getCbEditJugadores().addFocusListener(new ComboEditJugadoresFocusListener());
         vJugadores.limpiar();
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
@@ -44,6 +46,7 @@ public class ControladorVJugador {
         llenarComboEquipo();
         llenarComboEquipoEliminar();
         llenarComboEquipoNuevo();
+        llenarComboEquipoEditar();
     }
     public class BVolverAL implements ActionListener {
         @Override
@@ -93,18 +96,31 @@ public class ControladorVJugador {
                     String equipo = String.valueOf(vJugadores.getCbEquipoNuevo().getSelectedIndex() + 1);
 
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
-                    JOptionPane.showMessageDialog(vJugadores, "Jugador creado correctamente.");
 
-                } else if (vJugadores.getRbEliminar().isSelected()) {
+                }
+                if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
                     cv.eliminarJugador(nombre, equipo);
 
 
-                } else if (vJugadores.getRbEditar().isSelected()) {
-                    // Lógica para editar un jugador
-                    JOptionPane.showMessageDialog(null, "Funcionalidad de edición aún no implementada.");
+                }
+                if (vJugadores.getRbEditar().isSelected())
+                {
+
+                    String nombre = vJugadores.getTfNuevoNombre().getText();
+                    String primerApellido = vJugadores.getTfNuevoApellido1().getText();
+                    String segundoApellido = vJugadores.getTfNuevoApellido2().getText();
+                    Integer sueldo = Integer.valueOf(vJugadores.getTfNuevoSueldo().getText());
+                    String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+                    LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfNuevaFechaNac().getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+                    String nickname = vJugadores.getTfNuevoNick().getText();
+                    String rol = String.valueOf(vJugadores.getCbNuevoRol().getSelectedItem());
+                    String nuevoEquipo = String.valueOf(vJugadores.getCbNuevoEquipo().getSelectedItem());
+                    String nombreAntiguo = (String) vJugadores.getCbEditJugadores().getSelectedItem();
+                    String equipoAntiguo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+                    cv.editarJugadorConfir( nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(vJugadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
@@ -138,29 +154,30 @@ public class ControladorVJugador {
         }
     }
 //esto es el focus lost de editar
-public class ComboNombreJugadoresEditar implements FocusListener {
-    @Override
-    public void focusGained(FocusEvent e) {
-        // No action on focus gain
-    }
+    public class ComboNombreJugadoresEditar implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            // No action on focus gain
+        }
 
-    @Override
-    public void focusLost(FocusEvent e) {
+        @Override
+        public void focusLost(FocusEvent e) {
 
-        try {
-            String equiposelecionado = (String) vJugadores.getCbEditJugadores().getSelectedItem();
-            if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
-                List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
-                jugadores.forEach(jugador -> vJugadores.getCbEditJugadores().addItem(jugador.getNombre()));
+            try {
+                vJugadores.getCbEditJugadores().removeAllItems();
+                String equiposelecionado = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+                if (equiposelecionado != null && !equiposelecionado.isEmpty()) {
+                    List<Jugador> jugadores = cv.llenarJugadoresNombre(equiposelecionado);
+                    jugadores.forEach(jugador -> vJugadores.getCbEditJugadores().addItem(jugador.getNombre()));
 
-            } else {
-                JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un equipo válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-        } catch (Exception ex) {
-            JOptionPane.showMessageDialog(vJugadores, "Error al cargar jugadores: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-}
 
 
 // In your crearMostrar method or constructor where you setup listeners:
@@ -229,8 +246,71 @@ public class ComboNombreJugadoresEditar implements FocusListener {
             throw new RuntimeException(ex);
         }
     }
+    public void llenarComboEquipoEditar(){
 
 
+
+        String nombre = null;
+        try {
+            ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
+
+            listaEquipos.forEach(o-> vJugadores.getCbNuevoEquipo().addItem(o.getNombre()));
+
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
+    }
+
+
+
+    //aqui se buscan todos los datos de ese jugador
+    public class ComboEditJugadoresFocusListener implements FocusListener {
+        @Override
+        public void focusGained(FocusEvent e) {
+            // No action on focus gain
+        }
+
+        @Override
+        public void focusLost(FocusEvent e) {
+
+            try {
+
+                // Obtener el jugador seleccionado en la JComboBox
+                String nombreJugador = (String) vJugadores.getCbEditJugadores().getSelectedItem();
+
+                // Verificar si se seleccionó un jugador válido
+                if (!nombreJugador.isEmpty()) {
+                    // Obtener los datos de los campos de la ventana
+                    String equipo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
+
+                    // Enviar los datos al controlador de base de datos
+                   Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
+
+
+
+                    vJugadores.getTfNuevoNombre().setText(buscarDatos.getNombre());
+                   vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
+                    vJugadores.getTfNuevoApellido2().setText(buscarDatos.getApellido2());
+                    DecimalFormat formatter2 = new DecimalFormat("#");
+                    formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)
+                    String sueldoFormateado = formatter2.format(buscarDatos.getSueldo());
+                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/dd/MM");
+                    String fechaFormateada = buscarDatos.getFechaNacimiento().format(formatter);
+                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
+                    vJugadores.getCbNuevoRol().addItem(buscarDatos.getRol());
+
+                    vJugadores.getCbNuevoEquipo().setSelectedItem(vJugadores.getCbEquipoEditar().getSelectedItem());
+
+
+                } else {
+                    JOptionPane.showMessageDialog(null, "Selecciona un jugador válido.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+                }
+            } catch (Exception ex) {
+                JOptionPane.showMessageDialog(vJugadores, "Error al actualizar el jugador: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
 
 
 }

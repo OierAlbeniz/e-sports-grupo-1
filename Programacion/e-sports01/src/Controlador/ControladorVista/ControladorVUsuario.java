@@ -39,9 +39,11 @@ public class ControladorVUsuario {
 
         @Override
         public void actionPerformed(ActionEvent e) {
+
             try {
-                String nombre = vpr.getTextField1().getText();
-                String contrasena = vpr.getTextField2().getText();
+                String nombre = vpr.getTxtNombre().getText();
+                String contrasena = vpr.getTxtContrasena().getText();
+
 
                 if (nombre.isEmpty() || contrasena.isEmpty()) {
                     JOptionPane.showMessageDialog(null, "Los datos de entrada son obligatorios");
@@ -66,13 +68,18 @@ public class ControladorVUsuario {
                             "\n un numero " +
                             "\n y un caracter especial");
                     return; // Agrega un return para salir del método si la contraseña no coincide con la expresión regular
-                }
+                    }else {
+                        String tipoUsuario = null;
 
-               // Usuario user = cv.crearUsuario(nombre, contrasena);
-            } catch (Exception ex) {
-                UIManagerConfig.setOptionPaneBackground(Color.red);
-                JOptionPane.showMessageDialog(null, "el usuario o la contraseña son incorrectas");
-            }
+                        if (vpr.getRdbUsuario().isSelected()) {
+                             tipoUsuario = "usuario";
+                         } else if (vpr.getRdbAdmin().isSelected()) {
+                            tipoUsuario = "administrador";
+                        }
+                        Usuario user = cv.crearUsuario(nombre, contrasena, tipoUsuario);
+                    }
+                } catch (Exception ex) {
+               }
         }
 
         }
@@ -82,4 +89,4 @@ public class ControladorVUsuario {
 
 
 
-}
+

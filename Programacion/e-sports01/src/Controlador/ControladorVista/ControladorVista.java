@@ -8,6 +8,7 @@ import Modelo.*;
 import Modelo.Equipo;
 import Modelo.Usuario;
 
+import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -71,8 +72,8 @@ public class ControladorVista {
         cvcompeticion.crearMostrar();
     }
 
-    public Usuario buscarUsuario(String user) throws Exception {
-        return cp.buscarUsuario(user);
+    public Usuario buscarUsuario(String user, String password) throws Exception {
+        return cp.buscarUsuario(user, password);
     }
 
     public Integer cantidadEquipos() throws Exception {
@@ -112,6 +113,23 @@ public class ControladorVista {
     }
     public void eliminarJugador(String nombre,String equipo) throws Exception {
         cp.eliminarJugador(nombre,equipo);
+    }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        cp.crearUsuario(nombre,contrasena, tipoUsuario);
+        return null;
+    }
+
+    public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
+        cp.actualizarJugador( nombre, equipo);
+        Jugador buscarDatos = cp.actualizarJugador(nombre, equipo);
+
+        return buscarDatos;
+    }
+
+    public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        cp.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
     }
 
 }

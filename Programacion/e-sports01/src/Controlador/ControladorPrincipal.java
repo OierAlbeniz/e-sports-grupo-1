@@ -56,8 +56,8 @@ public class ControladorPrincipal {
     public void generarCalendario() throws Exception {
         cb.generarCalendario();
     }
-    public Usuario buscarUsuario(String user) throws Exception {
-        return cb.buscarUsuario(user);
+    public Usuario buscarUsuario(String user,String password) throws Exception {
+        return cb.buscarUsuario(user,password);
     }
 
     public List<Juego> buscarJuegos() throws SQLException {return cb.buscarJuegos();}
@@ -73,5 +73,19 @@ public class ControladorPrincipal {
     public void eliminarJugador(String nombre,String equipo) throws Exception {
        cb.eliminarJugador(nombre,equipo);
     }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        cb.crearUsuario(nombre,contrasena,tipoUsuario);
+        return null;
+    }
+    public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
+        cb.actualizarJugador( nombre, equipo);
+        Jugador buscarDatos = cb.actualizarJugador(nombre, equipo);
 
+        return buscarDatos;
+    }
+    public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        cb.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
 }
