@@ -52,7 +52,11 @@ public class ControladorVEditar {
     public class BEquiposAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarEquipos();
+            try {
+                cv.crearMostrarEquipos();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
             vEditar.dispose();
         }
     }

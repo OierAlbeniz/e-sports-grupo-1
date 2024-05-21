@@ -43,6 +43,7 @@ public class ControladorVJugador {
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
         vJugadores.getpEliminar().setVisible(false);
+        vJugadores.addAceptar(new addBotonAceptar());
         llenarComboEquipo();
         llenarComboEquipoEliminar();
         llenarComboEquipoNuevo();
@@ -55,6 +56,7 @@ public class ControladorVJugador {
             vJugadores.dispose();
         }
     }
+
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -71,7 +73,7 @@ public class ControladorVJugador {
                 vJugadores.getpNuevo().setVisible(true);
                 vJugadores.getpEditar().setVisible(false);
                 vJugadores.getpEliminar().setVisible(false);
-                vJugadores.addAceptar(new addBotonAceptar());
+
             }
 
 
@@ -98,7 +100,7 @@ public class ControladorVJugador {
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
 
                 }
-                if (vJugadores.getRbEliminar().isSelected()) {
+               else if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
@@ -106,7 +108,7 @@ public class ControladorVJugador {
 
 
                 }
-                if (vJugadores.getRbEditar().isSelected())
+               else if (vJugadores.getRbEditar().isSelected())
                 {
 
                     String nombre = vJugadores.getTfNuevoNombre().getText();
@@ -312,5 +314,11 @@ public class ControladorVJugador {
         }
     }
 
+//esto es el relleno automatico de la combo box de el jugador cuando es llamado por el quipo
 
+    public void nombreEquipo(String nombre){
+        vJugadores.getCbEquipoNuevo().addItem(nombre);
+        vJugadores.getCbEquipoNuevo().setSelectedItem(nombre);
+        vJugadores.getCbEquipoNuevo().setEnabled(false);
+    }
 }

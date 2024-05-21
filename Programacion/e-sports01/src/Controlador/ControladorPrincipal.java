@@ -65,6 +65,9 @@ public class ControladorPrincipal {
     {
         return  cb.llenarJugadoresNombre(equiposelecionado);
     }
+    public List<String> buscarPatrocinador() throws SQLException {
+        return cb.buscarPatrocinador();
+    }
 
     public void eliminarJugador(String nombre,String equipo) throws Exception {
        cb.eliminarJugador(nombre,equipo);
@@ -84,4 +87,43 @@ public class ControladorPrincipal {
 
         cb.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
     }
+    public List<Jugador> llenarJugadoresS(String tipo) throws Exception {
+        cb.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cb.llenarJugadoresS(tipo);
+        return listaJugadores;
+    }
+    public void borrarEquipo(String nombre) throws SQLException {
+        cb.borrarEquipo(nombre);
+    }
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cb.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cb.llenarEquiposS(tipo);
+        return listaEquipo;
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cb.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cb.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cb.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cb.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cb.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cb.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cb.llenarJuegos(tipo);
+        List<Juego> listaJuego = cb.llenarJuegos(tipo);
+        return listaJuego;
+    }
+
+    public void crearEquipo(String nombre,LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        cb.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+
 }

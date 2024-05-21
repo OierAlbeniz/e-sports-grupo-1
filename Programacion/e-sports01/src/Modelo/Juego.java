@@ -19,6 +19,20 @@ public class Juego {
         this.listaCompeticion = listaCompeticion;
     }
 
+    public Juego() {
+
+    }
+
+
+
+    public LocalDate getFechalanzamiento() {
+        return fechalanzamiento;
+    }
+
+    public void setFechalanzamiento(LocalDate fechalanzamiento) {
+        this.fechalanzamiento = fechalanzamiento;
+    }
+
     public String getNombre() {
         return nombre;
     }

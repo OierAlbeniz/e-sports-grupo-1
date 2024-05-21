@@ -289,6 +289,9 @@ public class VentanaPrincipal extends JFrame{
     public void addUsuarios(ActionListener al) {
         bUsuarios.addActionListener(al);
     }
+    public void addConsultas(ActionListener al){
+        bConsulta.addActionListener(al);
+    }
 
 
     public void mostrarMensaje(String m){

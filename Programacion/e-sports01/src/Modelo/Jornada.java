@@ -17,6 +17,10 @@ public class Jornada {
         this.competicion = competicion;
     }
 
+    public Jornada() {
+
+    }
+
     public LocalDate getFechaEnfrentamiento() {
         return fechaEnfrentamiento;
     }

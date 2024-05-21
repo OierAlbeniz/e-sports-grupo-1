@@ -2,13 +2,10 @@ package Controlador.ControladorBD;
 
 import Modelo.Equipo;
 
-import Modelo.Patrocinador;
 
-
-
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import javax.swing.*;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -138,6 +135,86 @@ public class ControladorTablaEquipo {
             return equipos;
 
         }
+
+    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+
+        try {
+
+            // Verificar si el equipo ya existe
+            String queryCheck = "SELECT COUNT(*) FROM EQUIPO WHERE NOMBRE = ?";
+            pstmt = con.prepareStatement(queryCheck);
+            pstmt.setString(1, nombre);
+            rs = pstmt.executeQuery();
+
+            if (rs.next() && rs.getInt(1) > 0) {
+                throw new Exception("El equipo ya existe");
+            }
+
+            // Obtener ID del patrocinador
+            String queryPatrocinador = "SELECT ID_PATROCINADOR FROM PATROCINADOR WHERE NOMBRE = ?";
+            pstmt = con.prepareStatement(queryPatrocinador);
+            pstmt.setString(1, patrocinador);
+            rs = pstmt.executeQuery();
+
+            int idPatrocinador = -1;
+            if (rs.next()) {
+                idPatrocinador = rs.getInt("ID_PATROCINADOR");
+            } else {
+                throw new Exception("Patrocinador no encontrado");
+            }
+
+            // Obtener ID de la competición
+            String queryCompeticion = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
+            pstmt = con.prepareStatement(queryCompeticion);
+            pstmt.setString(1, competicion);
+            rs = pstmt.executeQuery();
+
+            int idCompeticion = -1;
+            if (rs.next()) {
+                idCompeticion = rs.getInt("ID_COMPETICION");
+            } else {
+                throw new Exception("Competición no encontrada");
+            }
+
+            // Insertar el nuevo equipo
+            String queryInsert = "INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES (?, ?, ?)";
+            pstmt = con.prepareStatement(queryInsert);
+            pstmt.setString(1, nombre);
+            pstmt.setDate(2, java.sql.Date.valueOf(fecha)); // convertir LocalDate a java.sql.Date
+            pstmt.setInt(3, idPatrocinador);
+            pstmt.executeUpdate();
+
+            JOptionPane.showMessageDialog(null,"Eel equipo ha sido creado correctamente");
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception("Error al crear el equipo");
+        } finally {
+            if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
+            if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
+            if (con != null) try { con.close(); } catch (SQLException ignore) {}
+        }
     }
+
+    public void borrarEquipo(String nombre) throws SQLException {
+        String query = "DELETE FROM EQUIPO WHERE NOMBRE = ?";
+
+        try (PreparedStatement stmt = con.prepareStatement(query)) {
+            stmt.setString(1, nombre);
+            int rowsAffected = stmt.executeUpdate();
+            if (rowsAffected == 0) {
+                throw new SQLException("No se encontró un equipo con el nombre especificado.");
+            }else {
+                JOptionPane.showMessageDialog(null,"el equipo se borro correctamente ");
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Error al borrar el equipo: " + e.getMessage(), e);
+        }
+    }
+
+}
 
 
