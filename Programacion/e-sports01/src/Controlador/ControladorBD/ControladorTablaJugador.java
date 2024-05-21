@@ -43,8 +43,7 @@ public class ControladorTablaJugador {
             Integer id_Equipo = rs.getInt("id_equipo");
             //jugador.setEquipo(cb.buscarEquipo(id_Equipo));
             listaJugadores.add(jugador);
-            System.out.println(rs.getString("nombre"));
-            System.out.println(rs.getString("id_equipo"));
+            
         }
 
         statement.close();

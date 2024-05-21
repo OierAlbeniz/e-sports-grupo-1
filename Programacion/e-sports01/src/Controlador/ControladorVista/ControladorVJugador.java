@@ -113,7 +113,7 @@ public class ControladorVJugador {
                     String primerApellido = vJugadores.getTfNuevoApellido1().getText();
                     String segundoApellido = vJugadores.getTfNuevoApellido2().getText();
                     Integer sueldo = Integer.valueOf(vJugadores.getTfNuevoSueldo().getText());
-                    String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+                    String nacionalidad = String.valueOf(vJugadores.getCbNuevaNacionalidad().getSelectedItem());
                     LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfNuevaFechaNac().getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
                     String nickname = vJugadores.getTfNuevoNick().getText();
                     String rol = String.valueOf(vJugadores.getCbNuevoRol().getSelectedItem());
