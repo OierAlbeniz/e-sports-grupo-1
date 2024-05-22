@@ -291,6 +291,13 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user) throws Exception {
         return ctUsuario.buscarUsuario(user);
     }
+    /*public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException{
+
+    }*/
+    public void borrarCompeticion(int idCompeticion) throws Exception {ctcompeticion.borrarCompeticion(idCompeticion);}
+    public String buscarCompeticionPorNombre(String nombre) throws Exception {return  ctcompeticion.buscarCompeticionPorNombre(nombre);}
+    public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {ctcompeticion.modificarCompeticion(idCompeticion,nombre,fechaInicio,fechaFin,estado,idJuego);}
+    public Competicion obtenerCompeticion(String nombre) throws Exception{return ctcompeticion.obtenerCompeticion(nombre);}
 
     public List<Juego> buscarJuegos() throws SQLException {
         return ctjuego.buscarJuegos();

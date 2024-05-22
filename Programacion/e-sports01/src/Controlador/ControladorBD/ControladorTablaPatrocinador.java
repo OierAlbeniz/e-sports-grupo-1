@@ -30,5 +30,6 @@ public class ControladorTablaPatrocinador {
 
         statement.close();
         return patro;
+        return nombresPatrocinadores;
     }
 }
