@@ -35,11 +35,37 @@ import java.util.List;
                 System.out.println(j.toString());
             }
             else {
-                throw new Exception("Error al buscar el vuelo");
+                throw new Exception("Error al buscar el juego");
             }
             sentencia.close();
             return j;
         }
+        public Juego buscarJuegoPorNombreCompeticion(String nombreCompeticion) throws Exception {
+            String sql = "SELECT j.* FROM juego j JOIN competicion c ON j.id_juego = c.id_juego WHERE c.nombre = ?";
+
+            try (PreparedStatement sentencia = con.prepareStatement(sql)) {
+                sentencia.setString(1, nombreCompeticion);
+                ResultSet resultado = sentencia.executeQuery();
+
+                if (resultado.next()) {
+                    LocalDate fechaLanzamiento = resultado.getDate("fecha_lanzamiento").toLocalDate();
+                    Juego juego = new Juego(
+                            resultado.getString("nombre"),
+                            resultado.getString("empresa"),
+                            fechaLanzamiento,
+                            resultado.getInt("id_juego")
+                    );
+                    System.out.println(juego.toString());
+                    return juego;
+                } else {
+                    throw new Exception("No se encontró ningún juego para la competición especificada");
+                }
+            } catch (SQLException ex) {
+                System.out.println("Error al buscar el juego: " + ex.getMessage());
+                throw new Exception("Error al buscar el juego", ex);
+            }
+        }
+
 
         public List<Juego> buscarJuegos() throws SQLException {
             listaJuegos = new ArrayList<>();

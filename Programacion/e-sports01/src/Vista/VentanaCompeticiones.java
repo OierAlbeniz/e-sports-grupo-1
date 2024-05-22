@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusListener;
 import java.awt.geom.RoundRectangle2D;
 
 public class VentanaCompeticiones extends JFrame{
@@ -32,6 +33,8 @@ public class VentanaCompeticiones extends JFrame{
     private JTextField tfNuevaFechaFin;
     private JPanel panel2;
     private JButton bAceptarNuevo;
+    private JButton bAceptarBorrar;
+    private JButton bAceptarEditar;
 
     public VentanaCompeticiones() {
         setContentPane(pCompeticiones);
@@ -272,14 +275,43 @@ public class VentanaCompeticiones extends JFrame{
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-    public void addbAceptarAl(ActionListener al) {
+    public void addbAceptarNuevoAl(ActionListener al) {
         bAceptarNuevo.addActionListener(al);
     }
+    public void addbAceptarBorrarAl(ActionListener al) {
+        bAceptarBorrar.addActionListener(al);
+    }
+    public void addbAceptarEditarAl(ActionListener al) {
+        bAceptarEditar.addActionListener(al);
+    }
+    public void addCbEditCompeticionFl(FocusListener fl){cbEditCompeticion.addFocusListener(fl);}
     public void mostrar(String m){
         JOptionPane.showMessageDialog(null,m);
     }
 
+    public JButton getbAceptarNuevo() {
+        return bAceptarNuevo;
+    }
 
+    public void setbAceptarNuevo(JButton bAceptarNuevo) {
+        this.bAceptarNuevo = bAceptarNuevo;
+    }
+
+    public JButton getbAceptarBorrar() {
+        return bAceptarBorrar;
+    }
+
+    public void setbAceptarBorrar(JButton bAceptarBorrar) {
+        this.bAceptarBorrar = bAceptarBorrar;
+    }
+
+    public JButton getbAceptarEditar() {
+        return bAceptarEditar;
+    }
+
+    public void setbAceptarEditar(JButton bAceptarEditar) {
+        this.bAceptarEditar = bAceptarEditar;
+    }
 
     public void limpiar() {
         tfNombre.setText("");

@@ -2,8 +2,12 @@ package Controlador.ControladorBD;
 
 import Modelo.Competicion;
 import Modelo.Equipo;
+import Modelo.Juego;
+import oracle.jdbc.proxy.annotation.Pre;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,12 +16,14 @@ public class ControladorTablaCompeticion {
     private ControladorTablaJuego ctj;
     private Competicion c;
     private List<Competicion> listaCompeticiones;
+    private ControladorBD cb;
     private List<String> listaNombreCompeticiones;
 
-
-    public ControladorTablaCompeticion(Connection con) {
+    public ControladorTablaCompeticion(Connection con, ControladorBD cb) {
         this.con = con;
+        this.cb = cb;
     }
+
     public List<Competicion> llenarCompeticiones() throws Exception {
         List<Competicion> llenarCompeticiones=new ArrayList<>();
 
@@ -63,7 +69,7 @@ public class ControladorTablaCompeticion {
             throw new Exception("Ya hay un vuelo con ese codigo");
         }
     }
-    public List<String> buscarCompeticiones() throws SQLException {
+    public List<String> buscarCompeticiones() throws Exception {
         listaNombreCompeticiones = new ArrayList<>();
         String plantilla ="SELECT nombre from competicion";
 
@@ -78,62 +84,74 @@ public class ControladorTablaCompeticion {
         return listaNombreCompeticiones;
     }
 
-    /*
-    public void crearCompeticion(String nombre, Date fechaInicio, Date fechaFin, String estado, int idJuego) throws SQLException {
-        CallableStatement cs = null;
+    public  String buscarCompeticionPorNombre(String nombre) throws Exception {
+        String idComp = null;
+        String plantilla = "SELECT * FROM competicion WHERE nombre = ?";
 
-        try {
-            cs = con.prepareCall("{call competicion_pkg.crear_competicion(?, ?, ?, ?, ?)}");
-            cs.setString(1, nombre);
-            cs.setDate(2, fechaInicio);
-            cs.setDate(3, fechaFin);
-            cs.setString(4, estado);
-            cs.setInt(5, idJuego);
+        PreparedStatement sentencia = con.prepareStatement(plantilla);
 
-            cs.execute();
-            System.out.println("Competición creada correctamente.");
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
+        sentencia.setString(1,nombre);
+
+        ResultSet resultado = sentencia.executeQuery();
+
+        if (resultado.next()){
+            idComp = resultado.getString("id_competicion");
         }
+        else{
+            throw  new Exception("No se ha encontrado la competicion");
+        }
+        sentencia.close();
+        return idComp;
     }
 
-    public void eliminarCompeticion(int idCompeticion) throws SQLException {
-        CallableStatement cs = null;
-
-        try {
-            cs = con.prepareCall("{call competicion_pkg.eliminar_competicion(?)}");
-            cs.setInt(1, idCompeticion);
-
-            cs.execute();
+    public void borrarCompeticion(int idCompeticion) throws Exception {
+        String sql = "{call competicion_pkg.eliminar_competicion(?)}";
+        try (CallableStatement stmt = con.prepareCall(sql)) {
+            stmt.setInt(1, idCompeticion);
+            stmt.execute();
             System.out.println("Competición eliminada correctamente.");
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar la competición: " + ex.getMessage());
+            throw new Exception("Error al eliminar la competición", ex);
         }
     }
-
-    public void modificarCompeticion(int idCompeticion, String nombre, Date fechaInicio, Date fechaFin, String estado, int idJuego) throws SQLException {
-        CallableStatement cs = null;
-
-        try {
-            cs = con.prepareCall("{call competicion_pkg.modificar_competicion(?, ?, ?, ?, ?, ?)}");
-            cs.setInt(1, idCompeticion);
-            cs.setString(2, nombre);
-            cs.setDate(3, fechaInicio);
-            cs.setDate(4, fechaFin);
-            cs.setString(5, estado);
-            cs.setInt(6, idJuego);
-
-            cs.execute();
+    public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {
+        String sql = "{call competicion_pkg.modificar_competicion(?, ?, ?, ?, ?, ?)}";
+        try (CallableStatement stmt = con.prepareCall(sql)) {
+            stmt.setInt(1, idCompeticion);
+            stmt.setString(2, nombre);
+            stmt.setDate(3, Date.valueOf(fechaInicio));
+            stmt.setDate(4, Date.valueOf(fechaFin));
+            stmt.setString(5, estado);
+            stmt.setInt(6, idJuego);
+            stmt.execute();
             System.out.println("Competición modificada correctamente.");
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-}
-}
-*/
+        } catch (SQLException ex) {
+            System.out.println("Error al modificar la competición: " + ex.getMessage());
+            throw new Exception("Error al modificar la competición", ex);
+        }
+    }
+    public Competicion obtenerCompeticion(String nombre) throws Exception{
+        String plantilla = "SELECT * FROM competicion WHERE nombre = ?";
+
+        PreparedStatement sentencia = con.prepareStatement(plantilla);
+
+        sentencia.setString(1,nombre);
+
+        ResultSet resultado = sentencia.executeQuery();
+
+        if (resultado.next()){
+            Juego j = cb.buscarJuegoPorNombreCompeticion(nombre);
+            LocalDate fechaIni = LocalDate.parse(resultado.getString("fecha_inicio"));
+            LocalDate fechaFin = LocalDate.parse(resultado.getString("fecha_fin"));
+
+            c = new Competicion(resultado.getInt("id_competicion"),resultado.getString("nombre"),fechaIni,fechaFin,resultado.getString("estado"),j);
+        }
+        else{
+            throw  new Exception("No se ha encontrado la competicion");
+        }
+        sentencia.close();
+        return c;
+    }
+
 }

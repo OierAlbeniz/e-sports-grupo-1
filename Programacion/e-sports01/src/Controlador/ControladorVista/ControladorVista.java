@@ -8,7 +8,6 @@ import Modelo.*;
 import Modelo.Equipo;
 import Modelo.Usuario;
 
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -67,7 +66,7 @@ public class ControladorVista {
         cvstaff=new ControladorVStaff(this);
         cvstaff.crearMostrar();
     }
-    public void crearMostrarCompeticiones() throws SQLException {
+    public void crearMostrarCompeticiones() throws Exception {
         cvcompeticion=new ControladorVCompeticion(this);
         cvcompeticion.crearMostrar();
     }
@@ -91,6 +90,13 @@ public class ControladorVista {
     public List<Equipo> llenarEquiposCompeticion(Integer x) throws Exception {
         return cp.llenarEquiposCompeticion(x);
     }
+    public void borrarCompeticion(int idCompeticion) throws Exception {cp.borrarCompeticion(idCompeticion);}
+    public String buscarCompeticionPorNombre(String nombre) throws Exception {return  cp.buscarCompeticionPorNombre(nombre);}
+    public Competicion obtenerCompeticion(String nombre) throws Exception{return cp.obtenerCompeticion(nombre);}
+
+    public Juego buscarJuegoPorNombreCompeticion(String nombreCompeticion) throws Exception {return cp.buscarJuegoPorNombreCompeticion(nombreCompeticion);}
+    public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {cp.modificarCompeticion(idCompeticion,nombre,fechaInicio,fechaFin,estado,idJuego);}
+
     public void generarCalendario() throws Exception {
         cp.generarCalendario();
     }
@@ -105,7 +111,7 @@ public class ControladorVista {
     public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
     public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
-    public List<String> buscarCompeticiones() throws SQLException {return cp.buscarCompeticiones();}
+    public List<String> buscarCompeticiones() throws Exception {return cp.buscarCompeticiones();}
 
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {

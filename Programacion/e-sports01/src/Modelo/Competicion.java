@@ -17,7 +17,7 @@ public class Competicion {
     private Juego juego;
 
 
-    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
+    public Competicion(Integer idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, Juego juego) {
 
         this.idCompeticion = idCompeticion;
         this.nombre = nombre;
@@ -27,7 +27,6 @@ public class Competicion {
         this.juego = juego;
     }
 
-        this.juego = juego;
     public Competicion() {
 
     }
@@ -40,6 +39,15 @@ public class Competicion {
         this.estado = estado;
         this.juego = juego;
     }
+
+    public Competicion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado) {
+        this.idCompeticion = idCompeticion;
+        this.nombre = nombre;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.estado = estado;
+    }
+
 
     public LocalDate getFechaInicio() {
         return fechaInicio;

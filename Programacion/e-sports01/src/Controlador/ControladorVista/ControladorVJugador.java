@@ -153,7 +153,7 @@ public class ControladorVJugador {
             }
         }
     }
-//esto es el focus lost de editar
+    //esto es el focus lost de editar
     public class ComboNombreJugadoresEditar implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -284,12 +284,12 @@ public class ControladorVJugador {
                     String equipo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
 
                     // Enviar los datos al controlador de base de datos
-                   Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
+                    Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
 
 
 
                     vJugadores.getTfNuevoNombre().setText(buscarDatos.getNombre());
-                   vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
+                    vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
                     vJugadores.getTfNuevoApellido2().setText(buscarDatos.getApellido2());
                     DecimalFormat formatter2 = new DecimalFormat("#");
                     formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)

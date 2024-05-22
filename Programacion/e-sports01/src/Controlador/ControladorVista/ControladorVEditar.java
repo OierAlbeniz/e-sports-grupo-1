@@ -86,6 +86,8 @@ public class ControladorVEditar {
                 cv.crearMostrarCompeticiones();
             } catch (SQLException ex) {
                 throw new RuntimeException(ex);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
             }
             vEditar.dispose();
         }

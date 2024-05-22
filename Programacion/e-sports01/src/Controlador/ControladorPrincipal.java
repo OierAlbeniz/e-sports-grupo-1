@@ -38,11 +38,18 @@ public class ControladorPrincipal {
     public List<Juego> buscarJuegos() throws SQLException {return cb.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return  cb.buscarJuego(nombre);}
     public void insertarCompeticion(Competicion c) throws Exception{cb.insertarCompeticion(c);}
-    public List<String> buscarCompeticiones() throws SQLException {return cb.buscarCompeticiones(); }
+    public List<String> buscarCompeticiones() throws Exception {return cb.buscarCompeticiones(); }
+    public Competicion obtenerCompeticion(String nombre) throws Exception{return cb.obtenerCompeticion(nombre);}
+
+    public Juego buscarJuegoPorNombreCompeticion(String nombreCompeticion) throws Exception {return cb.buscarJuegoPorNombreCompeticion(nombreCompeticion);}
+
     public ArrayList selectEquipo(String nombre ) throws Exception {
         return cb.selectEquipo(nombre);
-
     }
+    public void borrarCompeticion(int idCompeticion) throws Exception {cb.borrarCompeticion(idCompeticion);}
+    public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {cb.modificarCompeticion(idCompeticion,nombre,fechaInicio,fechaFin,estado,idJuego);}
+
+    public String buscarCompeticionPorNombre(String nombre) throws Exception {return  cb.buscarCompeticionPorNombre(nombre);}
 
     public List<Jugador> llenarJugadores(Integer x) throws Exception {
         return cb.llenarJugadores(x);
@@ -60,11 +67,7 @@ public class ControladorPrincipal {
         return cb.buscarUsuario(user,password);
     }
 
-    public List<Juego> buscarJuegos() throws SQLException {return cb.buscarJuegos();}
-    public Juego buscarJuego(String nombre) throws Exception{return  cb.buscarJuego(nombre);}
-    public void insertarCompeticion(Competicion c) throws Exception{cb.insertarCompeticion(c);}
-    public List<String> buscarCompeticiones() throws SQLException {return cb.buscarCompeticiones();
-    }
+
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {
         return  cb.llenarJugadoresNombre(equiposelecionado);

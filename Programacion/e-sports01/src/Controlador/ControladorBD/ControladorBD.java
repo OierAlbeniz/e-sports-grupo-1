@@ -51,7 +51,7 @@ public class ControladorBD {
         ctequipo = new ControladorTablaEquipo(con);
         ctentrenador = new ControladorTablaEntrenador(con);
         ctenfrentamiento = new ControladorTablaEnfrentamiento(con);
-        ctcompeticion = new ControladorTablaCompeticion(con);
+        ctcompeticion = new ControladorTablaCompeticion(con,this);
         ctclasificacion = new ControladorTablaClasificacion(con);
         ctasistente = new ControladorTablaAsistente(con);
     }
@@ -62,7 +62,7 @@ public class ControladorBD {
     /**
      * Abre la conexión a la base de datos.
      */
-    public void abrirConexion() {
+    /*public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -78,7 +78,7 @@ public class ControladorBD {
         } catch (SQLException e) {
         }
     }
-   /* public void abrirConexion() {
+   */ public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -93,7 +93,7 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }*/
+    }
 
 
     /**
@@ -258,11 +258,18 @@ public class ControladorBD {
      * @return Lista de nombres de competiciones.
      * @throws SQLException Si ocurre un error en la base de datos.
      */
-    public List<String> buscarCompeticiones() throws SQLException {
+    public List<String> buscarCompeticiones() throws Exception {
 
         return ctcompeticion.buscarCompeticiones();
     }
-    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
+    public void borrarCompeticion(int idCompeticion) throws Exception {ctcompeticion.borrarCompeticion(idCompeticion);}
+    public String buscarCompeticionPorNombre(String nombre) throws Exception {return  ctcompeticion.buscarCompeticionPorNombre(nombre);}
+    public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {ctcompeticion.modificarCompeticion(idCompeticion,nombre,fechaInicio,fechaFin,estado,idJuego);}
+    public Competicion obtenerCompeticion(String nombre) throws Exception{return ctcompeticion.obtenerCompeticion(nombre);}
+
+        public Juego buscarJuegoPorNombreCompeticion(String nombreCompeticion) throws Exception {return ctjuego.buscarJuegoPorNombreCompeticion(nombreCompeticion);}
+
+        public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {
         return  ctjugador.llenarJugadoresNombre(equiposelecionado);
     }
