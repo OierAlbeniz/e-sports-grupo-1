@@ -72,16 +72,32 @@ public class ControladorPrincipal {
         return cb.buscarPatrocinador();
     }
 
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposeleccionado) throws SQLException{
+        return cb.llenarPatrocinadorNombre(equiposeleccionado);
+    }
     public void eliminarJugador(String nombre,String equipo) throws Exception {
        cb.eliminarJugador(nombre,equipo);
+    }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        cb.eliminarPatrocinador(nombre,equipo);
     }
     public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
         cb.crearUsuario(nombre,contrasena,tipoUsuario);
         return null;
     }
+    public Usuario crearPatrocinador(Integer idPatrocinador, String nombre) throws Exception {
+        cb.crearPatrocinador( idPatrocinador, nombre);
+        return null;
+    }
     public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
         cb.actualizarJugador( nombre, equipo);
         Jugador buscarDatos = cb.actualizarJugador(nombre, equipo);
+
+        return buscarDatos;
+    }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        cb.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatos = cb.actualizarPatrocinador(nombre, equipo);
 
         return buscarDatos;
     }
@@ -132,4 +148,9 @@ public class ControladorPrincipal {
         cb.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
 
+    public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        cb.editarPatrocinadorConfir(nombre,nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
 }

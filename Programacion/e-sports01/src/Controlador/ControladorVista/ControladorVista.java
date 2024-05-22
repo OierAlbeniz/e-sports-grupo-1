@@ -110,7 +110,7 @@ public class ControladorVista {
     }
 
     public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
-         cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+        cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
         return null;
     }
     public ArrayList selectEquipo(String nombre ) throws Exception {
@@ -198,5 +198,23 @@ public class ControladorVista {
     }
 
 
+
+    public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+        cp.editarPatrocinadorConfir(nombre, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        cp.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatosPatrocinador = cp.actualizarPatrocinador(nombre, equipo);
+
+        return buscarDatosPatrocinador;
+    }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        cp.eliminarPatrocinador(nombre,equipo);
+    }
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposelecionado) throws SQLException
+    {
+        return  cp.llenarPatrocinadorNombre(equiposelecionado);
+    }
 
 }
