@@ -26,7 +26,9 @@ public class ControladorVista {
     private ControladorVJugador cvjugador;
     private ControladorVJuego cvjuego;
     private ControladorVStaff cvstaff;
+    private ControladorVConsultas cvconsultas;
     private ControladorVCompeticion cvcompeticion;
+
 
     public ControladorVista(ControladorPrincipal cp) throws Exception {
         this.cp = cp;
@@ -46,7 +48,11 @@ public class ControladorVista {
         cvpatrocinador=new ControladorVPatrocinador(this);
         cvpatrocinador.crearMostrar();
     }
-    public void crearMostrarEquipos() {
+    public void crearConsultas() {
+        cvconsultas=new ControladorVConsultas(this);
+        cvconsultas.crearMostrar();
+    }
+    public void crearMostrarEquipos() throws Exception {
         cvequipo=new ControladorVEquipo(this);
         cvequipo.crearMostrar();
     }
@@ -55,6 +61,10 @@ public class ControladorVista {
         cvu.crearMostrarUsuario();
     }
     public void crearMostrarJugadores() {
+        cvjugador=new ControladorVJugador(this);
+        cvjugador.crearMostrar();
+    }
+    public void crearMostrarEntrenador() {
         cvjugador=new ControladorVJugador(this);
         cvjugador.crearMostrar();
     }
@@ -74,6 +84,11 @@ public class ControladorVista {
     public Usuario buscarUsuario(String user, String password) throws Exception {
         return cp.buscarUsuario(user, password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cp.buscarEquipo(nombre);
+    }
+
+
 
     public Integer cantidadEquipos() throws Exception {
         return cp.cantidadEquipos();
@@ -102,7 +117,7 @@ public class ControladorVista {
     }
 
     public Usuario crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
-         cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
+        cp.crearJugador(nombre,primerApellido,segundoApellido,sueldo,nacionalidad,fechaNacimiento,nickname,rol,equipo);
         return null;
     }
     public ArrayList selectEquipo(String nombre ) throws Exception {
@@ -116,6 +131,9 @@ public class ControladorVista {
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {
         return  cp.llenarJugadoresNombre(equiposelecionado);
+    }
+    public List<String> buscarPatrocinador() throws SQLException {
+        return cp.buscarPatrocinador();
     }
     public void eliminarJugador(String nombre,String equipo) throws Exception {
         cp.eliminarJugador(nombre,equipo);
@@ -136,6 +154,74 @@ public class ControladorVista {
 
 
         cp.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
+
+    public void nombreequipo(String nombre){
+        cvjugador.nombreEquipo(nombre);
+    }
+    public void borrarEquipo(String nombre) throws SQLException {
+        cp.borrarEquipo(nombre);
+    }
+
+
+
+    public List<Jugador> llenarJugadoresS(String tipo) throws Exception {
+        cp.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cp.llenarJugadoresS(tipo);
+        return listaJugadores;
+    }
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cp.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cp.llenarEquiposS(tipo);
+        return listaEquipo;
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cp.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cp.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cp.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cp.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cp.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cp.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cp.llenarJuegos(tipo);
+        List<Juego> listaJuego = cp.llenarJuegos(tipo);
+        return listaJuego;
+    }
+
+
+    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        cp.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cp.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+    }
+
+
+
+    public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+        cp.editarPatrocinadorConfir(nombre, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        cp.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatosPatrocinador = cp.actualizarPatrocinador(nombre, equipo);
+
+        return buscarDatosPatrocinador;
+    }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        cp.eliminarPatrocinador(nombre,equipo);
+    }
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposelecionado) throws SQLException
+    {
+        return  cp.llenarPatrocinadorNombre(equiposelecionado);
     }
 
 }

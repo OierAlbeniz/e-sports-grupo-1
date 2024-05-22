@@ -66,18 +66,34 @@ public class ControladorPrincipal {
     public Usuario buscarUsuario(String user,String password) throws Exception {
         return cb.buscarUsuario(user,password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cb.buscarEquipo(nombre);
+    }
 
 
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     {
         return  cb.llenarJugadoresNombre(equiposelecionado);
     }
+    public List<String> buscarPatrocinador() throws SQLException {
+        return cb.buscarPatrocinador();
+    }
 
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposeleccionado) throws SQLException{
+        return cb.llenarPatrocinadorNombre(equiposeleccionado);
+    }
     public void eliminarJugador(String nombre,String equipo) throws Exception {
        cb.eliminarJugador(nombre,equipo);
     }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        cb.eliminarPatrocinador(nombre,equipo);
+    }
     public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
         cb.crearUsuario(nombre,contrasena,tipoUsuario);
+        return null;
+    }
+    public Usuario crearPatrocinador(Integer idPatrocinador, String nombre) throws Exception {
+        cb.crearPatrocinador( idPatrocinador, nombre);
         return null;
     }
     public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
@@ -86,9 +102,62 @@ public class ControladorPrincipal {
 
         return buscarDatos;
     }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        cb.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatos = cb.actualizarPatrocinador(nombre, equipo);
+
+        return buscarDatos;
+    }
     public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
 
 
         cb.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
+    public List<Jugador> llenarJugadoresS(String tipo) throws Exception {
+        cb.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cb.llenarJugadoresS(tipo);
+        return listaJugadores;
+    }
+    public void borrarEquipo(String nombre) throws SQLException {
+        cb.borrarEquipo(nombre);
+    }
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cb.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cb.llenarEquiposS(tipo);
+        return listaEquipo;
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cb.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cb.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cb.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cb.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cb.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cb.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cb.llenarJuegos(tipo);
+        List<Juego> listaJuego = cb.llenarJuegos(tipo);
+        return listaJuego;
+    }
+
+    public void crearEquipo(String nombre,LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        cb.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cb.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+    }
+
+    public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        cb.editarPatrocinadorConfir(nombre,nuevoEquipo,nombreAntiguo,equipoAntiguo);
     }
 }

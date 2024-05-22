@@ -43,6 +43,7 @@ public class ControladorVJugador {
         vJugadores.getpNuevo().setVisible(false);
         vJugadores.getpEditar().setVisible(false);
         vJugadores.getpEliminar().setVisible(false);
+        vJugadores.addAceptar(new addBotonAceptar());
         llenarComboEquipo();
         llenarComboEquipoEliminar();
         llenarComboEquipoNuevo();
@@ -55,6 +56,7 @@ public class ControladorVJugador {
             vJugadores.dispose();
         }
     }
+
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -71,7 +73,7 @@ public class ControladorVJugador {
                 vJugadores.getpNuevo().setVisible(true);
                 vJugadores.getpEditar().setVisible(false);
                 vJugadores.getpEliminar().setVisible(false);
-                vJugadores.addAceptar(new addBotonAceptar());
+
             }
 
 
@@ -98,7 +100,7 @@ public class ControladorVJugador {
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
 
                 }
-                if (vJugadores.getRbEliminar().isSelected()) {
+               else if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
@@ -106,14 +108,14 @@ public class ControladorVJugador {
 
 
                 }
-                if (vJugadores.getRbEditar().isSelected())
+               else if (vJugadores.getRbEditar().isSelected())
                 {
 
                     String nombre = vJugadores.getTfNuevoNombre().getText();
                     String primerApellido = vJugadores.getTfNuevoApellido1().getText();
                     String segundoApellido = vJugadores.getTfNuevoApellido2().getText();
                     Integer sueldo = Integer.valueOf(vJugadores.getTfNuevoSueldo().getText());
-                    String nacionalidad = String.valueOf(vJugadores.getCbNacionalidad().getSelectedItem());
+                    String nacionalidad = String.valueOf(vJugadores.getCbNuevaNacionalidad().getSelectedItem());
                     LocalDate fechaNacimiento = LocalDate.parse(vJugadores.getTfNuevaFechaNac().getText(), DateTimeFormatter.ofPattern("yyyy/MM/dd"));
                     String nickname = vJugadores.getTfNuevoNick().getText();
                     String rol = String.valueOf(vJugadores.getCbNuevoRol().getSelectedItem());
@@ -294,10 +296,12 @@ public class ControladorVJugador {
                     DecimalFormat formatter2 = new DecimalFormat("#");
                     formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)
                     String sueldoFormateado = formatter2.format(buscarDatos.getSueldo());
-                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
+                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);
+                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/dd/MM");
                     String fechaFormateada = buscarDatos.getFechaNacimiento().format(formatter);
-                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
+                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);
+                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
                     vJugadores.getCbNuevoRol().addItem(buscarDatos.getRol());
 
                     vJugadores.getCbNuevoEquipo().setSelectedItem(vJugadores.getCbEquipoEditar().getSelectedItem());
@@ -312,5 +316,11 @@ public class ControladorVJugador {
         }
     }
 
+//esto es el relleno automatico de la combo box de el jugador cuando es llamado por el quipo
 
+    public void nombreEquipo(String nombre){
+        vJugadores.getCbEquipoNuevo().addItem(nombre);
+        vJugadores.getCbEquipoNuevo().setSelectedItem(nombre);
+        vJugadores.getCbEquipoNuevo().setEnabled(false);
+    }
 }

@@ -1,9 +1,15 @@
 package Vista;
 
+import Modelo.Equipo;
+import Modelo.Patrocinador;
+
 import javax.swing.*;
 import java.awt.event.ActionListener;
 
-public class VentanaPatrocinadores extends JFrame{
+/**
+ * Clase que representa la ventana de patrocinadores.
+ */
+public class VentanaPatrocinadores extends JFrame {
     private JRadioButton rbNuevo;
     private JRadioButton rbEliminar;
     private JRadioButton rbEditar;
@@ -12,23 +18,25 @@ public class VentanaPatrocinadores extends JFrame{
     private JButton bVolver;
     private JPanel pEditar;
     private JTextField tfNombre;
-    private JComboBox cbEquipos;
+    private JComboBox<Equipo> cbEquipos;
     private JPanel pEliminar;
     private JPanel pNuevo;
-    private JComboBox cbPatrocinadores;
+    private JComboBox<Patrocinador> cbEDPatrocinadores;
     private JRadioButton rbEditarNombre;
     private JRadioButton rbVincular;
     private JRadioButton rbDesvincular;
     private JTextField tfNuevoNombre;
-    private JComboBox cbVincular;
-    private JComboBox cbDesvincular;
-    private JComboBox cbPatrocinador;
+    private JComboBox<Equipo> cbVincular;
+    private JComboBox<Equipo> cbDesvincular;
+    private JComboBox<Patrocinador> cbEPatrocinador;
+    private JButton bAceptar;
 
     public VentanaPatrocinadores() {
         setContentPane(pPatrocinadores);
         setLocationRelativeTo(null);
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
     public JRadioButton getRbNuevo() {
@@ -71,11 +79,11 @@ public class VentanaPatrocinadores extends JFrame{
         this.tfNombre = tfNombre;
     }
 
-    public JComboBox getCbEquipos() {
+    public JComboBox<Equipo> getCbEquipos() {
         return cbEquipos;
     }
 
-    public void setCbEquipos(JComboBox cbEquipos) {
+    public void setCbEquipos(JComboBox<Equipo> cbEquipos) {
         this.cbEquipos = cbEquipos;
     }
 
@@ -119,12 +127,12 @@ public class VentanaPatrocinadores extends JFrame{
         this.bVolver = bVolver;
     }
 
-    public JComboBox getCbPatrocinadores() {
-        return cbPatrocinadores;
+    public JComboBox<Patrocinador> getCbEDPatrocinadores() {
+        return cbEDPatrocinadores;
     }
 
-    public void setCbPatrocinadores(JComboBox cbPatrocinadores) {
-        this.cbPatrocinadores = cbPatrocinadores;
+    public void setCbEDPatrocinadores(JComboBox<Patrocinador> cbPatrocinadores) {
+        this.cbEDPatrocinadores = cbPatrocinadores;
     }
 
     public JRadioButton getRbEditarNombre() {
@@ -159,26 +167,42 @@ public class VentanaPatrocinadores extends JFrame{
         this.tfNuevoNombre = tfNuevoNombre;
     }
 
-    public JComboBox getCbVincular() {
+    public JComboBox<Equipo> getCbVincular() {
         return cbVincular;
     }
 
-    public void setCbVincular(JComboBox cbVincular) {
+    public void setCbVincular(JComboBox<Equipo> cbVincular) {
         this.cbVincular = cbVincular;
     }
 
-    public JComboBox getCbDesvincular() {
+    public JComboBox<Equipo> getCbDesvincular() {
         return cbDesvincular;
     }
 
-    public void setCbDesvincular(JComboBox cbDesvincular) {
+    public void setCbDesvincular(JComboBox<Equipo> cbDesvincular) {
         this.cbDesvincular = cbDesvincular;
     }
 
+    public JComboBox<Patrocinador> getCbEPatrocinador() {
+        return cbEPatrocinador;
+    }
+
+    public void setCbEPatrocinador(JComboBox<Patrocinador> cbEPatrocinador) {
+        this.cbEPatrocinador = cbEPatrocinador;
+    }
+
+    public JButton getbAceptar() {
+        return bAceptar;
+    }
+
+    public void setbAceptar(JButton bAceptar) {
+        this.bAceptar = bAceptar;
+    }
 
     public void addVolver(ActionListener al) {
         bVolver.addActionListener(al);
     }
+
     public void addInicio(ActionListener al) {
         bInicio.addActionListener(al);
     }
@@ -186,22 +210,26 @@ public class VentanaPatrocinadores extends JFrame{
     public void addrbNuevoAL(ActionListener al) {
         rbNuevo.addActionListener(al);
     }
+
     public void addrbEditarAL(ActionListener al) {
         rbEditar.addActionListener(al);
     }
+
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
 
-
     public void limpiar() {
         tfNombre.setText("");
         cbEquipos.setSelectedIndex(-1);
-        cbPatrocinador.setSelectedIndex(-1);
-        cbPatrocinadores.setSelectedIndex(-1);
+        cbEPatrocinador.setSelectedIndex(-1);
+        cbEDPatrocinadores.setSelectedIndex(-1);
         tfNuevoNombre.setText("");
         cbVincular.setSelectedIndex(-1);
         cbDesvincular.setSelectedIndex(-1);
+    }
 
+    public void addAceptarAL(ActionListener al) {
+        bAceptar.addActionListener(al);
     }
 }

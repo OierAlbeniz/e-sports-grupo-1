@@ -225,7 +225,7 @@
                   <text value="Patrocinador"/>
                 </properties>
               </component>
-              <component id="1a33e" class="javax.swing.JComboBox" binding="cbPatrocinadores">
+              <component id="1a33e" class="javax.swing.JComboBox" binding="cbEDPatrocinadores">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="-1"/>
@@ -395,7 +395,7 @@
                   <text value="Patrocinador"/>
                 </properties>
               </component>
-              <component id="30f38" class="javax.swing.JComboBox" binding="cbPatrocinador">
+              <component id="30f38" class="javax.swing.JComboBox" binding="cbEPatrocinador">
                 <constraints>
                   <grid row="0" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">
                     <minimum-size width="200" height="-1"/>
@@ -419,11 +419,17 @@
               </hspacer>
             </children>
           </grid>
-          <vspacer id="5bbd3">
+          <component id="35896" class="javax.swing.JButton" binding="bAceptar">
             <constraints>
-              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+              <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
-          </vspacer>
+            <properties>
+              <background color="-16711846"/>
+              <font size="14" style="0"/>
+              <foreground color="-16750043"/>
+              <text value="Aceptar"/>
+            </properties>
+          </component>
         </children>
       </grid>
       <grid id="fd1ae" layout-manager="GridLayoutManager" row-count="1" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

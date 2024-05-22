@@ -27,6 +27,7 @@ public class ControladorBD {
     private ControladorTablaCompeticion ctcompeticion;
     private ControladorTablaEnfrentamiento ctenfrentamiento;
     private ControladorTablaEntrenador ctentrenador;
+   private ControladorConsultas cc;
     private ControladorTablaEquipo ctequipo;
     private ControladorTablaJornada ctjornada;
     private ControladorTablaJuego ctjuego;
@@ -54,6 +55,7 @@ public class ControladorBD {
         ctcompeticion = new ControladorTablaCompeticion(con,this);
         ctclasificacion = new ControladorTablaClasificacion(con);
         ctasistente = new ControladorTablaAsistente(con);
+        cc=new ControladorConsultas(con);
     }
 
     public ControladorBD() {
@@ -77,8 +79,8 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }
-   */ public void abrirConexion() {
+    }*/
+   public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -127,12 +129,11 @@ public class ControladorBD {
     /**
      * Busca un patrocinador por su ID.
      *
-     * @param idpatrocinador ID del patrocinador.
      * @return El patrocinador encontrado.
      * @throws Exception Si ocurre un error en la base de datos.
      */
-    public Patrocinador buscarPatrocinador(Integer idpatrocinador) throws Exception {
-        return ctpatrocinador.buscarPatrocinador(idpatrocinador);
+    public List<String> buscarPatrocinador() throws SQLException {
+        return ctpatrocinador.buscarPatrocinador();
     }
     /**
      * Llena una lista de jugadores de un equipo.
@@ -183,7 +184,10 @@ public class ControladorBD {
             System.out.println("Error al generar el calendario: " + ex.getMessage());
         }
     }
+    public void crearPatrocinador(Integer idPatrocinador, String nombre) throws Exception {
+        ctpatrocinador.crearPatrocinador(idPatrocinador, nombre);
 
+    }
     public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) throws Exception {
         ctjugador.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
 
@@ -224,6 +228,9 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user,String password) throws Exception {
         return ctUsuario.buscarUsuario(user,password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return ctequipo.buscarEquipo(nombre);
+    }
     /**
      * Busca todos los juegos.
      *
@@ -262,6 +269,20 @@ public class ControladorBD {
 
         return ctcompeticion.buscarCompeticiones();
     }
+    public List<Patrocinador> llenarPatrocinadorNombre(String equiposeleccionado) throws SQLException
+    {
+        return ctpatrocinador.llenarPatrocinadorNombre(equiposeleccionado);
+    }
+    public void eliminarPatrocinador(String nombre,String equipo) throws Exception {
+        ctpatrocinador.eliminarPatrocinador(nombre,equipo);
+    }
+    public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
+        ctpatrocinador.actualizarPatrocinador( nombre, equipo);
+        Patrocinador buscarDatos = ctpatrocinador.actualizarPatrocinador(nombre, equipo);
+
+        return buscarDatos;
+    }
+    public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException
     public void borrarCompeticion(int idCompeticion) throws Exception {ctcompeticion.borrarCompeticion(idCompeticion);}
     public String buscarCompeticionPorNombre(String nombre) throws Exception {return  ctcompeticion.buscarCompeticionPorNombre(nombre);}
     public void modificarCompeticion(int idCompeticion, String nombre, LocalDate fechaInicio, LocalDate fechaFin, String estado, int idJuego) throws Exception {ctcompeticion.modificarCompeticion(idCompeticion,nombre,fechaInicio,fechaFin,estado,idJuego);}
@@ -276,19 +297,63 @@ public class ControladorBD {
     public void eliminarJugador(String nombre,String equipo) throws Exception {
          ctjugador.eliminarJugador(nombre,equipo);
     }
-    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
-        ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
-        return null;
-    }
     public Jugador actualizarJugador(String nombre, String equipo) throws Exception {
         ctjugador.actualizarJugador( nombre, equipo);
         Jugador buscarDatos = ctjugador.actualizarJugador(nombre, equipo);
 
         return buscarDatos;
     }
+    public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
+        ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
+        return null;
+    }
+
     public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
 
 
         ctjugador.editarJugadorConfir(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }public void editarPatrocinadorConfir(String nombre,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
+
+
+        ctpatrocinador.editarPatrocinadorConfir(nombre,nuevoEquipo,nombreAntiguo,equipoAntiguo);
+    }
+    public List<Jugador> llenarJugadoresS(String tipo) throws SQLException {
+        cc.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cc.llenarJugadoresS(tipo);
+        return listaJugadores;
+    }
+    public void borrarEquipo(String nombre) throws SQLException {
+        ctequipo.borrarEquipo(nombre);
+    }
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cc.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cc.llenarEquiposS(tipo);
+        return listaEquipo;
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cc.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cc.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cc.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cc.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cc.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cc.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cc.llenarJuegos(tipo);
+        List<Juego> listaJuego = cc.llenarJuegos(tipo);
+        return listaJuego;
+    }
+    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        ctequipo.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        ctequipo.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
 }

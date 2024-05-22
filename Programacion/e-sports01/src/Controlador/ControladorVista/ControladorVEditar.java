@@ -53,8 +53,12 @@ public class ControladorVEditar {
     public class BEquiposAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarEquipos();
-            vEditar.dispose();
+            try {
+                cv.crearMostrarEquipos();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
         }
     }
     public class BJugadoresAL implements ActionListener {

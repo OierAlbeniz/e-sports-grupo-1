@@ -103,4 +103,7 @@ public class Equipo {
     public void setListaClasificacion(List<Clasificacion> listaClasificacion) {
         this.listaClasificacion = listaClasificacion;
     }
+
+    public void setPatrocinador(String nombre) {
+    }
 }

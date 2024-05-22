@@ -26,16 +26,22 @@ public class ControladorVP {
     private VistaPerfil vper;
     private VentanaInicioSesion vsesion;
 
+
+
     public ControladorVP(ControladorVista cv) throws Exception {
         this.cv = cv;
+        this.vsesion = new VentanaInicioSesion();
     }
 
     public void crearMostrar() {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-           vp.addUsuarios(new BusuarioAL());
+            vp.addUsuarios(new BusuarioAL());
             vp.addcerrarInsc(new BCerrarInscAL());
+            vp.addConsultas(new bConsultasAL());
+            vp.addBSalirAL(new BSalirAl());
+            vp.addCerrarSesionAL(new CerrarSesionAl());
 
 
 
@@ -50,6 +56,14 @@ public class ControladorVP {
     }
 
 
+    public class bConsultasAL implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cv.crearConsultas();
+
+        }
+    }
 
     public class BEditarAL implements ActionListener {
         @Override
@@ -88,7 +102,22 @@ public class ControladorVP {
         }
     }
 
+    public class BSalirAl implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            System.exit(0);
+        }
 
+    }
+
+    public class CerrarSesionAl implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            vp.dispose();
+            vsesion.setVisible(true);
+        }
+    }
 
 
 
