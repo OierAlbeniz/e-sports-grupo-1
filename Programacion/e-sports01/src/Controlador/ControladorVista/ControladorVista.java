@@ -60,6 +60,11 @@ public class ControladorVista {
         cvequipo=new ControladorVEquipo(this);
         cvequipo.crearMostrar();
     }
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cp.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cp.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
     public void crearMostrarJugadores() {
         cvjugador=new ControladorVJugador(this);
         cvjugador.crearMostrar();
@@ -96,8 +101,39 @@ public class ControladorVista {
     public List<Equipo> llenarEquipos() throws Exception {
         return cp.llenarEquipos();
     }
+    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        cp.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cp.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cp.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cp.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cp.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cp.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cp.llenarJuegos(tipo);
+        List<Juego> listaJuego = cp.llenarJuegos(tipo);
+        return listaJuego;
+    }
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cp.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cp.llenarEquiposS(tipo);
+        return listaEquipo;
+    }
     public List<Jugador> llenarJugadores(Integer x) throws Exception {
         return cp.llenarJugadores(x);
+    }
+    public List<Jugador> llenarJugadoresS(String tipo) throws Exception {
+        cp.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cp.llenarJugadoresS(tipo);
+        return listaJugadores;
     }
     public List<Competicion> llenarCompeticiones() throws Exception {
         return cp.llenarCompeticiones();
@@ -119,6 +155,16 @@ public class ControladorVista {
     public ArrayList selectEquipo(String nombre ) throws Exception {
         return cp.selectEquipo(nombre);
     }
+    public void borrarEquipo(String nombre) throws SQLException {
+        cp.borrarEquipo(nombre);
+    }
+    public List<String> buscarPatrocinador() throws SQLException {
+        return cp.buscarPatrocinador();
+    }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cp.buscarEquipo(nombre);
+    }
+
     public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
     public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}

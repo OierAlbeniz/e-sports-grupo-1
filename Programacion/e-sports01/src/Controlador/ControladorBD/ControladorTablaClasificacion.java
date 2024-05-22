@@ -65,40 +65,40 @@ public class ControladorTablaClasificacion {
         statementVisitante.executeUpdate();
         statementVisitante.close();
     }
-/*
-    // Método para obtener la clasificación de una competición específica
-    public Clasificacion obtenerClasificacion(Integer idCompeticion) throws Exception {
-        String query = "SELECT c.id_equipo, e.nombre, c.puntos " +
-                "FROM clasificacion c " +
-                "JOIN equipo e ON c.id_equipo = e.id_equipo " +
-                "WHERE c.id_competicion = ? " +
-                "ORDER BY c.puntos DESC";
-        PreparedStatement statement = con.prepareStatement(query);
-        statement.setInt(1, idCompeticion);
-        ResultSet rs = statement.executeQuery();
+    /*
+        // Método para obtener la clasificación de una competición específica
+        public Clasificacion obtenerClasificacion(Integer idCompeticion) throws Exception {
+            String query = "SELECT c.id_equipo, e.nombre, c.puntos " +
+                    "FROM clasificacion c " +
+                    "JOIN equipo e ON c.id_equipo = e.id_equipo " +
+                    "WHERE c.id_competicion = ? " +
+                    "ORDER BY c.puntos DESC";
+            PreparedStatement statement = con.prepareStatement(query);
+            statement.setInt(1, idCompeticion);
+            ResultSet rs = statement.executeQuery();
 
-        List<Clasificacion> listaClasificaciones = new ArrayList<>();
-        List<Equipo> listaEquipo = new ArrayList<>();
-        List<String> listaPuntos = new ArrayList<>();
+            List<Clasificacion> listaClasificaciones = new ArrayList<>();
+            List<Equipo> listaEquipo = new ArrayList<>();
+            List<String> listaPuntos = new ArrayList<>();
 
-        while (rs.next()) {
-            Equipo equipo = new Equipo();
-            equipo.setIdEquipo(rs.getInt("id_equipo"));
-            equipo.setNombre(rs.getString("nombre"));
-            listaEquipo.add(equipo);
-            listaPuntos.add(String.valueOf(rs.getInt("puntos")));
+            while (rs.next()) {
+                Equipo equipo = new Equipo();
+                equipo.setIdEquipo(rs.getInt("id_equipo"));
+                equipo.setNombre(rs.getString("nombre"));
+                listaEquipo.add(equipo);
+                listaPuntos.add(String.valueOf(rs.getInt("puntos")));
+            }
+            rs.close();
+            statement.close();
+
+            //Competicion competicion = obtenerCompeticionPorId(idCompeticion);
+            Clasificacion clasificacion = new Clasificacion(null, listaPuntos, null, listaEquipo);
+            listaClasificaciones.add(clasificacion);
+
+            return listaClasificaciones;
         }
-        rs.close();
-        statement.close();
 
-        //Competicion competicion = obtenerCompeticionPorId(idCompeticion);
-        Clasificacion clasificacion = new Clasificacion(null, listaPuntos, null, listaEquipo);
-        listaClasificaciones.add(clasificacion);
-
-        return listaClasificaciones;
-    }
-
- */
+     */
     /*
     public List<Integer> obtenerClasificacionID(Integer idCompeticion) throws Exception {
         List<Integer> listIds=null;
@@ -153,31 +153,31 @@ public class ControladorTablaClasificacion {
     }
 
      */
-public List<Clasificacion> obtenerClasificacionesPorCompeticion(Integer idCompeticion) throws Exception {
-    String query = "SELECT e.nombre, c.puntos FROM clasificacion c " +
-            "JOIN equipo e ON e.id_equipo = c.id_equipo " +
-            "WHERE c.id_competicion = ? " +
-            "ORDER BY c.puntos DESC";
+    public List<Clasificacion> obtenerClasificacionesPorCompeticion(Integer idCompeticion) throws Exception {
+        String query = "SELECT e.nombre, c.puntos FROM clasificacion c " +
+                "JOIN equipo e ON e.id_equipo = c.id_equipo " +
+                "WHERE c.id_competicion = ? " +
+                "ORDER BY c.puntos DESC";
 
-    List<Clasificacion> listaClasificaciones = new ArrayList<>();
-    PreparedStatement statement = con.prepareStatement(query);
-    statement.setInt(1, idCompeticion);
-    ResultSet rs = statement.executeQuery();
+        List<Clasificacion> listaClasificaciones = new ArrayList<>();
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setInt(1, idCompeticion);
+        ResultSet rs = statement.executeQuery();
 
-    while (rs.next()) {
-        String nombreEquipo = rs.getString("nombre");
-        int puntos = rs.getInt("puntos");
-        Equipo equipo = new Equipo();
-        equipo.setNombre(nombreEquipo);
+        while (rs.next()) {
+            String nombreEquipo = rs.getString("nombre");
+            int puntos = rs.getInt("puntos");
+            Equipo equipo = new Equipo();
+            equipo.setNombre(nombreEquipo);
 
-        Clasificacion clasificacion = new Clasificacion(null, Collections.singletonList(String.valueOf(puntos)), null, Collections.singletonList(equipo));
-        listaClasificaciones.add(clasificacion);
+            Clasificacion clasificacion = new Clasificacion(null, Collections.singletonList(String.valueOf(puntos)), null, Collections.singletonList(equipo));
+            listaClasificaciones.add(clasificacion);
+        }
+
+        rs.close();
+        statement.close();
+
+        return listaClasificaciones;
     }
-
-    rs.close();
-    statement.close();
-
-    return listaClasificaciones;
-}
 
 }

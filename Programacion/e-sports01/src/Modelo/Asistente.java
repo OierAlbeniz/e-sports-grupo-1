@@ -17,6 +17,10 @@ public class Asistente {
         this.equipo = equipo;
     }
 
+    public Asistente() {
+
+    }
+
     public Integer getIdIntegrante() {
         return idAsistente;
     }
