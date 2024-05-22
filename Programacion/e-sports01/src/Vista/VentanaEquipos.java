@@ -32,9 +32,6 @@ public class VentanaEquipos extends JFrame{
     private JComboBox cbEquipo;
     private JComboBox cbDesvincular;
     private JPanel panel2;
-    private JButton bAceptarNuevo;
-    private JButton bAceptarEliminar;
-    private JButton bAceptarEditar;
 
     public VentanaEquipos() {
         setContentPane(pEquipos);
@@ -272,18 +269,8 @@ public class VentanaEquipos extends JFrame{
     public void addInicio(ActionListener al) {
         bInicio.addActionListener(al);
     }
-    public void addBjugadores(ActionListener al ){
-        bJugadores.addActionListener(al);
-    }
-    public void addbAceptarNuevo (ActionListener al){
-        bAceptarNuevo.addActionListener(al);
-    }
-    public void addbEntrenador (ActionListener al){
-        bEntrenador.addActionListener(al);
-    }
-    public void addbAceptarEliminar(ActionListener al){
-        bAceptarEliminar.addActionListener(al);
-    }
+
+
     public void addrbNuevoAL(ActionListener al) {
         rbNuevo.addActionListener(al);
     }
@@ -293,9 +280,7 @@ public class VentanaEquipos extends JFrame{
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-    public void addbAceptarEditar(ActionListener al) {
-        bAceptarEditar.addActionListener(al);
-    }
+
 
     public void limpiar() {
         tfNombre.setText("");

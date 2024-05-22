@@ -1,9 +1,5 @@
 package Modelo;
 
-/**
- * Asitente representa al integrante del grupo que ayuda al entrenador.
- * @author Grupo4
- */
 public class Asistente {
     private Integer idAsistente;
     private String nombre;
@@ -19,10 +15,6 @@ public class Asistente {
         this.apellido2 = apellido2;
         this.sueldo = sueldo;
         this.equipo = equipo;
-    }
-
-    public Asistente() {
-
     }
 
     public Integer getIdIntegrante() {

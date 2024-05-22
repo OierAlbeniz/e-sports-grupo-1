@@ -26,43 +26,22 @@ public class ControladorVP {
     private VistaPerfil vper;
     private VentanaInicioSesion vsesion;
 
-
-
     public ControladorVP(ControladorVista cv) throws Exception {
         this.cv = cv;
-        this.vsesion = new VentanaInicioSesion();
     }
 
     public void crearMostrar() {
             vp = new VentanaPrincipal();
             vp.setVisible(true);
             vp.addeditar(new BEditarAL());
-            vp.addUsuarios(new BusuarioAL());
+
             vp.addcerrarInsc(new BCerrarInscAL());
-            vp.addConsultas(new bConsultasAL());
-            vp.addBSalirAL(new BSalirAl());
-            vp.addCerrarSesionAL(new CerrarSesionAl());
+            vp.addClasificacion(new BClasificacionAL());
+            vp.addInsertResultados(new BInsertResultadosAL());
+            //vp.getpInsertResultados().setVisible(false);
+            //vp.getpVerClasificacion().setVisible(false);
 
 
-
-    }
-    public class BusuarioAL implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarUsuario();
-            vp.dispose();
-        }
-    }
-
-
-    public class bConsultasAL implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            cv.crearConsultas();
-
-        }
     }
 
     public class BEditarAL implements ActionListener {
@@ -91,8 +70,13 @@ public class ControladorVP {
                         System.out.println("El número de equipos en la competición " + competicion.getNombre() + " es par.");
                         throw new Exception("El número de equipos en la competición " + competicion.getNombre() + " es impar.");
                     }
+
                     if(par=true){
+                        cv.cerrarCompeticiones();
                         cv.generarCalendario();
+                        //vp.getpInsertResultados().setVisible(true);
+                        //vp.getpVerClasificacion().setVisible(true);
+                        //vp.getbCerrarInsc().setVisible(false);
                     }
                     x=x+1;
                 }
@@ -101,23 +85,22 @@ public class ControladorVP {
             }
         }
     }
-
-    public class BSalirAl implements ActionListener{
+    public class BClasificacionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            System.exit(0);
-        }
-
-    }
-
-    public class CerrarSesionAl implements ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
+            cv.crearMostrarClasificacion();
             vp.dispose();
-            vsesion.setVisible(true);
         }
     }
+    public class BInsertResultadosAL implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cv.crearMostrarInsertResultados();
+            vp.dispose();
+        }
+    }
+
+
 
 
 

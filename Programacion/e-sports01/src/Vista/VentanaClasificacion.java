@@ -3,6 +3,7 @@ package Vista;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
 
 public class VentanaClasificacion extends JFrame{
@@ -10,38 +11,10 @@ public class VentanaClasificacion extends JFrame{
     private JTextArea txaClasificacion;
     private JPanel pPrincipal;
     private JPanel panel2;
-    private JButton bVolver;
     private JButton bInicio;
-    private JLabel equipo1;
-    private JLabel equipo2;
-    private JLabel equipo3;
-    private JLabel equipo4;
-    private JLabel equipo5;
-    private JLabel equipo6;
-    private JLabel equipo7;
-    private JLabel equipo8;
-    private JLabel equipo9;
-    private JLabel equipo10;
-    private JLabel jornada1;
-    private JLabel jornada2;
-    private JLabel jornada3;
-    private JLabel jornada4;
-    private JLabel jornada5;
-    private JLabel jornada6;
-    private JLabel jornada7;
-    private JLabel jornada8;
-    private JLabel jornada9;
-    private JLabel jornada10;
-    private JLabel puntos1;
-    private JLabel puntos2;
-    private JLabel puntos3;
-    private JLabel puntos4;
-    private JLabel puntos5;
-    private JLabel puntos6;
-    private JLabel puntos7;
-    private JLabel puntos8;
-    private JLabel puntos9;
-    private JLabel puntos10;
+    private JComboBox cbCompeticion;
+    private JPanel panelClasificacion;
+
     public VentanaClasificacion() {
         setContentPane(pPrincipal);
         setLocationRelativeTo(null);
@@ -82,29 +55,40 @@ public class VentanaClasificacion extends JFrame{
         }
     }
 
-    public JComboBox getCbbClasificacion() {
-        return cbbClasificacion;
+    public JPanel getPanel2() {
+        return panel2;
     }
 
-    public void setCbbClasificacion(JComboBox cbbClasificacion) {
-        this.cbbClasificacion = cbbClasificacion;
+    public void setPanel2(JPanel panel2) {
+        this.panel2 = panel2;
     }
 
-    public JTextArea getTxaClasificacion() {
-        return txaClasificacion;
+    public JComboBox getCbCompeticion() {
+        return cbCompeticion;
     }
 
-    public void setTxaClasificacion(JTextArea txaClasificacion) {
-        this.txaClasificacion = txaClasificacion;
+    public void setCbCompeticion(JComboBox cbCompeticion) {
+        this.cbCompeticion = cbCompeticion;
     }
 
-    public JPanel getpPrincipal() {
-        return pPrincipal;
+    public JPanel getPanelClasificacion() {
+        return panelClasificacion;
+    }
+
+    public void setPanelClasificacion(JPanel panelClasificacion) {
+        this.panelClasificacion = panelClasificacion;
     }
 
     public void setpPrincipal(JPanel pPrincipal) {
         this.pPrincipal = pPrincipal;
     }
-
-
+    public void addInicio(ActionListener al) {
+        bInicio.addActionListener(al);
+    }
+    public void addCBCompeticion(ActionListener al) {
+        cbCompeticion.addActionListener(al);
+    }
+    public void mostrar(String m){
+        JOptionPane.showMessageDialog(null,m);
+    }
 }

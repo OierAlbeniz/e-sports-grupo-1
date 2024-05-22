@@ -16,6 +16,13 @@ public class Clasificacion {
         this.listaEquipo = listaEquipo;
     }
 
+    public Clasificacion(Integer idClasificacion, List<String> listaPuntos, List<Equipo> listaEquipo) {
+        this.idClasificacion = idClasificacion;
+        this.listaPuntos = listaPuntos;
+        this.competicion = competicion;
+        this.listaEquipo = listaEquipo;
+    }
+
     public Integer getIdClasificacion() {
         return idClasificacion;
     }

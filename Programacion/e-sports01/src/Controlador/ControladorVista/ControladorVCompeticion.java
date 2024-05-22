@@ -1,14 +1,11 @@
 package Controlador.ControladorVista;
 
 import Modelo.Competicion;
-import Modelo.Equipo;
 import Modelo.Juego;
 import Vista.VentanaCompeticiones;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -28,7 +25,7 @@ public class ControladorVCompeticion {
         this.cv = cv;
     }
 
-    public void crearMostrar() throws Exception {
+    public void crearMostrar() {
         vCompeticiones = new VentanaCompeticiones();
         vCompeticiones.setVisible(true);
         vCompeticiones.addVolver(new BVolverAL());
@@ -41,33 +38,32 @@ public class ControladorVCompeticion {
         vCompeticiones.getpNuevo().setVisible(false);
         vCompeticiones.getpEditar().setVisible(false);
         vCompeticiones.getpEliminar().setVisible(false);
+        vCompeticiones.addbAceptarAl(new bAceptarAl());
         llenarCombos();
-        vCompeticiones.addbAceptarBorrarAl(new bAceptarBorrarAl());
-        vCompeticiones.addbAceptarEditarAl(new bAceptarNuevoAl());
-        vCompeticiones.addCbEditCompeticionFl(new cbEditCompeticionFl());
     }
-    public void llenarCombos() throws Exception {
+
+    public void llenarCombos() {
         try {
             listaJuegos = cv.buscarJuegos();
-            listaJuegos.forEach(o->vCompeticiones.getCbJuego().addItem(o.getNombre()));
+            listaJuegos.forEach(o -> {
+                vCompeticiones.getCbJuego().addItem(o.getNombre());
+                System.out.println("Juego añadido al combo: " + o.getNombre());
+            });
 
             listaNombreCometiciones = cv.buscarCompeticiones();
-            for(String nombre : listaNombreCometiciones){
+            for (String nombre : listaNombreCometiciones) {
                 vCompeticiones.getCbCompeticion().addItem(nombre);
-            }
-            for(String nombre : listaNombreCometiciones){
                 vCompeticiones.getCbEditCompeticion().addItem(nombre);
+                System.out.println("Competición añadida al combo: " + nombre);
             }
             vCompeticiones.getCbNuevoEstado().addItem("Abierto");
             vCompeticiones.getCbNuevoEstado().addItem("Cerrado");
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-            listaJuegos = cv.buscarJuegos();
-            for(Juego j : listaJuegos){
-                vCompeticiones.getCbNuevoJuego().addItem(j.getNombre());
-            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        listaJuegos.forEach(o -> vCompeticiones.getCbNuevoJuego().addItem(o.getNombre()));
     }
+
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -75,6 +71,7 @@ public class ControladorVCompeticion {
             vCompeticiones.dispose();
         }
     }
+
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -86,7 +83,7 @@ public class ControladorVCompeticion {
     public class RbNuevoAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(vCompeticiones.getRbNuevo().isSelected()){
+            if (vCompeticiones.getRbNuevo().isSelected()) {
                 vCompeticiones.limpiar();
                 vCompeticiones.getpNuevo().setVisible(true);
                 vCompeticiones.getpEditar().setVisible(false);
@@ -94,10 +91,11 @@ public class ControladorVCompeticion {
             }
         }
     }
+
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(vCompeticiones.getRbEditar().isSelected()){
+            if (vCompeticiones.getRbEditar().isSelected()) {
                 vCompeticiones.limpiar();
                 vCompeticiones.getpNuevo().setVisible(false);
                 vCompeticiones.getpEditar().setVisible(true);
@@ -105,10 +103,11 @@ public class ControladorVCompeticion {
             }
         }
     }
+
     public class RbEliminarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(vCompeticiones.getRbEliminar().isSelected()){
+            if (vCompeticiones.getRbEliminar().isSelected()) {
                 vCompeticiones.limpiar();
                 vCompeticiones.getpNuevo().setVisible(false);
                 vCompeticiones.getpEditar().setVisible(false);
@@ -117,59 +116,47 @@ public class ControladorVCompeticion {
         }
     }
 
-    private class bAceptarBorrarAl implements ActionListener {
+    private class bAceptarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                String nombreComp = vCompeticiones.getCbCompeticion().getSelectedItem().toString();
-                String idComp = cv.buscarCompeticionPorNombre(nombreComp);
+                if (vCompeticiones.getRbNuevo().isSelected()) {
+                    String nombre = vCompeticiones.getTfNombre().getText();
+                    String fechaInicio = vCompeticiones.getTfFechaInicio().getText();
+                    String fechaFin = vCompeticiones.getTfFechaFin().getText();
 
-                cv.borrarCompeticion(Integer.parseInt(idComp));
-            }
-            catch(Exception ex){
-                vCompeticiones.mostrar(ex.getMessage());
-            }
-        }
-    }
+                    if (nombre.isEmpty()) {
+                        throw new Exception("El nombre de la competicion no puede estar vacia");
+                    }
+                    if (fechaInicio.isEmpty()) {
+                        throw new Exception("La fecha de inicio no puede estar vacia");
+                    }
 
-    private class bAceptarNuevoAl implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                String nombre = vCompeticiones.getTfNuevoNombre().getText();
-                String fechaIni = vCompeticiones.getTfNuevaFechaIni().getText();
-                String fechaFin = vCompeticiones.getTfFechaFin().getText();
-                String estado = vCompeticiones.getCbNuevoEstado().toString();
-                String juego = vCompeticiones.getCbNuevoJuego().toString();
+                    DateTimeFormatter formato = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                    LocalDate fechaIni = LocalDate.parse(fechaInicio, formato);
 
-                if(nombre.isEmpty()){
+
+                    if (fechaFin.isEmpty()) {
+                        throw new Exception("La fecha de fin no puede estar vacia");
+                    }
+                    LocalDate fechaFinal = LocalDate.parse(fechaFin, formato);
+                    String nombreJuego = vCompeticiones.getCbJuego().getSelectedItem().toString();
+                    Juego j = cv.buscarJuego(nombreJuego);
+
+                    System.out.println(j.getIdJuego());
+                    Competicion c = new Competicion(nombre, fechaIni, fechaFinal, "abierto", j);
+                    System.out.println(c.toString());
+
+                    cv.insertarCompeticion(c);
                 }
-
-            }
-            catch (Exception ex){
-                vCompeticiones.mostrar(ex.getMessage());
-            }
-        }
-    }
-
-    private class cbEditCompeticionFl implements FocusListener {
-        @Override
-        public void focusGained(FocusEvent e) {
-
-
-        }
-
-        @Override
-        public void focusLost(FocusEvent e) {
-            try{
-                 Competicion c = cv.obtenerCompeticion(vCompeticiones.getCbEditCompeticion().toString());
-                 vCompeticiones.getTfNuevoNombre().setText(c.getNombre());
-                 vCompeticiones.getTfFechaInicio().setText(String.valueOf(c.getFechaInicio()));
-                 vCompeticiones.getTfNuevaFechaFin().setText(String.valueOf(c.getFechaFin()));
-                 vCompeticiones.getCbNuevoEstado().setSelectedItem(c.getEstado());
-                 vCompeticiones.getCbNuevoJuego().setSelectedItem(c.getJuego().getNombre());
-            }
-            catch (Exception ex){
+                if (vCompeticiones.getRbEditar().isSelected()) {
+                    // Implementar lógica de edición
+                }
+                if (vCompeticiones.getRbEliminar().isSelected()) {
+                    // Implementar lógica de eliminación
+                }
+            } catch (Exception ex) {
+                ex.printStackTrace();
                 vCompeticiones.mostrar(ex.getMessage());
             }
         }

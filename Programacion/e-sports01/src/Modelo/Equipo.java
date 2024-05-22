@@ -16,11 +16,16 @@ public class Equipo {
 
     public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion, Patrocinador patrocinador) {
 
-
         this.idEquipo = idEquipo;
         this.nombre = nombre;
         this.fechaFundacion = fechaFundacion;
         this.patrocinador = patrocinador;
+    }
+    public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion ) {
+
+        this.idEquipo = idEquipo;
+        this.nombre = nombre;
+        this.fechaFundacion = fechaFundacion;
     }
 
 
@@ -102,8 +107,5 @@ public class Equipo {
 
     public void setListaClasificacion(List<Clasificacion> listaClasificacion) {
         this.listaClasificacion = listaClasificacion;
-    }
-
-    public void setPatrocinador(String nombre) {
     }
 }
