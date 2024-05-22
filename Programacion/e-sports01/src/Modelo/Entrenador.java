@@ -19,6 +19,10 @@ public class Entrenador {
         this.equipo = equipo;
     }
 
+    public Entrenador() {
+
+    }
+
     public Integer getIdIntegrante() {
         return idIntegrante;
     }

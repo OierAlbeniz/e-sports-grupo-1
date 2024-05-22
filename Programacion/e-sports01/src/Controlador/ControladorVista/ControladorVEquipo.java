@@ -1,16 +1,40 @@
 package Controlador.ControladorVista;
 
+import Modelo.Competicion;
+import Modelo.Equipo;
+import Modelo.Jugador;
+import Vista.VentanaCompeticiones;
 import Vista.VentanaEquipos;
+import Vista.VentanaJugadores;
 
+import javax.accessibility.AccessibleAction;
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorVEquipo {
 
     private ControladorVista cv;
+
     private Connection con;
     private VentanaEquipos vEquipos;
+    private VentanaCompeticiones vCompeticiones;
+
+
+    int jugadoresInsertados=0;
+
+    private List<Competicion> listaCompeticiones;
+    private List<String> listaNombreCometiciones;
+    private List<String> listaPatrocinadores;
+
 
 
     public ControladorVEquipo(ControladorVista cv) {
@@ -22,19 +46,33 @@ public class ControladorVEquipo {
         vEquipos.setVisible(true);
         vEquipos.addVolver(new BVolverAL());
         vEquipos.addInicio(new BInicioAL());
-
         vEquipos.addrbNuevoAL(new RbNuevoAL());
         vEquipos.addrbEditarAL(new RbEditarAL());
         vEquipos.addrbEliminarAL(new RbEliminarAL());
+        vEquipos.addbEntrenador(new bEntrenadorAL());
+        vEquipos.addBjugadores(new bJugadoresAL());
+        vEquipos.addbAceptarEliminar(new bAceptarEliminarAL());
+        vEquipos.addbAceptarNuevo(new bAceptarNuevoAL());
+        vEquipos.getCbEquipo().addFocusListener(new cbEquipoFocusListener() );
+        vEquipos.getCbEquipos().addFocusListener(new cbEquipoEliminarFL() );
+        vEquipos.addbAceptarEditar(new bAceptarEditarAL());
         vEquipos.limpiar();
         vEquipos.getpNuevo().setVisible(false);
         vEquipos.getpEditar().setVisible(false);
         vEquipos.getpEliminar().setVisible(false);
+        llenarCombos();
+        buscarPatrocinador();
+        llenarComboEquipo();
+        llenarComboEquipoEditar();
+        llenarComboFechaEditar();
+        llenarComboEquipoEditarMenos();
+        llenarComboEquipoEditarMas();
     }
+
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarEditar();
+
             vEquipos.dispose();
         }
     }
@@ -45,6 +83,8 @@ public class ControladorVEquipo {
             vEquipos.dispose();
         }
     }
+
+
     public class RbNuevoAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -54,6 +94,63 @@ public class ControladorVEquipo {
                 vEquipos.getpEditar().setVisible(false);
                 vEquipos.getpEliminar().setVisible(false);
             }
+        }
+    }
+
+
+    public class bAceptarNuevoAL implements ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (jugadoresInsertados>=1){
+                String nombre= vEquipos.getTfNombre().getText();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                LocalDate fecha =  LocalDate.parse((CharSequence) vEquipos.getCbFechaFundacion().getSelectedItem(),formatter);
+
+                String patrocinador = (String) vEquipos.getCbPatrocinador().getSelectedItem();
+                String competicion = (String) vEquipos.getCbCompeticion().getSelectedItem();
+                try {
+                    cv.crearEquipo(nombre, fecha, patrocinador,competicion);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+            }else {
+                jugadoresInsertados= jugadoresInsertados-2;
+                JOptionPane.showMessageDialog(null,"tienes que insertar " + jugadoresInsertados +" mas");
+            }
+
+        }
+    }
+
+    public class bEntrenadorAL implements  ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            cv.crearMostrarStaff();
+            // String nombre =vEquipos.getTfNombre().getText();
+            // cv.nombreequipo(nombre);
+        }
+    }
+
+    public class bJugadoresAL implements  ActionListener{
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+
+            if (vEquipos.getTfNombre().getText().isEmpty()){
+
+
+                JOptionPane.showMessageDialog(null,"el nombre del equipo tiene que estar escrito");
+            }else
+            {
+                cv.crearMostrarJugadores();
+                jugadoresInsertados=jugadoresInsertados+1;
+                String nombre =vEquipos.getTfNombre().getText();
+               // cv.nombreequipo(nombre);
+            }
+
+
+
         }
     }
     public class RbEditarAL implements ActionListener {
@@ -79,6 +176,7 @@ public class ControladorVEquipo {
         }
     }
 
+    public class bAceptarEliminarAL implements  ActionListener{
 
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -115,13 +213,11 @@ public class ControladorVEquipo {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error al llenar el combo box de competiciones", e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 
 
-    public void buscarPatrocinador() throws Exception {
+    public void buscarPatrocinador() {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
             for (String nombre : listaPatrocinadores) {
@@ -132,22 +228,22 @@ public class ControladorVEquipo {
         }
 
     }
-  public  class   bAceptarEditarAL implements ActionListener{
+    public  class   bAceptarEditarAL implements ActionListener{
 
-      @Override
-      public void actionPerformed(ActionEvent e) {
-       String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
-        String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
-        LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
-        String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
-        String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
-          try {
-              cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
-          } catch (Exception ex) {
-              throw new RuntimeException(ex);
-          }
-      }
-  }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
+            String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
+            LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
+            String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
+            String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
+            try {
+                cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
     private class cbEquipoEliminarFL implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -250,8 +346,6 @@ public class ControladorVEquipo {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error al llenar el combo box de competiciones", e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
     public void llenarComboEquipoEditarMas() {
@@ -275,8 +369,6 @@ public class ControladorVEquipo {
 
         } catch (SQLException e) {
             throw new RuntimeException("Error al llenar el combo box de competiciones", e);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
         }
     }
 
@@ -292,7 +384,4 @@ public class ControladorVEquipo {
             llenarComboEquipo();
         }
     }
-
-
-
 }

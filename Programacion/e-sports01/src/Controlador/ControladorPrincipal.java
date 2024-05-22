@@ -44,6 +44,13 @@ public class ControladorPrincipal {
     public List<Jugador> llenarJugadores(Integer x) throws Exception {
         return cb.llenarJugadores(x);
     }
+    public Juego buscarJuegoPorNombreCompeticion(String nombreCompeticion) throws Exception {return cb.buscarJuegoPorNombreCompeticion(nombreCompeticion);}
+
+    public List<Juego> llenarJuegos(String tipo) throws Exception {
+        cb.llenarJuegos(tipo);
+        List<Juego> listaJuego = cb.llenarJuegos(tipo);
+        return listaJuego;
+    }
     public List<Competicion> llenarCompeticiones() throws Exception {
         return cb.llenarCompeticiones();
     }
@@ -92,5 +99,47 @@ public class ControladorPrincipal {
     }
     public List<Clasificacion> obtenerClasificacionesPorCompeticion(Integer idCompeticion)throws Exception {
         return cb.obtenerClasificacionesPorCompeticion(idCompeticion);
+    }
+    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+        cb.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public List<Entrenador> llenarEntrenador(String tipo) throws Exception {
+        cb.llenarEntrenador(tipo);
+        List<Entrenador> listaEntrenador = cb.llenarEntrenador(tipo);
+        return listaEntrenador;
+    }
+    public List<Asistente> llenarAsistente(String tipo) throws Exception {
+        cb.llenarAsistente(tipo);
+        List<Asistente> listaAsistente = cb.llenarAsistente(tipo);
+        return listaAsistente;
+    }
+    public List<Competicion> llenarCompeticion(String tipo) throws Exception {
+        cb.llenarCompeticion(tipo);
+        List<Competicion> listaCompeticion = cb.llenarCompeticion(tipo);
+        return listaCompeticion;
+    }
+    public List<Jugador> llenarJugadoresS(String tipo) throws Exception {
+        cb.llenarJugadoresS(tipo);
+        List<Jugador> listaJugadores = cb.llenarJugadoresS(tipo);
+        return listaJugadores;
+    }
+    public void borrarEquipo(String nombre) throws SQLException {
+        cb.borrarEquipo(nombre);
+    }
+    public List<String> buscarPatrocinador() throws SQLException {
+        return cb.buscarPatrocinador();
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cb.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+    }
+
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cb.buscarEquipo(nombre);
+    }
+
+    public List<Equipo> llenarEquiposS(String tipo) throws Exception {
+        cb.llenarEquiposS(tipo);
+        List<Equipo> listaEquipo = cb.llenarEquiposS(tipo);
+        return listaEquipo;
     }
 }

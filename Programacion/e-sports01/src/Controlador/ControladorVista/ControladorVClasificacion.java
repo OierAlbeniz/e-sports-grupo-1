@@ -2,11 +2,9 @@ package Controlador.ControladorVista;
 
 import Controlador.ControladorBD.ControladorTablaEquipo;
 import Modelo.Clasificacion;
-import Modelo.ClasificacionCompleta;
 import Modelo.Competicion;
 import Modelo.Equipo;
 import Vista.VentanaClasificacion;
-import Vista.VentanaEditar;
 import Vista.VentanaEquipos;
 
 import javax.swing.*;
@@ -14,7 +12,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;

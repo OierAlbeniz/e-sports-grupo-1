@@ -3,9 +3,9 @@ package Controlador.ControladorBD;
 import Modelo.Equipo;
 import Modelo.Patrocinador;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorTablaPatrocinador {
     private Connection con;
@@ -30,6 +30,24 @@ public class ControladorTablaPatrocinador {
 
         statement.close();
         return patro;
+
+    }
+    public List<String> buscarPatrocinador() throws SQLException {
+        List<String> nombresPatrocinadores = new ArrayList<>();
+        String query = "SELECT NOMBRE FROM PATROCINADOR";
+
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+
+        while (rs.next()) {
+            nombresPatrocinadores.add(rs.getString("NOMBRE"));
+        }
+        if (rs.next()) {
+            Patrocinador patrocinador = new Patrocinador();
+            patrocinador.setIdPatrocinador(rs.getInt("id_patrocinador"));
+            patrocinador.setNombre(rs.getString("nombre"));
+        }
+
         return nombresPatrocinadores;
     }
 }

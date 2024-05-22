@@ -1,10 +1,16 @@
 package Controlador.ControladorVista;
 
+import Modelo.Equipo;
+import Modelo.Patrocinador;
 import Vista.VentanaPatrocinadores;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
 import java.sql.Connection;
+import java.util.List;
 
 public class ControladorVPatrocinador {
 
@@ -23,8 +29,8 @@ public class ControladorVPatrocinador {
         vPatrocinadores.addVolver(new BVolverAL());
         vPatrocinadores.addInicio(new BInicioAL());
 
-        vPatrocinadores.getCbDesvincular().addFocusListener(new ComboPatrocinadorElimFocusListener());
-        vPatrocinadores.getCbVincular().addFocusListener(new ComboVincularFocusListener());
+       // vPatrocinadores.getCbDesvincular().addFocusListener(new ComboPatrocinadorElimFocusListener());
+        //vPatrocinadores.getCbVincular().addFocusListener(new ComboVincularFocusListener());
         //vPatrocinadores.getCbEDPatrocinadores().addFocusListener(new ComboEditPatrocinadoresFocusListener());
 
         vPatrocinadores.addrbNuevoAL(new RbNuevoAL());
@@ -82,7 +88,7 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+/*
     public class AceptarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -95,7 +101,7 @@ public class ControladorVPatrocinador {
 
                 } else if (vPatrocinadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un patrocinador
-                    String nombre = (String) vPatrocinadores.getCbEPatrocinador().getSelectedItem();
+                    String nombre = (String) vPatrocinadores.getCbPatrocinadores().getSelectedItem();
                     String equipo = (String) vPatrocinadores.getCbDesvincular().getSelectedItem();
                     cv.eliminarPatrocinador(nombre, equipo);
 
@@ -103,16 +109,16 @@ public class ControladorVPatrocinador {
                     // Lógica para editar un patrocinador
                     String nombreNuevo = vPatrocinadores.getTfNuevoNombre().getText();
                     String nuevoEquipo = (String) vPatrocinadores.getCbVincular().getSelectedItem();
-                    String nombreAntiguo = (String) vPatrocinadores.getCbEPatrocinador().getSelectedItem();
-                    String equipoAntiguo = (String) vPatrocinadores.getCbEDPatrocinadores().getSelectedItem();
+                    String nombreAntiguo = (String) vPatrocinadores.getCbPatrocinadores().getSelectedItem();
+                    String equipoAntiguo = (String) vPatrocinadores.getcb().getSelectedItem();
                     cv.editarPatrocinadorConfir(nombreNuevo, nuevoEquipo, nombreAntiguo, equipoAntiguo);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(vPatrocinadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-    }
-
+    }*/
+/*
     public class ComboPatrocinadorElimFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -156,7 +162,7 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+/*
     public class ComboNombrePatrocinadorEditar implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -181,6 +187,8 @@ public class ControladorVPatrocinador {
             }
         }
     }
+
+ */
 
     public void llenarComboEquipo() {
         try {
