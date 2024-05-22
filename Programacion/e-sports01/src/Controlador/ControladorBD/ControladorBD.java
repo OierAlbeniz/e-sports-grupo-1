@@ -225,6 +225,9 @@ public class ControladorBD {
     public Usuario buscarUsuario(String user,String password) throws Exception {
         return ctUsuario.buscarUsuario(user,password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return ctequipo.buscarEquipo(nombre);
+    }
     /**
      * Busca todos los juegos.
      *
@@ -320,5 +323,8 @@ public class ControladorBD {
     }
     public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
         ctequipo.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        ctequipo.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
 }

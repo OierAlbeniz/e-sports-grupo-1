@@ -84,6 +84,11 @@ public class ControladorVista {
     public Usuario buscarUsuario(String user, String password) throws Exception {
         return cp.buscarUsuario(user, password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cp.buscarEquipo(nombre);
+    }
+
+
 
     public Integer cantidadEquipos() throws Exception {
         return cp.cantidadEquipos();
@@ -187,6 +192,9 @@ public class ControladorVista {
 
     public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
         cp.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cp.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
 
 

@@ -1,6 +1,7 @@
 package Controlador.ControladorBD;
 
 import Modelo.Equipo;
+import Modelo.Jornada;
 
 
 import javax.swing.*;
@@ -12,6 +13,7 @@ import java.util.List;
 public class ControladorTablaEquipo {
     private Connection con;
     private ControladorBD cb;
+
     public ControladorTablaEquipo(Connection con) {
         this.con = con;
     }
@@ -33,6 +35,7 @@ public class ControladorTablaEquipo {
 
         return nombre;
     }
+
     public Integer cantidadEquipos() throws Exception {
         Integer cantidad = 0;
 
@@ -50,8 +53,9 @@ public class ControladorTablaEquipo {
         statement.close();
         return cantidad;
     }
+
     public List<Equipo> llenarEquipos() throws Exception {
-        List<Equipo> llenarEquipos=new ArrayList<>();
+        List<Equipo> llenarEquipos = new ArrayList<>();
 
         String plantilla = "SELECT id_equipo, nombre, fecha_fundacion, id_patrocinador FROM EQUIPO";
 
@@ -59,7 +63,7 @@ public class ControladorTablaEquipo {
         ResultSet rs = statement.executeQuery();
 
         while (rs.next()) {
-            Equipo equipo=new Equipo();
+            Equipo equipo = new Equipo();
             equipo.setIdEquipo(rs.getInt("id_equipo"));
             equipo.setNombre(rs.getString("nombre"));
             equipo.setFechaFundacion(rs.getDate("fecha_fundacion").toLocalDate());
@@ -71,8 +75,9 @@ public class ControladorTablaEquipo {
         statement.close();
         return llenarEquipos;
     }
+
     public List<Equipo> llenarEquiposporID(String idequipo) throws Exception {
-        List<Equipo> llenarEquipos=new ArrayList<>();
+        List<Equipo> llenarEquipos = new ArrayList<>();
 
         String plantilla = "SELECT id_equipo, nombre, fecha_fundacion, id_patrocinador FROM EQUIPO WHERE id_equipo=?";
 
@@ -81,7 +86,7 @@ public class ControladorTablaEquipo {
         ResultSet rs = statement.executeQuery();
 
         while (rs.next()) {
-            Equipo equipo=new Equipo();
+            Equipo equipo = new Equipo();
             equipo.setIdEquipo(rs.getInt("id_equipo"));
             equipo.setNombre(rs.getString("nombre"));
             equipo.setFechaFundacion(rs.getDate("fecha_fundacion").toLocalDate());
@@ -93,8 +98,9 @@ public class ControladorTablaEquipo {
         statement.close();
         return llenarEquipos;
     }
+
     public Equipo buscarEquipo(Integer idequipo) throws Exception {
-        Equipo equipo=new Equipo();
+        Equipo equipo = new Equipo();
 
         String plantilla = "SELECT id_equipo, nombre, fecha_fundacion, id_patrocinador FROM EQUIPO WHERE id_equipo=?";
 
@@ -102,7 +108,7 @@ public class ControladorTablaEquipo {
         statement.setInt(1, idequipo);
         ResultSet rs = statement.executeQuery();
 
-        if(rs.next()) {
+        if (rs.next()) {
             equipo.setIdEquipo(rs.getInt("id_Equipo"));
             equipo.setNombre(rs.getString("nombre"));
             equipo.setFechaFundacion(rs.getDate("fecha_fundacion").toLocalDate());
@@ -115,26 +121,25 @@ public class ControladorTablaEquipo {
     }
 
 
+    public ArrayList selectEquipo(String nombre) throws Exception {
+        ArrayList<Equipo> equipos = new ArrayList<>();
 
-        public ArrayList selectEquipo(String nombre) throws Exception {
-            ArrayList<Equipo> equipos = new ArrayList<>();
+        String plantilla = "SELECT nombre FROM equipo";
+        PreparedStatement selectEquipos = con.prepareStatement(plantilla);
+        ResultSet rs = selectEquipos.executeQuery();
 
-            String plantilla = "SELECT nombre FROM equipo";
-            PreparedStatement selectEquipos = con.prepareStatement(plantilla);
-            ResultSet rs = selectEquipos.executeQuery();
-
-            while (rs.next()) {
-                Equipo equipo = new Equipo(); // Crear un nuevo objeto Equipo en cada iteración
-                equipo.setNombre(rs.getString("nombre"));
-                equipos.add(equipo);
-
-            }
-            rs.close();
-            selectEquipos.close();
-
-            return equipos;
+        while (rs.next()) {
+            Equipo equipo = new Equipo(); // Crear un nuevo objeto Equipo en cada iteración
+            equipo.setNombre(rs.getString("nombre"));
+            equipos.add(equipo);
 
         }
+        rs.close();
+        selectEquipos.close();
+
+        return equipos;
+
+    }
 
     public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
 
@@ -150,7 +155,8 @@ public class ControladorTablaEquipo {
             rs = pstmt.executeQuery();
 
             if (rs.next() && rs.getInt(1) > 0) {
-                throw new Exception("El equipo ya existe");
+
+                JOptionPane.showMessageDialog(null,"el equipo ya existe");
             }
 
             // Obtener ID del patrocinador
@@ -187,15 +193,24 @@ public class ControladorTablaEquipo {
             pstmt.setInt(3, idPatrocinador);
             pstmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null,"Eel equipo ha sido creado correctamente");
+            JOptionPane.showMessageDialog(null, "Eel equipo ha sido creado correctamente");
 
         } catch (SQLException e) {
             e.printStackTrace();
             throw new Exception("Error al crear el equipo");
         } finally {
-            if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
-            if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
-            if (con != null) try { con.close(); } catch (SQLException ignore) {}
+            if (rs != null) try {
+                rs.close();
+            } catch (SQLException ignore) {
+            }
+            if (pstmt != null) try {
+                pstmt.close();
+            } catch (SQLException ignore) {
+            }
+            if (con != null) try {
+                con.close();
+            } catch (SQLException ignore) {
+            }
         }
     }
 
@@ -207,14 +222,133 @@ public class ControladorTablaEquipo {
             int rowsAffected = stmt.executeUpdate();
             if (rowsAffected == 0) {
                 throw new SQLException("No se encontró un equipo con el nombre especificado.");
-            }else {
-                JOptionPane.showMessageDialog(null,"el equipo se borro correctamente ");
+            } else {
+                JOptionPane.showMessageDialog(null, "el equipo se borro correctamente ");
             }
         } catch (SQLException e) {
             throw new SQLException("Error al borrar el equipo: " + e.getMessage(), e);
         }
+
+
     }
 
+    public Equipo buscarEquipo(String nombre) throws SQLException {
+        String query = "SELECT E.*, P.NOMBRE AS NOMBRE_PATROCINADOR " +
+                "FROM EQUIPO E " +
+                "JOIN PATROCINADOR P ON E.ID_PATROCINADOR = P.ID_PATROCINADOR " +
+                "WHERE E.NOMBRE = ?";
+        PreparedStatement statement = con.prepareStatement(query) ;
+            statement.setString(1, nombre);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    Equipo equipo = new Equipo();
+                    equipo.setNombre(rs.getString("NOMBRE"));
+                    equipo.setFechaFundacion(rs.getDate("FECHA_FUNDACION").toLocalDate());
+                    equipo.setPatrocinador(rs.getString("NOMBRE"));
+                    return equipo;
+                } else {
+                    return null; // No se encontró el equipo con el nombre dado
+                }
+            }
+        }
+
+    public void editarEquipo(String nombreAntiguo, String nombreNuevo, LocalDate fechaCambio, String vincularNuevo, String desvincular) throws Exception {
+
+        PreparedStatement stmt = null;
+
+        try {
+            // Actualizar nombre y fecha de fundación del equipo
+            String updateEquipoSQL = "UPDATE EQUIPO SET NOMBRE = ?, FECHA_FUNDACION = ? WHERE NOMBRE = ?";
+            stmt = con.prepareStatement(updateEquipoSQL);
+            stmt.setString(1, nombreNuevo);
+            stmt.setDate(2, java.sql.Date.valueOf(fechaCambio));
+            stmt.setString(3, nombreAntiguo);
+            stmt.executeUpdate();
+            stmt.close();
+
+            // Vincular a una nueva competición si se especifica
+            if (vincularNuevo != null && !vincularNuevo.isEmpty()) {
+                String selectCompeticionSQL = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
+                stmt = con.prepareStatement(selectCompeticionSQL);
+                stmt.setString(1, vincularNuevo);
+                ResultSet rs = stmt.executeQuery();
+                System.out.println("llega");
+                if (rs.next()) {
+                    int idCompeticion = rs.getInt("ID_COMPETICION");
+                    rs.close();
+                    stmt.close();
+
+                    String selectEquipoSQL = "SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE = ?";
+                    stmt = con.prepareStatement(selectEquipoSQL);
+                    stmt.setString(1, nombreNuevo);
+                    rs = stmt.executeQuery();
+                    if (rs.next()) {
+                        int idEquipo = rs.getInt("ID_EQUIPO");
+                        rs.close();
+                        stmt.close();
+
+                        String insertClasificacionSQL = "INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO) VALUES (?, ?)";
+                        stmt = con.prepareStatement(insertClasificacionSQL);
+                        stmt.setInt(1, idCompeticion);
+                        stmt.setInt(2, idEquipo);
+                        stmt.executeUpdate();
+                    }
+                    rs.close();
+                    stmt.close();
+                }
+            }
+
+            // Desvincular de una competición si se especifica
+            if (desvincular != null && !desvincular.isEmpty()) {
+                String selectCompeticionSQL = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
+                stmt = con.prepareStatement(selectCompeticionSQL);
+                stmt.setString(1, desvincular);
+                ResultSet rs = stmt.executeQuery();
+                if (rs.next()) {
+                    int idCompeticion = rs.getInt("ID_COMPETICION");
+                    rs.close();
+                    stmt.close();
+
+                    String selectEquipoSQL = "SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE = ?";
+                    stmt = con.prepareStatement(selectEquipoSQL);
+                    stmt.setString(1, nombreNuevo);
+                    rs = stmt.executeQuery();
+                    if (rs.next()) {
+                        int idEquipo = rs.getInt("ID_EQUIPO");
+                        rs.close();
+                        stmt.close();
+
+                        String deleteClasificacionSQL = "DELETE FROM CLASIFICACION WHERE ID_COMPETICION = ? AND ID_EQUIPO = ?";
+                        stmt = con.prepareStatement(deleteClasificacionSQL);
+                        stmt.setInt(1, idCompeticion);
+                        stmt.setInt(2, idEquipo);
+                        stmt.executeUpdate();
+
+                    }
+                    rs.close();
+                    stmt.close();
+                    JOptionPane.showMessageDialog(null,"El equipo se modifico exitosamente");
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new Exception("Error al editar el equipo: " + e.getMessage(), e);
+        } finally {
+            if (stmt != null) {
+                stmt.close();
+            }
+            if (con != null) {
+                con.close();
+            }
+        }
+    }
+
+
+
+
 }
+
+
 
 

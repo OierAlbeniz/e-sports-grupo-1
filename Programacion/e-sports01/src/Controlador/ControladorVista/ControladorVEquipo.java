@@ -64,11 +64,15 @@ public class ControladorVEquipo {
         buscarPatrocinador();
         llenarComboEquipo();
         llenarComboEquipoEditar();
+        llenarComboFechaEditar();
+        llenarComboEquipoEditarMenos();
+        llenarComboEquipoEditarMas();
     }
+
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarEditar();
+
             vEquipos.dispose();
         }
     }
@@ -212,6 +216,7 @@ public class ControladorVEquipo {
         }
     }
 
+
     public void buscarPatrocinador() throws Exception {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
@@ -227,8 +232,16 @@ public class ControladorVEquipo {
 
       @Override
       public void actionPerformed(ActionEvent e) {
-
-          JOptionPane.showMessageDialog(null,"hola");
+       String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
+        String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
+        LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
+        String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
+        String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
+          try {
+              cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+          } catch (Exception ex) {
+              throw new RuntimeException(ex);
+          }
       }
   }
     private class cbEquipoEliminarFL implements FocusListener {
@@ -240,17 +253,47 @@ public class ControladorVEquipo {
         @Override
         public void focusLost(FocusEvent e) {
             String nombreEquipo = (String) vEquipos.getCbEquipos().getSelectedItem();
-            if (!nombreEquipo.isEmpty()) {
+            if (nombreEquipo.isEmpty()) {
                 JOptionPane.showMessageDialog(null,"el campo de equipo tiene que estar relleno");
 
             }else{
-                Equipo buscarEquipo= cv.buscarEquipo(nombreEquipo);
+                try {
+
+                    Equipo buscarEquipo= cv.buscarEquipo(nombreEquipo);
+
+                    vEquipos.getTfNuevoNombre().setText(buscarEquipo.getNombre());
+                    vEquipos.getCbEditFecha().addItem(buscarEquipo.getFechaFundacion());
+                    vEquipos.getCbEditFecha().setSelectedItem(buscarEquipo.getFechaFundacion());
+
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
             }
 
 
         }
     }
+    public void llenarComboFechaEditar(){
+        vEquipos.getCbEditFecha().addItem("2008/01/01");
+        vEquipos.getCbEditFecha().addItem("2009/01/01");
+        vEquipos.getCbEditFecha().addItem("2010/01/01");
+        vEquipos.getCbEditFecha().addItem("2011/01/01");
+        vEquipos.getCbEditFecha().addItem("2012/01/01");
+        vEquipos.getCbEditFecha().addItem("2013/01/01");
+        vEquipos.getCbEditFecha().addItem("2014/01/01");
+        vEquipos.getCbEditFecha().addItem("2015/01/01");
+        vEquipos.getCbEditFecha().addItem("2016/01/01");
+        vEquipos.getCbEditFecha().addItem("2017/01/01");
+        vEquipos.getCbEditFecha().addItem("2018/01/01");
+        vEquipos.getCbEditFecha().addItem("2019/01/01");
+        vEquipos.getCbEditFecha().addItem("2020/01/01");
+        vEquipos.getCbEditFecha().addItem("2021/01/01");
+        vEquipos.getCbEditFecha().addItem("2022/01/01");
+        vEquipos.getCbEditFecha().addItem("2023/01/01");
+        vEquipos.getCbEditFecha().addItem("2024/01/01");
 
+
+    }
 
 
     public void llenarComboEquipo(){
@@ -281,6 +324,54 @@ public class ControladorVEquipo {
             throw new RuntimeException(ex);
         }
     }
+
+    public void llenarComboEquipoEditarMenos() {
+        try {
+
+
+
+            listaNombreCometiciones = cv.buscarCompeticiones();
+
+            // Depurar listaNombreCometiciones
+            if (listaNombreCometiciones.isEmpty()) {
+                System.out.println("listaNombreCometiciones está vacía");
+            } else {
+                for (String nombre : listaNombreCometiciones) {
+                    vEquipos.getCbDesvincular().addItem(nombre);
+
+                }
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al llenar el combo box de competiciones", e);
+        }
+    }
+    public void llenarComboEquipoEditarMas() {
+        try {
+
+
+
+            listaNombreCometiciones = cv.buscarCompeticiones();
+
+            // Depurar listaNombreCometiciones
+            if (listaNombreCometiciones.isEmpty()) {
+                System.out.println("listaNombreCometiciones está vacía");
+            } else {
+                for (String nombre : listaNombreCometiciones) {
+                    vEquipos.getCbVincular().addItem(nombre);
+
+                }
+            }
+
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al llenar el combo box de competiciones", e);
+        }
+    }
+
     private class cbEquipoFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -293,5 +384,7 @@ public class ControladorVEquipo {
             llenarComboEquipo();
         }
     }
+
+
 
 }

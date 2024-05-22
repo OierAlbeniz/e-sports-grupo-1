@@ -55,6 +55,9 @@ public class ControladorPrincipal {
     public Usuario buscarUsuario(String user,String password) throws Exception {
         return cb.buscarUsuario(user,password);
     }
+    public Equipo buscarEquipo(String nombre) throws Exception {
+        return cb.buscarEquipo(nombre);
+    }
 
     public List<Juego> buscarJuegos() throws SQLException {return cb.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return  cb.buscarJuego(nombre);}
@@ -124,6 +127,9 @@ public class ControladorPrincipal {
 
     public void crearEquipo(String nombre,LocalDate fecha, String patrocinador, String competicion) throws Exception {
         cb.crearEquipo(nombre, fecha, patrocinador,competicion);
+    }
+    public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
+        cb.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
 
 }

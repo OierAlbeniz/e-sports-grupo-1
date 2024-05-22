@@ -296,10 +296,12 @@ public class ControladorVJugador {
                     DecimalFormat formatter2 = new DecimalFormat("#");
                     formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)
                     String sueldoFormateado = formatter2.format(buscarDatos.getSueldo());
-                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
+                    vJugadores.getTfNuevoSueldo().setText(sueldoFormateado);
+                    vJugadores.getCbNuevaNacionalidad().addItem(buscarDatos.getNacionalidad());
                     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/dd/MM");
                     String fechaFormateada = buscarDatos.getFechaNacimiento().format(formatter);
-                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
+                    vJugadores.getTfNuevaFechaNac().setText(fechaFormateada);
+                    vJugadores.getTfNuevoNick().setText(buscarDatos.getNickname());
                     vJugadores.getCbNuevoRol().addItem(buscarDatos.getRol());
 
                     vJugadores.getCbNuevoEquipo().setSelectedItem(vJugadores.getCbEquipoEditar().getSelectedItem());

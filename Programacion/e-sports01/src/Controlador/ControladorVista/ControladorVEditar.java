@@ -57,7 +57,7 @@ public class ControladorVEditar {
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
-            vEditar.dispose();
+
         }
     }
     public class BJugadoresAL implements ActionListener {

@@ -33,7 +33,7 @@ public class ControladorVConsultas {
         @Override
         public void actionPerformed(ActionEvent e) {
             vc.dispose();
-            cv.crearMostrarVP();
+
         }
     }
 
