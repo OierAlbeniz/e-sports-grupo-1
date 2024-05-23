@@ -1,13 +1,16 @@
 package Vista;
 
 import javax.swing.*;
+import java.awt.event.ActionListener;
 
 public class VistaPerfil extends JFrame {
-    private JButton guardarButton;
-    private JButton cancelarButton;
-    private JTextField textField1;
-    private JTextField textField2;
+    private JButton bCrear;
+    private JButton bCancelar;
+    private JTextField txtNombre;
+    private JTextField txtContrasena;
     private JPanel Pprincipal;
+    private JRadioButton RdbUsuario;
+    private JRadioButton RdbAdmin;
 
     public VistaPerfil(){
         setContentPane(Pprincipal);
@@ -15,20 +18,52 @@ public class VistaPerfil extends JFrame {
         setLocationRelativeTo(null);
     }
 
+    public JTextField getTxtNombre() {
+        return txtNombre;
+    }
+
+    public void setTxtNombre(JTextField txtNombre) {
+        this.txtNombre = txtNombre;
+    }
+
+    public JTextField getTxtContrasena() {
+        return txtContrasena;
+    }
+
+    public void setTxtContrasena(JTextField txtContrasena) {
+        this.txtContrasena = txtContrasena;
+    }
+
+    public JRadioButton getRdbUsuario() {
+        return RdbUsuario;
+    }
+
+    public void setRdbUsuario(JRadioButton rdbUsuario) {
+        RdbUsuario = rdbUsuario;
+    }
+
+    public JRadioButton getRdbAdmin() {
+        return RdbAdmin;
+    }
+
+    public void setRdbAdmin(JRadioButton rdbAdmin) {
+        RdbAdmin = rdbAdmin;
+    }
+
     public JTextField getTextField1() {
-        return textField1;
+        return txtNombre;
     }
 
     public void setTextField1(JTextField textField1) {
-        this.textField1 = textField1;
+        this.txtNombre = textField1;
     }
 
     public JTextField getTextField2() {
-        return textField2;
+        return txtContrasena;
     }
 
     public void setTextField2(JTextField textField2) {
-        this.textField2 = textField2;
+        this.txtContrasena = textField2;
     }
 
     public JPanel getPprincipal() {
@@ -37,5 +72,12 @@ public class VistaPerfil extends JFrame {
 
     public void setPprincipal(JPanel pprincipal) {
         Pprincipal = pprincipal;
+    }
+
+    public void addBCancelar (ActionListener al){
+        bCancelar.addActionListener(al);
+    }
+    public void addCrearUsuario (ActionListener al){
+        bCrear.addActionListener(al);
     }
 }

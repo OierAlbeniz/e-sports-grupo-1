@@ -18,7 +18,7 @@ public class ControladorTablaEnfrentamiento {
     }
     public List<Enfrentamiento> buscarEnfrentamientos(Integer idJorComp) throws Exception {
         List<Enfrentamiento> enfrentamientos = new ArrayList<>();
-        String sql = "SELECT id_enf_jor, id_jor_comp, id_enfrentamiento, hora, id_local, id_visitante FROM enfrentamiento WHERE id_jor_comp = ?";
+        String sql = "SELECT * FROM enfrentamiento WHERE id_jor_comp = ?";
         PreparedStatement ps = con.prepareStatement(sql);
         System.out.println(idJorComp + " dentro");
         ps.setInt(1, idJorComp);
@@ -26,7 +26,7 @@ public class ControladorTablaEnfrentamiento {
 
         while (rs.next()) {
             System.out.println(rs.getInt("id_local")+ "idLocall");
-            System.out.println(rs.getInt("ID_VISITANTE") + "idVisitantee");
+            System.out.println(rs.getInt("id_visitante") + "idVisitantee");
             Enfrentamiento enfrentamiento = new Enfrentamiento();
             enfrentamiento.setIdEnfrentamiento(rs.getInt("id_enfrentamiento"));
             enfrentamiento.setIdEnfJor(rs.getInt("id_enf_jor"));
@@ -77,7 +77,7 @@ public class ControladorTablaEnfrentamiento {
 
         if (rs.next()) {
             id_equipo = rs.getInt("id_local");
-            System.out.println(id_equipo); // Imprime el valor de id_local
+            System.out.println(id_equipo + " el local1"); // Imprime el valor de id_local
         }
 
         rs.close(); // Cierra el ResultSet
@@ -95,7 +95,7 @@ public class ControladorTablaEnfrentamiento {
 
         if (rs.next()) {
             id_equipo = rs.getInt("id_visitante");
-            System.out.println(id_equipo); // Imprime el valor de id_visitante
+            System.out.println(id_equipo + " el local2"); // Imprime el valor de id_visitante
         }
 
         rs.close(); // Cierra el ResultSet

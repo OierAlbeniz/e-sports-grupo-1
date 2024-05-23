@@ -2,12 +2,9 @@ package Controlador.ControladorVista;
 
 import Modelo.Competicion;
 import Modelo.Equipo;
-import Modelo.Jugador;
 import Vista.VentanaCompeticiones;
 import Vista.VentanaEquipos;
-import Vista.VentanaJugadores;
 
-import javax.accessibility.AccessibleAction;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -41,7 +38,7 @@ public class ControladorVEquipo {
         this.cv = cv;
     }
 
-    public void crearMostrar() {
+    public void crearMostrar() throws Exception {
         vEquipos = new VentanaEquipos();
         vEquipos.setVisible(true);
         vEquipos.addVolver(new BVolverAL());
@@ -103,7 +100,7 @@ public class ControladorVEquipo {
         @Override
         public void actionPerformed(ActionEvent e) {
             if (jugadoresInsertados>=1){
-                String nombre= vEquipos.getTfNombre().getText();
+               String nombre= vEquipos.getTfNombre().getText();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
                 LocalDate fecha =  LocalDate.parse((CharSequence) vEquipos.getCbFechaFundacion().getSelectedItem(),formatter);
 
@@ -127,8 +124,8 @@ public class ControladorVEquipo {
         @Override
         public void actionPerformed(ActionEvent e) {
             cv.crearMostrarStaff();
-            // String nombre =vEquipos.getTfNombre().getText();
-            // cv.nombreequipo(nombre);
+           // String nombre =vEquipos.getTfNombre().getText();
+           // cv.nombreequipo(nombre);
         }
     }
 
@@ -137,17 +134,17 @@ public class ControladorVEquipo {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-            if (vEquipos.getTfNombre().getText().isEmpty()){
+          if (vEquipos.getTfNombre().getText().isEmpty()){
 
 
-                JOptionPane.showMessageDialog(null,"el nombre del equipo tiene que estar escrito");
-            }else
-            {
-                cv.crearMostrarJugadores();
-                jugadoresInsertados=jugadoresInsertados+1;
-                String nombre =vEquipos.getTfNombre().getText();
-               // cv.nombreequipo(nombre);
-            }
+              JOptionPane.showMessageDialog(null,"el nombre del equipo tiene que estar escrito");
+          }else
+          {
+              cv.crearMostrarJugadores();
+              jugadoresInsertados=jugadoresInsertados+1;
+              String nombre =vEquipos.getTfNombre().getText();
+              cv.nombreequipo(nombre);
+          }
 
 
 
@@ -217,7 +214,7 @@ public class ControladorVEquipo {
     }
 
 
-    public void buscarPatrocinador() {
+    public void buscarPatrocinador() throws Exception {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
             for (String nombre : listaPatrocinadores) {
@@ -228,22 +225,22 @@ public class ControladorVEquipo {
         }
 
     }
-    public  class   bAceptarEditarAL implements ActionListener{
+  public  class   bAceptarEditarAL implements ActionListener{
 
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
-            String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
-            LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
-            String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
-            String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
-            try {
-                cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
-            }
-        }
-    }
+      @Override
+      public void actionPerformed(ActionEvent e) {
+       String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
+        String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
+        LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
+        String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
+        String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
+          try {
+              cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+          } catch (Exception ex) {
+              throw new RuntimeException(ex);
+          }
+      }
+  }
     private class cbEquipoEliminarFL implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -384,4 +381,7 @@ public class ControladorVEquipo {
             llenarComboEquipo();
         }
     }
+
+
+
 }

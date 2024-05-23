@@ -1,18 +1,18 @@
 package Controlador.ControladorVista;
 
 import Controlador.ControladorBD.ControladorTablaEquipo;
-import Modelo.Equipo;
 import Vista.VentanaEditar;
 import Vista.VentanaEquipos;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ControladorVEditar {
     private ControladorVista cv;
+    private VentanaEquipos veq;
+    private ControladorTablaEquipo ctequipo;
+    private Connection con;
     private VentanaEditar vEditar;
 
     public ControladorVEditar(ControladorVista cv) {
@@ -49,8 +49,12 @@ public class ControladorVEditar {
     public class BEquiposAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarEquipos();
-            vEditar.dispose();
+            try {
+                cv.crearMostrarEquipos();
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+
         }
     }
     public class BJugadoresAL implements ActionListener {
@@ -82,5 +86,7 @@ public class ControladorVEditar {
             vEditar.dispose();
         }
     }
+
+
 
 }

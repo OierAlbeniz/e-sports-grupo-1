@@ -99,7 +99,7 @@ public class ControladorTablaEquipo {
         return llenarEquipos;
     }
 
-    public Equipo buscarEquipo(Integer idequipo) throws Exception {
+    public Equipo buscarEquipoInt(Integer idequipo) throws Exception {
         Equipo equipo = new Equipo();
 
         String plantilla = "SELECT id_equipo, nombre, fecha_fundacion, id_patrocinador FROM EQUIPO WHERE id_equipo=?";
@@ -112,7 +112,7 @@ public class ControladorTablaEquipo {
             equipo.setIdEquipo(rs.getInt("id_Equipo"));
             equipo.setNombre(rs.getString("nombre"));
             equipo.setFechaFundacion(rs.getDate("fecha_fundacion").toLocalDate());
-            Integer id_patrocinador = rs.getInt("id_patrocinadpr");
+            //Integer id_patrocinador = rs.getInt("id_patrocinadpr");
             //equipo.setPatrocinador(cb.buscarPatrocinador(id_patrocinador));
         }
 
@@ -238,19 +238,23 @@ public class ControladorTablaEquipo {
                 "JOIN PATROCINADOR P ON E.ID_PATROCINADOR = P.ID_PATROCINADOR " +
                 "WHERE E.NOMBRE = ?";
         PreparedStatement statement = con.prepareStatement(query) ;
-        statement.setString(1, nombre);
-        try (ResultSet rs = statement.executeQuery()) {
-            if (rs.next()) {
-                Equipo equipo = new Equipo();
-                equipo.setNombre(rs.getString("NOMBRE"));
-                equipo.setFechaFundacion(rs.getDate("FECHA_FUNDACION").toLocalDate());
-               // equipo.setPatrocinador(rs.getString("NOMBRE"));
-                return equipo;
-            } else {
-                return null; // No se encontró el equipo con el nombre dado
+            statement.setString(1, nombre);
+            try (ResultSet rs = statement.executeQuery()) {
+                if (rs.next()) {
+                    Equipo equipo = new Equipo();
+                    equipo.setNombre(rs.getString("NOMBRE"));
+                    equipo.setFechaFundacion(rs.getDate("FECHA_FUNDACION").toLocalDate());
+                    //equipo.setPatrocinador(rs.getString("NOMBRE"));
+                    return equipo;
+                } else {
+                    return null; // No se encontró el equipo con el nombre dado
+                }
             }
         }
-    }
+
+
+
+
 
     public void editarEquipo(String nombreAntiguo, String nombreNuevo, LocalDate fechaCambio, String vincularNuevo, String desvincular) throws Exception {
 

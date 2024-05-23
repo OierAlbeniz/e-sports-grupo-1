@@ -1,63 +1,128 @@
 package Vista;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
-public class VentanaUltJornada {
-    private JPanel pPrincipal;
+public class VentanaUltJornada extends JFrame{
+    private JPanel panel1;
+    private JPanel panel2;
+    private JComboBox cbCompeticiones;
+    private JButton bInicio;
+    private JPanel panelEnfrentamiento;
+    private JLabel equipoLocal;
+    private JLabel guion;
+    private JLabel equipoVisitante;
     private JComboBox comboBox1;
     private JLabel equipo1;
     private JLabel equipo2;
     private JLabel resul1;
     private JLabel resul2;
 
+    public VentanaUltJornada() {
+        setContentPane(panel1);
+        setLocationRelativeTo(null);
+        setSize(1920, 1080);
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
 
-    public JPanel getpPrincipal() {
-        return pPrincipal;
+
     }
 
-    public void setpPrincipal(JPanel pPrincipal) {
-        this.pPrincipal = pPrincipal;
+    public JPanel getPanel2() {
+        return panel2;
     }
 
-    public JComboBox getComboBox1() {
-        return comboBox1;
+    public void setPanel2(JPanel panel2) {
+        this.panel2 = panel2;
     }
 
-    public void setComboBox1(JComboBox comboBox1) {
-        this.comboBox1 = comboBox1;
+    public JPanel getPanelEnfrentamiento() {
+        return panelEnfrentamiento;
     }
 
-    public JLabel getEquipo1() {
-        return equipo1;
+    public void setPanelEnfrentamiento(JPanel panelEnfrentamiento) {
+        this.panelEnfrentamiento = panelEnfrentamiento;
     }
 
-    public void setEquipo1(JLabel equipo1) {
-        this.equipo1 = equipo1;
+
+    public JButton getbInicio() {
+        return bInicio;
     }
 
-    public JLabel getEquipo2() {
-        return equipo2;
+    public void setbInicio(JButton bInicio) {
+        this.bInicio = bInicio;
     }
 
-    public void setEquipo2(JLabel equipo2) {
-        this.equipo2 = equipo2;
+    public JPanel getPanel1() {
+        return panel1;
     }
 
-    public JLabel getResul1() {
-        return resul1;
+    public void setPanel1(JPanel panel1) {
+        this.panel1 = panel1;
     }
 
-    public void setResul1(JLabel resul1) {
-        this.resul1 = resul1;
+    public JComboBox getCbCompeticiones() {
+        return cbCompeticiones;
     }
 
-    public JLabel getResul2() {
-        return resul2;
+    public void setCbCompeticiones(JComboBox cbCompeticiones) {
+        this.cbCompeticiones = cbCompeticiones;
     }
 
-    public void setResul2(JLabel resul2) {
-        this.resul2 = resul2;
+
+    public JLabel getEquipoLocal() {
+        return equipoLocal;
     }
 
+    public void setEquipoLocal(JLabel equipoLocal) {
+        this.equipoLocal = equipoLocal;
+    }
+
+    public JLabel getEquipoVisitante() {
+        return equipoVisitante;
+    }
+
+    public void setEquipoVisitante(JLabel equipoVisitante) {
+        this.equipoVisitante = equipoVisitante;
+    }
+
+
+    public void addInicio(ActionListener al) {
+        bInicio.addActionListener(al);
+    }
+    public void addCBCompeticion(ActionListener al) {
+        cbCompeticiones.addActionListener(al);
+    }
+
+    public void mostrar(String m){
+        JOptionPane.showMessageDialog(null,m);
+    }
+
+
+
+
+    public void agregarPanel(JPanel panel) {
+        panelEnfrentamiento.add(panel);
+    }
+
+    public void limpiarPaneles() {
+        panel2.removeAll();
+        panel2.revalidate();
+        panel2.repaint();
+    }
+
+
+    public JLabel getGuion() {
+        return guion;
+    }
+
+    public void setGuion(JLabel guion) {
+        this.guion = guion;
+    }
+
+    public void actualizarVista() {
+        panel2.revalidate();
+        panel2.repaint();
+    }
 
 }

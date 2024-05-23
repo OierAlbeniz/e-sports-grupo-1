@@ -1,9 +1,7 @@
 package Controlador.ControladorVista;
 
-import Controlador.ControladorBD.ControladorTablaEquipo;
-import Modelo.*;
-import Vista.VentanaClasificacion;
-import Vista.VentanaEquipos;
+import Modelo.Competicion;
+import Modelo.Enfrentamiento;
 import Vista.VentanaInsertarResultados;
 
 import javax.swing.*;
@@ -12,7 +10,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,64 +101,7 @@ public class ControladorVInsertResultados {
         }
     }
 
-/*
-    public class BJornadaAL implements ActionListener {
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            try {
-                Integer idJornada = (Integer) vInsertResultados.getCbJornadas().getSelectedItem();
-                if (idJornada != null) {
-                    Competicion competicion = cv.buscarCompeticion((String) vInsertResultados.getCbCompeticiones().getSelectedItem());
-                    System.out.println(idJornada + competicion.getNombre() + " Jornada y comp");
-                    Integer idCompeticion = competicion.getIdCompeticion();
-                    List<Enfrentamiento> enfrentamientos = cv.buscarEnfrentamientos(idJornada, idCompeticion);
 
-                    // Limpiar paneles existentes antes de agregar nuevos
-                    vInsertResultados.getPanel2().removeAll();
-
-                    // Establecer el layout del panel principal para colocar los componentes uno debajo del otro
-                    vInsertResultados.getPanel2().setLayout(new BoxLayout(vInsertResultados.getPanel2(), BoxLayout.Y_AXIS));
-
-                    if (!enfrentamientos.isEmpty()) {
-                        for (Enfrentamiento enfrentamiento : enfrentamientos) {
-                            JPanel panelEnfrentamiento = crearPanelEnfrentamiento(enfrentamiento);
-                            vInsertResultados.agregarPanel(panelEnfrentamiento);
-                        }
-                    }
-
-                    // Volver a validar y repintar el panel principal en la vista
-                    vInsertResultados.actualizarVista();
-                }
-            } catch (Exception ex) {
-                vInsertResultados.mostrar(ex.getMessage());
-            }
-        }
-
-        private JPanel crearPanelEnfrentamiento(Enfrentamiento enfrentamiento) {
-            JPanel panel = new JPanel();
-            panel.setLayout(new GridLayout(1, 4));
-
-            JLabel equipo1 = new JLabel(enfrentamiento.getEquipoUno().getNombre());
-            JLabel equipo2 = new JLabel(enfrentamiento.getEquipoDos().getNombre());
-            JTextField resultadoLocal = new JTextField(3);
-            JTextField resultadoVisitante = new JTextField(3);
-
-            Font font = new Font("HelveticaNeue", Font.PLAIN, 22);
-            equipo1.setFont(font);
-            equipo2.setFont(font);
-            resultadoLocal.setFont(font);
-            resultadoVisitante.setFont(font);
-
-            panel.add(equipo1);
-            panel.add(resultadoLocal);
-            panel.add(resultadoVisitante);
-            panel.add(equipo2);
-
-            return panel;
-        }
-    }
-
- */
 public class BJornadaFL implements FocusListener {
 
     @Override
@@ -190,6 +130,8 @@ public class BJornadaFL implements FocusListener {
                     }
                 }
 
+
+
                 // Volver a validar y repintar el panel principal en la vista
                 vInsertResultados.actualizarVista();
             }
@@ -198,6 +140,8 @@ public class BJornadaFL implements FocusListener {
         }
     }
 }
+
+
 
 
     private JPanel crearPanelEnfrentamiento(Enfrentamiento enfrentamiento) {

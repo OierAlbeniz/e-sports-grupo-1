@@ -1,6 +1,9 @@
 package Controlador.ControladorBD;
 
-import Modelo.*;
+import Modelo.Clasificacion;
+import Modelo.Enfrentamiento;
+import Modelo.Equipo;
+import Modelo.Jugador;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,15 +12,34 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * Esta clase gestiona las operaciones relacionadas con la tabla de clasificación en la base de datos.
+ * Permite obtener los equipos que participan en una competición específica.
+ *
+ * @autor Grupo4
+ * @see Equipo
+ * @see Jugador
+ */
 public class ControladorTablaClasificacion {
     private Connection con;
 
+    /**
+     * Constructor de la clase ControladorTablaClasificacion.
+     *
+     * @param con La conexión a la base de datos.
+     */
     public ControladorTablaClasificacion(Connection con) {
         this.con = con;
     }
 
+    /**
+     * Llena una lista con los IDs de los equipos que participan en una competición específica.
+     *
+     * @param competicion El ID de la competición.
+     * @return Una lista de IDs de equipos que participan en la competición.
+     * @throws Exception Si ocurre un error durante la ejecución de la consulta.
+     */
     public List<String> llenarEquiposCompeticion(Integer competicion) throws Exception {
-
         List<String> listaEquipos = new ArrayList<>();
         String plantilla5 = "SELECT id_equipo FROM clasificacion WHERE id_competicion=?";
 
@@ -33,7 +55,6 @@ public class ControladorTablaClasificacion {
         statement.close();
         return listaEquipos;
     }
-
     public void actualizarTablaClasificacion(Enfrentamiento enfrentamiento, int idCompeticion, int resultadoLocal, int resultadoVisitante) throws Exception {
         int puntosLocal = 0;
         int puntosVisitante = 0;
@@ -179,5 +200,4 @@ public class ControladorTablaClasificacion {
 
         return listaClasificaciones;
     }
-
 }

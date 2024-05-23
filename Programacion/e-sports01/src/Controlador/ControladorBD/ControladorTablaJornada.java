@@ -39,7 +39,7 @@ public class ControladorTablaJornada {
         PreparedStatement ps = con.prepareStatement(sql);
 
         // Mensajes de depuración para verificar los valores de los parámetros
-        System.out.println("idJornada: " + idJornada);
+        System.out.println("idJornadaaaa: " + idJornada);
         System.out.println("idCompeticion: " + idCompeticion);
 
         ps.setInt(1, idJornada);
@@ -91,5 +91,19 @@ public class ControladorTablaJornada {
         rs.close();
         statement.close();
         return jornadasJugadas;
+    }
+
+    public Integer buscarUltimaJornada(Integer idCompeticion) throws Exception {
+        Integer ultimaJornada = null;
+        String query = "SELECT MAX(id_jornada) AS ultima_jornada FROM jornada WHERE id_competicion = ?";
+        PreparedStatement statement = con.prepareStatement(query);
+        statement.setInt(1, idCompeticion);
+        ResultSet rs = statement.executeQuery();
+        if (rs.next()) {
+            ultimaJornada = rs.getInt("ultima_jornada");
+        }
+        rs.close();
+        statement.close();
+        return ultimaJornada;
     }
 }

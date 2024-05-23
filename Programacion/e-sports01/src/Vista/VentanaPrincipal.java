@@ -21,7 +21,7 @@ public class VentanaPrincipal extends JFrame{
     private JPanel p4;
 
     private JButton bConsulta;
-    private JButton bPerfil;
+    private JButton bUsuarios;
     private JPanel panel2;
     private JLabel jlTipo;
     private JPanel pInsertResultados;
@@ -29,6 +29,10 @@ public class VentanaPrincipal extends JFrame{
     private JPanel pVerClasificacion;
     private JButton bInsertResultados;
     private JPanel pCerrarInsc;
+    private JPanel pUltJornada;
+    private JPanel pEditar;
+    private JPanel pConsulta;
+    private JLabel txNombre;
     private JButton bVerResultados;
     private JTextField tfRelleno;
 
@@ -124,6 +128,14 @@ public class VentanaPrincipal extends JFrame{
         }
     }
 
+    public JLabel getTxNombre() {
+        return txNombre;
+    }
+
+    public void setTxNombre(JLabel txNombre) {
+        this.txNombre = txNombre;
+    }
+
     public JPanel getpInsertResultados() {
         return pInsertResultados;
     }
@@ -174,6 +186,14 @@ public class VentanaPrincipal extends JFrame{
 
     public JPanel getPanel1() {
         return panel1;
+    }
+
+    public JButton getBtPerfil() {
+        return btPerfil;
+    }
+
+    public void setBtPerfil(JButton btPerfil) {
+        this.btPerfil = btPerfil;
     }
 
     public void setPanel1(JPanel panel1) {
@@ -236,6 +256,22 @@ public class VentanaPrincipal extends JFrame{
         this.p1 = p1;
     }
 
+    public JPanel getpUltJornada() {
+        return pUltJornada;
+    }
+
+    public void setpUltJornada(JPanel pUltJornada) {
+        this.pUltJornada = pUltJornada;
+    }
+
+    public JPanel getpEditar() {
+        return pEditar;
+    }
+
+    public void setpEditar(JPanel pEditar) {
+        this.pEditar = pEditar;
+    }
+
     public JPanel getP2() {
         return p2;
     }
@@ -268,12 +304,12 @@ public class VentanaPrincipal extends JFrame{
         this.bConsulta = bConsulta;
     }
 
-    public JButton getbPerfil() {
-        return bPerfil;
+    public JButton getbUsuarios() {
+        return bUsuarios;
     }
 
-    public void setbPerfil(JButton bPerfil) {
-        this.bPerfil = bPerfil;
+    public void setbUsuarios(JButton bPerfil) {
+        this.bUsuarios = bPerfil;
     }
 
     public JButton getbCerrarSesion() {
@@ -308,13 +344,7 @@ public class VentanaPrincipal extends JFrame{
         this.tfRelleno = tfRelleno;
     }
 
-    public JButton getBtPerfil() {
-        return btPerfil;
-    }
 
-    public void setBtPerfil(JButton btPerfil) {
-        this.btPerfil = btPerfil;
-    }
 
     public JPanel getPanel2() {
         return panel2;
@@ -332,11 +362,31 @@ public class VentanaPrincipal extends JFrame{
         this.jlTipo = jlTipo;
     }
 
+    public JPanel getpConsulta() {
+        return pConsulta;
+    }
+
+    public void setpConsulta(JPanel pConsulta) {
+        this.pConsulta = pConsulta;
+    }
+
     public void addeditar(ActionListener al) {
         bEditar.addActionListener(al);
     }
     public void addcerrarInsc(ActionListener al) {
         bCerrarInsc.addActionListener(al);
+    }
+    public void addUsuarios(ActionListener al) {
+        bUsuarios.addActionListener(al);
+    }
+    public void addConsultas(ActionListener al){
+        bConsulta.addActionListener(al);
+    }
+    public void addBSalirAL(ActionListener al){
+        bSalir.addActionListener(al);
+    }
+    public void addCerrarSesionAL(ActionListener al) {
+        bCerrarSesion.addActionListener(al);
     }
 
     public void addClasificacion(ActionListener al) {
@@ -345,6 +395,7 @@ public class VentanaPrincipal extends JFrame{
     public void addInsertResultados(ActionListener al) {
         bInsertResultados.addActionListener(al);
     }
+    public void addUltJornada(ActionListener al){ bUltJornada.addActionListener(al);}
     public void addVerResultados(ActionListener al) {
         bVerResultados.addActionListener(al);
     }

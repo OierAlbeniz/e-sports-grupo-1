@@ -5,8 +5,6 @@ import javax.swing.*;
 import java.awt.*;
 import Vista.VentanaInicioSesion;
 
-import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
@@ -61,10 +59,10 @@ public class ControladorVLogin {
                             " \n una mayuscula" +
                             "\n un numero " +
                             "\n y un caracter especial");
-                Usuario user = cv.buscarUsuario(nombre);
+                Usuario user = cv.buscarUsuario(nombre, password);
                    if (user.getContrasena().equals(password)){
                        vsesion.dispose();
-                       cv.crearMostrarVP();
+                       cv.crearMostrarVPlogin(user);
                        String tipo=user.getTipo();
                        System.out.println(tipo);
                    }else {
