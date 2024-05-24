@@ -1,14 +1,10 @@
 package Vista;
 
 import javax.swing.*;
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaStaff.java
-import java.awt.event.ActionListener;
-=======
 import javax.swing.border.Border;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.geom.RoundRectangle2D;
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaStaff.java
 
 public class VentanaStaff extends JFrame{
     private JRadioButton rbNuevo;
@@ -36,69 +32,17 @@ public class VentanaStaff extends JFrame{
     private JTextField tfNuevoApellido2;
     private JTextField tfNuevoSueldo;
     private JLabel labelStaff;
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaStaff.java
-    private JRadioButton rbEntrenadorM;
-    private JRadioButton rbAsistenteM;
-    private JRadioButton rbEntrenador;
-    private JRadioButton rbAsistente;
-    private JComboBox jbEquipo;
-    private JButton btAceptar;
-    private JButton bAceptarEliminar;
-=======
     private JRadioButton rbEntrenador;
     private JRadioButton rbAsistente;
     private JRadioButton rbEntrenadorM;
     private JRadioButton rbAsistenteM;
     private JPanel panel2;
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaStaff.java
     private JComboBox cbEquipo;
     public VentanaStaff() {
         setContentPane(pStaff);
         setLocationRelativeTo(null);
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaStaff.java
-    }
-
-    public JRadioButton getRbEntrenadorM() {
-        return rbEntrenadorM;
-    }
-
-    public void setRbEntrenadorM(JRadioButton rbEntrenadorM) {
-        this.rbEntrenadorM = rbEntrenadorM;
-    }
-
-    public JRadioButton getRbAsistenteM() {
-        return rbAsistenteM;
-    }
-
-    public void setRbAsistenteM(JRadioButton rbAsistenteM) {
-        this.rbAsistenteM = rbAsistenteM;
-    }
-
-    public JRadioButton getRbEntrenador() {
-        return rbEntrenador;
-    }
-
-    public void setRbEntrenador(JRadioButton rbEntrenador) {
-        this.rbEntrenador = rbEntrenador;
-    }
-
-    public JRadioButton getRbAsistente() {
-        return rbAsistente;
-    }
-
-    public void setRbAsistente(JRadioButton rbAsistente) {
-        this.rbAsistente = rbAsistente;
-    }
-
-    public JComboBox getJbEquipo() {
-        return jbEquipo;
-    }
-
-    public void setJbEquipo(JComboBox jbEquipo) {
-        this.jbEquipo = jbEquipo;
-=======
         redondearPanel(panel2,30);
     }
 
@@ -132,7 +76,6 @@ public class VentanaStaff extends JFrame{
             g2d.draw(new RoundRectangle2D.Double(x, y, width -1, height -1, radius, radius));
             g2d.dispose();
         }
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaStaff.java
     }
 
     public JRadioButton getRbNuevo() {
@@ -359,17 +302,8 @@ public class VentanaStaff extends JFrame{
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaStaff.java
-    public void addBAceptarEliminar (ActionListener al){
-        bAceptarEliminar.addActionListener(al);
-    }
-    public void addbAceptarNuevo (ActionListener al){
-        btAceptar.addActionListener(al);
-    }
-=======
 
 
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaStaff.java
     public void limpiar() {
         tfNombre.setText("");
         tfApellido1.setText("");

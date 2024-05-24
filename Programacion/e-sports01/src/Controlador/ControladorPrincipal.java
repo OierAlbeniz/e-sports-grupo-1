@@ -10,14 +10,7 @@ import Modelo.Equipo;
 import Modelo.Usuario;
 
 import javax.swing.*;
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorPrincipal.java
 import java.sql.Date;
-=======
-<<<<<<<< HEAD:Programacion/e-sports01final/e-sports01/src/Controlador/ControladorPrincipal.java
-========
-import java.sql.Date;
->>>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/union/e-sports01/src/Controlador/ControladorPrincipal.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorPrincipal.java
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -224,32 +217,9 @@ public class ControladorPrincipal {
     public void desvincularJuegoDeCompeticion(Integer idJuego, Integer idCompeticion) throws Exception{
         cb.desvincularJuegoDeCompeticion(idJuego, idCompeticion);
     }
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorPrincipal.java
-=======
-    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
-        return cb.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
-    }
-
-
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorPrincipal.java
     public void insertarPatrocinador(Patrocinador p) throws Exception {cb.insertarPatrocinador(p);}
     public void borrarPatrocinador(String nombre) throws Exception{cb.borrarPatrocinador(nombre);}
     public void editarPatrocinador(String nombreNuevo) throws Exception{cb.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return cb.buscarPatrocinadorEliminar(nombre);}
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorPrincipal.java
-    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        cb.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        cb.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
-        cb.borrarAsistente(nombreAsistente,nombreEquipo);
-    }
-    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo) throws Exception {
-        return cb.obtenerAsistentesPorEquipo(nombreEquipo);
-    }
-=======
 
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorPrincipal.java
 }

@@ -90,11 +90,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -187,11 +183,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -220,11 +212,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -243,11 +231,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -286,11 +270,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -342,11 +322,7 @@
                   <foreground color="-13947600"/>
                   <horizontalAlignment value="10"/>
                   <inheritsPopupMenu value="false"/>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-                  <margin top="4" left="11" bottom="4" right="11"/>
-=======
                   <margin top="2" left="6" bottom="2" right="6"/>
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                   <selectionColor color="-1"/>
                   <text value=""/>
                 </properties>
@@ -940,11 +916,7 @@
                   <visible value="true"/>
                 </properties>
               </component>
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Vista/VentanaJugadores.form
-              <component id="631ce" class="javax.swing.JButton" binding="btAceptar">
-=======
               <component id="631ce" class="javax.swing.JButton">
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Vista/VentanaJugadores.form
                 <constraints>
                   <grid row="3" column="0" row-span="1" col-span="3" vsize-policy="3" hsize-policy="3" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
                 </constraints>

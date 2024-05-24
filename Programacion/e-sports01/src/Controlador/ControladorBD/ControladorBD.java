@@ -38,18 +38,10 @@ public class ControladorBD {
     private ControladorTablaUsuario ctUsuario;
     private ControladorPrincipal cp;
     private Connection con;
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
     /**
      * Constructor que recibe un ControladorPrincipal y abre la conexión a la base de datos.
      *
      * @param cp Controlador principal de la aplicación.
-=======
-
-    /**
-     * Constructor que recibe un ControladorPrincipal y abre la conexión a la base de datos.
-     *
-     //* @param  Controlador principal de la aplicación.
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
      */
     public ControladorBD(ControladorPrincipal cp) {
         abrirConexion();
@@ -65,26 +57,14 @@ public class ControladorBD {
         ctcompeticion = new ControladorTablaCompeticion(con);
         ctclasificacion = new ControladorTablaClasificacion(con);
         ctasistente = new ControladorTablaAsistente(con);
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
         cc=new ControladorConsultas(con);
-=======
-        cc = new ControladorConsultas(con);
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
 
 
     }
-
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
-    public ControladorBD() {
-
-    }
-=======
 
     public ControladorBD() {
 
     }
-
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
     /**
      * Abre la conexión a la base de datos.
      */
@@ -106,11 +86,6 @@ public class ControladorBD {
     }
 */
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
-=======
-
-
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
    public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -492,14 +467,6 @@ public class ControladorBD {
         ctjuego.eliminarJuego(j);
     }
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
-=======
-<<<<<<<< HEAD:Programacion/e-sports01final/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
-    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
-        return ctasistente.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
-    }
-========
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
     public void insertarJuego(Juego j) throws Exception {
         ctjuego.insertarJuego(j);
     }
@@ -518,21 +485,5 @@ public class ControladorBD {
     public void borrarPatrocinador(String nombre) throws Exception{ctpatrocinador.borrarPatrocinador(nombre);}
     public void editarPatrocinador(String nombreNuevo) throws Exception{ctpatrocinador.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return ctpatrocinador.buscarPatrocinadorEliminar(nombre);}
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
-    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        ctasistente.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        ctasistente.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
-        ctasistente.borrarAsistente(nombreAsistente,nombreEquipo);
-    }
-    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo) throws Exception {
-        return ctasistente.obtenerAsistentesPorEquipo(nombreEquipo);
-    }
-=======
 
->>>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorBD.java
 }

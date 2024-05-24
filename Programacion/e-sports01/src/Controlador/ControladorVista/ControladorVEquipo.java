@@ -399,9 +399,4 @@ public class ControladorVEquipo {
         }
     }
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorVista/ControladorVEquipo.java
-
-
-=======
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorVista/ControladorVEquipo.java
 }

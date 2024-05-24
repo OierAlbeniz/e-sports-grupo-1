@@ -291,24 +291,8 @@ public class ControladorVista {
         return cp.buscarIdJuegoPorNombre(nuevoJuego);
     }
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
     public void modificarCompeticion(Integer idCompeticion, String nuevoNombre, Date date, Date date1, String nuevoEstado, int idJuego) throws Exception {
         cp.modificarCompeticion(idCompeticion,nuevoNombre, date, date1, nuevoEstado, idJuego);
-=======
-<<<<<<<< HEAD:Programacion/e-sports01final/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
-    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        cp.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
-        return cp.obtenerAsistentesPorEquipo(nombreEquipo);
-    }
-    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
-        cp.borrarAsistente(nombreAsistente,nombreEquipo);
-========
-    public void modificarCompeticion(Integer idCompeticion, String nuevoNombre, Date date, Date date1, String nuevoEstado, int idJuego) throws Exception {
-        cp.modificarCompeticion(idCompeticion,nuevoNombre, date, date1, nuevoEstado, idJuego);
->>>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/union/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
     }
 
     public void modificarJuego(Juego j)throws Exception  {
@@ -339,22 +323,5 @@ public class ControladorVista {
     public void borrarPatrocinador(String nombre) throws Exception{cp.borrarPatrocinador(nombre);}
     public void editarPatrocinador(String nombreNuevo) throws Exception{cp.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return cp.buscarPatrocinadorEliminar(nombre);}
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
-    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        cp.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
-        cp.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
-    }
-    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
-        cp.borrarAsistente(nombreAsistente,nombreEquipo);
-    }
-    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
-        return cp.obtenerAsistentesPorEquipo(nombreEquipo);
-=======
 
-    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
-        return cp.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorVista/ControladorVista.java
-    }
 }

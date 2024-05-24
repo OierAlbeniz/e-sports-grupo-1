@@ -143,21 +143,18 @@ public class ControladorTablaEquipo {
     }
 
     public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
+
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
+
             // Verificar si el equipo ya existe
             String queryCheck = "SELECT COUNT(*) FROM EQUIPO WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryCheck);
             pstmt.setString(1, nombre);
             rs = pstmt.executeQuery();
 
-            if (rs.next() && rs.getInt(1) > 0) {
-                throw new Exception("El equipo ya existe");
-            }
-            rs.close();
-            pstmt.close();
 
             // Obtener ID del patrocinador
             String queryPatrocinador = "SELECT ID_PATROCINADOR FROM PATROCINADOR WHERE NOMBRE = ?";
@@ -165,79 +162,38 @@ public class ControladorTablaEquipo {
             pstmt.setString(1, patrocinador.getNombre());
             rs = pstmt.executeQuery();
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-            int idPatrocinador = 0;
-=======
             int idPatrocinador = -1;
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
             if (rs.next()) {
                 idPatrocinador = rs.getInt("ID_PATROCINADOR");
             } else {
                 throw new Exception("Patrocinador no encontrado");
             }
-            rs.close();
-            pstmt.close();
 
             // Obtener ID de la competición
             String queryCompeticion = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryCompeticion);
-            pstmt.setString(1, competicion.getNombre());
+            pstmt.setString(1, String.valueOf(competicion.getNombre()));
             rs = pstmt.executeQuery();
 
-            int idCompeticion = 0;
+            int idCompeticion = -1;
             if (rs.next()) {
                 idCompeticion = rs.getInt("ID_COMPETICION");
             } else {
                 throw new Exception("Competición no encontrada");
             }
-            rs.close();
-            pstmt.close();
 
             // Insertar el nuevo equipo
-            String queryInsertEquipo = "INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES (?, ?, ?)";
-            pstmt = con.prepareStatement(queryInsertEquipo, Statement.RETURN_GENERATED_KEYS);
+            String queryInsert = "INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES (?, ?, ?)";
+            pstmt = con.prepareStatement(queryInsert);
             pstmt.setString(1, nombre);
             pstmt.setDate(2, java.sql.Date.valueOf(fecha)); // convertir LocalDate a java.sql.Date
             pstmt.setInt(3, idPatrocinador);
             pstmt.executeUpdate();
 
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-=======
-<<<<<<<< HEAD:Programacion/e-sports01final/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-            // Obtener el ID del equipo recién insertado
-            rs = pstmt.getGeneratedKeys();
-            int idEquipo = 0;
-            if (rs.next()) {
-                idEquipo = rs.getInt("idPatrocinador");
-            }
-            rs.close();
-            pstmt.close();
-
-            // Insertar en la tabla CLASIFICACION
-            String queryInsertClasificacion = "INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO) VALUES (?, ?)";
-            pstmt = con.prepareStatement(queryInsertClasificacion);
-            pstmt.setInt(1, idCompeticion);
-            pstmt.setInt(2, idEquipo);
-            pstmt.executeUpdate();
-
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-=======
-========
->>>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception("Error al crear el equipo", e);
+            throw new Exception("Error al crear el equipo");
         } finally {
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-            if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
-            if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
-=======
-<<<<<<<< HEAD:Programacion/e-sports01final/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-            if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
-            if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
-========
             if (rs != null) try {
                 rs.close();
             } catch (SQLException ignore) {
@@ -246,8 +202,6 @@ public class ControladorTablaEquipo {
                 pstmt.close();
             } catch (SQLException ignore) {
             }
->>>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
         }
     }
 
@@ -384,24 +338,7 @@ public class ControladorTablaEquipo {
             }
         }
     }
-<<<<<<< HEAD:Programacion/union/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
-    public List<String> buscarEquipos() throws SQLException {
-        List<String> listaNombresEquipos = new ArrayList<>();
-        String plantilla ="SELECT nombre from competicion";
 
-        PreparedStatement sentencia = con.prepareStatement(plantilla);
-
-        ResultSet resultado = sentencia.executeQuery();
-
-        while (resultado.next()){
-            listaNombresEquipos.add(resultado.getString("nombre"));
-        }
-        sentencia.close();
-        return listaNombresEquipos;
-    }
-=======
-
->>>>>>> d675d12fa0793e4066258ec58a6bcbeca432a0fc:Programacion/e-sports01/src/Controlador/ControladorBD/ControladorTablaEquipo.java
 
     public Integer updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
         PreparedStatement stmt = null;

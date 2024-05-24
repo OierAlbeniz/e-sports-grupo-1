@@ -35,7 +35,7 @@ public class ControladorTablaPatrocinador {
     }
 
 
-    private boolean patrocinadorExiste(Integer idPatrocinador, String nombre) throws SQLException {
+    public boolean patrocinadorExiste(Integer idPatrocinador, String nombre) throws SQLException {
         String consulta = "SELECT COUNT(*) FROM patrocinador WHERE id_patrocinador = ? AND nombre = ?";
         PreparedStatement stmt = con.prepareStatement(consulta);
         stmt.setInt(1, idPatrocinador);
