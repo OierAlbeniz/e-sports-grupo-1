@@ -5,13 +5,14 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/e-sports01/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/e-sports01/test" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/test" isTestSource="true" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://C:/Program Files/JetBrains/ojdbc6.jar!/" />
+          <root url="jar://$MODULE_DIR$/../ojdbc6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

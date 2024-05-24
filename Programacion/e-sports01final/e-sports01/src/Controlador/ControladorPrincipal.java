@@ -10,7 +10,6 @@ import Modelo.Equipo;
 import Modelo.Usuario;
 
 import javax.swing.*;
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -184,6 +183,11 @@ public class ControladorPrincipal {
     public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
         cb.borrarAsistente(nombreAsistente,nombreEquipo);
     }
+    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
+        return cb.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
+    }
+
+
     public void insertarPatrocinador(Patrocinador p) throws Exception {cb.insertarPatrocinador(p);}
     public List<String> buscarEquipos() throws SQLException {return cb.buscarEquipos();}
     public void borrarPatrocinador(String nombre) throws Exception{cb.borrarPatrocinador(nombre);}

@@ -37,10 +37,11 @@ public class ControladorBD {
     private ControladorTablaUsuario ctUsuario;
     private ControladorPrincipal cp;
     private Connection con;
+
     /**
      * Constructor que recibe un ControladorPrincipal y abre la conexión a la base de datos.
      *
-     * @param cp Controlador principal de la aplicación.
+     //* @param  Controlador principal de la aplicación.
      */
     public ControladorBD(ControladorPrincipal cp) {
         abrirConexion();
@@ -56,18 +57,20 @@ public class ControladorBD {
         ctcompeticion = new ControladorTablaCompeticion(con);
         ctclasificacion = new ControladorTablaClasificacion(con);
         ctasistente = new ControladorTablaAsistente(con);
-        cc=new ControladorConsultas(con);
+        cc = new ControladorConsultas(con);
 
 
     }
+
 
     public ControladorBD() {
 
     }
+
     /**
      * Abre la conexión a la base de datos.
      */
-   /* public void abrirConexion() {
+    /*public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -83,6 +86,8 @@ public class ControladorBD {
         } catch (SQLException e) {
         }
     }*/
+
+
 
 
    public void abrirConexion() {
@@ -464,5 +469,9 @@ public class ControladorBD {
     }
     public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
         ctasistente.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
+
+    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
+        return ctasistente.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
     }
 }

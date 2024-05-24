@@ -2,17 +2,12 @@ package Controlador.ControladorBD;
 
 import Modelo.Asistente;
 import Modelo.Equipo;
-import Modelo.Jugador;
 
 import javax.swing.*;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.DecimalFormat;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -149,5 +144,33 @@ public class ControladorTablaAsistente {
             throw new Exception("No se encontró al usuario en la base de datos.");
         }
     }
+
+
+
+    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreStaff, Asistente nombreEquipo) throws SQLException {
+        ArrayList<Asistente> asistentes = new ArrayList<>();
+        String query = "SELECT A.NOMBRE, A.APELLIDO1, A.APELLIDO2, A.SUELDO, E.NOMBRE AS EQUIPO " +
+                "FROM ASISTENTE A " +
+                "JOIN EQUIPO E ON A.ID_EQUIPO = E.ID_EQUIPO " +
+                "WHERE A.NOMBRE = ? AND E.NOMBRE = ?";
+
+        try (PreparedStatement pstmt = con.prepareStatement(query)) {
+            pstmt.setString(1, nombreStaff.getNombre());
+            pstmt.setString(2, nombreEquipo.getNombre());
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    String nombre = rs.getString("NOMBRE");
+                    String apellido1 = rs.getString("APELLIDO1");
+                    String apellido2 = rs.getString("APELLIDO2");
+                    double sueldo = (int) rs.getDouble("SUELDO");
+                    String equipo = rs.getString("EQUIPO");
+                    Asistente asistente = new Asistente();
+                    asistentes.add(asistente);
+                }
+            }
+        }
+        return asistentes;
+    }
 }
+
 

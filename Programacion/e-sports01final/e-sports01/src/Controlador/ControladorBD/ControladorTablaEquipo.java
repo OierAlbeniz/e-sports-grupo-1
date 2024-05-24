@@ -143,18 +143,21 @@ public class ControladorTablaEquipo {
     }
 
     public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
-
         PreparedStatement pstmt = null;
         ResultSet rs = null;
 
         try {
-
             // Verificar si el equipo ya existe
             String queryCheck = "SELECT COUNT(*) FROM EQUIPO WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryCheck);
             pstmt.setString(1, nombre);
             rs = pstmt.executeQuery();
 
+            if (rs.next() && rs.getInt(1) > 0) {
+                throw new Exception("El equipo ya existe");
+            }
+            rs.close();
+            pstmt.close();
 
             // Obtener ID del patrocinador
             String queryPatrocinador = "SELECT ID_PATROCINADOR FROM PATROCINADOR WHERE NOMBRE = ?";
@@ -168,42 +171,54 @@ public class ControladorTablaEquipo {
             } else {
                 throw new Exception("Patrocinador no encontrado");
             }
+            rs.close();
+            pstmt.close();
 
             // Obtener ID de la competición
             String queryCompeticion = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryCompeticion);
-            pstmt.setString(1, String.valueOf(competicion.getNombre()));
+            pstmt.setString(1, competicion.getNombre());
             rs = pstmt.executeQuery();
 
-            int idCompeticion = -1;
+            int idCompeticion = 0;
             if (rs.next()) {
                 idCompeticion = rs.getInt("ID_COMPETICION");
             } else {
                 throw new Exception("Competición no encontrada");
             }
+            rs.close();
+            pstmt.close();
 
             // Insertar el nuevo equipo
-            String queryInsert = "INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES (?, ?, ?)";
-            pstmt = con.prepareStatement(queryInsert);
+            String queryInsertEquipo = "INSERT INTO EQUIPO (NOMBRE, FECHA_FUNDACION, ID_PATROCINADOR) VALUES (?, ?, ?)";
+            pstmt = con.prepareStatement(queryInsertEquipo, Statement.RETURN_GENERATED_KEYS);
             pstmt.setString(1, nombre);
             pstmt.setDate(2, java.sql.Date.valueOf(fecha)); // convertir LocalDate a java.sql.Date
             pstmt.setInt(3, idPatrocinador);
             pstmt.executeUpdate();
 
+            // Obtener el ID del equipo recién insertado
+            rs = pstmt.getGeneratedKeys();
+            int idEquipo = 0;
+            if (rs.next()) {
+                idEquipo = rs.getInt("idPatrocinador");
+            }
+            rs.close();
+            pstmt.close();
+
+            // Insertar en la tabla CLASIFICACION
+            String queryInsertClasificacion = "INSERT INTO CLASIFICACION (ID_COMPETICION, ID_EQUIPO) VALUES (?, ?)";
+            pstmt = con.prepareStatement(queryInsertClasificacion);
+            pstmt.setInt(1, idCompeticion);
+            pstmt.setInt(2, idEquipo);
+            pstmt.executeUpdate();
 
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new Exception("Error al crear el equipo");
+            throw new Exception("Error al crear el equipo", e);
         } finally {
-            if (rs != null) try {
-                rs.close();
-            } catch (SQLException ignore) {
-            }
-            if (pstmt != null) try {
-                pstmt.close();
-            } catch (SQLException ignore) {
-            }
-
+            if (rs != null) try { rs.close(); } catch (SQLException ignore) {}
+            if (pstmt != null) try { pstmt.close(); } catch (SQLException ignore) {}
         }
     }
 

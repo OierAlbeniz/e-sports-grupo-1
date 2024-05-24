@@ -281,7 +281,7 @@ public class ControladorVista {
     public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
         cp.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
     }
-    public ArrayList<String> obtenerAsistentesPorEquipo( String nombreEquipo) throws Exception {
+    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
         return cp.obtenerAsistentesPorEquipo(nombreEquipo);
     }
     public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
@@ -289,4 +289,7 @@ public class ControladorVista {
     }
 
 
+    public ArrayList<Asistente> obtenerAsistentesPorEquipo(Equipo nombreEquipo, Asistente nombreAntiguo) throws SQLException {
+        return cp.obtenerAsistentesPorEquipo(nombreEquipo,nombreAntiguo);
+    }
 }
