@@ -72,4 +72,7 @@ public class Asistente {
     public void setEquipo(Equipo equipo) {
         this.equipo = equipo;
     }
+
+    public void setEquipo(String equipoNombre) {
+    }
 }

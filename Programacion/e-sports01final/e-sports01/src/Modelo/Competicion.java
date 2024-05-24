@@ -39,6 +39,13 @@ public class Competicion {
         this.juego = juego;
     }
 
+    public Competicion(String nombre, LocalDate fechaIni, LocalDate fechaFinal, String estado) {
+        this.nombre = nombre;
+        this.fechaInicio = fechaIni;
+        this.fechaFin = fechaFinal;
+        this.estado = estado;
+    }
+
     public LocalDate getFechaInicio() {
         return fechaInicio;
     }

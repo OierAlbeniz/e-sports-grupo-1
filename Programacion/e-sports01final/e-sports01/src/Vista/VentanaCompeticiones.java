@@ -32,6 +32,8 @@ public class VentanaCompeticiones extends JFrame{
     private JTextField tfNuevaFechaFin;
     private JPanel panel2;
     private JButton bAceptarNuevo;
+    private JButton bAceptarEliminar;
+    private JButton bAceptarEditar;
 
     public VentanaCompeticiones() {
         setContentPane(pCompeticiones);
@@ -256,6 +258,39 @@ public class VentanaCompeticiones extends JFrame{
     public void setTfNuevaFechaFin(JTextField tfNuevaFechaFin) {
         this.tfNuevaFechaFin = tfNuevaFechaFin;
     }
+
+    public JPanel getPanel2() {
+        return panel2;
+    }
+
+    public void setPanel2(JPanel panel2) {
+        this.panel2 = panel2;
+    }
+
+    public JButton getbAceptarNuevo() {
+        return bAceptarNuevo;
+    }
+
+    public void setbAceptarNuevo(JButton bAceptarNuevo) {
+        this.bAceptarNuevo = bAceptarNuevo;
+    }
+
+    public JButton getbAceptarEliminar() {
+        return bAceptarEliminar;
+    }
+
+    public void setbAceptarEliminar(JButton bAceptarEliminar) {
+        this.bAceptarEliminar = bAceptarEliminar;
+    }
+
+    public JButton getbAceptarEditar() {
+        return bAceptarEditar;
+    }
+
+    public void setbAceptarEditar(JButton bAceptarEditar) {
+        this.bAceptarEditar = bAceptarEditar;
+    }
+
     public void addVolver(ActionListener al) {
         bVolver.addActionListener(al);
     }
@@ -275,6 +310,15 @@ public class VentanaCompeticiones extends JFrame{
     public void addbAceptarAl(ActionListener al) {
         bAceptarNuevo.addActionListener(al);
     }
+    public void addbAceptarEliminarAl(ActionListener al) {
+        bAceptarEliminar.addActionListener(al);
+    }
+    public void addbAceptarEditarAl(ActionListener al) {
+        bAceptarEditar.addActionListener(al);
+    }
+    public void addCbEditAL(ActionListener al) {
+        cbEditCompeticion.addActionListener(al);
+    }
     public void mostrar(String m){
         JOptionPane.showMessageDialog(null,m);
     }
@@ -293,5 +337,9 @@ public class VentanaCompeticiones extends JFrame{
         tfNuevaFechaFin.setText("");
         cbNuevoEstado.setSelectedIndex(-1);
         cbNuevoJuego.setSelectedIndex(-1);
+    }
+    public void limpiarEditar() {
+        cbNuevoEstado.setSelectedIndex(-1);
+        cbNuevoJuego.removeAllItems();
     }
 }

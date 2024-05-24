@@ -96,11 +96,10 @@ public class ControladorVJugador {
                     String nickname = vJugadores.getTfNickname().getText();
                     String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
                     String equipo = String.valueOf(vJugadores.getCbEquipoNuevo().getSelectedIndex() + 1);
-
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
 
                 }
-               else if (vJugadores.getRbEliminar().isSelected()) {
+                else if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
@@ -108,7 +107,7 @@ public class ControladorVJugador {
 
 
                 }
-               else if (vJugadores.getRbEditar().isSelected())
+                else if (vJugadores.getRbEditar().isSelected())
                 {
 
                     String nombre = vJugadores.getTfNuevoNombre().getText();
@@ -155,7 +154,7 @@ public class ControladorVJugador {
             }
         }
     }
-//esto es el focus lost de editar
+    //esto es el focus lost de editar
     public class ComboNombreJugadoresEditar implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -286,12 +285,12 @@ public class ControladorVJugador {
                     String equipo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
 
                     // Enviar los datos al controlador de base de datos
-                   Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
+                    Jugador buscarDatos= cv.actualizarJugador(nombreJugador,equipo);
 
 
 
                     vJugadores.getTfNuevoNombre().setText(buscarDatos.getNombre());
-                   vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
+                    vJugadores.getTfNuevoApellido1().setText(buscarDatos.getApellido1());
                     vJugadores.getTfNuevoApellido2().setText(buscarDatos.getApellido2());
                     DecimalFormat formatter2 = new DecimalFormat("#");
                     formatter2.setGroupingUsed(false); // Desactiva el uso de separadores de grupo (comas)
@@ -322,5 +321,9 @@ public class ControladorVJugador {
         vJugadores.getCbEquipoNuevo().addItem(nombre);
         vJugadores.getCbEquipoNuevo().setSelectedItem(nombre);
         vJugadores.getCbEquipoNuevo().setEnabled(false);
+        vJugadores.getbInicio().setVisible(false);
+        vJugadores.getbVolver().setVisible(false);
+        vJugadores.getRbEditar().setVisible(false);
+        vJugadores.getRbEliminar().setVisible(false);
     }
 }

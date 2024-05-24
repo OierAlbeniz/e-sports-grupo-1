@@ -2,6 +2,7 @@ package Controlador.ControladorVista;
 
 import Modelo.Competicion;
 import Modelo.Equipo;
+import Modelo.Patrocinador;
 import Vista.VentanaCompeticiones;
 import Vista.VentanaEquipos;
 
@@ -38,7 +39,7 @@ public class ControladorVEquipo {
         this.cv = cv;
     }
 
-    public void crearMostrar() throws Exception {
+    public void crearMostrar()  {
         vEquipos = new VentanaEquipos();
         vEquipos.setVisible(true);
         vEquipos.addVolver(new BVolverAL());
@@ -99,21 +100,19 @@ public class ControladorVEquipo {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (jugadoresInsertados>=1){
-               String nombre= vEquipos.getTfNombre().getText();
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-                LocalDate fecha =  LocalDate.parse((CharSequence) vEquipos.getCbFechaFundacion().getSelectedItem(),formatter);
-
+            if (jugadoresInsertados>=2){
+                String nombre = vEquipos.getTfNombre().getText();
                 String patrocinador = (String) vEquipos.getCbPatrocinador().getSelectedItem();
                 String competicion = (String) vEquipos.getCbCompeticion().getSelectedItem();
+                LocalDate fecha = (LocalDate) vEquipos.getCbFechaFundacion().getSelectedItem();
                 try {
-                    cv.crearEquipo(nombre, fecha, patrocinador,competicion);
+                    cv.updateEquipoJugador(nombre,patrocinador,competicion,fecha);
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
                 }
             }else {
-                jugadoresInsertados= jugadoresInsertados-2;
-                JOptionPane.showMessageDialog(null,"tienes que insertar " + jugadoresInsertados +" mas");
+                int jugadoresPorInsertar=2-jugadoresInsertados;
+                JOptionPane.showMessageDialog(null,"tienes que insertar " + jugadoresPorInsertar +" jugador/es mas");
             }
 
         }
@@ -124,8 +123,8 @@ public class ControladorVEquipo {
         @Override
         public void actionPerformed(ActionEvent e) {
             cv.crearMostrarStaff();
-           // String nombre =vEquipos.getTfNombre().getText();
-           // cv.nombreequipo(nombre);
+            // String nombre =vEquipos.getTfNombre().getText();
+            // cv.nombreequipo(nombre);
         }
     }
 
@@ -134,17 +133,35 @@ public class ControladorVEquipo {
         @Override
         public void actionPerformed(ActionEvent e) {
 
-          if (vEquipos.getTfNombre().getText().isEmpty()){
+            if (vEquipos.getTfNombre().getText().isEmpty() ){
+                JOptionPane.showMessageDialog(null,"el nombre del equipo tiene que estar escrito");
+            }else
+            {
+                cv.crearMostrarJugadores();
 
 
-              JOptionPane.showMessageDialog(null,"el nombre del equipo tiene que estar escrito");
-          }else
-          {
-              cv.crearMostrarJugadores();
-              jugadoresInsertados=jugadoresInsertados+1;
-              String nombre =vEquipos.getTfNombre().getText();
-              cv.nombreequipo(nombre);
-          }
+                String nombre= vEquipos.getTfNombre().getText();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+                LocalDate fecha =  LocalDate.parse((CharSequence) vEquipos.getCbFechaFundacion().getSelectedItem(),formatter);
+                cv.nombreequipo(nombre);
+                try {
+                String nombrePatrocinador = vEquipos.getCbPatrocinador().getSelectedItem().toString();
+                Patrocinador patrocinador = cv.buscarPatrocinadorNombre(nombrePatrocinador);
+                String nombreCompeticion = vEquipos.getCbCompeticion().getSelectedItem().toString();
+                Competicion competicion = cv.buscarCompeticion(nombreCompeticion);
+
+
+                    if (jugadoresInsertados < 1) {
+                        cv.crearEquipo(nombre, fecha, patrocinador, competicion);
+                    }
+                }catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+
+                jugadoresInsertados=jugadoresInsertados+1;
+                System.out.println(nombre);
+            }
 
 
 
@@ -214,7 +231,7 @@ public class ControladorVEquipo {
     }
 
 
-    public void buscarPatrocinador() throws Exception {
+    public void buscarPatrocinador() {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
             for (String nombre : listaPatrocinadores) {
@@ -225,22 +242,22 @@ public class ControladorVEquipo {
         }
 
     }
-  public  class   bAceptarEditarAL implements ActionListener{
+    public  class   bAceptarEditarAL implements ActionListener{
 
-      @Override
-      public void actionPerformed(ActionEvent e) {
-       String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
-        String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
-        LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
-        String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
-        String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
-          try {
-              cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
-          } catch (Exception ex) {
-              throw new RuntimeException(ex);
-          }
-      }
-  }
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
+            String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
+            LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
+            String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
+            String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
+            try {
+                cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+            } catch (Exception ex) {
+                throw new RuntimeException(ex);
+            }
+        }
+    }
     private class cbEquipoEliminarFL implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {

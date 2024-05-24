@@ -141,6 +141,9 @@ public class ControladorVista {
     public ArrayList selectEquipo(String nombre ) throws Exception {
         return cp.selectEquipo(nombre);
     }
+
+
+
     public List<Juego> buscarJuegos() throws SQLException {return cp.buscarJuegos();}
     public Juego buscarJuego(String nombre) throws Exception{return cp.buscarJuego(nombre);}
     public void insertarCompeticion(Competicion c) throws Exception{cp.insertarCompeticion(c);}
@@ -167,6 +170,10 @@ public class ControladorVista {
 
         return buscarDatos;
     }
+
+
+
+
 
     public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
 
@@ -215,7 +222,7 @@ public class ControladorVista {
     }
 
 
-    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+    public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
         cp.crearEquipo(nombre, fecha, patrocinador,competicion);
     }
     public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
@@ -254,5 +261,32 @@ public class ControladorVista {
     public void borrarPatrocinador(String nombre) throws Exception{cp.borrarPatrocinador(nombre);}
     public void editarPatrocinador(String nombreNuevo) throws Exception{cp.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return cp.buscarPatrocinadorEliminar(nombre);}
+
+
+    public void eliminarCompeticion(Competicion c) throws Exception {
+        cp.eliminarCompeticion(c);
+    }
+
+    public void updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
+        cp.updateEquipoJugador(nombre, patrocinador, competicion, fecha);
+    }
+
+    public Patrocinador buscarPatrocinadorNombre(String nombrePatrocinador) {
+        return  cp.buscarPatrocinadorNombre(nombrePatrocinador);
+    }
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cp.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cp.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+    public ArrayList<String> obtenerAsistentesPorEquipo( String nombreEquipo) throws Exception {
+        return cp.obtenerAsistentesPorEquipo(nombreEquipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        cp.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
+
 
 }

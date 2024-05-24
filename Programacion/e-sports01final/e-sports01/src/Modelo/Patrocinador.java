@@ -17,10 +17,14 @@ public class Patrocinador {
      * @param nombre Nombre del patrocinador.
      * @param listaEquipo Lista de equipos patrocinados.
      */
-    public Patrocinador(final Integer idPatrocinador, final String nombre, final List<Equipo> listaEquipo) {
+    public Patrocinador(Integer idPatrocinador,String nombre, List<Equipo> listaEquipo) {
         this.idPatrocinador = idPatrocinador;
         this.nombre = nombre;
         this.listaEquipo = listaEquipo;
+    }
+    public Patrocinador(Integer idPatrocinador,String nombre) {
+        this.idPatrocinador = idPatrocinador;
+        this.nombre = nombre;
     }
 
     /**

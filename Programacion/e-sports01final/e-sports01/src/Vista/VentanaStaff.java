@@ -33,12 +33,55 @@ public class VentanaStaff extends JFrame{
     private JRadioButton rbAsistenteM;
     private JRadioButton rbEntrenador;
     private JRadioButton rbAsistente;
+    private JComboBox jbEquipo;
+    private JButton btAceptar;
+    private JButton bAceptarEliminar;
     private JComboBox cbEquipo;
     public VentanaStaff() {
         setContentPane(pStaff);
         setLocationRelativeTo(null);
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }
+
+    public JRadioButton getRbEntrenadorM() {
+        return rbEntrenadorM;
+    }
+
+    public void setRbEntrenadorM(JRadioButton rbEntrenadorM) {
+        this.rbEntrenadorM = rbEntrenadorM;
+    }
+
+    public JRadioButton getRbAsistenteM() {
+        return rbAsistenteM;
+    }
+
+    public void setRbAsistenteM(JRadioButton rbAsistenteM) {
+        this.rbAsistenteM = rbAsistenteM;
+    }
+
+    public JRadioButton getRbEntrenador() {
+        return rbEntrenador;
+    }
+
+    public void setRbEntrenador(JRadioButton rbEntrenador) {
+        this.rbEntrenador = rbEntrenador;
+    }
+
+    public JRadioButton getRbAsistente() {
+        return rbAsistente;
+    }
+
+    public void setRbAsistente(JRadioButton rbAsistente) {
+        this.rbAsistente = rbAsistente;
+    }
+
+    public JComboBox getJbEquipo() {
+        return jbEquipo;
+    }
+
+    public void setJbEquipo(JComboBox jbEquipo) {
+        this.jbEquipo = jbEquipo;
     }
 
     public JRadioButton getRbNuevo() {
@@ -265,8 +308,12 @@ public class VentanaStaff extends JFrame{
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-
-
+    public void addBAceptarEliminar (ActionListener al){
+        bAceptarEliminar.addActionListener(al);
+    }
+public void addbAceptarNuevo (ActionListener al){
+        btAceptar.addActionListener(al);
+}
     public void limpiar() {
         tfNombre.setText("");
         tfApellido1.setText("");

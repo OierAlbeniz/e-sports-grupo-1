@@ -67,7 +67,7 @@ public class ControladorBD {
     /**
      * Abre la conexión a la base de datos.
      */
-    /*public void abrirConexion() {
+    public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -83,9 +83,9 @@ public class ControladorBD {
         } catch (SQLException e) {
         }
     }
-    
-     */
-   public void abrirConexion() {
+
+
+   /*public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -254,6 +254,7 @@ public class ControladorBD {
     public ArrayList selectEquipo(String nombre) throws Exception {
         return ctequipo.selectEquipo(nombre);
     }
+
     /**
      * Busca un usuario por su nombre de usuario.
      *
@@ -293,7 +294,7 @@ public class ControladorBD {
      * @throws Exception Si ocurre un error en la base de datos.
      */
     public void insertarCompeticion(Competicion c) throws Exception {
-        //ctcompeticion.insertarCompeticion(c);
+        ctcompeticion.insertarCompeticion(c);
     }
     /**
      * Busca todas las competiciones.
@@ -317,6 +318,11 @@ public class ControladorBD {
         Jugador buscarDatos = ctjugador.actualizarJugador(nombre, equipo);
 
         return buscarDatos;
+    }
+
+
+    public void eliminarCompeticion(Competicion c) throws Exception {
+        ctcompeticion.eliminarCompeticion(c.getIdCompeticion());
     }
     public Usuario crearUsuario(String nombre,String contrasena,String tipoUsuario) throws Exception {
         ctUsuario.crearUsuario(nombre,contrasena,tipoUsuario);
@@ -361,14 +367,18 @@ public class ControladorBD {
         List<Juego> listaJuego = cc.llenarJuegos(tipo);
         return listaJuego;
     }
-    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+    public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
         ctequipo.crearEquipo(nombre, fecha, patrocinador,competicion);
     }
     public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
         ctequipo.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
     }
     public Competicion buscarCompeticion(String c) throws Exception {
-        return ctcompeticion.buscarCompeticion(c);
+        Competicion comp= ctcompeticion.buscarCompeticion(c);
+        String nombreJuego= ctcompeticion.buscarJuegoCompeticion(c);
+        Juego j = ctjuego.buscarJuegoID(nombreJuego);
+        comp.setJuego(j);
+        return comp;
     }
     public List<Enfrentamiento> buscarEnfrentamientos(Integer idJornada, Integer idCompeticion) throws Exception {
 
@@ -437,4 +447,22 @@ public class ControladorBD {
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return ctpatrocinador.buscarPatrocinadorEliminar(nombre);}
 
 
+    public void updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
+        ctequipo.updateEquipoJugador(nombre, patrocinador, competicion, fecha);
+    }
+    public Patrocinador buscarPatrocinadorNombre(String nombrePatrocinador) {
+        return  ctpatrocinador.buscarPatrocinadorNombre(nombrePatrocinador);
+    }
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        ctasistente.crearAsistente(nombre, apellido1, apellido2, sueldo ,tipo);
+    }
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        ctasistente.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+    public ArrayList<String> obtenerAsistentesPorEquipo( String nombreEquipo) throws Exception {
+        return ctasistente.obtenerAsistentesPorEquipo(nombreEquipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        ctasistente.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
 }
