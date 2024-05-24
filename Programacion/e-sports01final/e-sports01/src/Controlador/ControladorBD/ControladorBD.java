@@ -67,7 +67,7 @@ public class ControladorBD {
     /**
      * Abre la conexión a la base de datos.
      */
-    public void abrirConexion() {
+   /* public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -82,10 +82,10 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }
+    }*/
 
 
-   /*public void abrirConexion() {
+   public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
