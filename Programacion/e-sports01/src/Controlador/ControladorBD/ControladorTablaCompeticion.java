@@ -102,21 +102,7 @@ public class ControladorTablaCompeticion {
         }
     }
 
-    public void eliminarCompeticion(int idCompeticion) throws SQLException {
-        CallableStatement cs = null;
 
-        try {
-            cs = con.prepareCall("{call competicion_pkg.eliminar_competicion(?)}");
-            cs.setInt(1, idCompeticion);
-
-            cs.execute();
-            System.out.println("Competición eliminada correctamente.");
-        } finally {
-            if (cs != null) {
-                cs.close();
-            }
-        }
-    }
 
     public void modificarCompeticion(int idCompeticion, String nombre, Date fechaInicio, Date fechaFin, String estado, int idJuego) throws SQLException {
         CallableStatement cs = null;
@@ -156,6 +142,7 @@ public class ControladorTablaCompeticion {
             c.setFechaInicio(rs.getDate("fecha_inicio").toLocalDate());
             c.setFechaFin(rs.getDate("fecha_fin").toLocalDate());
             c.setEstado(rs.getString("estado"));
+            System.out.println("estado");
         } else {
             System.out.println("Competicion no encontrada.");
         }
@@ -163,5 +150,56 @@ public class ControladorTablaCompeticion {
         buscarCompeticion.close();
 
         return c;
+    }
+    public String buscarJuegoCompeticion(String nombre) throws Exception {
+        String nombreJuego = null;
+
+        String plantilla = "SELECT id_juego FROM competicion WHERE nombre=?";
+
+        PreparedStatement buscarJuegoCompeticion = con.prepareStatement(plantilla);
+        buscarJuegoCompeticion.setString(1, nombre);
+
+        ResultSet rs = buscarJuegoCompeticion.executeQuery();
+
+        if (rs.next()) {
+            nombreJuego= rs.getString("id_juego");
+        } else {
+            System.out.println("Juego no encontrado.");
+        }
+        rs.close();
+        buscarJuegoCompeticion.close();
+
+        return nombreJuego;
+    }
+    public void insertarCompeticion(Competicion c) throws Exception {
+
+        String sql = "{call competicion_pkg.crear_competicion(?, ?, ?, ?, ?)}";
+        try (CallableStatement stmt = con.prepareCall(sql)) {
+            stmt.setString(1, c.getNombre());
+            stmt.setDate(2, Date.valueOf(c.getFechaInicio()));
+            stmt.setDate(3, Date.valueOf(c.getFechaFin()));
+            stmt.setString(4, c.getEstado());
+            stmt.setInt(5, c.getJuego().getIdJuego());
+            stmt.execute();
+            System.out.println("Competición creada correctamente.");
+        } catch (SQLException ex) {
+            System.out.println("Error al crear la competición: " + ex.getMessage());
+            throw new Exception("Error al crear la competición", ex);
+        }
+    }
+    public void eliminarCompeticion(int idCompeticion) throws SQLException {
+        CallableStatement cs = null;
+
+        try {
+            cs = con.prepareCall("{call competicion_pkg.eliminar_competicion(?)}");
+            cs.setInt(1, idCompeticion);
+
+            cs.execute();
+            System.out.println("Competición eliminada correctamente.");
+        } finally {
+            if (cs != null) {
+                cs.close();
+            }
+        }
     }
 }

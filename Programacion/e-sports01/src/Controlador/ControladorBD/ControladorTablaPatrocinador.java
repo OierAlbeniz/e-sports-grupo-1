@@ -141,5 +141,22 @@ public class ControladorTablaPatrocinador {
 
         updateStatement.close();
     }
+    public Patrocinador buscarPatrocinadorNombre(String nombre) {
+        try {
+            String plantilla = "SELECT * FROM patrocinador WHERE nombre = ?";
+            PreparedStatement sentencia = con.prepareStatement(plantilla);
+            sentencia.setString(1, nombre);
+            ResultSet resultado = sentencia.executeQuery();
+            if (resultado.next()) {
+                int idPatrocinador = resultado.getInt("id_patrocinador");
+
+                return new Patrocinador(idPatrocinador, nombre);
+            } else {
+                throw new RuntimeException("No se encontró ningún patrocinador con el nombre proporcionado.");
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException("Error al buscar el patrocinador en la base de datos: " + e.getMessage());
+        }
+    }
 }
 

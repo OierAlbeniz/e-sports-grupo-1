@@ -1,7 +1,8 @@
 package Controlador.ControladorBD;
 
+import Modelo.Competicion;
 import Modelo.Equipo;
-import Modelo.Jornada;
+import Modelo.Patrocinador;
 
 
 import javax.swing.*;
@@ -141,7 +142,7 @@ public class ControladorTablaEquipo {
 
     }
 
-    public void crearEquipo(String nombre, LocalDate fecha, String patrocinador, String competicion) throws Exception {
+    public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
@@ -154,15 +155,11 @@ public class ControladorTablaEquipo {
             pstmt.setString(1, nombre);
             rs = pstmt.executeQuery();
 
-            if (rs.next() && rs.getInt(1) > 0) {
-
-                JOptionPane.showMessageDialog(null,"el equipo ya existe");
-            }
 
             // Obtener ID del patrocinador
             String queryPatrocinador = "SELECT ID_PATROCINADOR FROM PATROCINADOR WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryPatrocinador);
-            pstmt.setString(1, patrocinador);
+            pstmt.setString(1, patrocinador.getNombre());
             rs = pstmt.executeQuery();
 
             int idPatrocinador = -1;
@@ -175,7 +172,7 @@ public class ControladorTablaEquipo {
             // Obtener ID de la competición
             String queryCompeticion = "SELECT ID_COMPETICION FROM COMPETICION WHERE NOMBRE = ?";
             pstmt = con.prepareStatement(queryCompeticion);
-            pstmt.setString(1, competicion);
+            pstmt.setString(1, String.valueOf(competicion.getNombre()));
             rs = pstmt.executeQuery();
 
             int idCompeticion = -1;
@@ -193,7 +190,6 @@ public class ControladorTablaEquipo {
             pstmt.setInt(3, idPatrocinador);
             pstmt.executeUpdate();
 
-            JOptionPane.showMessageDialog(null, "Eel equipo ha sido creado correctamente");
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -207,10 +203,7 @@ public class ControladorTablaEquipo {
                 pstmt.close();
             } catch (SQLException ignore) {
             }
-            if (con != null) try {
-                con.close();
-            } catch (SQLException ignore) {
-            }
+
         }
     }
 
@@ -238,19 +231,19 @@ public class ControladorTablaEquipo {
                 "JOIN PATROCINADOR P ON E.ID_PATROCINADOR = P.ID_PATROCINADOR " +
                 "WHERE E.NOMBRE = ?";
         PreparedStatement statement = con.prepareStatement(query) ;
-            statement.setString(1, nombre);
-            try (ResultSet rs = statement.executeQuery()) {
-                if (rs.next()) {
-                    Equipo equipo = new Equipo();
-                    equipo.setNombre(rs.getString("NOMBRE"));
-                    equipo.setFechaFundacion(rs.getDate("FECHA_FUNDACION").toLocalDate());
-                    //equipo.setPatrocinador(rs.getString("NOMBRE"));
-                    return equipo;
-                } else {
-                    return null; // No se encontró el equipo con el nombre dado
-                }
+        statement.setString(1, nombre);
+        try (ResultSet rs = statement.executeQuery()) {
+            if (rs.next()) {
+                Equipo equipo = new Equipo();
+                equipo.setNombre(rs.getString("NOMBRE"));
+                equipo.setFechaFundacion(rs.getDate("FECHA_FUNDACION").toLocalDate());
+                //equipo.setPatrocinador(rs.getString("NOMBRE"));
+                return equipo;
+            } else {
+                return null; // No se encontró el equipo con el nombre dado
             }
         }
+    }
 
 
 
@@ -349,10 +342,38 @@ public class ControladorTablaEquipo {
     }
 
 
+    public Integer updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
+        PreparedStatement stmt = null;
 
+
+        try {
+            // Plantilla de actualización SQL
+            String updateSQL = "UPDATE EQUIPO SET PATROCINADOR = ?, COMPETICION = ?, FECHA_COMPETICION = ? WHERE NOMBRE = ?";
+            stmt = con.prepareStatement(updateSQL);
+
+            // Configurar los parámetros de la sentencia
+            stmt.setString(1, patrocinador);
+            stmt.setString(2, competicion);
+            stmt.setDate(3, Date.valueOf(fecha));
+            stmt.setString(4, nombre);
+
+            // Ejecutar la actualización
+
+            // Cerrar recursos
+            try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return null;
+    }
 
 }
-
-
-
-

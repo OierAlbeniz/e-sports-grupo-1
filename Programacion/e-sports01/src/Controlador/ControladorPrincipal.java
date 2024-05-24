@@ -41,6 +41,7 @@ public class ControladorPrincipal {
 
     }
 
+
     public List<Jugador> llenarJugadores(Integer x) throws Exception {
         return cb.llenarJugadores(x);
     }
@@ -58,6 +59,9 @@ public class ControladorPrincipal {
     }
     public Equipo buscarEquipo(String nombre) throws Exception {
         return cb.buscarEquipo(nombre);
+    }
+    public void eliminarCompeticion(Competicion c) throws Exception {
+        cb.eliminarCompeticion(c);
     }
 
     public List<Juego> buscarJuegos() throws SQLException {return cb.buscarJuegos();}
@@ -96,6 +100,8 @@ public class ControladorPrincipal {
 
         return buscarDatos;
     }
+
+
     public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws Exception {
         cb.actualizarPatrocinador( nombre, equipo);
         Patrocinador buscarDatos = cb.actualizarPatrocinador(nombre, equipo);
@@ -142,7 +148,7 @@ public class ControladorPrincipal {
         return listaJuego;
     }
 
-    public void crearEquipo(String nombre,LocalDate fecha, String patrocinador, String competicion) throws Exception {
+    public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
         cb.crearEquipo(nombre, fecha, patrocinador,competicion);
     }
     public void editarEquipo(String nombreAntiguo,String nombreNuevo,LocalDate fechacambio,String VincularNuevo,String Desvincular) throws Exception {
@@ -183,5 +189,25 @@ public class ControladorPrincipal {
     }
     public Integer buscarUltimaJornada(Integer competicionID) throws Exception {
         return cb.buscarUltimaJornada(competicionID);
+    }
+
+    public void updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
+        cb.updateEquipoJugador(nombre, patrocinador, competicion, fecha);
+    }
+    public Patrocinador buscarPatrocinadorNombre(String nombrePatrocinador) {
+        return  cb.buscarPatrocinadorNombre(nombrePatrocinador);
+    }
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+          cb.crearAsistente(nombre, apellido1, apellido2, sueldo ,tipo);
+    }
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cb.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+
+    public ArrayList<String> obtenerAsistentesPorEquipo( String nombreEquipo) throws Exception {
+        return cb.obtenerAsistentesPorEquipo(nombreEquipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        cb.borrarAsistente(nombreAsistente,nombreEquipo);
     }
 }
