@@ -9,6 +9,7 @@ import java.util.List;
 
 public class ControladorTablaPatrocinador {
     private Connection con;
+    private Patrocinador p;
 
     public ControladorTablaPatrocinador(Connection con) {
         this.con = con;
@@ -19,11 +20,11 @@ public class ControladorTablaPatrocinador {
         String query = "SELECT NOMBRE FROM PATROCINADOR";
 
         Statement stmt = con.createStatement();
-             ResultSet rs = stmt.executeQuery(query);
+        ResultSet rs = stmt.executeQuery(query);
 
-            while (rs.next()) {
-                nombresPatrocinadores.add(rs.getString("NOMBRE"));
-            }
+        while (rs.next()) {
+            nombresPatrocinadores.add(rs.getString("NOMBRE"));
+        }
         if (rs.next()) {
             Patrocinador patrocinador = new Patrocinador();
             patrocinador.setIdPatrocinador(rs.getInt("id_patrocinador"));
@@ -33,27 +34,6 @@ public class ControladorTablaPatrocinador {
         return nombresPatrocinadores;
     }
 
-    public void crearPatrocinador(Integer idPatrocinador, String nombre) throws SQLException {
-        if (patrocinadorExiste(idPatrocinador, nombre)) {
-            JOptionPane.showMessageDialog(null, "El patrocinador ya existe en la base de datos.", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-
-        String plantilla = "INSERT INTO patrocinador (id_patrocinador, nombre) VALUES (?, ?)";
-        PreparedStatement crearPatrocinador = con.prepareStatement(plantilla);
-        crearPatrocinador.setInt(1, idPatrocinador);
-        crearPatrocinador.setString(2, nombre);
-
-        int filasAfectadas = crearPatrocinador.executeUpdate();
-
-        if (filasAfectadas > 0) {
-            JOptionPane.showMessageDialog(null, "El patrocinador " + nombre + " ha sido insertado correctamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al insertar el patrocinador.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
-        crearPatrocinador.close();
-    }
 
     private boolean patrocinadorExiste(Integer idPatrocinador, String nombre) throws SQLException {
         String consulta = "SELECT COUNT(*) FROM patrocinador WHERE id_patrocinador = ? AND nombre = ?";
@@ -84,21 +64,6 @@ public class ControladorTablaPatrocinador {
         rs.close();
         stmt.close();
         return patrocinadores;
-    }
-
-    public void eliminarPatrocinador(String nombre, String equipo) throws SQLException {
-        String consulta = "DELETE FROM patrocinador WHERE nombre = ? AND id_patrocinador = (SELECT id_patrocinador FROM equipo WHERE nombre = ?)";
-        PreparedStatement stmt = con.prepareStatement(consulta);
-        stmt.setString(1, nombre);
-        stmt.setString(2, equipo);
-        int rowsAffected = stmt.executeUpdate();
-
-        stmt.close();
-        if (rowsAffected == 0) {
-            throw new SQLException("No se encontró el patrocinador o el equipo especificado.");
-        } else {
-            JOptionPane.showMessageDialog(null, "El patrocinador se ha borrado exitosamente.");
-        }
     }
 
     public Patrocinador actualizarPatrocinador(String nombre, String equipo) throws SQLException {
@@ -157,6 +122,76 @@ public class ControladorTablaPatrocinador {
         } catch (SQLException e) {
             throw new RuntimeException("Error al buscar el patrocinador en la base de datos: " + e.getMessage());
         }
+    }
+    public void insertarPatrocinadores(Patrocinador p) throws Exception {
+        try {
+            String plantilla = "INSERT INTO patrocinador (nombre) VALUES(?)";
+
+            PreparedStatement sentencia = con.prepareStatement(plantilla);
+
+            sentencia.setString(1, p.getNombre());
+
+            int resultado = sentencia.executeUpdate();
+
+            if (resultado != 1) {
+                throw new Exception("Error al insertar");
+            }
+            sentencia.close();
+        } catch (SQLIntegrityConstraintViolationException ex) {
+            throw new Exception(ex.getMessage());
+        }
+    }
+
+    public void borrarPatrocinador(String nombre) throws Exception{
+        String plantilla = "DELETE FROM patrocinador WHERE nombre = ?";
+
+        PreparedStatement sentencia = con.prepareStatement(plantilla);
+
+        sentencia.setString(1,nombre);
+
+        int resultado = sentencia.executeUpdate();
+
+        if (resultado != 1) {
+            throw new Exception("Error al borrar");
+        }
+        sentencia.close();
+    }
+
+    public void editarPatrocinador(String nombreNuevo) throws Exception{
+
+        String plantilla = "UPDATE patrocinador SET nombre = ? WHERE nombre = ?";
+
+        PreparedStatement sentencia = con.prepareStatement(plantilla);
+
+        sentencia.setString(2,p.getNombre());
+        sentencia.setString(1,nombreNuevo);
+
+        int n = sentencia.executeUpdate();
+
+        if(n != 1){
+            throw new Exception("Error al actualizar");
+        }
+        sentencia.close();
+    }
+
+    public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{
+
+        String plantilla = "SELECT * FROM patrocinador WHERE nombre=?";
+
+        PreparedStatement sentencia = con.prepareStatement(plantilla);
+
+        sentencia.setString(1,nombre);
+
+        ResultSet resultado = sentencia.executeQuery();
+
+        if(resultado.next()){
+            p = new Patrocinador(nombre);
+        }
+        else {
+            throw new Exception("Error al buscar al pasajero");
+        }
+        sentencia.close();
+        return p;
     }
 }
 
