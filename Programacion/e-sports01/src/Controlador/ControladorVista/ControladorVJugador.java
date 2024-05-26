@@ -3,6 +3,7 @@ package Controlador.ControladorVista;
 import Modelo.Equipo;
 import Modelo.Jugador;
 import Modelo.Usuario;
+import Vista.AccionRealizada;
 import Vista.VentanaJugadores;
 
 import javax.swing.*;
@@ -22,6 +23,7 @@ public class ControladorVJugador {
     private ControladorVista cv;
     private Connection con;
     private VentanaJugadores vJugadores;
+    private AccionRealizada aRealizada;
 
 
     public ControladorVJugador(ControladorVista cv) {
@@ -29,6 +31,8 @@ public class ControladorVJugador {
     }
 
     public void crearMostrar() {
+        aRealizada=new AccionRealizada();
+        aRealizada.addRealizadaAL(new RealizadaAL());
         vJugadores = new VentanaJugadores();
         vJugadores.setVisible(true);
         vJugadores.addVolver(new BVolverAL());
@@ -97,13 +101,16 @@ public class ControladorVJugador {
                     String rol = String.valueOf(vJugadores.getCbRol().getSelectedItem());
                     String equipo = String.valueOf(vJugadores.getCbEquipoNuevo().getSelectedIndex() + 1);
                     Usuario anadirJugador = cv.crearJugador(nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, equipo);
-
+                    aRealizada.getEdicionTexto().setText("¡JUGADOR " + nombre + " AÑADIDO!");
+                    aRealizada.setVisible(true);
                 }
                 else if (vJugadores.getRbEliminar().isSelected()) {
                     // Lógica para eliminar un jugador
                     String nombre = (String) vJugadores.getCbJugador().getSelectedItem();
                     String equipo = (String) vJugadores.getCbEquipoElim().getSelectedItem();
                     cv.eliminarJugador(nombre, equipo);
+                    aRealizada.getEdicionTexto().setText("¡JUGADOR " + nombre + " ELIMINADO!");
+                    aRealizada.setVisible(true);
 
 
                 }
@@ -122,13 +129,20 @@ public class ControladorVJugador {
                     String nombreAntiguo = (String) vJugadores.getCbEditJugadores().getSelectedItem();
                     String equipoAntiguo = (String) vJugadores.getCbEquipoEditar().getSelectedItem();
                     cv.editarJugadorConfir( nombre, primerApellido, segundoApellido, sueldo, nacionalidad, fechaNacimiento, nickname, rol, nuevoEquipo,nombreAntiguo,equipoAntiguo);
+                    aRealizada.getEdicionTexto().setText("¡JUGADOR " + nombre + " MODIFICADO!");
+                    aRealizada.setVisible(true);
                 }
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(vJugadores, "Error al realizar la operación: " + ex.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
-
+    public class RealizadaAL implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            aRealizada.dispose();
+        }
+    }
 
 
     public class ComboEquipoElimFocusListener implements FocusListener {

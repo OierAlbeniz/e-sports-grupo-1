@@ -47,7 +47,6 @@ public class ControladorVEquipo {
         vEquipos.addrbNuevoAL(new RbNuevoAL());
         vEquipos.addrbEditarAL(new RbEditarAL());
         vEquipos.addrbEliminarAL(new RbEliminarAL());
-        vEquipos.addbEntrenador(new bEntrenadorAL());
         vEquipos.addBjugadores(new bJugadoresAL());
         vEquipos.addbAceptarEliminar(new bAceptarEliminarAL());
         vEquipos.addbAceptarNuevo(new bAceptarNuevoAL());
@@ -115,16 +114,6 @@ public class ControladorVEquipo {
                 JOptionPane.showMessageDialog(null,"tienes que insertar " + jugadoresPorInsertar +" jugador/es mas");
             }
 
-        }
-    }
-
-    public class bEntrenadorAL implements  ActionListener{
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            cv.crearMostrarStaff();
-            // String nombre =vEquipos.getTfNombre().getText();
-            // cv.nombreequipo(nombre);
         }
     }
 
@@ -203,9 +192,6 @@ public class ControladorVEquipo {
         }
     }
 
-
-
-
     public void llenarCombos() {
         try {
 
@@ -246,13 +232,19 @@ public class ControladorVEquipo {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            String nombreAntiguo= (String) vEquipos.getCbEquipos().getSelectedItem();
+            String nombreAntiguo = (String) vEquipos.getCbEquipos().getSelectedItem();
             String nombreNuevo = vEquipos.getTfNuevoNombre().getText();
-            LocalDate fechacambio = (LocalDate) vEquipos.getCbEditFecha().getSelectedItem();
+            String fechaString = (String) vEquipos.getCbEditFecha().getSelectedItem();
+
+            // Convertir la cadena de fecha a LocalDate
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+            LocalDate fechacambio = LocalDate.parse(fechaString, formatter);
+
             String VincularNuevo = (String) vEquipos.getCbVincular().getSelectedItem();
             String Desvincular = (String) vEquipos.getCbDesvincular().getSelectedItem();
+
             try {
-                cv.editarEquipo(nombreAntiguo,nombreNuevo,fechacambio,VincularNuevo,Desvincular);
+                cv.editarEquipo(nombreAntiguo, nombreNuevo, fechacambio, VincularNuevo, Desvincular);
             } catch (Exception ex) {
                 throw new RuntimeException(ex);
             }
@@ -311,9 +303,6 @@ public class ControladorVEquipo {
 
 
     public void llenarComboEquipo(){
-
-
-
         String nombre = null;
         try {
             ArrayList<Equipo> listaEquipos = cv.selectEquipo(nombre);
@@ -389,12 +378,11 @@ public class ControladorVEquipo {
     private class cbEquipoFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
-            // No hacer nada al ganar el foco
+
         }
 
         @Override
         public void focusLost(FocusEvent e) {
-
             llenarComboEquipo();
         }
     }

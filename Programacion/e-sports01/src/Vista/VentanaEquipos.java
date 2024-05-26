@@ -28,7 +28,6 @@ public class VentanaEquipos extends JFrame{
     private JComboBox cbPatrocinador;
     private JComboBox cbCompeticion;
     private JButton bJugadores;
-    private JButton bEntrenador;
     private JComboBox cbEquipo;
     private JComboBox cbDesvincular;
     private JPanel panel2;
@@ -243,13 +242,6 @@ public class VentanaEquipos extends JFrame{
         this.bJugadores = bJugadores;
     }
 
-    public JButton getbEntrenador() {
-        return bEntrenador;
-    }
-
-    public void setbEntrenador(JButton bEntrenador) {
-        this.bEntrenador = bEntrenador;
-    }
 
     public JComboBox getCbEquipo() {
         return cbEquipo;
@@ -277,9 +269,6 @@ public class VentanaEquipos extends JFrame{
     }
     public void addbAceptarNuevo (ActionListener al){
         bAceptarNuevo.addActionListener(al);
-    }
-    public void addbEntrenador (ActionListener al){
-        bEntrenador.addActionListener(al);
     }
     public void addbAceptarEliminar(ActionListener al){
         bAceptarEliminar.addActionListener(al);

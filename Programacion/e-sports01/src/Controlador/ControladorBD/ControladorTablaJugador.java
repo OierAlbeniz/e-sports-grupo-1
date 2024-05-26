@@ -70,14 +70,6 @@ public class ControladorTablaJugador {
         crearJugador.setString(8, rol);
         crearJugador.setString(9, equipo);
 
-        int filasAfectadas = crearJugador.executeUpdate();
-
-        if (filasAfectadas > 0) {
-            JOptionPane.showMessageDialog(null, "El jugador " + nombre + " ha sido insertado correctamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al insertar el jugador.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
-
         crearJugador.close();
 
     }
@@ -105,15 +97,8 @@ public class ControladorTablaJugador {
         PreparedStatement stmt = con.prepareStatement(consulta);
         stmt.setString(1, nombre);
         stmt.setString(2, equipo);
-        int rowsAffected = stmt.executeUpdate();
-
         stmt.close();
-        if (rowsAffected == 0) {
-            throw new SQLException("No se encontró el jugador o el equipo especificado.");
-        }
-        else {
-            JOptionPane.showMessageDialog(null,"el usuario se ha borrado exitosamente");
-        }
+
     }
 
     public Jugador actualizarJugador(String nombre , String equipo) throws Exception {
@@ -168,15 +153,6 @@ public class ControladorTablaJugador {
         updateStatement.setString(10, nombreAntiguo);
         updateStatement.setString(11, equipoAntiguo);
 
-        // Ejecutar la consulta de actualización
-
-        int filasAfectadas = updateStatement.executeUpdate();
-
-        if (filasAfectadas > 0) {
-            JOptionPane.showMessageDialog(null, "El jugador " + nombre + " ha sido editado correctamente.");
-        } else {
-            JOptionPane.showMessageDialog(null, "Error al editar el jugador.", "Error", JOptionPane.ERROR_MESSAGE);
-        }
 
         // Cerrar la declaración y la conexión
         updateStatement.close();

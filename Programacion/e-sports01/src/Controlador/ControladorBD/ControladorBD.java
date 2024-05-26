@@ -104,9 +104,9 @@ public class ControladorBD {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
-            String url = "jdbc:oracle:thin:@localhost:1522:orcl";
-            String user = "system";
-            String passwd = "Oier2004";
+            String url = "jdbc:oracle:thin:@a8150ad3dbd3.sn.mynetname.net:33150:xe";
+            String user = "proyecto_inigo";
+            String passwd = " BryanTeAmo24!";
             con = DriverManager.getConnection(url, user, passwd);
             System.out.println("conexion abierta");
 
