@@ -120,8 +120,6 @@ public class ControladorTablaEquipo {
         statement.close();
         return equipo;
     }
-
-
     public ArrayList selectEquipo(String nombre) throws Exception {
         ArrayList<Equipo> equipos = new ArrayList<>();
 
@@ -141,7 +139,6 @@ public class ControladorTablaEquipo {
         return equipos;
 
     }
-
     public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
 
         PreparedStatement pstmt = null;
@@ -243,10 +240,6 @@ public class ControladorTablaEquipo {
         }
     }
 
-
-
-
-
     public void editarEquipo(String nombreAntiguo, String nombreNuevo, LocalDate fechaCambio, String vincularNuevo, String desvincular) throws Exception {
 
         PreparedStatement stmt = null;
@@ -338,8 +331,6 @@ public class ControladorTablaEquipo {
             }
         }
     }
-
-
     public Integer updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
         PreparedStatement stmt = null;
 
@@ -373,5 +364,4 @@ public class ControladorTablaEquipo {
 
         return null;
     }
-
 }

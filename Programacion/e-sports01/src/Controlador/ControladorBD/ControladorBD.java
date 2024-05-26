@@ -28,7 +28,6 @@ public class ControladorBD {
     private ControladorTablaClasificacion ctclasificacion;
     private ControladorTablaCompeticion ctcompeticion;
     private ControladorTablaEnfrentamiento ctenfrentamiento;
-    private ControladorTablaEntrenador ctentrenador;
     private ControladorConsultas cc;
     private ControladorTablaEquipo ctequipo;
     private ControladorTablaJornada ctjornada;
@@ -52,7 +51,6 @@ public class ControladorBD {
         ctjuego = new ControladorTablaJuego(con);
         ctjornada = new ControladorTablaJornada(con);
         ctequipo = new ControladorTablaEquipo(con);
-        ctentrenador = new ControladorTablaEntrenador(con);
         ctenfrentamiento = new ControladorTablaEnfrentamiento(con);
         ctcompeticion = new ControladorTablaCompeticion(con);
         ctclasificacion = new ControladorTablaClasificacion(con);
@@ -86,7 +84,7 @@ public class ControladorBD {
     }
 */
 
-   public void abrirConexion() {
+   /*public void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -101,8 +99,23 @@ public class ControladorBD {
             System.out.println("conexion erronea");
         } catch (SQLException e) {
         }
-    }
+    }*/
+    public void abrirConexion() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
 
+            String url = "jdbc:oracle:thin:@localhost:1522:orcl";
+            String user = "system";
+            String passwd = "Oier2004";
+            con = DriverManager.getConnection(url, user, passwd);
+            System.out.println("conexion abierta");
+
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("conexion erronea");
+        } catch (SQLException e) {
+        }
+    }
 
     
 
@@ -486,4 +499,17 @@ public class ControladorBD {
     public void editarPatrocinador(String nombreNuevo) throws Exception{ctpatrocinador.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return ctpatrocinador.buscarPatrocinadorEliminar(nombre);}
 
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        ctasistente.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        ctasistente.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
+        return ctasistente.obtenerAsistentesPorEquipo(nombreEquipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        ctasistente.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
 }

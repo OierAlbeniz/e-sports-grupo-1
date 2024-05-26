@@ -222,4 +222,17 @@ public class ControladorPrincipal {
     public void editarPatrocinador(String nombreNuevo) throws Exception{cb.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return cb.buscarPatrocinadorEliminar(nombre);}
 
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cb.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cb.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
+        return cb.obtenerAsistentesPorEquipo(nombreEquipo, equipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        cb.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
 }

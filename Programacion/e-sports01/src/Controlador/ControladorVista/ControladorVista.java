@@ -324,4 +324,17 @@ public class ControladorVista {
     public void editarPatrocinador(String nombreNuevo) throws Exception{cp.editarPatrocinador(nombreNuevo);}
     public Patrocinador buscarPatrocinadorEliminar(String nombre) throws Exception{return cp.buscarPatrocinadorEliminar(nombre);}
 
+    public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cp.crearAsistente(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+
+    public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
+        cp.crearEntrenador(nombre, apellido1, apellido2, sueldo, tipo);
+    }
+    public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo, String equipo) throws Exception {
+        return cp.obtenerAsistentesPorEquipo(nombreEquipo,equipo);
+    }
+    public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
+        cp.borrarAsistente(nombreAsistente,nombreEquipo);
+    }
 }

@@ -148,7 +148,4 @@ public class ControladorConsultas {
         Juego.close();
         return listaJuego;
     }
-
-
-
 }

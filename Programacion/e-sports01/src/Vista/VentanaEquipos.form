@@ -560,20 +560,6 @@
                   <text value="+ Jugadores"/>
                 </properties>
               </component>
-              <component id="7c0f" class="javax.swing.JButton" binding="bEntrenador">
-                <constraints>
-                  <grid row="4" column="2" row-span="1" col-span="2" vsize-policy="3" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
-                </constraints>
-                <properties>
-                  <background color="-13750481"/>
-                  <borderPainted value="false"/>
-                  <focusPainted value="false"/>
-                  <font name="Michroma" size="14" style="0"/>
-                  <foreground color="-16711751"/>
-                  <requestFocusEnabled value="false"/>
-                  <text value="+ Entrenador"/>
-                </properties>
-              </component>
               <component id="ff8b4" class="javax.swing.JComboBox" binding="cbCompeticion">
                 <constraints>
                   <grid row="3" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="2" anchor="4" fill="0" indent="0" use-parent-layout="false">

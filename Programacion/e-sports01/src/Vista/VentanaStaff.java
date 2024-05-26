@@ -1,10 +1,7 @@
 package Vista;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import java.awt.*;
 import java.awt.event.ActionListener;
-import java.awt.geom.RoundRectangle2D;
 
 public class VentanaStaff extends JFrame{
     private JRadioButton rbNuevo;
@@ -32,50 +29,61 @@ public class VentanaStaff extends JFrame{
     private JTextField tfNuevoApellido2;
     private JTextField tfNuevoSueldo;
     private JLabel labelStaff;
-    private JRadioButton rbEntrenador;
-    private JRadioButton rbAsistente;
+    private JPanel panel2;
     private JRadioButton rbEntrenadorM;
     private JRadioButton rbAsistenteM;
-    private JPanel panel2;
+    private JRadioButton rbEntrenador;
+    private JRadioButton rbAsistente;
+    private JComboBox jbEquipo;
+    private JButton btAceptar;
+    private JButton bAceptarEliminar;
+    private JButton bAceptarEditar;
     private JComboBox cbEquipo;
     public VentanaStaff() {
         setContentPane(pStaff);
         setLocationRelativeTo(null);
         setSize(1920, 1080);
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        redondearPanel(panel2,30);
     }
 
-    private void redondearPanel(JPanel panel, int cornerRadius) {
-        panel.setOpaque(false);
-        panel.setBorder(new redondear(cornerRadius));
+    public JRadioButton getRbEntrenadorM() {
+        return rbEntrenadorM;
     }
 
-    // Clase para crear un borde redondeado
-    class redondear implements Border {
-        private int radius;
+    public void setRbEntrenadorM(JRadioButton rbEntrenadorM) {
+        this.rbEntrenadorM = rbEntrenadorM;
+    }
 
-        public redondear(int radius) {
-            this.radius = radius;
-        }
+    public JRadioButton getRbAsistenteM() {
+        return rbAsistenteM;
+    }
 
-        @Override
-        public Insets getBorderInsets(Component c) {
-            return new Insets(radius, radius, radius, radius);
-        }
+    public void setRbAsistenteM(JRadioButton rbAsistenteM) {
+        this.rbAsistenteM = rbAsistenteM;
+    }
 
-        @Override
-        public boolean isBorderOpaque() {
-            return true;
-        }
+    public JRadioButton getRbEntrenador() {
+        return rbEntrenador;
+    }
 
-        @Override
-        public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-            Graphics2D g2d = (Graphics2D) g.create();
-            g2d.setColor(Color.black);
-            g2d.draw(new RoundRectangle2D.Double(x, y, width -1, height -1, radius, radius));
-            g2d.dispose();
-        }
+    public void setRbEntrenador(JRadioButton rbEntrenador) {
+        this.rbEntrenador = rbEntrenador;
+    }
+
+    public JRadioButton getRbAsistente() {
+        return rbAsistente;
+    }
+
+    public void setRbAsistente(JRadioButton rbAsistente) {
+        this.rbAsistente = rbAsistente;
+    }
+
+    public JComboBox getJbEquipo() {
+        return jbEquipo;
+    }
+
+    public void setJbEquipo(JComboBox jbEquipo) {
+        this.jbEquipo = jbEquipo;
     }
 
     public JRadioButton getRbNuevo() {
@@ -160,6 +168,30 @@ public class VentanaStaff extends JFrame{
 
     public JTextField getTfApellido2() {
         return tfApellido2;
+    }
+
+    public JPanel getPanel2() {
+        return panel2;
+    }
+
+    public void setPanel2(JPanel panel2) {
+        this.panel2 = panel2;
+    }
+
+    public JButton getBtAceptar() {
+        return btAceptar;
+    }
+
+    public void setBtAceptar(JButton btAceptar) {
+        this.btAceptar = btAceptar;
+    }
+
+    public JButton getbAceptarEliminar() {
+        return bAceptarEliminar;
+    }
+
+    public void setbAceptarEliminar(JButton bAceptarEliminar) {
+        this.bAceptarEliminar = bAceptarEliminar;
     }
 
     public void setTfApellido2(JTextField tfApellido2) {
@@ -302,8 +334,12 @@ public class VentanaStaff extends JFrame{
     public void addrbEliminarAL(ActionListener al) {
         rbEliminar.addActionListener(al);
     }
-
-
+    public void addBAceptarEliminar (ActionListener al){
+        bAceptarEliminar.addActionListener(al);
+    }
+    public void addbAceptarNuevo (ActionListener al){
+        btAceptar.addActionListener(al);
+    }
     public void limpiar() {
         tfNombre.setText("");
         tfApellido1.setText("");

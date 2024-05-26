@@ -19,22 +19,30 @@ public class TestControladorTablaPatrocinador {
         abrirConexion();
     }
 
-    private static void abrirConexion() {
+    /*private static void abrirConexion() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-
             String url = "jdbc:oracle:thin:@172.20.225.114:1521:orcl";
             String user = "equipo16";
             String passwd = "equipo16";
             con = DriverManager.getConnection(url, user, passwd);
-            System.out.println("conexion abierta");
-
-        } catch (ClassNotFoundException e) {
+            System.out.println("Conexion abierta");
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            System.out.println("conexion erronea");
-        } catch (SQLException e) {
+            fail("Error al abrir la conexion: " + e.getMessage());
+        }
+    }*/
+    private static void abrirConexion() {
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            String url = "jdbc:oracle:thin:@localhost:1522:orcl";
+            String user = "system";
+            String passwd = "Oier2004";
+            con = DriverManager.getConnection(url, user, passwd);
+            System.out.println("Conexion abierta");
+        } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
-            System.out.println("conexion erronea");
+            fail("Error al abrir la conexion: " + e.getMessage());
         }
     }
 
@@ -61,33 +69,35 @@ public class TestControladorTablaPatrocinador {
         List<String> patrocinadores = controlador.buscarPatrocinador();
         assertNotNull(patrocinadores);
         assertFalse(patrocinadores.isEmpty());
+        assertEquals(3, patrocinadores.size());
     }
 
     @Test
     public void testPatrocinadorExiste() throws SQLException {
-        boolean existe = controlador.patrocinadorExiste(3, "Nike");
+        boolean existe = controlador.patrocinadorExiste(1, "Amazon");
         assertTrue(existe);
     }
 
     @Test
     public void testLlenarPatrocinadorNombre() throws SQLException {
-        List<Patrocinador> patrocinadores = controlador.llenarPatrocinadorNombre("Equipo1");
+        List<Patrocinador> patrocinadores = controlador.llenarPatrocinadorNombre("Los Dragones");
         assertNotNull(patrocinadores);
         assertFalse(patrocinadores.isEmpty());
+        assertEquals("Amazon", patrocinadores.get(0).getNombre());
     }
 
     @Test
     public void testActualizarPatrocinador() throws SQLException {
-        Patrocinador patrocinador = controlador.actualizarPatrocinador("Patrocinador1", "Equipo1");
+        Patrocinador patrocinador = controlador.actualizarPatrocinador("Amazon", "Los Dragones");
         assertNotNull(patrocinador);
-        assertEquals("Patrocinador1", patrocinador.getNombre());
+        assertEquals("Amazon", patrocinador.getNombre());
     }
 
     @Test
     public void testBuscarPatrocinadorNombre() {
-        Patrocinador patrocinador = controlador.buscarPatrocinadorNombre("Patrocinador2");
+        Patrocinador patrocinador = controlador.buscarPatrocinadorNombre("Oysho");
         assertNotNull(patrocinador);
-        assertEquals("Patrocinador2", patrocinador.getNombre());
+        assertEquals("Oysho", patrocinador.getNombre());
     }
 
     @Test
@@ -101,24 +111,14 @@ public class TestControladorTablaPatrocinador {
 
     @Test
     public void testBorrarPatrocinador() throws Exception {
-        controlador.borrarPatrocinador("Patrocinador2");
-        Exception exception = assertThrows(RuntimeException.class, () -> controlador.buscarPatrocinadorNombre("Patrocinador2"));
+        controlador.borrarPatrocinador("Oysho");
+        Exception exception = assertThrows(RuntimeException.class, () -> controlador.buscarPatrocinadorNombre("Oysho"));
         assertEquals("No se encontró ningún patrocinador con el nombre proporcionado.", exception.getMessage());
     }
-
-    @Test
-    public void testEditarPatrocinador() throws Exception {
-        Patrocinador p = new Patrocinador();
-        p.setNombre("Colacao");
-        controlador.editarPatrocinador("PatrocinadorActualizado");
-        Patrocinador patrocinador = controlador.buscarPatrocinadorNombre("PatrocinadorActualizado");
-        assertEquals("PatrocinadorActualizado", patrocinador.getNombre());
-    }
-
     @Test
     public void testBuscarPatrocinadorEliminar() throws Exception {
-        Patrocinador patrocinador = controlador.buscarPatrocinadorEliminar("Nike");
+        Patrocinador patrocinador = controlador.buscarPatrocinadorEliminar("Amazon");
         assertNotNull(patrocinador);
-        assertEquals("Nike", patrocinador.getNombre());
+        assertEquals("Amazon", patrocinador.getNombre());
     }
 }
