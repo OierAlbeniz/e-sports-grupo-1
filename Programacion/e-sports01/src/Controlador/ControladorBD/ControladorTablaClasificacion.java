@@ -55,6 +55,17 @@ public class ControladorTablaClasificacion {
         statement.close();
         return listaEquipos;
     }
+
+    /**
+     * Actualiza la tabla de clasificación con el resultado de un enfrentamiento.
+     *
+     * @param enfrentamiento     El enfrentamiento que contiene los equipos participantes.
+     * @param idCompeticion      El identificador de la competición.
+     * @param resultadoLocal     El resultado del equipo local.
+     * @param resultadoVisitante El resultado del equipo visitante.
+     * @throws Exception Si ocurre un error durante la actualización de la tabla de clasificación.
+     */
+
     public void actualizarTablaClasificacion(Enfrentamiento enfrentamiento, int idCompeticion, int resultadoLocal, int resultadoVisitante) throws Exception {
         int puntosLocal = 0;
         int puntosVisitante = 0;
@@ -172,8 +183,16 @@ public class ControladorTablaClasificacion {
 
         return listIds;
     }
-
      */
+
+    /**
+     * Obtiene la lista de clasificaciones para una competición específica.
+     *
+     * @param idCompeticion El identificador de la competición.
+     * @return Una lista de objetos Clasificacion que contienen el nombre del equipo y los puntos.
+     * @throws Exception Si ocurre un error durante la consulta de la base de datos.
+     */
+
     public List<Clasificacion> obtenerClasificacionesPorCompeticion(Integer idCompeticion) throws Exception {
         String query = "SELECT e.nombre, c.puntos FROM clasificacion c " +
                 "JOIN equipo e ON e.id_equipo = c.id_equipo " +

@@ -16,6 +16,14 @@ public class ControladorTablaJornada {
         this.con = con;
     }
 
+    /**
+     * Busca todas las jornadas de una competición.
+     *
+     * @param idCompeticion El ID de la competición.
+     * @return Una lista de IDs de las jornadas.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public List<Integer> buscarJornadas(Integer idCompeticion) throws Exception {
         String sql = "SELECT id_jornada FROM jornada WHERE id_competicion = ?";
         List<Integer> listaJornadas = new ArrayList<>();
@@ -32,6 +40,15 @@ public class ControladorTablaJornada {
         ps.close();
         return listaJornadas;
     }
+
+    /**
+     * Busca el ID de la jornada-competición en base a los IDs de la jornada y la competición.
+     *
+     * @param idJornada El ID de la jornada.
+     * @param idCompeticion El ID de la competición.
+     * @return El ID de la jornada-competición, o null si no se encuentra.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
 
     public Integer buscarIdJorComp(Integer idJornada, Integer idCompeticion) throws Exception {
         Integer idJorComp=null;
@@ -59,6 +76,15 @@ public class ControladorTablaJornada {
 
         return idJorComp;
     }
+
+    /**
+     * Obtiene el ID de la competición en base al ID de la jornada-competición.
+     *
+     * @param idJorComp El ID de la jornada-competición.
+     * @return El ID de la competición.
+     * @throws SQLException Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public Integer obtenerIdCompeticionDesdeJornada(int idJorComp) throws SQLException {
         String query = "SELECT id_competicion FROM jornada WHERE id_jor_comp = ?";
         PreparedStatement statement = con.prepareStatement(query);
@@ -72,6 +98,16 @@ public class ControladorTablaJornada {
         statement.close();
         return idCompeticion;
     }
+
+    /**
+     * Obtiene el número de jornadas jugadas por un equipo en una competición.
+     *
+     * @param idEquipo El ID del equipo.
+     * @param idCompeticion El ID de la competición.
+     * @return El número de jornadas jugadas.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public int obtenerJornadasJugadas(int idEquipo, int idCompeticion) throws Exception {
         String query = "SELECT COUNT(*) AS jornadas_jugadas " +
                 "FROM enfrentamiento e " +
@@ -93,6 +129,14 @@ public class ControladorTablaJornada {
         return jornadasJugadas;
     }
 
+
+    /**
+     * Busca el número de la última jornada registrada para una competición en la base de datos.
+     *
+     * @param idCompeticion El ID de la competición para la cual se desea buscar la última jornada.
+     * @return El número de la última jornada registrada para la competición especificada.
+     * @throws Exception Si ocurre un error al ejecutar la consulta SQL o si no se encuentra ninguna jornada para la competición especificada.
+     */
     public Integer buscarUltimaJornada(Integer idCompeticion) throws Exception {
         Integer ultimaJornada = null;
         String query = "SELECT MAX(id_jornada) AS ultima_jornada FROM jornada WHERE id_competicion = ?";

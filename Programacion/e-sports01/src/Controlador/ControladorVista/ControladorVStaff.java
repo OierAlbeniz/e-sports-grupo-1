@@ -10,7 +10,9 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.Connection;
 import java.util.ArrayList;
-
+/**
+ * Controlador para la gestión de la ventana de staff.
+ */
 public class ControladorVStaff {
 
     private ControladorVista cv;
@@ -44,7 +46,9 @@ public class ControladorVStaff {
         llenarComboEquipoNuevo();
 
     }
-
+    /**
+     * ActionListener para la acción de volver atrás.
+     */
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -52,7 +56,9 @@ public class ControladorVStaff {
             vStaff.dispose();
         }
     }
-
+    /**
+     * ActionListener para la acción de aceptar un nuevo asistente.
+     */
     public class btAceptarNuevoAL implements ActionListener {
 
         @Override
@@ -82,7 +88,9 @@ public class ControladorVStaff {
 
         }
     }
-
+    /**
+     * ActionListener para la acción de volver al inicio.
+     */
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -90,7 +98,9 @@ public class ControladorVStaff {
             vStaff.dispose();
         }
     }
-
+    /**
+     * ActionListener para la acción de seleccionar la opción de nuevo asistente.
+     */
     public class RbNuevoAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -102,7 +112,9 @@ public class ControladorVStaff {
             }
         }
     }
-
+    /**
+     * ActionListener para la acción de seleccionar la opción de editar asistente.
+     */
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -114,7 +126,9 @@ public class ControladorVStaff {
             }
         }
     }
-
+    /**
+     * ActionListener para la acción de seleccionar la opción de eliminar asistente.
+     */
     public class RbEliminarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -127,6 +141,9 @@ public class ControladorVStaff {
         }
     }
 
+    /**
+     * ActionListener para la acción de aceptar la eliminación de un asistente.
+     */
     public class bAceptarEliminarAL implements ActionListener {
 
         @Override
@@ -140,7 +157,9 @@ public class ControladorVStaff {
             }
         }
     }
-
+    /**
+     * FocusListener para llenar el combo de selección de asistentes al perder el enfoque.
+     */
 
     public void llenarComboEquipo() {
 
@@ -155,7 +174,9 @@ public class ControladorVStaff {
             throw new RuntimeException(ex);
         }
     }
-
+    /**
+     * FocusListener para llenar el combo de selección de asistentes a editar al perder el enfoque.
+     */
     public void llenarComboEquipoNuevo() {
 
 
@@ -169,7 +190,9 @@ public class ControladorVStaff {
             throw new RuntimeException(ex);
         }
     }
-
+    /**
+     * FocusListener para llenar el combo de selección de asistentes a editar completamente al perder el enfoque.
+     */
 
     public class ComboEquipoElimFocusListener implements FocusListener {
         @Override
@@ -201,12 +224,20 @@ public class ControladorVStaff {
         }
 
     }
-
+    /**
+     * FocusListener para llenar el combo de selección de asistentes a editar al perder el enfoque.
+     */
     public class ComboEquipoEditarFocusListener implements FocusListener {
+        /**
+         * No se realiza ninguna acción cuando se gana el enfoque.
+         */
         @Override
         public void focusGained(FocusEvent e) {
             // No action on focus gain
-        }
+        }/**
+         * Al perder el enfoque, se llena el combo de selección de asistentes a editar con los asistentes del equipo seleccionado.
+         * Se manejan excepciones en caso de errores durante el proceso.
+         */
 
         @Override
         public void focusLost(FocusEvent e) {
@@ -234,12 +265,20 @@ public class ControladorVStaff {
     }
 
 
-    public class ComboEquipoEditarLlenarFocusListener implements FocusListener {
+    /**
+     * FocusListener para imprimir los datos de los asistentes seleccionados al perder el enfoque.
+     */
+    public class ComboEquipoEditarLlenarFocusListener implements FocusListener {/**
+     * No se realiza ninguna acción cuando se gana el enfoque.
+     */
         @Override
         public void focusGained(FocusEvent e) {
             // No action on focus gain
         }
-
+        /**
+         * Al perder el enfoque, se imprime en la consola los datos de los asistentes seleccionados.
+         * Se manejan excepciones en caso de errores durante el proceso.
+         */
         @Override
         public void focusLost(FocusEvent e) {
             try {

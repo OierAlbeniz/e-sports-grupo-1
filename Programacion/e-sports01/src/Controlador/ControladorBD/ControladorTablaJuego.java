@@ -10,15 +10,28 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * Controlador para interactuar con la tabla de juegos en la base de datos.
+ */
     public class ControladorTablaJuego {
         private Connection con;
         private Juego j;
         private List<Juego> listaJuegos;
+        /**
+         * Constructor de la clase ControladorTablaJuego.
+         *
+         * @param con La conexión a la base de datos.
+         */
         public ControladorTablaJuego(Connection con) {
             this.con = con;
         }
-
+        /**
+         * Busca un juego por su nombre en la base de datos.
+         *
+         * @param nombre El nombre del juego a buscar.
+         * @return Un objeto Juego que corresponde al juego encontrado.
+         * @throws Exception Si ocurre un error al buscar el juego en la base de datos.
+         */
         public Juego buscarJuego(String nombre) throws Exception{
             Juego j = null;
             System.out.println(nombre + " el nombre del juego");
@@ -39,6 +52,13 @@ import java.util.List;
             sentencia.close();
             return j;
         }
+        /**
+         * Busca un juego por su ID en la base de datos.
+         *
+         * @param nombre El ID del juego a buscar.
+         * @return Un objeto Juego que corresponde al juego encontrado.
+         * @throws Exception Si ocurre un error al buscar el juego en la base de datos.
+         */
         public Juego buscarJuegoID(String nombre) throws Exception{
             Juego j = null;
             System.out.println(nombre + " el nombre del juego");
@@ -62,6 +82,12 @@ import java.util.List;
             sentencia.close();
             return j;
         }
+        /**
+         * Busca todos los juegos en la base de datos.
+         *
+         * @return Una lista de objetos Juego que representan todos los juegos encontrados.
+         * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+         */
         public List<Juego> buscarJuegos() throws SQLException {
             listaJuegos = new ArrayList<>();
             String plantilla ="SELECT * from juego";
@@ -79,6 +105,13 @@ import java.util.List;
             sentencia.close();
             return listaJuegos;
         }
+        /**
+         * Busca el ID de un juego por su nombre en la base de datos.
+         *
+         * @param nombreJuego El nombre del juego del que se desea obtener el ID.
+         * @return El ID del juego encontrado.
+         * @throws SQLException Si ocurre un error al ejecutar la consulta SQL o si no se encuentra el juego con el nombre especificado.
+         */
         public int buscarIdJuegoPorNombre(String nombreJuego) throws SQLException {
             String sql = "SELECT id_juego FROM juego WHERE nombre = ?";
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -91,6 +124,12 @@ import java.util.List;
                 }
             }
         }
+        /**
+         * Inserta un nuevo juego en la base de datos.
+         *
+         * @param juego El juego que se desea insertar.
+         * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+         */
         public void insertarJuego(Juego juego) throws SQLException {
             String sql = "INSERT INTO juego (nombre, empresa, fecha_lanzamiento) VALUES (?, ?, ?)";
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -100,7 +139,12 @@ import java.util.List;
                 stmt.executeUpdate();
             }
         }
-
+        /**
+         * Elimina un juego de la base de datos.
+         *
+         * @param juego El juego que se desea eliminar.
+         * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+         */
         public void eliminarJuego(Juego juego) throws SQLException {
             String sql = "DELETE FROM juego WHERE id_juego = ?";
             try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -108,7 +152,12 @@ import java.util.List;
                 stmt.executeUpdate();
             }
         }
-
+        /**
+         * Modifica un juego en la base de datos.
+         *
+         * @param juego El juego que se desea modificar.
+         * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+         */
         public void modificarJuego(Juego juego) throws SQLException {
             String sql = "UPDATE juego SET nombre = ?, empresa = ?, fecha_lanzamiento = ? WHERE id_juego = ?";
             try (PreparedStatement stmt = con.prepareStatement(sql)) {

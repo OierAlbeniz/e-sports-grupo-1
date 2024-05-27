@@ -10,7 +10,10 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.sql.SQLException;
 import java.util.List;
-
+/**
+ * Controlador para la gestión de la vista de patrocinadores.
+ * Este controlador maneja las interacciones del usuario con la ventana de patrocinadores.
+ */
 public class ControladorVPatrocinador {
 
     private ControladorVista cv;
@@ -18,11 +21,16 @@ public class ControladorVPatrocinador {
     private Patrocinador p;
     private VentanaPatrocinadores vPatrocinadores;
     private AccionRealizada aRealizada;
-
+    /**
+     * Constructor del controlador de patrocinadores.
+     * @param cv Controlador principal de la vista.
+     */
     public ControladorVPatrocinador(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Crea y muestra la ventana de gestión de patrocinadores.
+     */
     public void crearMostrar()  {
         vPatrocinadores = new VentanaPatrocinadores();
         vPatrocinadores.setVisible(true);
@@ -43,7 +51,9 @@ public class ControladorVPatrocinador {
 
         llenarCombos();
 
-    }
+    } /**
+     * ActionListener para manejar la acción de cerrar la ventana de acción realizada.
+     */
 
     public class RealizadaAL implements ActionListener {
         @Override
@@ -51,6 +61,9 @@ public class ControladorVPatrocinador {
             aRealizada.dispose();
         }
     }
+    /**
+     * ActionListener para manejar la selección del radio button "Nuevo".
+     */
     private class rbNuevoAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -61,7 +74,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * ActionListener para manejar la selección del radio button "Eliminar".
+     */
     private class rbEliminarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -72,7 +87,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * ActionListener para manejar la selección del radio button "Editar".
+     */
     private class rbEditarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -83,7 +100,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * Llena los combos con los nombres de los patrocinadores existentes.
+     */
     private void llenarCombos() {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
@@ -97,7 +116,9 @@ public class ControladorVPatrocinador {
             throw new RuntimeException(e);
         }
     }
-
+    /**
+     * ActionListener para manejar la acción de aceptar un nuevo patrocinador.
+     */
     private class bAceptarNuevoAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -119,6 +140,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
+    /**
+     * ActionListener para manejar la acción de aceptar la eliminación de un patrocinador.
+     */
 
 
     private class bAceptarEliminarAL implements ActionListener {
@@ -136,7 +160,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * FocusListener para manejar el evento de pérdida de enfoque en el combo de editar patrocinadores.
+     */
     private class cbEditarPatrocinadoresFl implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -157,7 +183,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * ActionListener para manejar la acción de aceptar la edición de un patrocinador.
+     */
     private class bAceptarEditarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -172,7 +200,9 @@ public class ControladorVPatrocinador {
             }
         }
     }
-
+    /**
+     * ActionListener para manejar la acción de volver atrás.
+     */
     private class bVolverAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -180,7 +210,9 @@ public class ControladorVPatrocinador {
             vPatrocinadores.dispose();
         }
     }
-
+    /**
+     * ActionListener para manejar la acción de volver al inicio.
+     */
     private class bInicioAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

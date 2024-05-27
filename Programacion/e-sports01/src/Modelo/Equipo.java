@@ -2,7 +2,9 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * La clase Equipo representa a un equipo deportivo.
+ */
 public class Equipo {
     private Integer idEquipo;
     private String nombre;
@@ -12,7 +14,14 @@ public class Equipo {
     private Asistente asistente;
     private List<Entrenador> listaEntrenador;
     private List<Clasificacion> listaClasificacion;
-
+    /**
+     * Constructor de la clase Equipo que inicializa algunos campos.
+     *
+     * @param idEquipo       El identificador del equipo.
+     * @param nombre         El nombre del equipo.
+     * @param fechaFundacion La fecha de fundación del equipo.
+     * @param patrocinador   El patrocinador del equipo.
+     */
 
     public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion, Patrocinador patrocinador) {
 
@@ -21,6 +30,13 @@ public class Equipo {
         this.fechaFundacion = fechaFundacion;
         this.patrocinador = patrocinador;
     }
+    /**
+     * Constructor de la clase Equipo que inicializa algunos campos.
+     *
+     * @param idEquipo       El identificador del equipo.
+     * @param nombre         El nombre del equipo.
+     * @param fechaFundacion La fecha de fundación del equipo.
+     */
     public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion ) {
 
         this.idEquipo = idEquipo;
@@ -28,7 +44,18 @@ public class Equipo {
         this.fechaFundacion = fechaFundacion;
     }
 
-
+    /**
+     * Constructor de la clase Equipo que inicializa todos los campos.
+     *
+     * @param idEquipo           El identificador del equipo.
+     * @param nombre             El nombre del equipo.
+     * @param fechaFundacion     La fecha de fundación del equipo.
+     * @param listaJugador       La lista de jugadores del equipo.
+     * @param patrocinador       El patrocinador del equipo.
+     * @param asistente          El asistente del equipo.
+     * @param listaEntrenador    La lista de entrenadores del equipo.
+     * @param listaClasificacion La lista de clasificaciones del equipo.
+     */
     public Equipo(Integer idEquipo, String nombre, LocalDate fechaFundacion, List<Jugador> listaJugador, Patrocinador patrocinador, Asistente asistente, List<Entrenador> listaEntrenador, List<Clasificacion> listaClasificacion) {
 
         this.idEquipo = idEquipo;

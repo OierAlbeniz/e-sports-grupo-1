@@ -26,6 +26,10 @@ public class ControladorVJuego {
         this.cv = cv;
     }
 
+    /**
+     * Crea y muestra la ventana de gestión de juegos.
+     */
+
     public void crearMostrar() {
         vJuegos = new VentanaJuegos();
         vJuegos.setVisible(true);
@@ -47,6 +51,10 @@ public class ControladorVJuego {
         llenarCombos();
     }
 
+    /**
+     * Llena los combos de la ventana con las competiciones y juegos disponibles.
+     */
+
     public void llenarCombos() {
         try {
             listaNombreCometiciones = cv.buscarCompeticiones();
@@ -65,6 +73,10 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * ActionListener para el botón "Volver".
+     */
+
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -73,6 +85,10 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * ActionListener para el botón "Inicio".
+     */
+
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -80,6 +96,10 @@ public class ControladorVJuego {
             vJuegos.dispose();
         }
     }
+
+    /**
+     * ActionListener para la opción "Nuevo" de juegos.
+     */
 
     public class RbNuevoAL implements ActionListener {
         @Override
@@ -93,6 +113,9 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * ActionListener para la opción "Editar" de juegos.
+     */
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -106,6 +129,11 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * ActionListener para la opción "Eliminar" de juegos.
+     */
+
+
     public class RbEliminarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -117,6 +145,10 @@ public class ControladorVJuego {
             }
         }
     }
+
+    /**
+     * ActionListener para el botón "Aceptar" en la creación de un juego.
+     */
 
     private class bAceptarAl implements ActionListener {
         @Override
@@ -145,6 +177,10 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * ActionListener para el botón "Aceptar" en la eliminación de un juego.
+     */
+
     private class bAceptarEliminarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -162,6 +198,10 @@ public class ControladorVJuego {
             }
         }
     }
+
+    /**
+     * ActionListener para el botón "Aceptar" en la modificación de un juego.
+     */
 
     private class bAceptarEditarAl implements ActionListener {
         @Override
@@ -208,7 +248,9 @@ public class ControladorVJuego {
         }
     }
 
-
+    /**
+     * ActionListener para el cambio de selección en el combo de edición de juego.
+     */
 
     public class cbEditJuegoAL implements ActionListener {
         @Override
@@ -245,6 +287,13 @@ public class ControladorVJuego {
         }
     }
 
+    /**
+     * Llena el combo de competiciones asociadas al juego.
+     * @param juego Juego del cual se obtienen las competiciones asociadas.
+     * @param comboBox ComboBox a llenar con las competiciones asociadas.
+     * @throws Exception Si ocurre algún error al buscar las competiciones asociadas.
+     */
+
         private void llenarComboBoxCompeticiones(Juego juego, JComboBox comboBox) throws Exception {
 
             List<Competicion> competiciones = cv.buscarCompeticionesPorJuego(juego.getIdJuego());
@@ -255,6 +304,14 @@ public class ControladorVJuego {
 
 
         }
+
+    /**
+     * Llena el combo de competiciones no asociadas al juego.
+     * @param juego Juego del cual se obtienen las competiciones no asociadas.
+     * @param comboBox ComboBox a llenar con las competiciones no asociadas.
+     * @throws Exception Si ocurre algún error al buscar las competiciones no asociadas.
+     */
+
         private void llenarComboBoxCompeticionesNoAsociadas(Juego juego, JComboBox comboBox) throws Exception {
             // Obtener todas las competiciones
             List<Competicion> todasCompeticiones = cv.llenarCompeticiones();

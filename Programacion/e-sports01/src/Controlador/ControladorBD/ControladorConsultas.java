@@ -13,12 +13,22 @@ import java.util.List;
 
 public class ControladorConsultas {
     private Connection con;
-
+    /**
+     * Constructor de la clase ControladorConsultas.
+     *
+     * @param con La conexión a la base de datos.
+     */
     public ControladorConsultas(Connection con) {
         this.con = con;
     }
 
-
+    /**
+     * Llena una lista de jugadores desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Jugador.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
     public List<Jugador> llenarJugadoresS(String tipo) throws SQLException {
         List<Jugador> listaJugadores = new ArrayList<>();
         String plantilla = "SELECT * FROM " + tipo; // Construyendo la consulta SQL
@@ -45,6 +55,13 @@ public class ControladorConsultas {
         return listaJugadores;
     }
 
+    /**
+     * Llena una lista de equipos desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Equipo.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
     public List<Equipo> llenarEquiposS(String tipo) throws SQLException {
         List<Equipo> listaEquipo = new ArrayList<>();
         String plantilla = "SELECT * FROM " + tipo; // Construyendo la consulta SQL
@@ -64,6 +81,13 @@ public class ControladorConsultas {
         statement.close();
         return listaEquipo;
     }
+    /**
+     * Llena una lista de entrenadores desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Entrenador.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
 
     public List<Entrenador> llenarEntrenador(String tipo) throws SQLException {
         List<Entrenador> listaEntrenador = new ArrayList<>();
@@ -84,6 +108,13 @@ public class ControladorConsultas {
         Entrenador.close();
         return listaEntrenador;
     }
+    /**
+     * Llena una lista de asistentes desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Asistente.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
     public List<Asistente> llenarAsistente(String tipo) throws SQLException {
         List<Asistente> listaAsistente = new ArrayList<>();
         String plantilla2 = "SELECT * FROM " + tipo; // Construyendo la consulta SQL
@@ -103,6 +134,13 @@ public class ControladorConsultas {
         Asistente.close();
         return listaAsistente;
     }
+    /**
+     * Llena una lista de competiciones desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Competicion.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
     public List<Competicion> llenarCompeticion(String tipo) throws SQLException {
         List<Competicion> listaCompeticion = new ArrayList<>();
         String plantilla2 = "SELECT * FROM " + tipo; // Construyendo la consulta SQL
@@ -126,6 +164,13 @@ public class ControladorConsultas {
         Competicion.close();
         return listaCompeticion;
     }
+    /**
+     * Llena una lista de juegos desde la base de datos.
+     *
+     * @param tipo El tipo de tabla de la cual se obtendrán los datos.
+     * @return Una lista de objetos Juego.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta.
+     */
 
     public List<Juego>  llenarJuegos(String tipo) throws SQLException {
         List<Juego> listaJuego = new ArrayList<>();
