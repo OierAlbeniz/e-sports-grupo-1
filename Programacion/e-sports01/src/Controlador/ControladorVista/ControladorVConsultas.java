@@ -9,23 +9,34 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
-
+/**
+ * Controlador para la vista de consultas.
+ */
 public class ControladorVConsultas {
     private final ControladorVista cv;
     private VentanaConsultas vc;
 
-
+    /**
+     * Constructor de la clase ControladorVConsultas.
+     *
+     * @param cv Controlador de la vista principal.
+     */
     public ControladorVConsultas(ControladorVista cv) {
         this.cv = cv;
     }
 
+    /**
+     * Método para crear y mostrar la vista de consultas.
+     */
     public void crearMostrar() {
         vc = new VentanaConsultas();
         vc.getCbSelect().addFocusListener(new cbSeleccionar());
         vc.addbtSlir(new btSalirAL());
         vc.setVisible(true);
     }
-
+    /**
+     * Clase interna que implementa ActionListener para el botón de salida.
+     */
     public class btSalirAL implements ActionListener{
 
         @Override
@@ -34,7 +45,9 @@ public class ControladorVConsultas {
 
         }
     }
-
+    /**
+     * Clase interna que implementa FocusListener para el combo de selección.
+     */
     public class cbSeleccionar implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {

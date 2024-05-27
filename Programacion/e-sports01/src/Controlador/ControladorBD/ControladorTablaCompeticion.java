@@ -18,6 +18,14 @@ public class ControladorTablaCompeticion {
     public ControladorTablaCompeticion(Connection con) {
         this.con = con;
     }
+
+    /**
+     * Llena una lista con todas las competiciones de la base de datos.
+     *
+     * @return Una lista de objetos Competicion.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public List<Competicion> llenarCompeticiones() throws Exception {
         List<Competicion> llenarCompeticiones=new ArrayList<>();
 
@@ -66,6 +74,14 @@ public class ControladorTablaCompeticion {
     }
 
      */
+
+    /**
+     * Busca todas las competiciones y devuelve sus nombres.
+     *
+     * @return Una lista de nombres de competiciones.
+     * @throws SQLException Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public List<String> buscarCompeticiones() throws SQLException {
         listaNombreCompeticiones = new ArrayList<>();
         String plantilla ="SELECT nombre from competicion";
@@ -80,6 +96,14 @@ public class ControladorTablaCompeticion {
         sentencia.close();
         return listaNombreCompeticiones;
     }
+
+    /**
+     * Busca una competición por su nombre.
+     *
+     * @param nombre El nombre de la competición.
+     * @return Un objeto Competicion si se encuentra, null en caso contrario.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
 
     public Competicion buscarCompeticion(String nombre) throws Exception {
         Competicion c = null;
@@ -107,6 +131,15 @@ public class ControladorTablaCompeticion {
 
         return c;
     }
+
+    /**
+     * Busca el juego asociado a una competición por el nombre de la competición.
+     *
+     * @param nombre El nombre de la competición.
+     * @return El nombre del juego asociado a la competición.
+     * @throws Exception Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public String buscarJuegoCompeticion(String nombre) throws Exception {
         String nombreJuego = null;
 
@@ -127,6 +160,14 @@ public class ControladorTablaCompeticion {
 
         return nombreJuego;
     }
+
+    /**
+     * Inserta una nueva competición en la base de datos.
+     *
+     * @param c El objeto Competicion a insertar.
+     * @throws Exception Si ocurre un error durante la inserción.
+     */
+
     public void insertarCompeticion(Competicion c) throws Exception {
 
         String sql = "{call competicion_pkg.crear_competicion(?, ?, ?, ?, ?)}";
@@ -143,6 +184,14 @@ public class ControladorTablaCompeticion {
             throw new Exception("Error al crear la competición", ex);
         }
     }
+
+    /**
+     * Elimina una competición de la base de datos.
+     *
+     * @param idCompeticion El ID de la competición a eliminar.
+     * @throws SQLException Si ocurre un error durante la eliminación.
+     */
+
     public void eliminarCompeticion(int idCompeticion) throws SQLException {
         CallableStatement cs = null;
 
@@ -158,6 +207,19 @@ public class ControladorTablaCompeticion {
             }
         }
     }
+
+    /**
+     * Modifica una competición en la base de datos.
+     *
+     * @param idCompeticion El ID de la competición a modificar.
+     * @param nombre El nuevo nombre de la competición.
+     * @param fechaInicio La nueva fecha de inicio de la competición.
+     * @param fechaFin La nueva fecha de fin de la competición.
+     * @param estado El nuevo estado de la competición.
+     * @param idJuego El ID del nuevo juego asociado a la competición.
+     * @throws SQLException Si ocurre un error durante la modificación.
+     */
+
     public void modificarCompeticion(int idCompeticion, String nombre, Date fechaInicio, Date fechaFin, String estado, int idJuego) throws SQLException {
         CallableStatement cs = null;
 
@@ -178,6 +240,15 @@ public class ControladorTablaCompeticion {
             }
         }
     }
+
+    /**
+     * Busca todas las competiciones asociadas a un juego.
+     *
+     * @param idJuego El ID del juego.
+     * @return Una lista de objetos Competicion.
+     * @throws SQLException Si ocurre un error durante la consulta a la base de datos.
+     */
+
     public List<Competicion> buscarCompeticionesPorJuego(int idJuego) throws SQLException {
         List<Competicion> competiciones = new ArrayList<>();
         String query = "SELECT * FROM competicion WHERE id_juego = ?";
@@ -198,6 +269,15 @@ public class ControladorTablaCompeticion {
         }
         return competiciones;
     }
+
+    /**
+     * Vincula un juego a una competición.
+     *
+     * @param idJuego El ID del juego.
+     * @param idCompeticion El ID de la competición.
+     * @throws SQLException Si ocurre un error durante la actualización.
+     */
+
     public void vincularJuegoACompeticion(int idJuego, int idCompeticion) throws SQLException {
         String sql = "UPDATE COMPETICION SET ID_JUEGO = ? WHERE ID_COMPETICION = ?";
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
@@ -210,6 +290,14 @@ public class ControladorTablaCompeticion {
             throw new SQLException("Error al vincular el juego a la competición", ex);
         }
     }
+
+    /**
+     * Desvincula un juego de una competición.
+     *
+     * @param idJuego El ID del juego.
+     * @param idCompeticion El ID de la competición.
+     * @throws SQLException Si ocurre un error durante la actualización.
+     */
 
     public void desvincularJuegoDeCompeticion(int idJuego, int idCompeticion) throws SQLException {
         String sql = "UPDATE COMPETICION SET ID_JUEGO = NULL WHERE ID_JUEGO = ? AND ID_COMPETICION = ?";

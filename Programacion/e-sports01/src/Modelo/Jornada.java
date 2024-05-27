@@ -2,14 +2,22 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * La clase Jornada representa una jornada dentro de una competición deportiva.
+ */
 public class Jornada {
 
     private LocalDate fechaEnfrentamiento;
     private Integer idJornada;
     private List<Enfrentamiento> listaEnfrentamiento;
     private Competicion competicion;
-
+    /**
+     * Constructor de la clase Jornada que inicializa algunos campos.
+     *
+     * @param idJornada           El identificador de la jornada.
+     * @param fechaEnfrentamiento La fecha de los enfrentamientos de la jornada.
+     * @param competicion         La competición a la que pertenece la jornada.
+     */
     public Jornada(Integer idJornada, LocalDate fechaEnfrentamiento, Competicion competicion) {
         this.idJornada = idJornada;
         this.fechaEnfrentamiento = LocalDate.parse(String.valueOf(fechaEnfrentamiento));

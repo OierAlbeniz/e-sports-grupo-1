@@ -10,16 +10,24 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Controlador para la ventana de visualización de la última jornada de una competición.
+ */
 public class ControladorVUltJornada {
     private ControladorVista cv;
     private VentanaUltJornada vUltJornada;
     private List<String> listaCompeticiones;
-
+    /**
+     * Constructor de la clase.
+     *
+     * @param cv Controlador principal.
+     */
     public ControladorVUltJornada(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Crea y muestra la ventana de la última jornada.
+     */
     public void crearMostrar() {
         vUltJornada = new VentanaUltJornada();
         vUltJornada.setVisible(true);
@@ -31,7 +39,9 @@ public class ControladorVUltJornada {
         listaCompeticiones = new ArrayList<>();
         vUltJornada.getCbCompeticiones().setSelectedIndex(-1);
     }
-
+    /**
+     * Llena el combo de competiciones con los nombres de las competiciones disponibles.
+     */
     public void llenarComboCompeticiones() {
         try {
             listaCompeticiones = cv.buscarCompeticiones();
@@ -43,7 +53,9 @@ public class ControladorVUltJornada {
             vUltJornada.mostrar(e.getMessage());
         }
     }
-
+    /**
+     * ActionListener para el botón de inicio.
+     */
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -52,7 +64,9 @@ public class ControladorVUltJornada {
             vUltJornada.dispose();
         }
     }
-
+    /**
+     * ActionListener para la selección de competición en el combo box.
+     */
     public class BCompeticionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -69,7 +83,11 @@ public class ControladorVUltJornada {
             }
         }
     }
-
+    /**
+     * Muestra los enfrentamientos de la última jornada de la competición seleccionada.
+     *
+     * @param competicion Competición seleccionada.
+     */
     public void mostrarEnfrentamientosUltimaJornada(Competicion competicion) {
         try {
             System.out.println("Competicion " + competicion.getIdCompeticion());
@@ -99,7 +117,12 @@ public class ControladorVUltJornada {
             vUltJornada.mostrar(ex.getMessage());
         }
     }
-
+    /**
+     * Crea un panel para mostrar un enfrentamiento.
+     *
+     * @param enfrentamiento Enfrentamiento a mostrar.
+     * @return JPanel que muestra el enfrentamiento.
+     */
     private JPanel crearPanelEnfrentamiento(Enfrentamiento enfrentamiento) {
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(400, 50));

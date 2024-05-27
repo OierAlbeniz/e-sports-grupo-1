@@ -15,7 +15,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.List;
-
+/**
+ * ControladorVCompeticion controla la interacción entre la vista de competiciones y el modelo de datos.
+ */
 public class ControladorVCompeticion {
 
     private ControladorVista cv;
@@ -25,11 +27,17 @@ public class ControladorVCompeticion {
     private List<Competicion> listaCompeticiones;
     private List<String> listaNombreCometiciones;
     private AccionRealizada aRealizada;
-
+    /**
+     * Constructor de ControladorVCompeticion.
+     *
+     * @param cv La instancia del controlador de la vista principal.
+     */
     public ControladorVCompeticion(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Crea y muestra la ventana de competiciones.
+     */
     public void crearMostrar() {
         vCompeticiones = new VentanaCompeticiones();
         aRealizada=new AccionRealizada();
@@ -51,7 +59,9 @@ public class ControladorVCompeticion {
         vCompeticiones.addCbEditAL(new cbEditAL());
         llenarCombos();
     }
-
+    /**
+     * Llena los combos de la ventana de competiciones.
+     */
     public void llenarCombos() {
         try {
             listaJuegos = cv.buscarJuegos();
@@ -74,12 +84,18 @@ public class ControladorVCompeticion {
         }
         listaJuegos.forEach(o -> vCompeticiones.getCbNuevoJuego().addItem(o.getNombre()));
     }
+    /**
+     * ActionListener para el botón de realizada.
+     */
     public class RealizadaAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             aRealizada.dispose();
         }
     }
+    /**
+     * ActionListener para el botón de volver.
+     */
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -87,7 +103,9 @@ public class ControladorVCompeticion {
             vCompeticiones.dispose();
         }
     }
-
+    /**
+     * ActionListener para el botón de inicio.
+     */
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -95,7 +113,9 @@ public class ControladorVCompeticion {
             vCompeticiones.dispose();
         }
     }
-
+    /**
+     * ActionListener para el radio button de nuevo.
+     */
     public class RbNuevoAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -107,7 +127,9 @@ public class ControladorVCompeticion {
             }
         }
     }
-
+    /**
+     * ActionListener para el radio button de editar.
+     */
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -129,7 +151,9 @@ public class ControladorVCompeticion {
             }
         }
     }
-
+    /**
+     * ActionListener para el radio button de eliminar.
+     */
     public class RbEliminarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -141,7 +165,9 @@ public class ControladorVCompeticion {
             }
         }
     }
-
+    /**
+     * ActionListener para el radio button de aceptar.
+     */
     private class bAceptarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -184,6 +210,9 @@ public class ControladorVCompeticion {
             }
         }
     }
+    /**
+     * ActionListener para el radio button de eliminar.
+     */
     private class bAceptarEliminarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -200,6 +229,9 @@ public class ControladorVCompeticion {
             }
         }
     }
+    /**
+     * ActionListener para el radio button de aceptar editar.
+     */
     private class bAceptarEditarAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -241,6 +273,9 @@ public class ControladorVCompeticion {
             }
         }
     }
+    /**
+     * ComboBox para editar.
+     */
     public class cbEditAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {

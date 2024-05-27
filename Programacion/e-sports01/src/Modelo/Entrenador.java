@@ -1,7 +1,9 @@
 package Modelo;
 
 import java.awt.*;
-
+/**
+ * La clase Entrenador representa al miembro del equipo responsable de dirigir y entrenar a los jugadores.
+ */
 public class Entrenador {
     private Integer idIntegrante;
     private String nombre;
@@ -9,7 +11,16 @@ public class Entrenador {
     private String apellido2;
     private Double sueldo;
     private Equipo equipo;
-
+    /**
+     * Constructor de la clase Entrenador que inicializa todos los campos.
+     *
+     * @param idIntegrante El identificador del entrenador.
+     * @param nombre       El nombre del entrenador.
+     * @param apellido1    El primer apellido del entrenador.
+     * @param apellido2    El segundo apellido del entrenador.
+     * @param sueldo       El sueldo del entrenador.
+     * @param equipo       El equipo al que pertenece el entrenador.
+     */
     public Entrenador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, Equipo equipo) {
         this.idIntegrante = idIntegrante;
         this.nombre = nombre;

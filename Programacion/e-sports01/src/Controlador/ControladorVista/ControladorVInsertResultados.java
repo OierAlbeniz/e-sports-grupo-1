@@ -12,17 +12,24 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * Controlador para la inserción de resultados en la interfaz gráfica.
+ */
 public class ControladorVInsertResultados {
     private ControladorVista cv;
     private VentanaInsertarResultados vInsertResultados;
     private List<String> listaCompeticiones;
     private List<Integer> listaJornadas;
-
+    /**
+     * Constructor de ControladorVInsertResultados.
+     * @param cv ControladorVista asociado.
+     */
     public ControladorVInsertResultados(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Método para crear y mostrar la ventana de inserción de resultados.
+     */
     public void crearMostrar() {
         vInsertResultados = new VentanaInsertarResultados();
         vInsertResultados.setVisible(true);
@@ -38,7 +45,9 @@ public class ControladorVInsertResultados {
         listaJornadas = new ArrayList<>();
         vInsertResultados.getCbCompeticiones().setSelectedIndex(-1);
     }
-
+    /**
+     * Método para llenar el combo de competiciones.
+     */
     public void llenarComboCompeticiones() {
         try {
             listaCompeticiones = cv.buscarCompeticiones();
@@ -51,7 +60,9 @@ public class ControladorVInsertResultados {
         }
     }
 
-
+    /**
+     * ActionListener para el botón de inicio.
+     */
 
     public class BInicioAL implements ActionListener {
         @Override
@@ -62,7 +73,9 @@ public class ControladorVInsertResultados {
             vInsertResultados.dispose();
         }
     }
-
+    /**
+     * ActionListener para seleccionar una competición.
+     */
     public class BCompeticionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -80,7 +93,10 @@ public class ControladorVInsertResultados {
             }
         }
     }
-
+    /**
+     * Método para llenar el combo de jornadas.
+     * @param competicion Competición seleccionada.
+     */
     public void llenarComboJornadas(Competicion competicion) {
         try {
             System.out.println("Competicion " + competicion.getIdCompeticion());
@@ -101,7 +117,9 @@ public class ControladorVInsertResultados {
         }
     }
 
-
+    /**
+     * FocusListener para el combo de jornadas.
+     */
 public class BJornadaFL implements FocusListener {
 
     @Override
@@ -142,7 +160,11 @@ public class BJornadaFL implements FocusListener {
 }
 
 
-
+    /**
+     * Método para crear un panel de enfrentamiento.
+     * @param enfrentamiento Enfrentamiento.
+     * @return Panel creado.
+     */
 
     private JPanel crearPanelEnfrentamiento(Enfrentamiento enfrentamiento) {
         JPanel panel = new JPanel();
@@ -210,18 +232,31 @@ public class BJornadaFL implements FocusListener {
         return panel;
     }
 
-
+    /**
+     * ActionListener para el botón de aceptar resultados en la ventana de inserción de resultados.
+     */
     public class BAceptarAL implements ActionListener {
         private Enfrentamiento enfrentamiento;
         private JTextField resultadoLocal;
         private JTextField resultadoVisitante;
+        /**
+         * Constructor de la clase BAceptarAL.
+         *
+         * @param enfrentamiento     El enfrentamiento para el que se ingresan los resultados.
+         * @param resultadoLocal     El campo de texto para el resultado local.
+         * @param resultadoVisitante El campo de texto para el resultado visitante.
 
+         */
         public BAceptarAL(Enfrentamiento enfrentamiento, JTextField resultadoLocal, JTextField resultadoVisitante) {
             this.enfrentamiento = enfrentamiento;
             this.resultadoLocal = resultadoLocal;
             this.resultadoVisitante = resultadoVisitante;
         }
-
+        /**
+         * Acción realizada al hacer clic en el botón de aceptar.
+         *
+         * @param e El evento de acción.
+         */
         @Override
         public void actionPerformed(ActionEvent e) {
             try {

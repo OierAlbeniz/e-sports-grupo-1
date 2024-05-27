@@ -30,7 +30,16 @@ public class ControladorTablaAsistente {
         this.con = con;
     }
 
-
+    /**
+     * Crea un nuevo asistente en la base de datos.
+     *
+     * @param nombre    El nombre del asistente.
+     * @param apellido1 El primer apellido del asistente.
+     * @param apellido2 El segundo apellido del asistente.
+     * @param sueldo    El sueldo del asistente.
+     * @param tipo      El tipo de asistente.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
 
     public void crearAsistente(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
         PreparedStatement pstmt = null;
@@ -57,6 +66,16 @@ public class ControladorTablaAsistente {
         }
     }
 
+    /**
+     * Crea un nuevo entrenador en la base de datos.
+     *
+     * @param nombre    El nombre del entrenador.
+     * @param apellido1 El primer apellido del entrenador.
+     * @param apellido2 El segundo apellido del entrenador.
+     * @param sueldo    El sueldo del entrenador.
+     * @param tipo      El tipo de entrenador.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
     public void crearEntrenador(String nombre,String apellido1,String apellido2,Integer sueldo,String tipo) throws Exception {
         PreparedStatement pstmt = null;
 
@@ -82,6 +101,13 @@ public class ControladorTablaAsistente {
         }
     }
 
+    /**
+     * Obtiene una lista de asistentes y entrenadores asociados a un equipo.
+     *
+     * @param nombreEquipo El nombre del equipo.
+     * @return Una lista de nombres de asistentes y entrenadores.
+     * @throws Exception Si ocurre un error durante la operación.
+     */
     public ArrayList<String> obtenerAsistentesPorEquipo(String nombreEquipo) throws Exception {
         ArrayList<String> asistentes = new ArrayList<>();
 
@@ -108,6 +134,14 @@ public class ControladorTablaAsistente {
 
         return asistentes;
     }
+
+    /**
+     * Borra un asistente o entrenador asociado a un equipo de la base de datos.
+     *
+     * @param nombreAsistente El nombre del asistente o entrenador.
+     * @param nombreEquipo    El nombre del equipo.
+     * @throws Exception Si ocurre un error durante la operación o si no se encuentra al asistente o entrenador.
+     */
 
     public void borrarAsistente(String nombreAsistente,String nombreEquipo) throws Exception {
         // Verificar si el nombre pertenece a un asistente

@@ -11,19 +11,33 @@
     import java.sql.PreparedStatement;
     import java.sql.ResultSet;
     import java.sql.SQLException;
-
+    /**
+     * Controlador para la tabla de usuarios en la base de datos.
+     */
     public class ControladorTablaUsuario {
         private Connection con;
         private VentanaInicioSesion vsesion;
         private String nombreUsuarioActual;
         private VentanaPrincipal vp;
 
+        /**
+         * Constructor del controlador.
+         *
+         * @param con La conexión a la base de datos.
+         */
         public ControladorTablaUsuario(Connection con) {
             this.con = con;
             this.vp = vp;
             this.nombreUsuarioActual = nombreUsuarioActual;
         }
-
+        /**
+         * Busca un usuario en la base de datos por nombre y contraseña.
+         *
+         * @param nombre   El nombre del usuario.
+         * @param password La contraseña del usuario.
+         * @return El objeto Usuario si se encuentra, null si no se encuentra.
+         * @throws Exception Si ocurre un error durante la búsqueda.
+         */
         public Usuario buscarUsuario(String nombre,String password) throws Exception {
             Usuario user = null;
 
@@ -51,7 +65,9 @@
 
             return user;
         }
-
+        /**
+         * Clase interna que maneja el evento de cierre de sesión.
+         */
         class CerrarSesionListener implements ActionListener {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -72,7 +88,15 @@
             }
         }
 
-        //creacion de ususario
+        /**
+         * Crea un nuevo usuario en la base de datos.
+         *
+         * @param nombre       El nombre del nuevo usuario.
+         * @param contrasena   La contraseña del nuevo usuario.
+         * @param tipoUsuario  El tipo de usuario del nuevo usuario.
+         * @return El objeto Usuario creado.
+         * @throws Exception Si ocurre un error durante la creación del usuario.
+         */
 
         public Usuario crearUsuario(String nombre, String contrasena, String tipoUsuario) throws Exception {
             Usuario user = null;

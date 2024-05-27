@@ -10,16 +10,28 @@ import java.util.List;
 
 
 import java.sql.Connection;
-
+/**
+ * Controlador para la tabla de jugadores en la base de datos.
+ */
 public class ControladorTablaJugador {
     private Connection con;
     private ControladorBD cb;
-
+    /**
+     * Constructor del controlador de la tabla de jugadores.
+     *
+     * @param con La conexión a la base de datos.
+     */
     public ControladorTablaJugador(Connection con) {
         this.con = con;
     }
 
-
+    /**
+     * Llena una lista de jugadores basados en el ID de equipo.
+     *
+     * @param equipo El ID del equipo.
+     * @return Una lista de objetos Jugador.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public List<Jugador> llenarJugadores(Integer equipo) throws Exception {
 
         List<Jugador> listaJugadores=new ArrayList<>();
@@ -50,7 +62,20 @@ public class ControladorTablaJugador {
         return listaJugadores;
     }
 
-
+    /**
+     * Crea un nuevo jugador en la base de datos.
+     *
+     * @param nombre          El nombre del jugador.
+     * @param primerApellido  El primer apellido del jugador.
+     * @param segundoApellido El segundo apellido del jugador.
+     * @param sueldo          El sueldo del jugador.
+     * @param nacionalidad    La nacionalidad del jugador.
+     * @param fechaNacimiento La fecha de nacimiento del jugador.
+     * @param nickname        El nickname del jugador.
+     * @param rol             El rol del jugador.
+     * @param equipo          El equipo al que pertenece el jugador.
+     * @throws Exception Si ocurre un error durante la creación.
+     */
     public void crearJugador(String nombre, String primerApellido, String segundoApellido, Integer sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol , String equipo) throws Exception {
         System.out.println(nombre + primerApellido + segundoApellido + sueldo + nacionalidad + fechaNacimiento + nickname + rol + equipo );
 
@@ -82,9 +107,14 @@ public class ControladorTablaJugador {
 
     }
 
-// Método para verificar si un jugador ya existe en la base de datos
 
-
+    /**
+     * Llena una lista de jugadores que pertenecen a un equipo seleccionado.
+     *
+     * @param equiposeleccionado El nombre del equipo del que se desean obtener los jugadores.
+     * @return Una lista de objetos Jugador que pertenecen al equipo seleccionado.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+     */
     public List<Jugador> llenarJugadoresNombre(String equiposelecionado) throws SQLException {
         List<Jugador> jugadores = new ArrayList<>();
         String consulta = "SELECT j.nombre FROM JUGADOR j JOIN EQUIPO e ON j.ID_EQUIPO = e.ID_EQUIPO WHERE e.NOMBRE = ?";
@@ -100,6 +130,13 @@ public class ControladorTablaJugador {
         stmt.close();
         return jugadores;
     }
+    /**
+     * Elimina un jugador de la base de datos.
+     *
+     * @param nombre El nombre del jugador que se desea eliminar.
+     * @param equipo El nombre del equipo al que pertenece el jugador que se desea eliminar.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL o si no se encuentra el jugador o el equipo especificado.
+     */
     public  void eliminarJugador(String nombre, String equipo) throws SQLException {
         String consulta = "DELETE FROM JUGADOR WHERE NOMBRE = ? AND ID_EQUIPO = (SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE = ?)";
         PreparedStatement stmt = con.prepareStatement(consulta);
@@ -115,7 +152,14 @@ public class ControladorTablaJugador {
             JOptionPane.showMessageDialog(null,"el usuario se ha borrado exitosamente");
         }
     }
-
+    /**
+     * Busca un jugador específico en la base de datos y devuelve su información.
+     *
+     * @param nombre El nombre del jugador a buscar.
+     * @param equipo El nombre del equipo al que pertenece el jugador.
+     * @return El objeto Jugador que contiene la información del jugador encontrado.
+     * @throws Exception Si ocurre un error durante la búsqueda o si no se encuentra el jugador en la base de datos.
+     */
     public Jugador actualizarJugador(String nombre , String equipo) throws Exception {
         Jugador jugador ;
         String selectQuery = "SELECT J.NOMBRE, J.APELLIDO1, J.APELLIDO2, J.SUELDO, J.NACIONALIDAD, J.FECHA_NACIMIENTO, J.NICKNAME, J.ROL, E.nombre" +
@@ -147,7 +191,22 @@ public class ControladorTablaJugador {
 
         return jugador;
     }
-
+    /**
+     * Edita la información de un jugador en la base de datos y confirma la edición.
+     *
+     * @param nombre          El nuevo nombre del jugador.
+     * @param primerApellido  El nuevo primer apellido del jugador.
+     * @param segundoApellido El nuevo segundo apellido del jugador.
+     * @param sueldo          El nuevo sueldo del jugador.
+     * @param nacionalidad    La nueva nacionalidad del jugador.
+     * @param fechaNacimiento La nueva fecha de nacimiento del jugador.
+     * @param nickname        El nuevo nickname del jugador.
+     * @param rol             El nuevo rol del jugador.
+     * @param nuevoEquipo     El nombre del nuevo equipo al que pertenece el jugador.
+     * @param nombreAntiguo   El nombre antiguo del jugador.
+     * @param equipoAntiguo   El nombre antiguo del equipo al que pertenece el jugador.
+     * @throws Exception Si ocurre un error durante la edición del jugador en la base de datos.
+     */
     public void editarJugadorConfir(String nombre,String primerApellido,String segundoApellido,double sueldo,String nacionalidad,LocalDate fechaNacimiento,String nickname,String rol,String nuevoEquipo,String nombreAntiguo,String equipoAntiguo) throws Exception {
 
         String updateQuery = "UPDATE JUGADOR SET NOMBRE=?, APELLIDO1=?, APELLIDO2=?, SUELDO=?, NACIONALIDAD=?, FECHA_NACIMIENTO=?, NICKNAME=?, ROL=?, ID_EQUIPO=(SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE=?) WHERE NOMBRE=? AND ID_EQUIPO=(SELECT ID_EQUIPO FROM EQUIPO WHERE NOMBRE=?)";

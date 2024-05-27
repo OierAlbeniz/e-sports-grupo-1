@@ -1,11 +1,20 @@
 package Modelo;
-
+/**
+ * La clase Usuario representa a un usuario del sistema.
+ */
 public class Usuario {
     private Integer idUsuario;
     private String nombre;
     private String contrasena;
     private String tipo;
-
+    /**
+     * Constructor de la clase Usuario.
+     *
+     * @param idUsuario   El identificador del usuario.
+     * @param nombre      El nombre del usuario.
+     * @param contrasena  La contraseña del usuario.
+     * @param tipo        El tipo de usuario (puede ser "usuario" o "administrador").
+     */
     public Usuario(Integer idUsuario, String nombre, String contrasena, String tipo) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;

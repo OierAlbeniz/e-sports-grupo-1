@@ -17,7 +17,9 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * ControladorVEquipo gestiona la interacción entre la vista de equipos y el resto de la aplicación.
+ */
 public class ControladorVEquipo {
 
     private ControladorVista cv;
@@ -33,12 +35,20 @@ public class ControladorVEquipo {
     private List<String> listaNombreCometiciones;
     private List<String> listaPatrocinadores;
 
-
+    /**
+     * Constructor de ControladorVEquipo.
+     *
+     * @param cv La instancia del controlador de la vista principal.
+     */
 
     public ControladorVEquipo(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Crea y muestra la ventana de equipos.
+     *
+     * @throws Exception Si ocurre un error durante la ejecución.
+     */
     public void crearMostrar()  {
         vEquipos = new VentanaEquipos();
         vEquipos.setVisible(true);
@@ -66,7 +76,9 @@ public class ControladorVEquipo {
         llenarComboEquipoEditarMenos();
         llenarComboEquipoEditarMas();
     }
-
+    /**
+     * ActionListener para el botón de volver.
+     */
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -74,6 +86,9 @@ public class ControladorVEquipo {
             vEquipos.dispose();
         }
     }
+    /**
+     * ActionListener para el botón de inicio.
+     */
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -82,7 +97,9 @@ public class ControladorVEquipo {
         }
     }
 
-
+    /**
+     * ActionListener para el botón de nuevo.
+     */
     public class RbNuevoAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -94,7 +111,9 @@ public class ControladorVEquipo {
             }
         }
     }
-
+    /**
+     * ActionListener para el botón de aceptar nuevo.
+     */
 
     public class bAceptarNuevoAL implements ActionListener{
 
@@ -117,7 +136,9 @@ public class ControladorVEquipo {
 
         }
     }
-
+    /**
+     * ActionListener para el botón de entrenador.
+     */
     public class bEntrenadorAL implements  ActionListener{
 
         @Override
@@ -127,7 +148,9 @@ public class ControladorVEquipo {
             // cv.nombreequipo(nombre);
         }
     }
-
+    /**
+     * ActionListener para el botón de jugadores.
+     */
     public class bJugadoresAL implements  ActionListener{
 
         @Override
@@ -167,6 +190,9 @@ public class ControladorVEquipo {
 
         }
     }
+    /**
+     * ActionListener para el botón de editar.
+     */
     public class RbEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -178,6 +204,9 @@ public class ControladorVEquipo {
             }
         }
     }
+    /**
+     * ActionListener para el botón de eliminar.
+     */
     public class RbEliminarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -189,7 +218,9 @@ public class ControladorVEquipo {
             }
         }
     }
-
+    /**
+     * ActionListener para el botón de aceptar eliminar.
+     */
     public class bAceptarEliminarAL implements  ActionListener{
 
         @Override
@@ -204,7 +235,9 @@ public class ControladorVEquipo {
     }
 
 
-
+    /**
+     * Llena los combos con los datos obtenidos de la base de datos.
+     */
 
     public void llenarCombos() {
         try {
@@ -230,7 +263,11 @@ public class ControladorVEquipo {
         }
     }
 
-
+    /**
+     * Busca los patrocinadores en la base de datos y los añade al combo correspondiente en la vista.
+     *
+     * @throws Exception Si ocurre un error durante la ejecución.
+     */
     public void buscarPatrocinador() {
         try {
             listaPatrocinadores = cv.buscarPatrocinador();
@@ -258,6 +295,9 @@ public class ControladorVEquipo {
             }
         }
     }
+    /**
+     * FocusListener para el combo de equipo en la sección de eliminar.
+     */
     private class cbEquipoEliminarFL implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -287,6 +327,9 @@ public class ControladorVEquipo {
 
         }
     }
+    /**
+     * Llena el combo de fecha para editar equipos.
+     */
     public void llenarComboFechaEditar(){
         vEquipos.getCbEditFecha().addItem("2008/01/01");
         vEquipos.getCbEditFecha().addItem("2009/01/01");
@@ -324,6 +367,9 @@ public class ControladorVEquipo {
             throw new RuntimeException(ex);
         }
     }
+    /**
+     * Llena el combo de equipo para editar.
+     */
     public void llenarComboEquipoEditar(){
 
 
@@ -338,7 +384,9 @@ public class ControladorVEquipo {
             throw new RuntimeException(ex);
         }
     }
-
+    /**
+     * Llena el combo de competiciones para editar.
+     */
     public void llenarComboEquipoEditarMenos() {
         try {
 
@@ -362,6 +410,9 @@ public class ControladorVEquipo {
             throw new RuntimeException("Error al llenar el combo box de competiciones", e);
         }
     }
+    /**
+     * Llena el combo de competiciones para editar.
+     */
     public void llenarComboEquipoEditarMas() {
         try {
 
@@ -385,7 +436,9 @@ public class ControladorVEquipo {
             throw new RuntimeException("Error al llenar el combo box de competiciones", e);
         }
     }
-
+    /**
+     * FocusListener para el combo de equipo.
+     */
     private class cbEquipoFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {

@@ -2,7 +2,9 @@ package Modelo;
 
 import java.time.LocalDate;
 import java.util.List;
-
+/**
+ * La clase Juego representa un videojuego asociado a competiciones deportivas.
+ */
 public class Juego {
     private  String nombre;
     private  String empresa;
@@ -10,6 +12,15 @@ public class Juego {
     private Integer idJuego;
     private List<Competicion> listaCompeticion;
 
+    /**
+     * Constructor de la clase Juego.
+     *
+     * @param nombre          El nombre del juego.
+     * @param empresa         La empresa desarrolladora del juego.
+     * @param fechalanzamiento La fecha de lanzamiento del juego.
+     * @param idJuego         El identificador del juego.
+     * @param listaCompeticion La lista de competiciones asociadas al juego.
+     */
 
     public Juego(String nombre, String empresa, LocalDate fechalanzamiento, Integer idJuego) {
         this.nombre = nombre;

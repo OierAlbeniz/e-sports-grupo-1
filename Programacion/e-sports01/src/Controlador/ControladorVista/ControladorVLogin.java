@@ -17,9 +17,17 @@ public class ControladorVLogin {
     private ControladorVP cvp;
 
 
+    /**
+     * Constructor de ControladorVLogin.
+     * @param cv Controlador de la vista.
+     */
     public ControladorVLogin(ControladorVista cv) {
         this.cv = cv;
     }
+
+    /**
+     * Crea y muestra la ventana de inicio de sesión.
+     */
 
     public void crearMostrar() {
         vsesion = new VentanaInicioSesion();
@@ -29,6 +37,11 @@ public class ControladorVLogin {
         vsesion.addCerrar(new bCerrarAL());
 
     }
+
+    /**
+     * ActionListener para el botón de iniciar sesión.
+     */
+
     public class BSesionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -77,10 +90,12 @@ public class ControladorVLogin {
 
 
 
-
         }
     }
 
+    /**
+     * ActionListener para el botón de ayuda.
+     */
 
     public class bAyudaAL implements ActionListener {
 
@@ -89,6 +104,10 @@ public class ControladorVLogin {
             JOptionPane.showMessageDialog(null,"Bienvenido a la ayuda \n Contacta con nosotros atraves de esta gmail \n egibide@gmail.org");
         }
     }
+
+    /**
+     * ActionListener para el botón de cerrar.
+     */
 
     public class bCerrarAL implements ActionListener{
 
