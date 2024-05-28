@@ -17,19 +17,27 @@ import java.util.List;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.JTableHeader;
 
-
-public class ControladorVClasificacion {
+/**
+ * Controlador para la vista de clasificación.
+ */
+public class  ControladorVClasificacion {
     private ControladorVista cv;
     private VentanaEquipos veq;
     private ControladorTablaEquipo ctequipo;
 
     private VentanaClasificacion vClasificacion;
     private List<String> listaCompeticiones;
-
+    /**
+     * Constructor de la clase ControladorVClasificacion.
+     *
+     * @param cv Controlador de la vista principal.
+     */
     public ControladorVClasificacion(ControladorVista cv) {
         this.cv = cv;
     }
-
+    /**
+     * Método para crear y mostrar la vista de clasificación.
+     */
     public void crearMostrar() {
         vClasificacion = new VentanaClasificacion();
         vClasificacion.setVisible(true);
@@ -38,6 +46,9 @@ public class ControladorVClasificacion {
         llenarComboCompeticiones();
         vClasificacion.addCBCompeticion(new BCompeticionAL());
     }
+    /**
+     * Método para llenar el combo de competiciones.
+     */
     public void llenarComboCompeticiones() {
         try {
             listaCompeticiones = cv.buscarCompeticiones();
@@ -49,7 +60,9 @@ public class ControladorVClasificacion {
             vClasificacion.mostrar(e.getMessage());
         }
     }
-
+    /**
+     * Clase interna que implementa ActionListener para el botón de inicio.
+     */
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -58,7 +71,9 @@ public class ControladorVClasificacion {
             vClasificacion.dispose();
         }
     }
-
+    /**
+     * Clase interna que implementa ActionListener para el botón de competición.
+     */
     public class BCompeticionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -75,6 +90,11 @@ public class ControladorVClasificacion {
             }
         }
     }
+    /**
+     * Método para mostrar las clasificaciones en una tabla.
+     *
+     * @param clasificaciones Lista de clasificaciones.
+     */
     public void mostrarClasificacionesEnTabla(List<Clasificacion> clasificaciones) {
         // Definir las columnas de la tabla
         String[] columnNames = {"Posición", "Equipo", "Puntos"};

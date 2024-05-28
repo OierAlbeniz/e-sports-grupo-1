@@ -1,7 +1,9 @@
 package Modelo;
 
 import java.time.LocalTime;
-
+/**
+ * La clase Enfrentamiento representa un encuentro entre dos equipos en una jornada específica de una competición.
+ */
 public class Enfrentamiento {
 
     private Equipo equipoUno;
@@ -13,7 +15,17 @@ public class Enfrentamiento {
     private Jornada jornada;
     private Integer idEnfJor;
     private Integer idJorComp;
-
+    /**
+     * Constructor de la clase Enfrentamiento que inicializa todos los campos.
+     *
+     * @param equipoUno          El primer equipo participante.
+     * @param equipoDos          El segundo equipo participante.
+     * @param idEnfrentamiento   El identificador del enfrentamiento.
+     * @param hora               La hora del enfrentamiento.
+     * @param resultadoLocal     El resultado del equipo local.
+     * @param resultadoVisitante El resultado del equipo visitante.
+     * @param jornada            La jornada en la que se realiza el enfrentamiento.
+     */
     public Enfrentamiento(Equipo equipoUno, Equipo equipoDos, Integer idEnfrentamiento, String hora, Integer resultadoLocal, Integer resultadoVisitante, Jornada jornada) {
         this.equipoUno = equipoUno;
         this.equipoDos = equipoDos;

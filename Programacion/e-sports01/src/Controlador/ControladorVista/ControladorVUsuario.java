@@ -8,23 +8,34 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
+/**
+ * Controlador para la vista de gestión de usuarios.
+ */
 public class ControladorVUsuario {
     private VistaPerfil vpr;
     private ControladorVista cv;
+    /**
+     * Constructor de la clase.
+     *
+     * @param cv Controlador principal.
+     */
     public ControladorVUsuario(ControladorVista cv) {
         this.cv = cv;
     }
 
 
-
+    /**
+     * Crea y muestra la ventana de perfil del usuario.
+     */
     public void crearMostrarUsuario() {
         vpr = new VistaPerfil();
         vpr.setVisible(true);
         vpr.addBCancelar(new botonCancelar());
         vpr.addCrearUsuario(new crearUsuario());
     }
-
+    /**
+     * ActionListener para el botón de cancelar.
+     */
     public class botonCancelar implements ActionListener {
 
         @Override
@@ -33,7 +44,9 @@ public class ControladorVUsuario {
             vpr.dispose();
         }
     }
-
+    /**
+     * ActionListener para el botón de crear usuario.
+     */
     public class crearUsuario implements ActionListener{
 
         @Override

@@ -1,7 +1,9 @@
 package Modelo;
 
 import java.time.LocalDate;
-
+/**
+ * La clase Jugador representa a un jugador de un equipo deportivo.
+ */
 
 public class Jugador {
     private Integer idIntegrante;
@@ -14,7 +16,20 @@ public class Jugador {
     private String nickname;
     private String rol;
     private String equipo;
-
+    /**
+     * Constructor de la clase Jugador.
+     *
+     * @param idIntegrante    El identificador del jugador.
+     * @param nombre          El nombre del jugador.
+     * @param apellido1       El primer apellido del jugador.
+     * @param apellido2       El segundo apellido del jugador.
+     * @param sueldo          El sueldo del jugador.
+     * @param nacionalidad    La nacionalidad del jugador.
+     * @param fechaNacimiento La fecha de nacimiento del jugador.
+     * @param nickname        El apodo o nickname del jugador.
+     * @param rol             El rol o posición del jugador en el equipo.
+     * @param equipo          El equipo al que pertenece el jugador.
+     */
     public Jugador(Integer idIntegrante, String nombre, String apellido1, String apellido2, Double sueldo, String nacionalidad, LocalDate fechaNacimiento, String nickname, String rol, String equipo) {
         this.idIntegrante = idIntegrante;
         this.nombre = nombre;

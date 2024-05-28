@@ -29,10 +29,23 @@ public class ControladorVP {
     private AccionRealizada aRealizada;
     private Connection con;
 
+    /**
+     * Constructor de ControladorVP.
+     *
+     * @param cv Controlador de la vista.
+     * @throws Exception Excepción general.
+     */
+
     public ControladorVP(ControladorVista cv) throws Exception {
         this.cv = cv;
         this.vsesion = new VentanaInicioSesion();
     }
+
+    /**
+     * Crea y muestra la ventana principal.
+     *
+     * @param user Usuario que ha iniciado sesión.
+     */
 
     public void crearMostrar(Usuario user) {
         Integer comprobar = null;
@@ -94,12 +107,23 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * ActionListener para el botón de acción realizada.
+     */
+
     public class RealizadaAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
             aRealizada.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la visualización de información de usuarios.
+     * Cuando se activa, llama al método 'crearMostrarUsuario' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para administrar la información de usuarios, y cierra la ventana actual.
+     */
+
     public class BusuarioAL implements ActionListener {
 
         @Override
@@ -109,6 +133,12 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la visualización de información de clasificación.
+     * Cuando se activa, llama al método 'crearMostrarClasificacion' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para ver la información de clasificación, y cierra la ventana actual.
+     */
+
     public class BClasificacionAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -116,6 +146,13 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la inserción de resultados de partidos.
+     * Cuando se activa, llama al método 'crearMostrarInsertResultados' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para insertar resultados de partidos, y cierra la ventana actual.
+     */
+
     public class BInsertResultadosAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -123,6 +160,13 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la visualización de la última jornada de partidos.
+     * Cuando se activa, llama al método 'crearMostrarUltJornada' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para ver la última jornada de partidos, y cierra la ventana actual.
+     */
+
     public class BUltJornadaAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -130,6 +174,12 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la realización de consultas.
+     * Cuando se activa, llama al método 'crearConsultas' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para realizar consultas.
+     */
 
     public class bConsultasAL implements ActionListener {
 
@@ -140,6 +190,12 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la edición de detalles de partidos.
+     * Cuando se activa, llama al método 'crearMostrarEditar' de la clase 'ControladorVista'
+     * para crear y mostrar la interfaz de usuario para editar detalles de partidos, y cierra la ventana actual.
+     */
+
     public class BEditarAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -147,6 +203,12 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con el cierre de inscripciones para una competición.
+     * Cuando se activa, realiza validaciones en el número de equipos en cada competición, genera
+     * un calendario si es necesario, y muestra mensajes apropiados. También captura excepciones y muestra mensajes de error.
+     */
 
     public class BCerrarInscAL implements ActionListener {
         @Override
@@ -193,6 +255,11 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la salida de la aplicación.
+     * Cuando se activa, sale de la aplicación.
+     */
+
     public class BSalirAl implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -200,6 +267,12 @@ public class ControladorVP {
         }
 
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con el cierre de sesión actual.
+     * Cuando se activa, llama al método 'crearMostrarVinicioSesion' de la clase 'ControladorVista'
+     * para volver a la ventana de inicio de sesión, y cierra la ventana actual.
+     */
 
     public class CerrarSesionAl implements ActionListener{
 
@@ -209,6 +282,13 @@ public class ControladorVP {
             vp.dispose();
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la obtención de datos de clasificación en formato XML.
+     * Cuando se activa, se conecta a una base de datos y ejecuta un procedimiento almacenado para recuperar los datos XML.
+     * Cualquier excepción SQL se envuelve en una RuntimeException.
+     */
+
     private class bClasificacionXmlAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -230,6 +310,12 @@ public class ControladorVP {
         }
     }
 
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la obtención de todos los datos de partidos en formato XML.
+     * Cuando se activa, se conecta a una base de datos y ejecuta un procedimiento almacenado para recuperar los datos XML.
+     * Cualquier excepción SQL se envuelve en una RuntimeException.
+     */
+
     private class bTodasJornadasXmlAl implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -249,6 +335,12 @@ public class ControladorVP {
             }
         }
     }
+
+    /**
+     * Clase ActionListener para manejar acciones de usuario relacionadas con la obtención de la última jornada de partidos en formato XML.
+     * Cuando se activa, se conecta a una base de datos y ejecuta un procedimiento almacenado para recuperar los datos XML.
+     * Cualquier excepción SQL se envuelve en una RuntimeException.
+     */
 
     private class bUltimaJornadaXmlAl implements ActionListener {
         @Override

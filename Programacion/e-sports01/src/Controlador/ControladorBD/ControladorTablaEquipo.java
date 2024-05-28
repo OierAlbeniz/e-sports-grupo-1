@@ -11,15 +11,28 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Esta clase gestiona las operaciones relacionadas con la tabla de equipos en la base de datos.
+ */
 public class ControladorTablaEquipo {
     private Connection con;
     private ControladorBD cb;
 
+    /**
+     * Constructor de la clase ControladorTablaEquipo.
+     *
+     * @param con La conexión a la base de datos.
+     */
     public ControladorTablaEquipo(Connection con) {
         this.con = con;
     }
 
-
+    /**
+     * Obtiene el nombre de un equipo específico.
+     *
+     * @return El nombre del equipo.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public String llenarNombre() throws Exception {
         String nombre = null;
 
@@ -36,7 +49,12 @@ public class ControladorTablaEquipo {
 
         return nombre;
     }
-
+    /**
+     * Obtiene la cantidad de equipos registrados en la base de datos.
+     *
+     * @return La cantidad de equipos.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public Integer cantidadEquipos() throws Exception {
         Integer cantidad = 0;
 
@@ -54,7 +72,12 @@ public class ControladorTablaEquipo {
         statement.close();
         return cantidad;
     }
-
+    /**
+     * Obtiene la lista de equipos registrados en la base de datos.
+     *
+     * @return La lista de equipos.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public List<Equipo> llenarEquipos() throws Exception {
         List<Equipo> llenarEquipos = new ArrayList<>();
 
@@ -76,7 +99,13 @@ public class ControladorTablaEquipo {
         statement.close();
         return llenarEquipos;
     }
-
+    /**
+     * Obtiene la lista de equipos registrados en la base de datos filtrados por su ID.
+     *
+     * @param idequipo El ID del equipo a buscar.
+     * @return La lista de equipos que coinciden con el ID proporcionado.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public List<Equipo> llenarEquiposporID(String idequipo) throws Exception {
         List<Equipo> llenarEquipos = new ArrayList<>();
 
@@ -99,7 +128,13 @@ public class ControladorTablaEquipo {
         statement.close();
         return llenarEquipos;
     }
-
+    /**
+     * Busca un equipo por su ID.
+     *
+     * @param idequipo El ID del equipo a buscar.
+     * @return El equipo encontrado.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public Equipo buscarEquipoInt(Integer idequipo) throws Exception {
         Equipo equipo = new Equipo();
 
@@ -120,6 +155,13 @@ public class ControladorTablaEquipo {
         statement.close();
         return equipo;
     }
+    /**
+     * Obtiene una lista de nombres de equipos.
+     *
+     * @param nombre El nombre del equipo.
+     * @return Una lista de nombres de equipos.
+     * @throws Exception Si ocurre un error durante la consulta.
+     */
     public ArrayList selectEquipo(String nombre) throws Exception {
         ArrayList<Equipo> equipos = new ArrayList<>();
 
@@ -139,6 +181,15 @@ public class ControladorTablaEquipo {
         return equipos;
 
     }
+    /**
+     * Crea un nuevo equipo en la base de datos.
+     *
+     * @param nombre      El nombre del equipo.
+     * @param fecha       La fecha de fundación del equipo.
+     * @param patrocinador El nombre del patrocinador del equipo.
+     * @param competicion La competición asociada al equipo.
+     * @throws Exception Si ocurre un error durante la creación del equipo.
+     */
     public void crearEquipo(String nombre, LocalDate fecha, Patrocinador patrocinador, Competicion competicion) throws Exception {
 
         PreparedStatement pstmt = null;
@@ -201,7 +252,12 @@ public class ControladorTablaEquipo {
             }
         }
     }
-
+    /**
+     * Borra un equipo de la base de datos.
+     *
+     * @param nombre El nombre del equipo a borrar.
+     * @throws SQLException Si ocurre un error durante el borrado del equipo.
+     */
     public void borrarEquipo(String nombre) throws SQLException {
         String query = "DELETE FROM EQUIPO WHERE NOMBRE = ?";
 
@@ -219,7 +275,13 @@ public class ControladorTablaEquipo {
 
 
     }
-
+    /**
+     * Busca un equipo en la base de datos por su nombre.
+     *
+     * @param nombre El nombre del equipo que se desea buscar.
+     * @return El equipo encontrado, o null si no se encontró ningún equipo con el nombre especificado.
+     * @throws SQLException Si ocurre un error al ejecutar la consulta SQL.
+     */
     public Equipo buscarEquipo(String nombre) throws SQLException {
         String query = "SELECT E.*, P.NOMBRE AS NOMBRE_PATROCINADOR " +
                 "FROM EQUIPO E " +
@@ -239,7 +301,16 @@ public class ControladorTablaEquipo {
             }
         }
     }
-
+    /**
+     * Edita un equipo en la base de datos, cambiando su nombre, fecha de fundación y su vinculación a competiciones.
+     *
+     * @param nombreAntiguo El nombre antiguo del equipo que se desea editar.
+     * @param nombreNuevo El nuevo nombre que se desea asignar al equipo.
+     * @param fechaCambio La nueva fecha de fundación del equipo.
+     * @param vincularNuevo El nombre de la nueva competición a la que se desea vincular el equipo. Puede ser null si no se desea realizar ninguna vinculación.
+     * @param desvincular El nombre de la competición de la que se desea desvincular el equipo. Puede ser null si no se desea realizar ninguna desvinculación.
+     * @throws Exception Si ocurre un error al editar el equipo o al cerrar la conexión con la base de datos.
+     */
     public void editarEquipo(String nombreAntiguo, String nombreNuevo, LocalDate fechaCambio, String vincularNuevo, String desvincular) throws Exception {
 
         PreparedStatement stmt = null;
@@ -331,6 +402,16 @@ public class ControladorTablaEquipo {
             }
         }
     }
+    /**
+     * Actualiza la información del equipo asociada a un jugador en la base de datos.
+     *
+     * @param nombre      El nombre del equipo a actualizar.
+     * @param patrocinador El nuevo nombre del patrocinador del equipo.
+     * @param competicion El nuevo nombre de la competición asociada al equipo.
+     * @param fecha       La nueva fecha de la competición.
+     * @return El número de filas afectadas por la actualización.
+     * @throws Exception Si ocurre un error al ejecutar la actualización.
+     */
     public Integer updateEquipoJugador(String nombre, String patrocinador, String competicion, LocalDate fecha) throws Exception {
         PreparedStatement stmt = null;
 

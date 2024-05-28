@@ -30,6 +30,10 @@ public class ControladorVJugador {
         this.cv = cv;
     }
 
+    /**
+     * Crea y muestra la ventana de gestión de jugadores.
+     */
+
     public void crearMostrar() {
         aRealizada=new AccionRealizada();
         aRealizada.addRealizadaAL(new RealizadaAL());
@@ -53,6 +57,11 @@ public class ControladorVJugador {
         llenarComboEquipoNuevo();
         llenarComboEquipoEditar();
     }
+
+    /**
+     * ActionListener para el botón "Volver".
+     */
+
     public class BVolverAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -61,6 +70,10 @@ public class ControladorVJugador {
         }
     }
 
+    /**
+     * ActionListener para el botón "Inicio".
+     */
+
     public class BInicioAL implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -68,6 +81,10 @@ public class ControladorVJugador {
             vJugadores.dispose();
         }
     }
+
+    /**
+     * ActionListener para la opción "Nuevo" de jugadores.
+     */
 
     public class RbNuevoAL implements ActionListener {
         @Override
@@ -84,6 +101,11 @@ public class ControladorVJugador {
 
         }
     }
+
+    /**
+     * ActionListener para el botón "Aceptar".
+     */
+
     public class addBotonAceptar implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -144,6 +166,9 @@ public class ControladorVJugador {
         }
     }
 
+    /**
+     * FocusListener para el combo de equipo al eliminar jugadores.
+     */
 
     public class ComboEquipoElimFocusListener implements FocusListener {
         @Override
@@ -219,6 +244,11 @@ public class ControladorVJugador {
             }
         }
     }
+
+    /**
+     * Método para llenar la ComboBox de equipos.
+     */
+
     public void llenarComboEquipo(){
 
 
@@ -233,6 +263,11 @@ public class ControladorVJugador {
             throw new RuntimeException(ex);
         }
     }
+
+    /**
+     * Método para llenar la ComboBox de equipos para eliminar.
+     */
+
     public void llenarComboEquipoEliminar(){
 
 
@@ -247,6 +282,11 @@ public class ControladorVJugador {
             throw new RuntimeException(ex);
         }
     }
+
+    /**
+     * Método para llenar la ComboBox de equipos para nuevo jugador.
+     */
+
     public void llenarComboEquipoNuevo(){
 
 
@@ -261,6 +301,11 @@ public class ControladorVJugador {
             throw new RuntimeException(ex);
         }
     }
+
+    /**
+     * Método para llenar la ComboBox de equipos para editar jugador.
+     */
+
     public void llenarComboEquipoEditar(){
 
 
@@ -278,7 +323,9 @@ public class ControladorVJugador {
 
 
 
-    //aqui se buscan todos los datos de ese jugador
+    /**
+     * FocusListener para la ComboBox de edición de jugadores.
+     */
     public class ComboEditJugadoresFocusListener implements FocusListener {
         @Override
         public void focusGained(FocusEvent e) {
@@ -329,7 +376,11 @@ public class ControladorVJugador {
         }
     }
 
-//esto es el relleno automatico de la combo box de el jugador cuando es llamado por el quipo
+    /**
+     * Método para llenar automáticamente la ComboBox de equipos cuando es llamado por el equipo.
+     * @param nombre Nombre del equipo para agregar a la ComboBox.
+     */
+
 
     public void nombreEquipo(String nombre){
         vJugadores.getCbEquipoNuevo().addItem(nombre);
